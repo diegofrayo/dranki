@@ -3,7 +3,12 @@
     "allow": [
       "Bash(pnpm i:*)",
       "Bash(npm run:*)",
-      "WebFetch(domain:base-ui.com)"
+      "WebFetch(domain:base-ui.com)",
+      "Bash(npm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(mkdir -p /Users/diegofrayo/Documents/Programming/Personal/dranki/src/app/texts/\\\\[lesson-id\\\\])",
+      "Bash(mkdir -p /Users/diegofrayo/Documents/Programming/Personal/dranki/src/features/pages/texts/pages/\\\\[lesson-id\\\\])",
+      "Bash(pnpm build:ts)"
     ]
   }
 }

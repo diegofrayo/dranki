@@ -2,6 +2,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Text, Title } from "~/components/primitive";
 
+import Breadcrumb from "./breadcrumb";
+
 // --- PROPS & TYPES ---
 
 type MainLayoutProps = {
@@ -28,6 +30,7 @@ function MainLayout({ children }: MainLayoutProps) {
 						dranki
 					</Title>
 					<Text className="text-muted-foreground text-sm">Practice English phrases</Text>
+					<Breadcrumb />
 				</Box>
 			</Box>
 

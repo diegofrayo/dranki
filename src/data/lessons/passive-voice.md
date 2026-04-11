@@ -1,4 +1,4 @@
-# What is Passive Voice?
+# Passive Voice
 
 The passive voice is used when the focus is on the action, not on who performs it.
 
@@ -13,8 +13,8 @@ Structure
 
 > Object + verb “to be” (conjugated) + past participle (+ by + subject, optional)
 
-- Active: She builds the app
-- Passive: The app is built (by her)
+- **Active:** She builds the app
+- **Passive:** The app is built (by her)
 
 ## 💡 Important:
 
@@ -34,8 +34,8 @@ Structure
 
 ## When to use passive voice (practical tips)
 - ✅ When the doer is unknown:
-  > The data was stolen.
+  - `The data was stolen.`
 - ✅ When the action/result is more important:
-  > The app was deployed successfully.
+  - `The app was deployed successfully.`
 - ✅ In technical writing / documentation (very common in your dev context):
-  > The request is validated before processing.
+  - `The request is validated before processing.`

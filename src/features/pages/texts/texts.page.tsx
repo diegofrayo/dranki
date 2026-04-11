@@ -5,6 +5,7 @@ import textsData from "~/data/texts.json";
 
 type TextItem = {
 	lesson: string;
+	title: string;
 };
 
 type Lesson = {
@@ -23,10 +24,10 @@ export default async function TextsPage() {
 
 	const items = texts
 		.map((text) => ({
-			lesson: text.lesson,
-			details: getLessonDetails(text.lesson),
+			title: text.title,
+			lesson: getLessonDetails(text.lesson),
 		}))
-		.filter((item): item is { lesson: string; details: Lesson } => item.details !== undefined);
+		.filter((item): item is { title: string; lesson: Lesson } => item.lesson !== undefined);
 
 	return (
 		<MainLayout>
@@ -48,21 +49,23 @@ export default async function TextsPage() {
 			>
 				{items.map((item) => (
 					<Link
-						key={item.lesson}
-						href={`/texts/${item.lesson}`}
+						key={item.title}
+						href={`/texts/${item.lesson.id}`}
 						className={`block rounded-2xl bg-purple-700 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80`}
 					>
-						{item.details.emoji.length > 0 && (
-							<Text className="mb-1 text-3xl">{item.details.emoji}</Text>
+						{item.lesson.emoji.length > 0 && (
+							<Text className="mb-1 text-3xl">{item.lesson.emoji}</Text>
 						)}
 						<Title
 							as="h2"
 							className="text-lg font-bold text-white"
 						>
-							{item.details.title}
+							{item.title}
 						</Title>
-						{item.details.description.length > 0 && (
-							<Text className="mt-1 text-sm text-white/80">{item.details.description}</Text>
+						{item.lesson.description.length > 0 && (
+							<Text className="mt-1 text-right text-sm text-white/80 italic">
+								{item.lesson.title}
+							</Text>
 						)}
 					</Link>
 				))}

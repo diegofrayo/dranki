@@ -1,0 +1,73 @@
+@reference "../../../styles/globals.css"
+
+.paragraph {
+	@apply text-foreground mb-4 text-base leading-relaxed;
+}
+
+.heading1 {
+	@apply text-foreground mb-4 text-2xl font-bold;
+}
+
+.heading2 {
+	@apply text-foreground mb-3 text-xl font-semibold;
+}
+
+.heading3 {
+	@apply text-foreground mb-2 text-lg font-semibold;
+}
+
+.strong {
+	@apply text-foreground font-bold;
+}
+
+.em {
+	@apply italic;
+}
+
+.blockquote {
+	@apply border-border text-muted-foreground mb-4 border-l-4 pl-4 italic;
+}
+
+.ul {
+	@apply mb-4 list-disc pl-6;
+}
+
+.ol {
+	@apply mb-4 list-decimal pl-6;
+}
+
+.li {
+	@apply text-foreground mb-1 text-base;
+}
+
+.code {
+	@apply bg-muted text-foreground rounded px-1 py-0.5 font-mono text-sm italic;
+}
+
+.pre {
+	@apply bg-muted mb-4 overflow-x-auto rounded-lg p-4;
+}
+
+.table-wrapper {
+	@apply mb-4 overflow-x-auto;
+}
+
+.table {
+	@apply border-border w-full border-collapse text-sm;
+}
+
+.thead {
+	@apply bg-muted;
+}
+
+.tr {
+	@apply border-border border-b;
+}
+
+.th {
+	@apply text-foreground px-4 py-2 text-left font-semibold;
+}
+
+.td {
+	@apply text-foreground px-4 py-2;
+}
