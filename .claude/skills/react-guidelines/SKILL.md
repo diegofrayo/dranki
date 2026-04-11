@@ -95,3 +95,17 @@ function MyComponent({ viewMode, lang, onViewModeChange, onLangChange }: MyCompo
 - Source code file names must use kebab-case (e.g. `my-component.tsx`, not `MyComponent.tsx` or `myComponent.tsx`).
 - Never import icons directly from an icon library package. Always use the `Icon` primitive component with `IconCatalog` to pass the icon name as a prop. If the needed icon does not exist in `IconCatalog`, add it there before using it.
 - Never use `@radix-ui/*` packages when building or rewriting components. Use `@base-ui/react` instead — import the component namespace (e.g. `import { Progress } from "@base-ui/react"`) and use its subcomponents (`Progress.Root`, `Progress.Track`, `Progress.Indicator`, etc.).
+- When creating a new Next.js page, follow this folder structure (using `my-page` as an example):
+  ```
+  src/app/my-page/page.tsx          → re-export only: export { default } from "~/features/pages/my-page"
+  src/features/pages/my-page/
+    my-page.page.tsx                → default-exported React component (the page UI)
+    my-page.types.ts                → types used only within this page folder
+    my-page.config.ts               → framework-level functions: loaders, generateMetadata, etc.
+    index.ts                        → barrel file; default export is my-page.page.tsx
+    components/                     → components used only within this page
+      component-1.tsx
+      component-2.tsx
+    pages/                          → nested routes (e.g. my-page/sub-route)
+      my-subpage/                   → same structure as above, recursively
+  ```

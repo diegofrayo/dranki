@@ -1,0 +1,72 @@
+import { MainLayout } from "~/components/layout";
+import { Box, Link, Text, Title } from "~/components/primitive";
+import lessonsData from "~/data/lessons.json";
+import textsData from "~/data/texts.json";
+
+type TextItem = {
+	lesson: string;
+};
+
+type Lesson = {
+	id: string;
+	title: string;
+	emoji: string;
+	description: string;
+};
+
+function getLessonDetails(lessonId: string): Lesson | undefined {
+	return (lessonsData as Lesson[]).find((lesson) => lesson.id === lessonId);
+}
+
+export default async function TextsPage() {
+	const texts = textsData as TextItem[];
+
+	const items = texts
+		.map((text) => ({
+			lesson: text.lesson,
+			details: getLessonDetails(text.lesson),
+		}))
+		.filter((item): item is { lesson: string; details: Lesson } => item.details !== undefined);
+
+	return (
+		<MainLayout>
+			<Box className="mb-6">
+				<Title
+					as="h2"
+					className="text-foreground mb-1 text-xl font-bold"
+				>
+					Texts
+				</Title>
+				<Text className="text-muted-foreground text-sm">
+					Short texts that put vocabulary and grammar in context. Read each one to reinforce what
+					you&apos;ve learned and practice understanding English naturally.
+				</Text>
+			</Box>
+			<Box
+				as="section"
+				className="flex flex-col gap-4"
+			>
+				{items.map((item) => (
+					<Link
+						key={item.lesson}
+						href={`/texts/${item.lesson}`}
+						className={`block rounded-2xl bg-purple-700 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80`}
+					>
+						{item.details.emoji.length > 0 && (
+							<Text className="mb-1 text-3xl">{item.details.emoji}</Text>
+						)}
+						<Title
+							as="h2"
+							className="text-lg font-bold text-white"
+						>
+							{item.details.title}
+						</Title>
+						{item.details.description.length > 0 && (
+							<Text className="mt-1 text-sm text-white/80">{item.details.description}</Text>
+						)}
+					</Link>
+				))}
+			</Box>
+		</MainLayout>
+	);
+}
