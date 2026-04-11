@@ -1,27 +1,55 @@
-import { Box, Text, Title } from "~/components/primitive";
+import { MainLayout } from "~/components/layout";
+import { Box, Link, Text, Title } from "~/components/primitive";
+
+const FEATURES = [
+	{
+		emoji: "📚",
+		title: "Decks",
+		description: "Bunches of phrases grouped by topic — phrasal verbs, simple past, and more.",
+		href: "/decks",
+		bgColor: "bg-blue-500",
+	},
+	{
+		emoji: "📖",
+		title: "Lessons",
+		description: "Clear explanations about grammar topics like simple present, future, and more.",
+		href: "/lessons",
+		bgColor: "bg-emerald-500",
+	},
+	{
+		emoji: "📝",
+		title: "Texts",
+		description:
+			"Short texts that put vocabulary and phrases in context — read and learn naturally.",
+		href: "/texts",
+		bgColor: "bg-violet-500",
+	},
+];
 
 export default async function HomePage() {
 	return (
-		<Box
-			as="main"
-			className="min-h-screen pb-24"
-		>
+		<MainLayout>
 			<Box
-				as="header"
-				className="border-border bg-background/80 sticky top-0 z-40 border-b backdrop-blur-md"
+				as="section"
+				className="flex flex-col gap-4"
 			>
-				<Box className="mx-auto max-w-md px-4 py-4">
-					<Title
-						as="h1"
-						className="text-foreground text-2xl font-extrabold"
+				{FEATURES.map((feature) => (
+					<Link
+						key={feature.href}
+						href={feature.href}
+						className={`${feature.bgColor} block rounded-2xl p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80`}
 					>
-						dranki
-					</Title>
-					<Text className="text-muted-foreground text-sm">Practice English phrases</Text>
-				</Box>
+						<Text className="mb-1 text-3xl">{feature.emoji}</Text>
+						<Title
+							as="h2"
+							className="text-lg font-bold text-white"
+						>
+							{feature.title}
+						</Title>
+						<Text className="mt-1 text-sm text-white/80">{feature.description}</Text>
+					</Link>
+				))}
 			</Box>
-
-			<Box className="mx-auto max-w-md px-4 py-6" />
-		</Box>
+		</MainLayout>
 	);
 }
