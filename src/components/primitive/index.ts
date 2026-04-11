@@ -1,5 +1,6 @@
 export * from "./box";
 export * from "./button";
+export * from "./icon";
 export * from "./image";
 export * from "./inline-text";
 export * from "./link";
@@ -8,6 +9,7 @@ export * from "./text";
 export * from "./title";
 export { default as Box } from "./box";
 export { default as Button } from "./button";
+export { default as Icon } from "./icon";
 export { default as Image } from "./image";
 export { default as InlineText } from "./inline-text";
 export { default as Link } from "./link";

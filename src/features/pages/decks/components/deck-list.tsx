@@ -1,13 +1,14 @@
 "use client";
 
+import { Box } from "~/components/primitive";
 import type { Deck } from "~/legacy/lib/types";
 
 import { DeckCard } from "./deck-card";
 import { EmptyDecks } from "./empty-decks";
 
-interface DeckListProps {
+type DeckListProps = {
 	decks: Deck[];
-}
+};
 
 export function DeckList({ decks }: DeckListProps) {
 	if (decks.length === 0) {
@@ -15,13 +16,13 @@ export function DeckList({ decks }: DeckListProps) {
 	}
 
 	return (
-		<div className="grid gap-4">
+		<Box className="grid gap-4">
 			{decks.map((deck) => (
 				<DeckCard
 					key={deck.id}
 					deck={deck}
 				/>
 			))}
-		</div>
+		</Box>
 	);
 }

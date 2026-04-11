@@ -92,5 +92,6 @@ function MyComponent({ viewMode, lang, onViewModeChange, onLangChange }: MyCompo
 - Only annotate `useState` when the type cannot be inferred — typically objects, arrays, or unions with `null` (e.g. `useState<User | null>(null)`). Omit the annotation for primitives: `useState("")` not `useState<string>("")`.
 - Use semantic HTML tags (`<section>`, `<article>`, `<header>`, `<main>`, `<nav>`, `<footer>`) instead of generic `<div>` wherever the element carries semantic meaning.
 - Always use named imports from React: `import { useState } from "react"`. Never use `import * as React from "react"` or `import React from "react"`.
-
-- archivos en camsel case
+- Source code file names must use kebab-case (e.g. `my-component.tsx`, not `MyComponent.tsx` or `myComponent.tsx`).
+- Never import icons directly from an icon library package. Always use the `Icon` primitive component with `IconCatalog` to pass the icon name as a prop. If the needed icon does not exist in `IconCatalog`, add it there before using it.
+- Never use `@radix-ui/*` packages when building or rewriting components. Use `@base-ui/react` instead — import the component namespace (e.g. `import { Progress } from "@base-ui/react"`) and use its subcomponents (`Progress.Root`, `Progress.Track`, `Progress.Indicator`, etc.).

@@ -1,112 +1,128 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
+import cn from "@diegofrayo-pkg/cn";
+
+import { Text } from "~/components/primitive";
 import type { Phrase } from "~/legacy/lib/types";
-import { cn } from "~/legacy/lib/utils";
 
-interface SwipeableCardProps {
-	phrase: Phrase;
+const SWIPE_THRESHOLD = 100;
+const ROTATION_FACTOR = 0.1;
+
+type SwipeableCardProps = {
 	deckColor: string;
+	isTop: boolean;
+	phrase: Phrase;
 	onSwipeLeft: () => void;
 	onSwipeRight: () => void;
-	isTop: boolean;
-}
+};
 
 export function SwipeableCard({
-	phrase,
 	deckColor,
+	isTop,
+	phrase,
 	onSwipeLeft,
 	onSwipeRight,
-	isTop,
 }: SwipeableCardProps) {
+	// --- STATES & REFS ---
 	const [isFlipped, setIsFlipped] = useState(false);
 	const [dragX, setDragX] = useState(0);
 	const [dragY, setDragY] = useState(0);
 	const [isDragging, setIsDragging] = useState(false);
-	const startPos = useRef({ x: 0, y: 0 });
+	const startPos = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const cardRef = useRef<HTMLDivElement>(null);
 
-	const SWIPE_THRESHOLD = 100;
-	const ROTATION_FACTOR = 0.1;
+	// --- COMPUTED STATES ---
+	const rotation = dragX * ROTATION_FACTOR;
+	const opacity = Math.max(0.5, 1 - Math.abs(dragX) / 300);
+	const showKnewIt = dragX > 30;
+	const showDidntKnow = dragX < -30;
 
-	const handleStart = useCallback(
-		(clientX: number, clientY: number) => {
-			if (!isTop) return;
-			setIsDragging(true);
-			startPos.current = { x: clientX, y: clientY };
-		},
-		[isTop],
-	);
+	// --- STYLES ---
+	const classes = {
+		container: cn(
+			"absolute inset-0 cursor-grab touch-none select-none",
+			isDragging && "cursor-grabbing",
+			!isTop && "pointer-events-none",
+		),
+		knewItIndicator: cn(
+			"border-primary text-primary absolute top-6 right-6 z-20 rotate-12 rounded-lg border-4 px-4 py-2 text-xl font-bold uppercase transition-opacity",
+			showKnewIt ? "opacity-100" : "opacity-0",
+		),
+		studyMoreIndicator: cn(
+			"border-destructive text-destructive absolute top-6 left-6 z-20 -rotate-12 rounded-lg border-4 px-4 py-2 text-xl font-bold uppercase transition-opacity",
+			showDidntKnow ? "opacity-100" : "opacity-0",
+		),
+		perspectiveContainer: "perspective-1000 h-full w-full",
+		cardInner: cn(
+			"preserve-3d relative h-full w-full transition-transform duration-500",
+			isFlipped && "rotate-y-180",
+		),
+		cardFace:
+			"absolute inset-0 flex flex-col items-center justify-center rounded-3xl p-8 shadow-xl",
+	};
 
-	const handleMove = useCallback(
-		(clientX: number, clientY: number) => {
-			if (!isDragging || !isTop) return;
-			const deltaX = clientX - startPos.current.x;
-			const deltaY = clientY - startPos.current.y;
-			setDragX(deltaX);
-			setDragY(deltaY * 0.3); // Reduce vertical movement
-		},
-		[isDragging, isTop],
-	);
+	// --- HANDLERS ---
+	function handleTouchStart(e: React.TouchEvent) {
+		if (!e.touches[0] || !isTop) return;
+		setIsDragging(true);
+		startPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+	}
 
-	const handleEnd = useCallback(() => {
+	function handleTouchMove(e: React.TouchEvent) {
+		if (!e.touches[0] || !isDragging || !isTop) return;
+		setDragX(e.touches[0].clientX - startPos.current.x);
+		setDragY((e.touches[0].clientY - startPos.current.y) * 0.3);
+	}
+
+	function handleTouchEnd() {
+		processDragEnd();
+	}
+
+	function handleMouseDown(e: React.MouseEvent) {
+		if (!isTop) return;
+		setIsDragging(true);
+		startPos.current = { x: e.clientX, y: e.clientY };
+	}
+
+	function handleMouseMove(e: React.MouseEvent) {
+		if (!isDragging || !isTop) return;
+		setDragX(e.clientX - startPos.current.x);
+		setDragY((e.clientY - startPos.current.y) * 0.3);
+	}
+
+	function handleMouseUp() {
+		processDragEnd();
+	}
+
+	function handleMouseLeave() {
+		if (isDragging) processDragEnd();
+	}
+
+	function handleCardClick() {
+		if (isTop) setIsFlipped(!isFlipped);
+	}
+
+	// --- UTILS ---
+	function processDragEnd() {
 		if (!isDragging) return;
 		setIsDragging(false);
 
 		if (dragX > SWIPE_THRESHOLD) {
-			// Swipe right - knew it
 			onSwipeRight();
 		} else if (dragX < -SWIPE_THRESHOLD) {
-			// Swipe left - didn't know
 			onSwipeLeft();
 		}
 
 		setDragX(0);
 		setDragY(0);
-	}, [isDragging, dragX, onSwipeLeft, onSwipeRight]);
-
-	const handleTouchStart = (e: React.TouchEvent) => {
-		if (!e.touches[0]) return;
-		handleStart(e.touches[0].clientX, e.touches[0].clientY);
-	};
-
-	const handleTouchMove = (e: React.TouchEvent) => {
-		if (!e.touches[0]) return;
-		handleMove(e.touches[0].clientX, e.touches[0].clientY);
-	};
-
-	const handleMouseDown = (e: React.MouseEvent) => {
-		handleStart(e.clientX, e.clientY);
-	};
-
-	const handleMouseMove = (e: React.MouseEvent) => {
-		handleMove(e.clientX, e.clientY);
-	};
-
-	const handleMouseUp = () => {
-		handleEnd();
-	};
-
-	const handleMouseLeave = () => {
-		if (isDragging) handleEnd();
-	};
-
-	const rotation = dragX * ROTATION_FACTOR;
-	const opacity = Math.max(0.5, 1 - Math.abs(dragX) / 300);
-
-	// Indicator colors
-	const showKnewIt = dragX > 30;
-	const showDidntKnow = dragX < -30;
+	}
 
 	return (
 		<div
 			ref={cardRef}
-			className={cn(
-				"absolute inset-0 cursor-grab touch-none select-none",
-				isDragging && "cursor-grabbing",
-				!isTop && "pointer-events-none",
-			)}
+			className={classes.container}
 			style={{
 				transform: `translateX(${dragX}px) translateY(${dragY}px) rotate(${rotation}deg)`,
 				transition: isDragging ? "none" : "transform 0.3s ease-out",
@@ -115,78 +131,60 @@ export function SwipeableCard({
 			}}
 			onTouchStart={handleTouchStart}
 			onTouchMove={handleTouchMove}
-			onTouchEnd={handleEnd}
+			onTouchEnd={handleTouchEnd}
 			onMouseDown={handleMouseDown}
 			onMouseMove={handleMouseMove}
 			onMouseUp={handleMouseUp}
 			onMouseLeave={handleMouseLeave}
 		>
-			{/* Swipe indicators */}
-			<div
-				className={cn(
-					"border-primary text-primary absolute top-6 right-6 z-20 rotate-12 rounded-lg border-4 px-4 py-2 text-xl font-bold uppercase transition-opacity",
-					showKnewIt ? "opacity-100" : "opacity-0",
-				)}
-			>
-				Knew it!
-			</div>
-			<div
-				className={cn(
-					"border-destructive text-destructive absolute top-6 left-6 z-20 -rotate-12 rounded-lg border-4 px-4 py-2 text-xl font-bold uppercase transition-opacity",
-					showDidntKnow ? "opacity-100" : "opacity-0",
-				)}
-			>
-				Study more
-			</div>
+			<div className={classes.knewItIndicator}>Knew it!</div>
+			<div className={classes.studyMoreIndicator}>Study more</div>
 
-			{/* Card */}
-			<div
-				className="perspective-1000 h-full w-full"
-				onClick={() => isTop && setIsFlipped(!isFlipped)}
+			{/* NOTE: Using a native <button> here instead of the Button primitive because
+			    the Button primitive carries CVA visual styles that conflict with the 3D
+			    perspective container layout needed for the flip animation. */}
+			<button
+				type="button"
+				className={classes.perspectiveContainer}
+				onClick={handleCardClick}
 			>
 				<div
-					className={cn(
-						"preserve-3d relative h-full w-full transition-transform duration-500",
-						isFlipped && "rotate-y-180",
-					)}
+					className={classes.cardInner}
 					style={{ transformStyle: "preserve-3d" }}
 				>
 					{/* Front - English */}
 					<div
-						className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl p-8 shadow-xl backface-hidden"
-						style={{
-							backgroundColor: deckColor,
-							backfaceVisibility: "hidden",
-						}}
+						className={classes.cardFace}
+						style={{ backgroundColor: deckColor, backfaceVisibility: "hidden" }}
 					>
-						<p className="mb-4 text-xs font-semibold tracking-wider text-white/60 uppercase">
+						<Text className="mb-4 text-xs font-semibold tracking-wider text-white/60 uppercase">
 							English
-						</p>
-						<p className="text-center text-2xl leading-relaxed font-bold text-balance text-white md:text-3xl">
+						</Text>
+						<Text className="text-center text-2xl leading-relaxed font-bold text-balance text-white md:text-3xl">
 							{phrase.english}
-						</p>
-						<p className="mt-8 text-sm text-white/50">Tap to reveal translation</p>
+						</Text>
+						<Text className="mt-8 text-sm text-white/50">Tap to reveal translation</Text>
 					</div>
 
 					{/* Back - Japanese */}
 					<div
-						className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl p-8 shadow-xl"
+						className={classes.cardFace}
 						style={{
 							backgroundColor: deckColor,
 							backfaceVisibility: "hidden",
 							transform: "rotateY(180deg)",
 						}}
 					>
-						<p className="mb-4 text-xs font-semibold tracking-wider text-white/60 uppercase">
+						<Text className="mb-4 text-xs font-semibold tracking-wider text-white/60 uppercase">
 							Japanese
-						</p>
-						<p className="text-center text-2xl leading-relaxed font-bold text-balance text-white md:text-3xl">
+						</Text>
+						<Text className="text-center text-2xl leading-relaxed font-bold text-balance text-white md:text-3xl">
 							{phrase.japanese}
-						</p>
-						<p className="mt-8 text-sm text-white/50">Tap to see English</p>
+						</Text>
+						<Text className="mt-8 text-sm text-white/50">Tap to see English</Text>
 					</div>
 				</div>
-			</div>
+			</button>
 		</div>
 	);
 }
