@@ -8,8 +8,10 @@ description: Enforces React coding conventions for diegofrayo's project. Use thi
 A React component should follow this structure and conventions:
 
 ```tsx
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+
 import cn from "@diegofrayo-pkg/cn";
+
 import {
 	Box,
 	Button,
@@ -84,3 +86,11 @@ function MyComponent({ viewMode, lang, onViewModeChange, onLangChange }: MyCompo
 - Never pass inline functions as props (e.g. `onClick={() => doSomething()}`); always define them as named functions in `// --- HANDLERS ---` or `// --- UTILS ---` and reference them by name
 - If the JSX contains a ternary that renders two different elements (e.g. `flag ? <A /> : <B />`), extract it into its own component. Short-circuit expressions (`flag && <A />`) do not need extraction
 - Utility functions rule — if a helper function doesn't close over component state or refs, define it as a pure function outside the component (like the buildWhatsAppUrl style utils at the bottom of the file). If it does need component-scoped data, place it inside under // --- UTILS ---.
+- Never attach `onClick` to a `<div>`. Use `<button>` or `<a>` instead. If a `<div>` is unavoidable, add `role="button"`, `tabIndex={0}`, and a `onKeyDown` handler to maintain accessibility.
+- In JSX short-circuit expressions, always guard with a real boolean — never rely on the truthiness of a non-boolean value. `{count && <X />}` renders `"0"` when `count` is `0`; use `{count > 0 && <X />}` or `{Boolean(count) && <X />}` instead.
+- All `useRef` calls must include an explicit type argument: `useRef<HTMLDivElement>(null)`, never `useRef(null)`.
+- Only annotate `useState` when the type cannot be inferred — typically objects, arrays, or unions with `null` (e.g. `useState<User | null>(null)`). Omit the annotation for primitives: `useState("")` not `useState<string>("")`.
+- Use semantic HTML tags (`<section>`, `<article>`, `<header>`, `<main>`, `<nav>`, `<footer>`) instead of generic `<div>` wherever the element carries semantic meaning.
+- Always use named imports from React: `import { useState } from "react"`. Never use `import * as React from "react"` or `import React from "react"`.
+
+- archivos en camsel case

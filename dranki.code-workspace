@@ -1,11 +1,14 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": ".",
 		},
 		{
-			"path": "../@diegofrayo-pkg"
-		}
+			"path": "../@diegofrayo-pkg",
+		},
+		{
+			"path": "../directorio-quindio",
+		},
 	],
-	"settings": {}
+	"settings": {},
 }

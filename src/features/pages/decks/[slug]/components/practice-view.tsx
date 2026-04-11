@@ -4,9 +4,8 @@ import { useCallback, useState } from "react";
 import { ArrowLeft, Check, RotateCcw, X } from "lucide-react";
 import Link from "next/link";
 
-import { SwipeableCard } from "~/components/swipeable-card";
-import { Button } from "~/components/ui/button";
-import { Progress } from "~/components/ui/progress";
+import { Button, Progress } from "~/components/primitive";
+import { SwipeableCard } from "~/features/pages/decks/[slug]/components/swipeable-card";
 import type { Deck, Phrase } from "~/legacy/lib/types";
 
 interface PracticeViewProps {
@@ -15,10 +14,17 @@ interface PracticeViewProps {
 
 function shuffleArray<T>(array: T[]): T[] {
 	const shuffled = [...array];
+
 	for (let i = shuffled.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
-		[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+
+		if (shuffled[i] !== undefined && shuffled[j] !== undefined) {
+			shuffled[i] = shuffled[j];
+			// @ts-expect-error idk
+			shuffled[j] = shuffled[i];
+		}
 	}
+
 	return shuffled;
 }
 

@@ -1,4 +1,4 @@
-import { DeckPageProps } from "./decks.[slug].types";
+import type { DeckPageProps } from "./decks.[slug].types";
 
 const getDeckBySlug = (slug: string) => {
 	return {

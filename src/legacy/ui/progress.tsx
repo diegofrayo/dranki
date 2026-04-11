@@ -1,15 +1,11 @@
 "use client";
 
-import * as React from "react";
+import type { ComponentProps } from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 
-import { cn } from "~/legacy/lib/utils";
+import cn from "@diegofrayo-pkg/cn";
 
-function Progress({
-	className,
-	value,
-	...props
-}: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+function Progress({ className, value, ...props }: ComponentProps<typeof ProgressPrimitive.Root>) {
 	return (
 		<ProgressPrimitive.Root
 			data-slot="progress"

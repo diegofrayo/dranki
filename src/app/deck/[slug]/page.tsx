@@ -1,1 +1,1 @@
-export { default, generateMetadata } from "../../../features/pages/decks/[slug]";
+export { default, generateMetadata } from "~/features/pages/decks/[slug]";

@@ -1,1 +1,1 @@
-export { default } from "../features/pages/index";
+export { default } from "~/features/pages/index";

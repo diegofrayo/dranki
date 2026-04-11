@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(pnpm i:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "WebFetch(domain:base-ui.com)"
     ]
   }
 }

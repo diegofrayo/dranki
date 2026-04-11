@@ -67,10 +67,12 @@ export function SwipeableCard({
 	}, [isDragging, dragX, onSwipeLeft, onSwipeRight]);
 
 	const handleTouchStart = (e: React.TouchEvent) => {
+		if (!e.touches[0]) return;
 		handleStart(e.touches[0].clientX, e.touches[0].clientY);
 	};
 
 	const handleTouchMove = (e: React.TouchEvent) => {
+		if (!e.touches[0]) return;
 		handleMove(e.touches[0].clientX, e.touches[0].clientY);
 	};
 

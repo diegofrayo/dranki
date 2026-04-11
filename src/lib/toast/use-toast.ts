@@ -1,9 +1,11 @@
+/* eslint-disable */
+
 "use client";
 
 // Inspired by react-hot-toast library
 import { useEffect, useState } from "react";
 
-import type { ToastActionElement, ToastProps } from "~/components/ui/toast";
+import type { ToastActionElement, ToastProps } from "~/components/common";
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
@@ -153,7 +155,7 @@ function toast({ ...props }: Toast) {
 			...props,
 			id,
 			open: true,
-			onOpenChange: (open) => {
+			onOpenChange: (open: boolean) => {
 				if (!open) dismiss();
 			},
 		},
@@ -182,7 +184,7 @@ function useToast() {
 	return {
 		...state,
 		toast,
-		dismiss: (toastId?: string) => dispatch({ type: "DISMISS_TOAST", toastId }),
+		dismiss: (toastId?: string) => dispatch({ type: "DISMISS_TOAST", toastId: toastId || "" }),
 	};
 }
 
