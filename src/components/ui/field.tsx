@@ -3,9 +3,9 @@
 import { useMemo } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/legacy/lib/utils";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
+import { Label } from "~/components/ui/label";
+import { Separator } from "~/components/ui/separator";
+import { cn } from "~/legacy/lib/utils";
 
 function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
 	return (
@@ -54,7 +54,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
 	);
 }
 
-const fieldVariants = cva("group/field flex w-full gap-3 data-[invalid=true]:text-destructive", {
+const fieldVariants = cva("group/field data-[invalid=true]:text-destructive flex w-full gap-3", {
 	variants: {
 		orientation: {
 			vertical: ["flex-col [&>*]:w-full [&>.sr-only]:w-auto"],
@@ -64,7 +64,7 @@ const fieldVariants = cva("group/field flex w-full gap-3 data-[invalid=true]:tex
 				"has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
 			],
 			responsive: [
-				"flex-col [&>*]:w-full [&>.sr-only]:w-auto @md/field-group:flex-row @md/field-group:items-center @md/field-group:[&>*]:w-auto",
+				"flex-col @md/field-group:flex-row @md/field-group:items-center [&>*]:w-full @md/field-group:[&>*]:w-auto [&>.sr-only]:w-auto",
 				"@md/field-group:[&>[data-slot=field-label]]:flex-auto",
 				"@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
 			],

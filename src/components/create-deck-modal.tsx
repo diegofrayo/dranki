@@ -1,8 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+import { createDeck } from "~/app/actions";
+import { ColorPicker } from "~/components/color-picker";
+import { EmojiPicker } from "~/components/emoji-picker";
+import { PhraseInput } from "~/components/phrase-input";
+import { Button } from "~/components/ui/button";
 import {
 	Drawer,
 	DrawerClose,
@@ -12,17 +18,12 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 	DrawerTrigger,
-} from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Spinner } from "@/components/ui/spinner";
-import { PhraseInput } from "@/components/phrase-input";
-import { ColorPicker } from "@/components/color-picker";
-import { EmojiPicker } from "@/components/emoji-picker";
-import { createDeck } from "@/app/actions";
-import type { Phrase } from "@/legacy/lib/types";
+} from "~/components/ui/drawer";
+import { Input } from "~/components/ui/input";
+import { Label } from "~/components/ui/label";
+import { Spinner } from "~/components/ui/spinner";
+import { Textarea } from "~/components/ui/textarea";
+import type { Phrase } from "~/legacy/lib/types";
 
 const EMPTY_PHRASE: Phrase = { english: "", japanese: "" };
 
@@ -103,7 +104,7 @@ export function CreateDeckModal() {
 			<DrawerTrigger asChild>
 				<Button
 					size="lg"
-					className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50"
+					className="fixed right-6 bottom-6 z-50 h-14 w-14 rounded-full shadow-lg"
 					aria-label="Create new deck"
 				>
 					<Plus className="h-6 w-6" />
@@ -116,19 +117,19 @@ export function CreateDeckModal() {
 						<DrawerDescription>Add a title and phrases to practice</DrawerDescription>
 					</DrawerHeader>
 
-					<div className="px-4 pb-4 overflow-y-auto max-h-[60vh]">
+					<div className="max-h-[60vh] overflow-y-auto px-4 pb-4">
 						<div className="space-y-6">
 							{/* Emoji & Color */}
 							<div className="space-y-4">
 								<div>
-									<Label className="text-sm font-semibold mb-2 block">Icon</Label>
+									<Label className="mb-2 block text-sm font-semibold">Icon</Label>
 									<EmojiPicker
 										value={emoji}
 										onChange={setEmoji}
 									/>
 								</div>
 								<div>
-									<Label className="text-sm font-semibold mb-2 block">Color</Label>
+									<Label className="mb-2 block text-sm font-semibold">Color</Label>
 									<ColorPicker
 										value={color}
 										onChange={setColor}
@@ -140,7 +141,7 @@ export function CreateDeckModal() {
 							<div>
 								<Label
 									htmlFor="title"
-									className="text-sm font-semibold mb-2 block"
+									className="mb-2 block text-sm font-semibold"
 								>
 									Title
 								</Label>
@@ -157,7 +158,7 @@ export function CreateDeckModal() {
 							<div>
 								<Label
 									htmlFor="description"
-									className="text-sm font-semibold mb-2 block"
+									className="mb-2 block text-sm font-semibold"
 								>
 									Description (optional)
 								</Label>
@@ -173,7 +174,7 @@ export function CreateDeckModal() {
 
 							{/* Phrases */}
 							<div>
-								<Label className="text-sm font-semibold mb-2 block">
+								<Label className="mb-2 block text-sm font-semibold">
 									Phrases ({phrases.length})
 								</Label>
 								<div className="space-y-3">
@@ -192,10 +193,10 @@ export function CreateDeckModal() {
 									type="button"
 									variant="outline"
 									size="sm"
-									className="w-full mt-3"
+									className="mt-3 w-full"
 									onClick={handleAddPhrase}
 								>
-									<Plus className="h-4 w-4 mr-2" />
+									<Plus className="mr-2 h-4 w-4" />
 									Add Phrase
 								</Button>
 							</div>
@@ -206,7 +207,7 @@ export function CreateDeckModal() {
 						<Button
 							onClick={handleSubmit}
 							disabled={isSubmitting}
-							className="w-full h-12 text-base font-bold"
+							className="h-12 w-full text-base font-bold"
 						>
 							{isSubmitting ? (
 								<>

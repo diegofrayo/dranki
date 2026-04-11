@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { DeckCard } from "@/components/deck-card";
-import { EmptyDecks } from "@/components/empty-decks";
-import type { Deck } from "@/legacy/lib/types";
+
+import { DeckCard } from "~/components/deck-card";
+import { EmptyDecks } from "~/components/empty-decks";
+import type { Deck } from "~/legacy/lib/types";
 
 interface DeckListProps {
 	decks: Deck[];

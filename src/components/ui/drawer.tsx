@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
-import { cn } from "@/legacy/lib/utils";
+import { cn } from "~/legacy/lib/utils";
 
 function Drawer({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Root>) {
 	return (

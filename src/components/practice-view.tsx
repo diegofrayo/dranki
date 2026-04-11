@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { ArrowLeft, RotateCcw, X, Check } from "lucide-react";
+import { useCallback, useState } from "react";
+import { ArrowLeft, Check, RotateCcw, X } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { SwipeableCard } from "@/components/swipeable-card";
-import type { Deck, Phrase } from "@/legacy/lib/types";
+
+import { SwipeableCard } from "~/components/swipeable-card";
+import { Button } from "~/components/ui/button";
+import { Progress } from "~/components/ui/progress";
+import type { Deck, Phrase } from "~/legacy/lib/types";
 
 interface PracticeViewProps {
 	deck: Deck;
@@ -56,10 +57,10 @@ export function PracticeView({ deck }: PracticeViewProps) {
 	};
 
 	return (
-		<div className="min-h-screen flex flex-col bg-background">
+		<div className="bg-background flex min-h-screen flex-col">
 			{/* Header */}
-			<header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
-				<div className="max-w-md mx-auto px-4 py-3">
+			<header className="bg-background/80 border-border sticky top-0 z-40 border-b backdrop-blur-md">
+				<div className="mx-auto max-w-md px-4 py-3">
 					<div className="flex items-center gap-3">
 						<Link href="/">
 							<Button
@@ -71,7 +72,7 @@ export function PracticeView({ deck }: PracticeViewProps) {
 								<ArrowLeft className="h-5 w-5" />
 							</Button>
 						</Link>
-						<div className="flex-1 min-w-0">
+						<div className="min-w-0 flex-1">
 							<div className="flex items-center gap-2">
 								<span
 									className="text-xl"
@@ -80,7 +81,7 @@ export function PracticeView({ deck }: PracticeViewProps) {
 								>
 									{deck.emoji}
 								</span>
-								<h1 className="font-bold text-foreground truncate">{deck.title}</h1>
+								<h1 className="text-foreground truncate font-bold">{deck.title}</h1>
 							</div>
 							<div className="mt-1.5">
 								<Progress
@@ -89,7 +90,7 @@ export function PracticeView({ deck }: PracticeViewProps) {
 								/>
 							</div>
 						</div>
-						<span className="text-sm text-muted-foreground font-medium tabular-nums">
+						<span className="text-muted-foreground text-sm font-medium tabular-nums">
 							{currentIndex}/{phrases.length}
 						</span>
 					</div>
@@ -97,46 +98,46 @@ export function PracticeView({ deck }: PracticeViewProps) {
 			</header>
 
 			{/* Main Content */}
-			<main className="flex-1 flex flex-col max-w-md mx-auto w-full px-4 py-6">
+			<main className="mx-auto flex w-full max-w-md flex-1 flex-col px-4 py-6">
 				{isComplete ? (
 					/* Completion Screen */
-					<div className="flex-1 flex flex-col items-center justify-center text-center px-4">
+					<div className="flex flex-1 flex-col items-center justify-center px-4 text-center">
 						<div
-							className="w-24 h-24 rounded-full flex items-center justify-center mb-6"
+							className="mb-6 flex h-24 w-24 items-center justify-center rounded-full"
 							style={{ backgroundColor: deck.color }}
 						>
 							<span className="text-5xl">{deck.emoji}</span>
 						</div>
-						<h2 className="text-2xl font-bold text-foreground mb-2">Session Complete!</h2>
+						<h2 className="text-foreground mb-2 text-2xl font-bold">Session Complete!</h2>
 						<p className="text-muted-foreground mb-8">
 							You&apos;ve reviewed all {phrases.length} phrases
 						</p>
 
 						{/* Stats */}
-						<div className="flex gap-8 mb-8">
+						<div className="mb-8 flex gap-8">
 							<div className="text-center">
-								<div className="flex items-center justify-center gap-2 text-primary">
+								<div className="text-primary flex items-center justify-center gap-2">
 									<Check className="h-5 w-5" />
 									<span className="text-3xl font-bold">{knewCount}</span>
 								</div>
-								<p className="text-sm text-muted-foreground mt-1">Knew it</p>
+								<p className="text-muted-foreground mt-1 text-sm">Knew it</p>
 							</div>
 							<div className="text-center">
-								<div className="flex items-center justify-center gap-2 text-destructive">
+								<div className="text-destructive flex items-center justify-center gap-2">
 									<X className="h-5 w-5" />
 									<span className="text-3xl font-bold">{studyMoreCount}</span>
 								</div>
-								<p className="text-sm text-muted-foreground mt-1">Study more</p>
+								<p className="text-muted-foreground mt-1 text-sm">Study more</p>
 							</div>
 						</div>
 
-						<div className="flex flex-col gap-3 w-full max-w-xs">
+						<div className="flex w-full max-w-xs flex-col gap-3">
 							<Button
 								onClick={handleRestart}
 								size="lg"
 								className="h-12 font-bold"
 							>
-								<RotateCcw className="h-4 w-4 mr-2" />
+								<RotateCcw className="mr-2 h-4 w-4" />
 								Practice Again
 							</Button>
 							<Link
@@ -146,7 +147,7 @@ export function PracticeView({ deck }: PracticeViewProps) {
 								<Button
 									variant="outline"
 									size="lg"
-									className="w-full h-12"
+									className="h-12 w-full"
 								>
 									Back to Decks
 								</Button>
@@ -156,7 +157,7 @@ export function PracticeView({ deck }: PracticeViewProps) {
 				) : (
 					/* Practice Cards */
 					<>
-						<div className="flex-1 relative min-h-[400px]">
+						<div className="relative min-h-[400px] flex-1">
 							{/* Show current and next card */}
 							{phrases.slice(currentIndex, currentIndex + 2).map((phrase, idx) => (
 								<SwipeableCard
@@ -175,7 +176,7 @@ export function PracticeView({ deck }: PracticeViewProps) {
 							<Button
 								variant="outline"
 								size="lg"
-								className="h-16 w-16 rounded-full border-2 border-destructive text-destructive hover:bg-destructive hover:text-white"
+								className="border-destructive text-destructive hover:bg-destructive h-16 w-16 rounded-full border-2 hover:text-white"
 								onClick={() => handleButtonSwipe("left")}
 								aria-label="Study more"
 							>
@@ -184,7 +185,7 @@ export function PracticeView({ deck }: PracticeViewProps) {
 							<Button
 								variant="outline"
 								size="lg"
-								className="h-16 w-16 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white"
+								className="border-primary text-primary hover:bg-primary h-16 w-16 rounded-full border-2 hover:text-white"
 								onClick={() => handleButtonSwipe("right")}
 								aria-label="Knew it"
 							>

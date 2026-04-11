@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/legacy/lib/utils";
+import { cn } from "~/legacy/lib/utils";
 
 const DECK_EMOJIS = [
 	"📚",
@@ -36,9 +36,9 @@ export function EmojiPicker({ value, onChange }: EmojiPickerProps) {
 					key={emoji}
 					type="button"
 					className={cn(
-						"w-10 h-10 rounded-lg text-2xl flex items-center justify-center transition-all duration-200",
+						"flex h-10 w-10 items-center justify-center rounded-lg text-2xl transition-all duration-200",
 						value === emoji
-							? "bg-primary/20 ring-2 ring-primary scale-110"
+							? "bg-primary/20 ring-primary scale-110 ring-2"
 							: "bg-secondary hover:bg-secondary/80 hover:scale-105",
 					)}
 					onClick={() => onChange(emoji)}

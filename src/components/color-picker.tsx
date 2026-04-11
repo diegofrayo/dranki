@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/legacy/lib/utils";
+import { cn } from "~/legacy/lib/utils";
 
 const DECK_COLORS = [
 	"#58CC02", // Green (primary)
@@ -18,14 +18,14 @@ interface ColorPickerProps {
 
 export function ColorPicker({ value, onChange }: ColorPickerProps) {
 	return (
-		<div className="flex gap-2 flex-wrap">
+		<div className="flex flex-wrap gap-2">
 			{DECK_COLORS.map((color) => (
 				<button
 					key={color}
 					type="button"
 					className={cn(
-						"w-10 h-10 rounded-full transition-all duration-200",
-						value === color ? "ring-2 ring-offset-2 ring-foreground scale-110" : "hover:scale-105",
+						"h-10 w-10 rounded-full transition-all duration-200",
+						value === color ? "ring-foreground scale-110 ring-2 ring-offset-2" : "hover:scale-105",
 					)}
 					style={{ backgroundColor: color }}
 					onClick={() => onChange(color)}

@@ -1,11 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import { Trash2 } from "lucide-react";
-import type { Deck } from "@/legacy/lib/types";
-import { Button } from "@/components/ui/button";
-import { deleteDeck } from "@/app/actions";
 import { useState } from "react";
+import { Trash2 } from "lucide-react";
+import Link from "next/link";
+
+import { deleteDeck } from "~/app/actions";
+import { Button } from "~/components/ui/button";
+import type { Deck } from "~/legacy/lib/types";
 
 interface DeckCardProps {
 	deck: Deck;
@@ -35,10 +36,10 @@ export function DeckCard({ deck, onDelete }: DeckCardProps) {
 	return (
 		<Link
 			href={`/deck/${deck.slug}`}
-			className="block group"
+			className="group block"
 		>
 			<div
-				className="relative overflow-hidden rounded-2xl p-5 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-lg"
+				className="relative overflow-hidden rounded-2xl p-5 shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]"
 				style={{
 					backgroundColor: deck.color,
 					boxShadow: `0 4px 0 0 color-mix(in oklch, ${deck.color} 70%, black)`,
@@ -54,10 +55,10 @@ export function DeckCard({ deck, onDelete }: DeckCardProps) {
 							{deck.emoji}
 						</span>
 						<div>
-							<h3 className="font-bold text-lg text-white leading-tight text-balance">
+							<h3 className="text-lg leading-tight font-bold text-balance text-white">
 								{deck.title}
 							</h3>
-							<p className="text-sm text-white/80 mt-0.5">
+							<p className="mt-0.5 text-sm text-white/80">
 								{phraseCount} {phraseCount === 1 ? "phrase" : "phrases"}
 							</p>
 						</div>
@@ -65,7 +66,7 @@ export function DeckCard({ deck, onDelete }: DeckCardProps) {
 					<Button
 						variant="ghost"
 						size="icon"
-						className="h-8 w-8 text-white/60 hover:text-white hover:bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"
+						className="h-8 w-8 text-white/60 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-white/20 hover:text-white"
 						onClick={handleDelete}
 						disabled={isDeleting}
 						aria-label="Delete deck"
@@ -74,7 +75,7 @@ export function DeckCard({ deck, onDelete }: DeckCardProps) {
 					</Button>
 				</div>
 				{deck.description && (
-					<p className="mt-3 text-sm text-white/70 line-clamp-2">{deck.description}</p>
+					<p className="mt-3 line-clamp-2 text-sm text-white/70">{deck.description}</p>
 				)}
 			</div>
 		</Link>

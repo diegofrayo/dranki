@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
-import { cn } from "@/legacy/lib/utils";
-import type { Phrase } from "@/legacy/lib/types";
+import { useCallback, useRef, useState } from "react";
+
+import type { Phrase } from "~/legacy/lib/types";
+import { cn } from "~/legacy/lib/utils";
 
 interface SwipeableCardProps {
 	phrase: Phrase;
@@ -100,7 +101,7 @@ export function SwipeableCard({
 		<div
 			ref={cardRef}
 			className={cn(
-				"absolute inset-0 cursor-grab select-none touch-none",
+				"absolute inset-0 cursor-grab touch-none select-none",
 				isDragging && "cursor-grabbing",
 				!isTop && "pointer-events-none",
 			)}
@@ -121,7 +122,7 @@ export function SwipeableCard({
 			{/* Swipe indicators */}
 			<div
 				className={cn(
-					"absolute top-6 right-6 px-4 py-2 rounded-lg border-4 border-primary text-primary font-bold text-xl uppercase rotate-12 transition-opacity z-20",
+					"border-primary text-primary absolute top-6 right-6 z-20 rotate-12 rounded-lg border-4 px-4 py-2 text-xl font-bold uppercase transition-opacity",
 					showKnewIt ? "opacity-100" : "opacity-0",
 				)}
 			>
@@ -129,7 +130,7 @@ export function SwipeableCard({
 			</div>
 			<div
 				className={cn(
-					"absolute top-6 left-6 px-4 py-2 rounded-lg border-4 border-destructive text-destructive font-bold text-xl uppercase -rotate-12 transition-opacity z-20",
+					"border-destructive text-destructive absolute top-6 left-6 z-20 -rotate-12 rounded-lg border-4 px-4 py-2 text-xl font-bold uppercase transition-opacity",
 					showDidntKnow ? "opacity-100" : "opacity-0",
 				)}
 			>
@@ -138,49 +139,49 @@ export function SwipeableCard({
 
 			{/* Card */}
 			<div
-				className="w-full h-full perspective-1000"
+				className="perspective-1000 h-full w-full"
 				onClick={() => isTop && setIsFlipped(!isFlipped)}
 			>
 				<div
 					className={cn(
-						"relative w-full h-full transition-transform duration-500 preserve-3d",
+						"preserve-3d relative h-full w-full transition-transform duration-500",
 						isFlipped && "rotate-y-180",
 					)}
 					style={{ transformStyle: "preserve-3d" }}
 				>
 					{/* Front - English */}
 					<div
-						className="absolute inset-0 rounded-3xl p-8 flex flex-col items-center justify-center backface-hidden shadow-xl"
+						className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl p-8 shadow-xl backface-hidden"
 						style={{
 							backgroundColor: deckColor,
 							backfaceVisibility: "hidden",
 						}}
 					>
-						<p className="text-xs uppercase tracking-wider text-white/60 mb-4 font-semibold">
+						<p className="mb-4 text-xs font-semibold tracking-wider text-white/60 uppercase">
 							English
 						</p>
-						<p className="text-2xl md:text-3xl font-bold text-white text-center text-balance leading-relaxed">
+						<p className="text-center text-2xl leading-relaxed font-bold text-balance text-white md:text-3xl">
 							{phrase.english}
 						</p>
-						<p className="text-sm text-white/50 mt-8">Tap to reveal translation</p>
+						<p className="mt-8 text-sm text-white/50">Tap to reveal translation</p>
 					</div>
 
 					{/* Back - Japanese */}
 					<div
-						className="absolute inset-0 rounded-3xl p-8 flex flex-col items-center justify-center shadow-xl"
+						className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl p-8 shadow-xl"
 						style={{
 							backgroundColor: deckColor,
 							backfaceVisibility: "hidden",
 							transform: "rotateY(180deg)",
 						}}
 					>
-						<p className="text-xs uppercase tracking-wider text-white/60 mb-4 font-semibold">
+						<p className="mb-4 text-xs font-semibold tracking-wider text-white/60 uppercase">
 							Japanese
 						</p>
-						<p className="text-2xl md:text-3xl font-bold text-white text-center text-balance leading-relaxed">
+						<p className="text-center text-2xl leading-relaxed font-bold text-balance text-white md:text-3xl">
 							{phrase.japanese}
 						</p>
-						<p className="text-sm text-white/50 mt-8">Tap to see English</p>
+						<p className="mt-8 text-sm text-white/50">Tap to see English</p>
 					</div>
 				</div>
 			</div>

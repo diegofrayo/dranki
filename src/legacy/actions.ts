@@ -1,8 +1,9 @@
 "use server";
 
-import { createClient } from "@/legacy/lib/supabase/server";
 import { revalidatePath } from "next/cache";
-import type { CreateDeckInput, Deck } from "@/legacy/lib/types";
+
+import { createClient } from "~/legacy/lib/supabase/server";
+import type { CreateDeckInput, Deck } from "~/legacy/lib/types";
 
 function generateSlug(title: string): string {
 	return title

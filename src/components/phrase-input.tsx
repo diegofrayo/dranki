@@ -1,9 +1,10 @@
 "use client";
 
 import { X } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import type { Phrase } from "@/legacy/lib/types";
+
+import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
+import type { Phrase } from "~/legacy/lib/types";
 
 interface PhraseInputProps {
 	phrase: Phrase;
@@ -15,7 +16,7 @@ interface PhraseInputProps {
 
 export function PhraseInput({ phrase, index, onChange, onRemove, canRemove }: PhraseInputProps) {
 	return (
-		<div className="flex items-start gap-2 p-3 bg-secondary/50 rounded-xl">
+		<div className="bg-secondary/50 flex items-start gap-2 rounded-xl p-3">
 			<div className="flex-1 space-y-2">
 				<Input
 					placeholder="English phrase"
@@ -27,7 +28,7 @@ export function PhraseInput({ phrase, index, onChange, onRemove, canRemove }: Ph
 					placeholder="Japanese translation"
 					value={phrase.japanese}
 					onChange={(e) => onChange(index, "japanese", e.target.value)}
-					className="bg-background border-0 text-muted-foreground"
+					className="bg-background text-muted-foreground border-0"
 				/>
 			</div>
 			{canRemove && (
@@ -35,7 +36,7 @@ export function PhraseInput({ phrase, index, onChange, onRemove, canRemove }: Ph
 					type="button"
 					variant="ghost"
 					size="icon"
-					className="h-8 w-8 text-muted-foreground hover:text-destructive shrink-0"
+					className="text-muted-foreground hover:text-destructive h-8 w-8 shrink-0"
 					onClick={() => onRemove(index)}
 					aria-label="Remove phrase"
 				>
