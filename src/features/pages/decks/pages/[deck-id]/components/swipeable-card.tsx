@@ -14,6 +14,7 @@ type SwipeableCardProps = {
 	deckColor: string;
 	isTop: boolean;
 	phrase: Phrase;
+	showTranslationByDefault: boolean;
 	onSwipeLeft: () => void;
 	onSwipeRight: () => void;
 };
@@ -22,11 +23,12 @@ export function SwipeableCard({
 	deckColor,
 	isTop,
 	phrase,
+	showTranslationByDefault,
 	onSwipeLeft,
 	onSwipeRight,
 }: SwipeableCardProps) {
 	// --- STATES & REFS ---
-	const [isFlipped, setIsFlipped] = useState(false);
+	const [isFlipped, setIsFlipped] = useState(showTranslationByDefault);
 	const [dragX, setDragX] = useState(0);
 	const [dragY, setDragY] = useState(0);
 	const [isDragging, setIsDragging] = useState(false);

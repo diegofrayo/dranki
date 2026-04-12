@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { Box, InlineText, Text, Title } from "~/components/primitive";
 
-import type { DeckPageProps } from "./decks.[slug].types";
+import type { DeckPageProps } from "./decks.[deck-id].types";
 
 const getDeckBySlug = (slug: string) => {
 	return {

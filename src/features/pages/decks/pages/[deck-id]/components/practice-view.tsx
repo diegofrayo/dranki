@@ -15,13 +15,14 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
-import { SwipeableCard } from "~/features/pages/decks/[slug]/components/swipeable-card";
+import { SwipeableCard } from "~/features/pages/decks/pages/[deck-id]/components/swipeable-card";
 import type { Deck, Phrase } from "~/legacy/lib/types";
 
 // --- TYPES ---
 
 type PracticeViewProps = {
 	deck: Deck;
+	showTranslationByDefault: boolean;
 };
 
 type CompletionScreenProps = {
@@ -36,13 +37,14 @@ type PracticeCardsProps = {
 	currentIndex: number;
 	deck: Deck;
 	phrases: Phrase[];
+	showTranslationByDefault: boolean;
 	onSwipeLeft: () => void;
 	onSwipeRight: () => void;
 };
 
 // --- COMPONENT DEFINITION ---
 
-export function PracticeView({ deck }: PracticeViewProps) {
+export function PracticeView({ deck, showTranslationByDefault }: PracticeViewProps) {
 	// --- STATES & REFS ---
 	const [phrases, setPhrases] = useState<Phrase[]>(() => shuffleArray(deck.phrases));
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -139,6 +141,7 @@ export function PracticeView({ deck }: PracticeViewProps) {
 						currentIndex={currentIndex}
 						deck={deck}
 						phrases={phrases}
+						showTranslationByDefault={showTranslationByDefault}
 						onSwipeLeft={handleSwipeLeft}
 						onSwipeRight={handleSwipeRight}
 					/>
@@ -244,6 +247,7 @@ function PracticeCards({
 	currentIndex,
 	deck,
 	phrases,
+	showTranslationByDefault,
 	onSwipeLeft,
 	onSwipeRight,
 }: PracticeCardsProps) {
@@ -264,6 +268,7 @@ function PracticeCards({
 						key={`${currentIndex + idx}-${phrase.english}`}
 						phrase={phrase}
 						deckColor={deck.color}
+						showTranslationByDefault={showTranslationByDefault}
 						onSwipeLeft={onSwipeLeft}
 						onSwipeRight={onSwipeRight}
 						isTop={idx === 0}

@@ -8,7 +8,9 @@
       "Bash(pnpm add:*)",
       "Bash(mkdir -p /Users/diegofrayo/Documents/Programming/Personal/dranki/src/app/texts/\\\\[lesson-id\\\\])",
       "Bash(mkdir -p /Users/diegofrayo/Documents/Programming/Personal/dranki/src/features/pages/texts/pages/\\\\[lesson-id\\\\])",
-      "Bash(pnpm build:ts)"
+      "Bash(pnpm build:ts)",
+      "Bash(rm -rf /Users/diegofrayo/.claude/plugins/cache/claude-plugins-official/skill-creator/unknown/skills/api-structure)",
+      "Bash(rm -rf /Users/diegofrayo/.claude/skills/api-structure)"
     ]
   }
 }
