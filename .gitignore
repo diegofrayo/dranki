@@ -14,3 +14,13 @@ next.user-config.*
 node_modules
 .next/
 .DS_Store
+
+# PWA generated files
+public/sw.js
+public/workbox-*.js
+public/worker-*.js
+public/sw.js.map
+public/workbox-*.js.map
+
+# Claude
+.claude/settings.local.json
