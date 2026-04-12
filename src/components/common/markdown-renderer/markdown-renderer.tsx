@@ -1,4 +1,4 @@
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { type Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
@@ -13,32 +13,7 @@ function MarkdownRenderer({ children }: MarkdownRendererProps) {
 		<ReactMarkdown
 			remarkPlugins={[remarkGfm]}
 			rehypePlugins={[rehypeRaw]}
-			components={{
-				table: ({ children: c }) => (
-					<div className={styles["table-wrapper"]}>
-						<table className={styles["table"]}>{c}</table>
-					</div>
-				),
-				thead: ({ children: c }) => <thead className={styles["thead"]}>{c}</thead>,
-				tbody: ({ children: c }) => <tbody>{c}</tbody>,
-				tr: ({ children: c }) => <tr className={styles["tr"]}>{c}</tr>,
-				th: ({ children: c }) => <th className={styles["th"]}>{c}</th>,
-				td: ({ children: c }) => <td className={styles["td"]}>{c}</td>,
-				p: ({ children: c }) => <p className={styles["paragraph"]}>{c}</p>,
-				h1: ({ children: c }) => <h1 className={styles["heading1"]}>{c}</h1>,
-				h2: ({ children: c }) => <h2 className={styles["heading2"]}>{c}</h2>,
-				h3: ({ children: c }) => <h3 className={styles["heading3"]}>{c}</h3>,
-				strong: ({ children: c }) => <strong className={styles["strong"]}>{c}</strong>,
-				em: ({ children: c }) => <em className={styles["em"]}>{c}</em>,
-				blockquote: ({ children: c }) => (
-					<blockquote className={styles["blockquote"]}>{c}</blockquote>
-				),
-				ul: ({ children: c }) => <ul className={styles["ul"]}>{c}</ul>,
-				ol: ({ children: c }) => <ol className={styles["ol"]}>{c}</ol>,
-				li: ({ children: c }) => <li className={styles["li"]}>{c}</li>,
-				code: ({ children: c }) => <code className={styles["code"]}>{c}</code>,
-				pre: ({ children: c }) => <pre className={styles["pre"]}>{c}</pre>,
-			}}
+			components={components}
 		>
 			{children}
 		</ReactMarkdown>
@@ -46,3 +21,32 @@ function MarkdownRenderer({ children }: MarkdownRendererProps) {
 }
 
 export default MarkdownRenderer;
+
+// --- CONFIG ---
+
+const components: Components = {
+	table: ({ children }) => (
+		<div className={styles["table-wrapper"]}>
+			<table className={styles["table"]}>{children}</table>
+		</div>
+	),
+	thead: ({ children }) => <thead className={styles["thead"]}>{children}</thead>,
+	tbody: ({ children }) => <tbody>{children}</tbody>,
+	tr: ({ children }) => <tr className={styles["tr"]}>{children}</tr>,
+	th: ({ children }) => <th className={styles["th"]}>{children}</th>,
+	td: ({ children }) => <td className={styles["td"]}>{children}</td>,
+	p: ({ children }) => <p className={styles["paragraph"]}>{children}</p>,
+	h1: ({ children }) => <h1 className={styles["heading1"]}>{children}</h1>,
+	h2: ({ children }) => <h2 className={styles["heading2"]}>{children}</h2>,
+	h3: ({ children }) => <h3 className={styles["heading3"]}>{children}</h3>,
+	strong: ({ children }) => <strong className={styles["strong"]}>{children}</strong>,
+	em: ({ children }) => <em className={styles["em"]}>{children}</em>,
+	blockquote: ({ children }) => (
+		<blockquote className={styles["blockquote"]}>{children}</blockquote>
+	),
+	ul: ({ children }) => <ul className={styles["ul"]}>{children}</ul>,
+	ol: ({ children }) => <ol className={styles["ol"]}>{children}</ol>,
+	li: ({ children }) => <li className={styles["li"]}>{children}</li>,
+	code: ({ children }) => <code className={styles["code"]}>{children}</code>,
+	pre: ({ children }) => <pre className={styles["pre"]}>{children}</pre>,
+};

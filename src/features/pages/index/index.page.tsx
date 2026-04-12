@@ -1,5 +1,46 @@
+import cn from "@diegofrayo-pkg/cn";
+
 import { MainLayout } from "~/components/layout";
 import { Box, Link, Text, Title } from "~/components/primitive";
+
+export default async function HomePage() {
+	// --- STYLES ---
+	const classes = {
+		link: (bgColor: string) =>
+			cn(
+				"block rounded-2xl p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80",
+				bgColor,
+			),
+	};
+
+	return (
+		<MainLayout>
+			<Box
+				as="section"
+				className="flex flex-col gap-4"
+			>
+				{FEATURES.map((feature) => (
+					<Link
+						key={feature.href}
+						href={feature.href}
+						className={classes.link(feature.bgColor)}
+					>
+						<Text className="mb-1 text-3xl">{feature.emoji}</Text>
+						<Title
+							as="h2"
+							className="text-lg font-bold text-white"
+						>
+							{feature.title}
+						</Title>
+						<Text className="mt-1 text-sm text-white/80">{feature.description}</Text>
+					</Link>
+				))}
+			</Box>
+		</MainLayout>
+	);
+}
+
+// --- CONSTANTS ---
 
 const FEATURES = [
 	{
@@ -25,31 +66,3 @@ const FEATURES = [
 		bgColor: "bg-violet-500",
 	},
 ];
-
-export default async function HomePage() {
-	return (
-		<MainLayout>
-			<Box
-				as="section"
-				className="flex flex-col gap-4"
-			>
-				{FEATURES.map((feature) => (
-					<Link
-						key={feature.href}
-						href={feature.href}
-						className={`${feature.bgColor} block rounded-2xl p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80`}
-					>
-						<Text className="mb-1 text-3xl">{feature.emoji}</Text>
-						<Title
-							as="h2"
-							className="text-lg font-bold text-white"
-						>
-							{feature.title}
-						</Title>
-						<Text className="mt-1 text-sm text-white/80">{feature.description}</Text>
-					</Link>
-				))}
-			</Box>
-		</MainLayout>
-	);
-}

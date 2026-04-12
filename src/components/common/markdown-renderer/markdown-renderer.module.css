@@ -1,19 +1,19 @@
-@reference "../../../styles/globals.css"
-
-.paragraph {
-	@apply text-foreground mb-4 text-base leading-relaxed;
-}
+@reference "../../../styles/globals.css";
 
 .heading1 {
-	@apply text-foreground mb-4 text-2xl font-bold;
+	@apply text-foreground mt-6 mb-1 text-2xl font-bold;
 }
 
 .heading2 {
-	@apply text-foreground mb-3 text-xl font-semibold;
+	@apply text-foreground mt-6 mb-1 text-xl font-semibold;
 }
 
 .heading3 {
-	@apply text-foreground mb-2 text-lg font-semibold;
+	@apply text-foreground mt-6 mb-1 text-lg font-semibold;
+}
+
+.paragraph {
+	@apply text-foreground mb-4 text-base leading-relaxed;
 }
 
 .strong {

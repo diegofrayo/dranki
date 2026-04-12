@@ -6,15 +6,6 @@
 		{
 			"path": "../@diegofrayo-pkg",
 		},
-		{
-			"path": "../directorio-quindio",
-		},
-		{
-			"path": "../tools",
-		},
-		{
-			"path": "../kordz",
-		},
 	],
 	"settings": {},
 }

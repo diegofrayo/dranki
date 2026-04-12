@@ -1,13 +1,38 @@
-import type { Metadata, Viewport } from "next";
-import { Nunito } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import type { Metadata, Viewport } from "next";
+import { Nunito as CustomFont } from "next/font/google";
+
+import cn from "@diegofrayo-pkg/cn";
+
 import "./globals.css";
 
-const nunito = Nunito({
+type RootLayoutProps = Readonly<{
+	children: React.ReactNode;
+}>;
+
+export default function RootLayout({ children }: RootLayoutProps) {
+	const styles = {
+		body: cn(`font-sans antialiased`, customFont.variable),
+	};
+	return (
+		<html lang="en">
+			<body className={styles.body}>
+				{children}
+				{process.env.NODE_ENV === "production" && <Analytics />}
+			</body>
+		</html>
+	);
+}
+
+// --- FONTS ---
+
+const customFont = CustomFont({
 	subsets: ["latin"],
 	weight: ["400", "600", "700", "800"],
 	variable: "--font-nunito",
 });
+
+// --- METADATA ---
 
 export const metadata: Metadata = {
 	title: "dranki - Learn English Phrases",
@@ -39,18 +64,3 @@ export const viewport: Viewport = {
 	userScalable: false,
 	themeColor: "#58CC02",
 };
-
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
-	return (
-		<html lang="en">
-			<body className={`${nunito.variable} font-sans antialiased`}>
-				{children}
-				{process.env.NODE_ENV === "production" && <Analytics />}
-			</body>
-		</html>
-	);
-}

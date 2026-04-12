@@ -11,12 +11,13 @@ import {
 	IconCatalog,
 	InlineText,
 	Link,
-	Progress,
 	Text,
 	Title,
 } from "~/components/primitive";
 import { SwipeableCard } from "~/features/pages/decks/pages/[deck-id]/components/swipeable-card";
 import type { Deck, Phrase } from "~/legacy/lib/types";
+
+import Progress from "./progress";
 
 // --- TYPES ---
 

@@ -4,58 +4,13 @@ import { usePathname } from "next/navigation";
 
 import { Box, Link, Text } from "~/components/primitive";
 
-// --- TYPES ---
-
-type Crumb = { label: string; href: string };
-
-type CrumbLabelProps = {
-	crumb: Crumb;
-	isLast: boolean;
-};
-
-// --- UTILS ---
-
-function formatSegment(segment: string): string {
-	return segment
-		.split("-")
-		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-		.join(" ");
-}
-
-function buildCrumbs(pathname: string): Crumb[] {
-	const segments = pathname.split("/").filter(Boolean);
-	return segments.map((segment, index) => ({
-		label: formatSegment(segment),
-		href: "/" + segments.slice(0, index + 1).join("/"),
-	}));
-}
-
-// --- SUB-COMPONENTS ---
-
-function CrumbLabel({ crumb, isLast }: CrumbLabelProps) {
-	if (isLast) {
-		return <Text className="text-foreground font-medium">{crumb.label}</Text>;
-	}
-
-	return (
-		<Link
-			href={crumb.href}
-			className="text-muted-foreground hover:text-foreground font-bold transition-colors"
-		>
-			{crumb.label}
-		</Link>
-	);
-}
-
 // --- COMPONENT DEFINITION ---
 
 function Breadcrumb() {
+	// --- HOOKS ---
 	const pathname = usePathname();
 
-	if (pathname === "/") {
-		return null;
-	}
-
+	// --- COMPUTED STATES ---
 	const crumbs = buildCrumbs(pathname);
 
 	// --- STYLES ---
@@ -65,6 +20,10 @@ function Breadcrumb() {
 		crumbItem: "flex items-center gap-1",
 		separator: "text-muted-foreground select-none",
 	};
+
+	if (pathname === "/") {
+		return null;
+	}
 
 	return (
 		<Box
@@ -95,3 +54,47 @@ function Breadcrumb() {
 }
 
 export default Breadcrumb;
+
+// --- COMPONENTS ---
+
+type CrumbLabelProps = {
+	crumb: Crumb;
+	isLast: boolean;
+};
+
+function CrumbLabel({ crumb, isLast }: CrumbLabelProps) {
+	if (isLast) {
+		return <Text className="text-foreground font-medium">{crumb.label}</Text>;
+	}
+
+	return (
+		<Link
+			href={crumb.href}
+			className="text-muted-foreground hover:text-foreground font-bold transition-colors"
+		>
+			{crumb.label}
+		</Link>
+	);
+}
+
+// --- TYPES ---
+
+type Crumb = { label: string; href: string };
+
+// --- UTILS ---
+
+function formatSegment(segment: string): string {
+	return segment
+		.split("-")
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(" ");
+}
+
+function buildCrumbs(pathname: string): Crumb[] {
+	const segments = pathname.split("/").filter(Boolean);
+
+	return segments.map((segment, index) => ({
+		label: formatSegment(segment),
+		href: "/" + segments.slice(0, index + 1).join("/"),
+	}));
+}
