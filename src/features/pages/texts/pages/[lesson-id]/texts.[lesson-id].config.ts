@@ -11,7 +11,7 @@ type Lesson = {
 };
 
 type TextItem = {
-	lesson: string;
+	lesson_id: string;
 };
 
 function getLessonDetails(lessonId: string): Lesson | undefined {
@@ -21,7 +21,7 @@ function getLessonDetails(lessonId: string): Lesson | undefined {
 export async function generateMetadata({ params }: TextLessonPageProps) {
 	const { "lesson-id": lessonId } = await params;
 
-	const isValid = (textsData as TextItem[]).some((item) => item.lesson === lessonId);
+	const isValid = (textsData as TextItem[]).some((item) => item.lesson_id === lessonId);
 	if (!isValid) {
 		return { title: "Lesson not found - dranki" };
 	}

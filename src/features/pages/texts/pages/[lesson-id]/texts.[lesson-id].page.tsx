@@ -20,7 +20,7 @@ type Lesson = {
 };
 
 type TextItem = {
-	lesson: string;
+	lesson_id: string;
 };
 
 // --- UTILS ---
@@ -30,7 +30,7 @@ function getLessonDetails(lessonId: string): Lesson | undefined {
 }
 
 function isValidTextLesson(lessonId: string): boolean {
-	return (textsData as TextItem[]).some((item) => item.lesson === lessonId);
+	return (textsData as TextItem[]).some((item) => item.lesson_id === lessonId);
 }
 
 async function readMarkdownFile(lessonId: string): Promise<string> {

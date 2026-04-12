@@ -4,7 +4,7 @@ import lessonsData from "~/data/lessons.json";
 import textsData from "~/data/texts.json";
 
 type TextItem = {
-	lesson: string;
+	lesson_id: string;
 	title: string;
 };
 
@@ -25,7 +25,7 @@ export default async function TextsPage() {
 	const items = texts
 		.map((text) => ({
 			title: text.title,
-			lesson: getLessonDetails(text.lesson),
+			lesson: getLessonDetails(text.lesson_id),
 		}))
 		.filter((item): item is { title: string; lesson: Lesson } => item.lesson !== undefined);
 
