@@ -1,3 +1,5 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { Icons, type IconName } from "./icons";
 
 type Props = {
@@ -6,7 +8,7 @@ type Props = {
 	className?: string;
 };
 
-function Icon({ name, size = 20, className }: Props) {
+function Icon({ name, size = 20, className }: Props): ReactTypes.JSXElementNullable {
 	const Component = Icons[name];
 
 	if (!Component) return null;

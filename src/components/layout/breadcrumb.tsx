@@ -2,11 +2,13 @@
 
 import { usePathname } from "next/navigation";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { Box, Link, Text } from "~/components/primitive";
 
 // --- COMPONENT DEFINITION ---
 
-function Breadcrumb() {
+function Breadcrumb(): ReactTypes.JSXElementNullable {
 	// --- HOOKS ---
 	const pathname = usePathname();
 
@@ -62,7 +64,7 @@ type CrumbLabelProps = {
 	isLast: boolean;
 };
 
-function CrumbLabel({ crumb, isLast }: CrumbLabelProps) {
+function CrumbLabel({ crumb, isLast }: CrumbLabelProps): ReactTypes.JSXElement {
 	if (isLast) {
 		return <Text className="text-foreground font-medium">{crumb.label}</Text>;
 	}

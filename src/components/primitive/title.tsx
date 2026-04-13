@@ -30,7 +30,7 @@ function Title({
 	size,
 	variant = TitleVariant.UNSTYLED,
 	...rest
-}: TitleProps) {
+}: TitleProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		element: cn(

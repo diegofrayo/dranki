@@ -9,7 +9,7 @@ type TextProps = ReactTypes.DOM.HTMLElementAttributes["p"];
 
 // --- COMPONENT DEFINITION ---
 
-function Text({ children, className = "", ...rest }: TextProps) {
+function Text({ children, className = "", ...rest }: TextProps): ReactTypes.JSXElement {
 	return (
 		<p
 			className={cn("dr-text", className)}

@@ -2,13 +2,15 @@ import ReactMarkdown, { type Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import styles from "./markdown-renderer.module.css";
 
 type MarkdownRendererProps = {
 	children: string;
 };
 
-function MarkdownRenderer({ children }: MarkdownRendererProps) {
+function MarkdownRenderer({ children }: MarkdownRendererProps): ReactTypes.JSXElement {
 	return (
 		<ReactMarkdown
 			remarkPlugins={[remarkGfm]}

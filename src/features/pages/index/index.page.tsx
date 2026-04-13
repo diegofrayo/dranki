@@ -1,12 +1,13 @@
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { MainLayout } from "~/components/layout";
 import { Box, Link, Text, Title } from "~/components/primitive";
 
-export default async function HomePage() {
+export default async function HomePage(): Promise<ReactTypes.JSXElement> {
 	// --- STYLES ---
 	const classes = {
-		link: (bgColor: string) =>
+		link: (bgColor: string): string =>
 			cn(
 				"block rounded-2xl p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80",
 				bgColor,

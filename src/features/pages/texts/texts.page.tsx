@@ -1,3 +1,5 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { MainLayout } from "~/components/layout";
 import { Box, Link, Text, Title } from "~/components/primitive";
 import lessonsData from "~/data/lessons.json";
@@ -19,7 +21,7 @@ function getLessonDetails(lessonId: string): Lesson | undefined {
 	return (lessonsData as Lesson[]).find((lesson) => lesson.id === lessonId);
 }
 
-export default async function TextsPage() {
+export default async function TextsPage(): Promise<ReactTypes.JSXElement> {
 	const texts = textsData as TextItem[];
 
 	const items = texts

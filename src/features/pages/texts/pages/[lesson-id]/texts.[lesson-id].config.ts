@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import lessonsData from "~/data/lessons.json";
 import textsData from "~/data/texts.json";
 
@@ -18,7 +20,7 @@ function getLessonDetails(lessonId: string): Lesson | undefined {
 	return (lessonsData as Lesson[]).find((lesson) => lesson.id === lessonId);
 }
 
-export async function generateMetadata({ params }: TextLessonPageProps) {
+export async function generateMetadata({ params }: TextLessonPageProps): Promise<Metadata> {
 	const { "lesson-id": lessonId } = await params;
 
 	const isValid = (textsData as TextItem[]).some((item) => item.lesson_id === lessonId);

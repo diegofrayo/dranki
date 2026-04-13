@@ -1,3 +1,5 @@
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { MainLayout } from "~/components/layout";
 import { Box, Link, Text, Title } from "~/components/primitive";
 import decksData from "~/data/decks.json";
@@ -14,7 +16,7 @@ type DeckItem = {
 	totalPhrases: number;
 };
 
-export default async function DecksPage() {
+export default async function DecksPage(): Promise<ReactTypes.JSXElement> {
 	const decks = (decksData as DeckItem[]).map((deck) => {
 		const lessonInfo = lessonsData.find((lesson) => lesson.id === deck.id);
 

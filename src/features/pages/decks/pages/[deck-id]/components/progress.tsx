@@ -2,6 +2,8 @@
 
 import { Progress as ProgressPrimitive } from "@base-ui/react";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { cn } from "~/legacy/lib/utils";
 
 type ProgressProps = {
@@ -9,7 +11,7 @@ type ProgressProps = {
 	value: number | null;
 };
 
-function Progress({ className, value }: ProgressProps) {
+function Progress({ className, value }: ProgressProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		track: cn("bg-primary/20 relative h-2 w-full overflow-hidden rounded-full", className),

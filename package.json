@@ -12,7 +12,7 @@
 		"build": "next build",
 		"start": "next start",
 		"===== FORMATTING =====": "",
-		"lint": "eslint",
+		"lint": "eslint -c ./eslint.config.mts",
 		"format": "prettier --write \"./src/**/*.{ts,tsx,json,css,mjs,js}\""
 	},
 	"dependencies": {

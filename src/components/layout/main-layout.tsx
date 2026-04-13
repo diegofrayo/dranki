@@ -12,7 +12,7 @@ type MainLayoutProps = {
 
 // --- COMPONENT DEFINITION ---
 
-function MainLayout({ children }: MainLayoutProps) {
+function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 	return (
 		<Box
 			as="main"

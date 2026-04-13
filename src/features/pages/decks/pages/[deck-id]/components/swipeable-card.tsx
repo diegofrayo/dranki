@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Text } from "~/components/primitive";
 import type { Phrase } from "~/legacy/lib/types";
@@ -26,7 +27,7 @@ export function SwipeableCard({
 	showTranslationByDefault,
 	onSwipeLeft,
 	onSwipeRight,
-}: SwipeableCardProps) {
+}: SwipeableCardProps): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
 	const [isFlipped, setIsFlipped] = useState(showTranslationByDefault);
 	const [dragX, setDragX] = useState(0);
@@ -66,48 +67,48 @@ export function SwipeableCard({
 	};
 
 	// --- HANDLERS ---
-	function handleTouchStart(e: React.TouchEvent) {
+	function handleTouchStart(e: React.TouchEvent): void {
 		if (!e.touches[0] || !isTop) return;
 		setIsDragging(true);
 		startPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
 	}
 
-	function handleTouchMove(e: React.TouchEvent) {
+	function handleTouchMove(e: React.TouchEvent): void {
 		if (!e.touches[0] || !isDragging || !isTop) return;
 		setDragX(e.touches[0].clientX - startPos.current.x);
 		setDragY((e.touches[0].clientY - startPos.current.y) * 0.3);
 	}
 
-	function handleTouchEnd() {
+	function handleTouchEnd(): void {
 		processDragEnd();
 	}
 
-	function handleMouseDown(e: React.MouseEvent) {
+	function handleMouseDown(e: React.MouseEvent): void {
 		if (!isTop) return;
 		setIsDragging(true);
 		startPos.current = { x: e.clientX, y: e.clientY };
 	}
 
-	function handleMouseMove(e: React.MouseEvent) {
+	function handleMouseMove(e: React.MouseEvent): void {
 		if (!isDragging || !isTop) return;
 		setDragX(e.clientX - startPos.current.x);
 		setDragY((e.clientY - startPos.current.y) * 0.3);
 	}
 
-	function handleMouseUp() {
+	function handleMouseUp(): void {
 		processDragEnd();
 	}
 
-	function handleMouseLeave() {
+	function handleMouseLeave(): void {
 		if (isDragging) processDragEnd();
 	}
 
-	function handleCardClick() {
+	function handleCardClick(): void {
 		if (isTop) setIsFlipped(!isFlipped);
 	}
 
 	// --- UTILS ---
-	function processDragEnd() {
+	function processDragEnd(): void {
 		if (!isDragging) return;
 		setIsDragging(false);
 

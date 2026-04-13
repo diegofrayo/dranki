@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
+
 import type { DeckPageProps } from "./decks.[deck-id].types";
 
-const getDeckBySlug = (slug: string) => {
+const getDeckBySlug = (
+	slug: string,
+): { emoji: string; description: string; title: string; phrases: string[]; id: string } => {
 	return {
 		emoji: "",
 		description: "",
@@ -10,7 +14,7 @@ const getDeckBySlug = (slug: string) => {
 	};
 };
 
-export async function generateMetadata({ params }: DeckPageProps) {
+export async function generateMetadata({ params }: DeckPageProps): Promise<Metadata> {
 	const { slug } = await params;
 	const deck = await getDeckBySlug(slug);
 

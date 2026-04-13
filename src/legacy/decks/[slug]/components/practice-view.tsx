@@ -148,7 +148,7 @@ export function PracticeView({ deck }: PracticeViewProps) {
 	);
 }
 
-// --- SUB-COMPONENTS ---
+// --- COMPONENTS ---
 
 function CompletionScreen({
 	deck,

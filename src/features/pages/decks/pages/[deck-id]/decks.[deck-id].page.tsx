@@ -1,10 +1,14 @@
 import { notFound } from "next/navigation";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { Box, InlineText, Text, Title } from "~/components/primitive";
 
 import type { DeckPageProps } from "./decks.[deck-id].types";
 
-const getDeckBySlug = (slug: string) => {
+const getDeckBySlug = (
+	slug: string,
+): { emoji: string; description: string; title: string; phrases: string[]; id: string } => {
 	return {
 		emoji: "",
 		description: "",
@@ -14,7 +18,7 @@ const getDeckBySlug = (slug: string) => {
 	};
 };
 
-export default async function DeckPage({ params }: DeckPageProps) {
+export default async function DeckPage({ params }: DeckPageProps): Promise<ReactTypes.JSXElement> {
 	const { slug } = await params;
 	const deck = await getDeckBySlug(slug);
 

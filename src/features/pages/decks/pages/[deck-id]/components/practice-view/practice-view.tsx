@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import {
 	Box,
 	Button,
@@ -17,35 +19,20 @@ import {
 import { SwipeableCard } from "~/features/pages/decks/pages/[deck-id]/components/swipeable-card";
 import type { Deck, Phrase } from "~/legacy/lib/types";
 
-import Progress from "./progress";
+import Progress from "../progress";
+import { shuffleArray } from "./practice-view.utils";
 
-// --- TYPES ---
+// --- COMPONENT DEFINITION ---
 
 type PracticeViewProps = {
 	deck: Deck;
 	showTranslationByDefault: boolean;
 };
 
-type CompletionScreenProps = {
-	deck: Deck;
-	knewCount: number;
-	phrasesCount: number;
-	studyMoreCount: number;
-	onRestart: () => void;
-};
-
-type PracticeCardsProps = {
-	currentIndex: number;
-	deck: Deck;
-	phrases: Phrase[];
-	showTranslationByDefault: boolean;
-	onSwipeLeft: () => void;
-	onSwipeRight: () => void;
-};
-
-// --- COMPONENT DEFINITION ---
-
-export function PracticeView({ deck, showTranslationByDefault }: PracticeViewProps) {
+export function PracticeView({
+	deck,
+	showTranslationByDefault,
+}: PracticeViewProps): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
 	const [phrases, setPhrases] = useState<Phrase[]>(() => shuffleArray(deck.phrases));
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -57,17 +44,17 @@ export function PracticeView({ deck, showTranslationByDefault }: PracticeViewPro
 	const progress = phrases.length > 0 ? (currentIndex / phrases.length) * 100 : 0;
 
 	// --- HANDLERS ---
-	function handleSwipeRight() {
+	function handleSwipeRight(): void {
 		setKnewCount((c) => c + 1);
 		setCurrentIndex((i) => i + 1);
 	}
 
-	function handleSwipeLeft() {
+	function handleSwipeLeft(): void {
 		setStudyMoreCount((c) => c + 1);
 		setCurrentIndex((i) => i + 1);
 	}
 
-	function handleRestart() {
+	function handleRestart(): void {
 		setPhrases(shuffleArray(deck.phrases));
 		setCurrentIndex(0);
 		setKnewCount(0);
@@ -152,7 +139,15 @@ export function PracticeView({ deck, showTranslationByDefault }: PracticeViewPro
 	);
 }
 
-// --- SUB-COMPONENTS ---
+// --- COMPONENTS ---
+
+type CompletionScreenProps = {
+	deck: Deck;
+	knewCount: number;
+	phrasesCount: number;
+	studyMoreCount: number;
+	onRestart: () => void;
+};
 
 function CompletionScreen({
 	deck,
@@ -160,7 +155,7 @@ function CompletionScreen({
 	phrasesCount,
 	studyMoreCount,
 	onRestart,
-}: CompletionScreenProps) {
+}: CompletionScreenProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		root: "flex flex-1 flex-col items-center justify-center px-4 text-center",
@@ -244,6 +239,15 @@ function CompletionScreen({
 	);
 }
 
+type PracticeCardsProps = {
+	currentIndex: number;
+	deck: Deck;
+	phrases: Phrase[];
+	showTranslationByDefault: boolean;
+	onSwipeLeft: () => void;
+	onSwipeRight: () => void;
+};
+
 function PracticeCards({
 	currentIndex,
 	deck,
@@ -251,7 +255,7 @@ function PracticeCards({
 	showTranslationByDefault,
 	onSwipeLeft,
 	onSwipeRight,
-}: PracticeCardsProps) {
+}: PracticeCardsProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		controls: "flex items-center justify-center gap-6 py-6",
@@ -305,22 +309,4 @@ function PracticeCards({
 			</Box>
 		</>
 	);
-}
-
-// --- UTILS ---
-
-function shuffleArray<T>(array: T[]): T[] {
-	const shuffled = [...array];
-
-	for (let i = shuffled.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-
-		if (shuffled[i] !== undefined && shuffled[j] !== undefined) {
-			shuffled[i] = shuffled[j];
-			// @ts-expect-error idk
-			shuffled[j] = shuffled[i];
-		}
-	}
-
-	return shuffled;
 }

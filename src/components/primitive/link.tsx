@@ -32,7 +32,11 @@ type LinkProps = NativeLinkProps | FrameworkLinkProps;
 
 // --- COMPONENT DEFINITION ---
 
-function Link({ variant = LinkVariants.UNSTYLED, className, ...props }: LinkProps) {
+function Link({
+	variant = LinkVariants.UNSTYLED,
+	className,
+	...props
+}: LinkProps): ReactTypes.JSXElement {
 	// --- UTILS ---
 	function composeLinkAttributes(): { target?: "_blank"; rel?: "noreferrer" } {
 		if (props.href?.startsWith("#")) return {};

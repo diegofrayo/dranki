@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { Box, Button, ButtonSize, InlineText, Text, Title } from "~/components/primitive";
-import { PracticeView } from "~/features/pages/decks/pages/[deck-id]/components/practice-view";
+import { PracticeView } from "~/features/pages/decks/pages/[deck-id]/components/practice-view/practice-view";
 import type { Deck } from "~/legacy/lib/types";
 
 // --- TYPES ---
@@ -14,17 +16,17 @@ type SetupViewProps = {
 
 // --- COMPONENT DEFINITION ---
 
-export function SetupView({ deck }: SetupViewProps) {
+export function SetupView({ deck }: SetupViewProps): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
 	const [isStarted, setIsStarted] = useState(false);
 	const [showTranslationByDefault, setShowTranslationByDefault] = useState(false);
 
 	// --- HANDLERS ---
-	function handleStartClick() {
+	function handleStartClick(): void {
 		setIsStarted(true);
 	}
 
-	function handleToggleTranslation() {
+	function handleToggleTranslation(): void {
 		setShowTranslationByDefault((prev) => !prev);
 	}
 
@@ -47,7 +49,7 @@ export function SetupView({ deck }: SetupViewProps) {
 	);
 }
 
-// --- SUB-COMPONENTS ---
+// --- COMPONENTS ---
 
 type SetupScreenProps = {
 	deck: Deck;
@@ -61,7 +63,7 @@ function SetupScreen({
 	showTranslationByDefault,
 	onStartClick,
 	onToggleTranslation,
-}: SetupScreenProps) {
+}: SetupScreenProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		root: "flex min-h-screen flex-col items-center justify-center p-6",

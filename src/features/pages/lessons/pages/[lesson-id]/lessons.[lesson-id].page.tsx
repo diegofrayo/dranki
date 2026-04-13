@@ -2,6 +2,8 @@ import { readFile } from "fs/promises";
 import path from "path";
 import { notFound } from "next/navigation";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 import { MarkdownRenderer } from "~/components/common";
 import { MainLayout } from "~/components/layout";
 import { Box } from "~/components/primitive";
@@ -31,7 +33,9 @@ async function readMarkdownFile(lessonId: string): Promise<string> {
 
 // --- PAGE COMPONENT ---
 
-export default async function LessonPage({ params }: LessonPageProps) {
+export default async function LessonPage({
+	params,
+}: LessonPageProps): Promise<ReactTypes.JSXElement> {
 	const { "lesson-id": lessonId } = await params;
 
 	const lesson = getLessonDetails(lessonId);

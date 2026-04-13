@@ -8,11 +8,13 @@ import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 
 import "./globals.css";
 
+import type ReactTypes from "@diegofrayo-pkg/types/react";
+
 type RootLayoutProps = Readonly<{
 	children: React.ReactNode;
 }>;
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps): ReactTypes.JSXElement {
 	const styles = {
 		body: cn(`font-sans antialiased`, customFont.variable),
 	};

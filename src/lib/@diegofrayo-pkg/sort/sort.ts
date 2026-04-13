@@ -81,6 +81,6 @@ export function sortBy<ItemType>(
 	};
 }
 
-export function alphanumericSorting(a: string, b: string) {
+export function alphanumericSorting(a: string, b: string): number {
 	return a.localeCompare(b, "en", { numeric: true });
 }

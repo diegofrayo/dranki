@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import lessonsData from "~/data/lessons.json";
 
 import type { LessonPageProps } from "./lessons.[lesson-id].types";
@@ -13,7 +15,7 @@ function getLessonDetails(lessonId: string): Lesson | undefined {
 	return (lessonsData as Lesson[]).find((lesson) => lesson.id === lessonId);
 }
 
-export async function generateMetadata({ params }: LessonPageProps) {
+export async function generateMetadata({ params }: LessonPageProps): Promise<Metadata> {
 	const { "lesson-id": lessonId } = await params;
 
 	const lesson = getLessonDetails(lessonId);
