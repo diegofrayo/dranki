@@ -6,7 +6,7 @@
 		"===== SETUP =====": "",
 		"husky:install": "husky",
 		"===== DEV =====": "",
-		"dev": "next dev",
+		"dev": "portless dranki next dev",
 		"build:ts": "tsc --noEmit",
 		"===== PROD =====": "",
 		"build": "next build",
