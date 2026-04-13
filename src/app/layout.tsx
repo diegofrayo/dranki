@@ -4,6 +4,8 @@ import { Nunito as CustomFont } from "next/font/google";
 
 import cn from "@diegofrayo-pkg/cn";
 
+import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
+
 import "./globals.css";
 
 type RootLayoutProps = Readonly<{
@@ -35,34 +37,34 @@ const customFont = CustomFont({
 // --- METADATA ---
 
 export const metadata: Metadata = {
-	title: "dranki - Learn English Phrases",
-	description: "A fun, mobile-first app to practice English phrases with swipeable flashcards",
+	title: `${PROJECT_METADATA.appName} - ${PROJECT_METADATA.slogan}`,
+	description: PROJECT_METADATA.description,
 	generator: "v0.app",
 	icons: {
 		icon: [
 			{
-				url: "/favicon/favicon-16x16.png",
+				url: `${FAVICON_PATH}/favicon-16x16.png`,
 				sizes: "16x16",
 				type: "image/png",
 			},
 			{
-				url: "/favicon/favicon-32x32.png",
+				url: `${FAVICON_PATH}/favicon-32x32.png`,
 				sizes: "32x32",
 				type: "image/png",
 			},
 			{
-				url: "/favicon/android-chrome-192x192.png",
+				url: `${FAVICON_PATH}/android-chrome-192x192.png`,
 				sizes: "192x192",
 				type: "image/png",
 			},
 			{
-				url: "/favicon/android-chrome-512x512.png",
+				url: `${FAVICON_PATH}/android-chrome-512x512.png`,
 				sizes: "512x512",
 				type: "image/png",
 			},
 		],
-		apple: "/favicon/apple-touch-icon.png",
-		shortcut: "/favicon/favicon.ico",
+		apple: `${FAVICON_PATH}/apple-touch-icon.png`,
+		shortcut: `${FAVICON_PATH}/favicon.ico`,
 	},
 };
 
@@ -71,5 +73,5 @@ export const viewport: Viewport = {
 	initialScale: 1,
 	maximumScale: 1,
 	userScalable: false,
-	themeColor: "#58CC02",
+	themeColor: PROJECT_METADATA.backgroundColor,
 };
