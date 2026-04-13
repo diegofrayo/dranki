@@ -4,6 +4,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, InlineText, Text, Title } from "~/components/primitive";
 
+import { SetupView } from "./components/setup-view";
 import type { DeckPageProps } from "./decks.[deck-id].types";
 
 const getDeckBySlug = (
@@ -43,5 +44,19 @@ export default async function DeckPage({ params }: DeckPageProps): Promise<React
 		);
 	}
 
-	return <Box>hello</Box>;
+	return (
+		<SetupView
+			deck={{
+				id: "",
+				slug: "",
+				title: "",
+				description: "",
+				emoji: "",
+				color: "",
+				phrases: [],
+				created_at: "",
+				updated_at: "",
+			}}
+		/>
+	);
 }

@@ -5,8 +5,9 @@ import { useState } from "react";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, ButtonSize, InlineText, Text, Title } from "~/components/primitive";
-import { PracticeView } from "~/features/pages/decks/pages/[deck-id]/components/practice-view/practice-view";
 import type { Deck } from "~/legacy/lib/types";
+
+import PracticeView from "./practice-view";
 
 // --- TYPES ---
 
@@ -105,11 +106,10 @@ function SetupScreen({
 
 				<Box className={classes.divider} />
 
-				<button
-					type="button"
+				<Button
 					className={classes.toggleRow}
-					onClick={onToggleTranslation}
 					aria-pressed={showTranslationByDefault}
+					onClick={onToggleTranslation}
 				>
 					<Text className={classes.toggleLabel}>Show translation by default</Text>
 					<Box
@@ -118,7 +118,7 @@ function SetupScreen({
 					>
 						<Box className={`${classes.toggleThumb} ${thumbTranslate}`} />
 					</Box>
-				</button>
+				</Button>
 
 				<Button
 					size={ButtonSize.LG}
