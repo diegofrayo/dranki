@@ -62,6 +62,7 @@ function PracticeCards(): ReactTypes.JSXElement {
 				{nextPhrase !== undefined && (
 					<SwipeableCard
 						key={`next-${currentIndex + 1}`}
+						// deckTheme={{ ...deck.theme, backgroundColor: "red" }}
 						deckTheme={deck.theme}
 						isTop={false}
 						phrase={nextPhrase}
@@ -188,7 +189,7 @@ function SwipeableCard({
 		),
 		cardBody: "relative flex flex-1 flex-col items-center justify-center gap-6 p-8",
 		ttsButton: cn(
-			"absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition-all hover:bg-white/30 active:scale-95",
+			"absolute top-4 right-4 z-20 flex size-12 items-center justify-center rounded-full bg-white/20 text-white transition-all hover:bg-white/30 active:scale-95",
 			audioState === "loading" && "cursor-not-allowed opacity-60",
 		),
 		phraseText:

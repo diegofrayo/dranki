@@ -78,8 +78,9 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 
 	// --- HANDLERS ---
 	function startSession(): void {
-		const shuffled = shuffleArray(deck.phrases ?? []);
-		setPhrases(shuffled);
+		const shuffledPhrases = shuffleArray(deck.phrases ?? []);
+
+		setPhrases(shuffledPhrases);
 		setCurrentIndex(0);
 		setRecognizedCount(0);
 		setPracticeMoreCount(0);
@@ -91,19 +92,24 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 	function markRecognized(): void {
 		const newIndex = currentIndex + 1;
 		const newCount = recognizedCount + 1;
+
 		setCurrentIndex(newIndex);
 		setRecognizedCount(newCount);
-		if (newIndex >= phrases.length && phrases.length > 0) {
-			setEndTime(new Date().toISOString());
-			setPhase("results");
-		}
+
+		checkIfDeckEnds(newIndex);
 	}
 
 	function markPracticeMore(): void {
 		const newIndex = currentIndex + 1;
 		const newCount = practiceMoreCount + 1;
+
 		setCurrentIndex(newIndex);
 		setPracticeMoreCount(newCount);
+
+		checkIfDeckEnds(newIndex);
+	}
+
+	function checkIfDeckEnds(newIndex: number): void {
 		if (newIndex >= phrases.length && phrases.length > 0) {
 			setEndTime(new Date().toISOString());
 			setPhase("results");

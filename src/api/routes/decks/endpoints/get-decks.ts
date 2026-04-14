@@ -47,7 +47,7 @@ async function transformResponse(raw: RawGetDecksResponse): Promise<GetDecksResp
 			id: deck.id,
 			title: deck.title,
 			description: deck.description,
-			emoji: deck.emoji,
+			emoji: deck.emoji || "📖",
 			lesson: await getLessonById(deck.lesson_id),
 			createdAt: deck.created_at,
 			theme: {

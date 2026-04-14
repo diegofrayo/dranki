@@ -22,13 +22,16 @@ function DeckOverview(): ReactTypes.JSXElement {
 	const { deck, showTranslationByDefault, setShowTranslationByDefault, startSession } =
 		useDeckSession();
 
+	// --- COMPUTED STATES ---
+	const isEmptyDeck = deck.phrases?.length === 0;
+
 	// --- STYLES ---
 	const classes = {
 		root: "animate-in fade-in-0 slide-in-from-bottom-4 flex flex-col gap-6 duration-500",
 		deckCard: "overflow-hidden rounded-2xl shadow-lg bg-blue-700",
 		deckCardHeader: "flex flex-col items-center gap-3 px-6 py-8",
 		deckCardBody: "bg-card px-6 py-5",
-		emoji: "flex h-20 w-20 items-center justify-center rounded-full text-4xl",
+		emoji: "flex h-20 w-20 items-center justify-center rounded-full text-4xl bg-white/20",
 		title: "text-center text-2xl font-extrabold text-white",
 		description: "text-center text-sm text-white/80",
 		statsRow: "mt-4 flex items-center justify-center gap-1",
@@ -94,9 +97,10 @@ function DeckOverview(): ReactTypes.JSXElement {
 				size={ButtonSize.LG}
 				variant={ButtonVariant.DEFAULT}
 				className={classes.startButton}
+				disabled={isEmptyDeck}
 				onClick={handleStartClick}
 			>
-				Start Practice
+				{isEmptyDeck ? "This deck does not have phrases." : "Start Practice"}
 			</Button>
 		</Box>
 	);
