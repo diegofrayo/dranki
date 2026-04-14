@@ -14,6 +14,7 @@ import {
 	Paragraph,
 	Title,
 } from "~/components/primitive";
+import { Routes } from "~/constants";
 
 import { useDeckSession } from "../context/deck-session-context";
 
@@ -152,11 +153,12 @@ function ResultsScreen(): ReactTypes.JSXElement {
 					/>
 					Practice Again
 				</Button>
-				<Link href="/decks">
+				<Link href={Routes.DECKS}>
 					<Button
 						variant={ButtonVariant.OUTLINE}
 						size={ButtonSize.LG}
 						className={classes.backButton}
+						onClick={clearSession}
 					>
 						Back to Decks
 					</Button>

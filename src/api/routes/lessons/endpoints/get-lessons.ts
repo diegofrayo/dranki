@@ -3,7 +3,7 @@ import { z } from "zod";
 
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
-import type { Lesson } from "~/api/types";
+import type { Lesson } from "../../../types";
 
 async function getLessons(): Promise<GetLessonsResponse> {
 	const filePath = path.resolve(process.cwd(), "src/data/lessons.json");

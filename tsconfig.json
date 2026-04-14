@@ -65,5 +65,5 @@
 		".next/types/**/*.ts",
 		".next/dev/types/**/*.ts"
 	],
-	"exclude": ["node_modules", "src/legacy"]
+	"exclude": ["node_modules", "src/_legacy"]
 }

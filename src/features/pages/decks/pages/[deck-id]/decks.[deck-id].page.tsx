@@ -1,5 +1,6 @@
 "use client";
 
+import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck } from "~/api";
@@ -26,13 +27,15 @@ export default DeckPage;
 
 // --- COMPONENTS ---
 
-function DeckPageContent(): ReactTypes.JSXElement {
-	// --- HOOKS ---
-	const { phase } = useDeckSession();
+const DeckPageContent = withRenderInBrowser(
+	function DeckPageContent(): ReactTypes.JSXElementNullable {
+		// --- HOOKS ---
+		const { phase } = useDeckSession();
 
-	if (phase === "practice") {
-		return <PracticeView />;
-	}
+		if (phase === "practice") {
+			return <PracticeView />;
+		}
 
-	return <MainLayout>{phase === "results" ? <ResultsScreen /> : <DeckOverview />}</MainLayout>;
-}
+		return <MainLayout>{phase === "results" ? <ResultsScreen /> : <DeckOverview />}</MainLayout>;
+	},
+);

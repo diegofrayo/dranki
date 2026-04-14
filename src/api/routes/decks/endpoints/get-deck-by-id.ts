@@ -1,5 +1,4 @@
-import type { Deck } from "~/api/types";
-
+import type { Deck } from "../../../types";
 import getDeckPhrases from "./get-deck-phrases";
 import getDecks from "./get-decks";
 

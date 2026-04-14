@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
@@ -54,7 +54,6 @@ function PracticeView(): ReactTypes.JSXElement {
 	}
 
 	function handleBackConfirm(): void {
-		clearSession();
 		router.push(Routes.DECKS);
 	}
 
@@ -73,6 +72,17 @@ function PracticeView(): ReactTypes.JSXElement {
 	function handleRestartDialogOpenChange(open: boolean): void {
 		setIsRestartDialogOpen(open);
 	}
+
+	// --- EFFECTS ---
+	useEffect(
+		function clearSessionWhenGoBack() {
+			return (): void => {
+				if (!isBackDialogOpen) return;
+				clearSession();
+			};
+		},
+		[isBackDialogOpen],
+	);
 
 	return (
 		<Box className={classes.root}>

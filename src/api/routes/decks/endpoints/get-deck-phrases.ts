@@ -3,7 +3,7 @@ import { z } from "zod";
 
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
-import type { DeckPhrase } from "~/api/types";
+import type { DeckPhrase } from "../../../types";
 
 async function getDeckPhrases(deckId: string): Promise<GetDeckPhrasesResponse> {
 	const filePath = path.resolve(process.cwd(), `src/data/decks/${deckId}.json`);

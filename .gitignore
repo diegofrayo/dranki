@@ -24,3 +24,6 @@ public/workbox-*.js.map
 
 # Claude
 .claude/settings.local.json
+
+# Own
+src/_legacy

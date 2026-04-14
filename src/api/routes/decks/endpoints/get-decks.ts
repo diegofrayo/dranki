@@ -3,8 +3,9 @@ import { z } from "zod";
 
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
-import getLessonById from "~/api/routes/lessons/endpoints/get-lesson-by-id";
-import type { Deck } from "~/api/types";
+import type { Deck } from "../../../types";
+import getLessonById from "../../lessons/endpoints/get-lesson-by-id";
+import getDeckPhrases from "./get-deck-phrases";
 
 async function getDecks(): Promise<GetDecksResponse> {
 	const filePath = path.resolve(process.cwd(), "src/data/decks.json");
@@ -30,7 +31,6 @@ const RawDeckSchema = z.object({
 		background_color: z.string(),
 		font_color: z.string(),
 	}),
-	total_phrases: z.number(),
 });
 
 const RawGetDecksResponseSchema = z.array(RawDeckSchema);
@@ -54,7 +54,7 @@ async function transformResponse(raw: RawGetDecksResponse): Promise<GetDecksResp
 				backgroundColor: deck.theme.background_color,
 				fontColor: deck.theme.font_color,
 			},
-			totalPhrases: deck.total_phrases,
+			totalPhrases: (await getDeckPhrases(deck.id)).length,
 		})),
 	);
 }

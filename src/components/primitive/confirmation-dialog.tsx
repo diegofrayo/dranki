@@ -2,6 +2,7 @@ import { AlertDialog } from "@base-ui/react/alert-dialog";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import Box from "./box";
 import Button, { ButtonSize, ButtonVariant } from "./button";
 
 // --- PROPS & TYPES ---
@@ -65,13 +66,13 @@ function ConfirmationDialog({
 			<AlertDialog.Portal>
 				<AlertDialog.Backdrop className={classes.backdrop} />
 				<AlertDialog.Popup className={classes.popup}>
-					<div className={classes.popupInner}>
+					<Box className={classes.popupInner}>
 						<AlertDialog.Title className={classes.title}>{title}</AlertDialog.Title>
 						<AlertDialog.Description className={classes.description}>
 							{description}
 						</AlertDialog.Description>
 
-						<div className={classes.actions}>
+						<Box className={classes.actions}>
 							<AlertDialog.Close
 								render={
 									<Button
@@ -97,8 +98,8 @@ function ConfirmationDialog({
 							>
 								{confirmLabel}
 							</AlertDialog.Close>
-						</div>
-					</div>
+						</Box>
+					</Box>
 				</AlertDialog.Popup>
 			</AlertDialog.Portal>
 		</AlertDialog.Root>

@@ -43,7 +43,6 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 			</Link>
 			{crumbs.map((crumb, index) => {
 				const isLast = index === crumbs.length - 1;
-				console.log(crumb, isLast);
 
 				return (
 					<Box

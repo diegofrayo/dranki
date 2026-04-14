@@ -4,6 +4,8 @@ import remarkGfm from "remark-gfm";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import { Box } from "~/components/primitive";
+
 import styles from "./markdown-renderer.module.css";
 
 type MarkdownRendererProps = {
@@ -28,9 +30,9 @@ export default MarkdownRenderer;
 
 const components: Components = {
 	table: ({ children }) => (
-		<div className={styles["table-wrapper"]}>
+		<Box className={styles["table-wrapper"]}>
 			<table className={styles["table"]}>{children}</table>
-		</div>
+		</Box>
 	),
 	thead: ({ children }) => <thead className={styles["thead"]}>{children}</thead>,
 	tbody: ({ children }) => <tbody>{children}</tbody>,

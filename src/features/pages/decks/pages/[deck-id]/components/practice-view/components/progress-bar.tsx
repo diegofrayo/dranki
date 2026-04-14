@@ -2,14 +2,10 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, InlineText } from "~/components/primitive";
 
-// --- TYPES ---
-
 type ProgressBarProps = {
 	current: number;
 	total: number;
 };
-
-// --- COMPONENT DEFINITION ---
 
 function ProgressBar({ current, total }: ProgressBarProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---

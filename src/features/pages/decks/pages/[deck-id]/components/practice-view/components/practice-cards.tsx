@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { DeckPhrase } from "~/api";
+import type { Deck, DeckPhrase } from "~/api";
 import {
 	Box,
 	Button,
@@ -17,7 +17,7 @@ import {
 } from "~/components/primitive";
 
 import { useDeckSession } from "../../../context/deck-session-context";
-import useDragGesture from "./use-drag-gesture";
+import useDragGesture from "../hooks/use-drag-gesture";
 
 // --- COMPONENT DEFINITION ---
 
@@ -62,7 +62,7 @@ function PracticeCards(): ReactTypes.JSXElement {
 				{nextPhrase !== undefined && (
 					<SwipeableCard
 						key={`next-${currentIndex + 1}`}
-						deckColor={deck.theme.backgroundColor}
+						deckTheme={deck.theme}
 						isTop={false}
 						phrase={nextPhrase}
 						showTranslationByDefault={showTranslationByDefault}
@@ -73,7 +73,7 @@ function PracticeCards(): ReactTypes.JSXElement {
 				{currentPhrase !== undefined && (
 					<SwipeableCard
 						key={`top-${currentIndex}`}
-						deckColor={deck.theme.backgroundColor}
+						deckTheme={deck.theme}
 						isTop={true}
 						phrase={currentPhrase}
 						showTranslationByDefault={showTranslationByDefault}
@@ -117,10 +117,14 @@ function PracticeCards(): ReactTypes.JSXElement {
 
 export default PracticeCards;
 
-// --- SUB-COMPONENTS ---
+// --- TYPES ---
+
+type AudioState = "idle" | "loading" | "playing";
+
+// --- COMPONENTS ---
 
 type SwipeableCardProps = {
-	deckColor: string;
+	deckTheme: Deck["theme"];
 	isTop: boolean;
 	phrase: DeckPhrase;
 	showTranslationByDefault: boolean;
@@ -129,7 +133,7 @@ type SwipeableCardProps = {
 };
 
 function SwipeableCard({
-	deckColor,
+	deckTheme,
 	isTop,
 	phrase,
 	showTranslationByDefault,
@@ -143,11 +147,9 @@ function SwipeableCard({
 		onSwipeRight: onPracticeMore,
 	});
 
-	console.log(deckColor);
-
 	// --- STATES & REFS ---
 	const [isTranslationVisible, setIsTranslationVisible] = useState(showTranslationByDefault);
-	const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+	const [audioState, setAudioState] = useState<AudioState>("idle");
 
 	// --- COMPUTED STATES ---
 	const cardTransform = isExiting
@@ -155,12 +157,17 @@ function SwipeableCard({
 			? "translateX(-130vw) rotate(-25deg)"
 			: "translateX(130vw) rotate(25deg)"
 		: `translateX(${dragX}px) translateY(${dragY}px) rotate(${dragX * 0.08}deg)`;
-
 	const cardTransition = isExiting
 		? "transform 0.3s ease-out"
 		: isDragging
 			? "none"
 			: "transform 0.3s ease-out";
+	const cardStyles = {
+		transform: cardTransform,
+		transition: cardTransition,
+		opacity: isTop ? Math.max(0.5, 1 - Math.abs(dragX) / 350) : 0.65,
+		zIndex: isTop ? 10 : 5,
+	};
 
 	// --- STYLES ---
 	const classes = {
@@ -170,7 +177,7 @@ function SwipeableCard({
 			isDragging && "cursor-grabbing",
 			isTop && "animate-in fade-in-0 zoom-in-95 duration-300",
 		),
-		card: "absolute inset-0 flex flex-col rounded-3xl shadow-xl overflow-hidden bg-blue-700",
+		card: "absolute inset-0 flex flex-col overflow-hidden rounded-3xl shadow-xl bg-blue-600 text-white",
 		recognizedIndicator: cn(
 			"border-primary text-primary absolute top-6 left-6 z-20 -rotate-12 rounded-xl border-4 px-4 py-2 text-lg font-extrabold uppercase transition-opacity duration-150",
 			dragX < -30 ? "opacity-100" : "opacity-0",
@@ -180,8 +187,10 @@ function SwipeableCard({
 			dragX > 30 ? "opacity-100" : "opacity-0",
 		),
 		cardBody: "relative flex flex-1 flex-col items-center justify-center gap-6 p-8",
-		ttsButton:
-			"absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30 active:scale-95",
+		ttsButton: cn(
+			"absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition-all hover:bg-white/30 active:scale-95",
+			audioState === "loading" && "cursor-not-allowed opacity-60",
+		),
 		phraseText:
 			"text-center text-2xl leading-relaxed font-bold text-white md:text-3xl text-balance",
 		showTranslationButton:
@@ -191,57 +200,69 @@ function SwipeableCard({
 	// --- HANDLERS ---
 	function handleTtsClick(e: React.MouseEvent): void {
 		e.stopPropagation();
-		setIsAudioPlaying((prev) => !prev);
 
-		if (isAudioPlaying) {
+		if (audioState === "loading") return;
+
+		if (audioState === "playing") {
 			speechSynthesis.cancel();
-		} else {
-			const utterance = new SpeechSynthesisUtterance(phrase.sentence);
-			const voices = speechSynthesis.getVoices();
-
-			utterance.lang = "en-US"; // or "es-ES"
-			utterance.voice = voices.find((v) => v.lang === "en-US") || null;
-			utterance.rate = 1; // speed
-			utterance.pitch = 1; // tone
-
-			speechSynthesis.speak(utterance);
+			setAudioState("idle");
+			return;
 		}
+
+		setAudioState("loading");
+
+		const utterance = new SpeechSynthesisUtterance(phrase.sentence);
+		utterance.lang = "en-US";
+
+		utterance.onstart = (): void => {
+			setAudioState("playing");
+		};
+		utterance.onend = (): void => {
+			setAudioState("idle");
+		};
+		utterance.onerror = (): void => {
+			setAudioState("idle");
+		};
+
+		speechSynthesis.speak(utterance);
 	}
 
 	function handleShowTranslationClick(): void {
 		setIsTranslationVisible(true);
 	}
 
+	// --- EFFECTS ---
+	useEffect(function cancelAudioOnUnmount() {
+		return (): void => {
+			speechSynthesis.cancel();
+		};
+	}, []);
+
 	return (
-		<div
+		<Box
 			className={classes.container}
-			style={{
-				transform: cardTransform,
-				transition: cardTransition,
-				opacity: isTop ? Math.max(0.5, 1 - Math.abs(dragX) / 350) : 0.65,
-				zIndex: isTop ? 10 : 5,
-			}}
+			style={cardStyles}
 			{...handlers}
 		>
-			<div
+			<Box
 				className={classes.card}
-				// style={{ backgroundColor: deckColor }}
+				style={{ backgroundColor: deckTheme.backgroundColor, color: deckTheme.fontColor }}
 			>
-				<div className={classes.recognizedIndicator}>Recognized!</div>
-				<div className={classes.practiceMoreIndicator}>Practice more!</div>
+				<Box className={classes.recognizedIndicator}>Recognized!</Box>
+				<Box className={classes.practiceMoreIndicator}>Practice more!</Box>
 
-				<div className={classes.cardBody}>
-					<button
-						type="button"
+				<Box className={classes.cardBody}>
+					<Button
 						className={classes.ttsButton}
-						aria-label={isAudioPlaying ? "Stop audio" : "Play audio"}
+						aria-label={audioState === "playing" ? "Stop audio" : "Play audio"}
 						onClick={handleTtsClick}
 					>
 						<Icon
-							name={isAudioPlaying ? IconCatalog.SQUARE : IconCatalog.VOLUME_2}
+							name={getTtsIconName(audioState)}
 							size={18}
+							className={audioState === "loading" ? "animate-spin" : ""}
 						/>
-					</button>
+					</Button>
 
 					<Paragraph className={classes.phraseText}>{phrase.sentence}</Paragraph>
 
@@ -249,22 +270,19 @@ function SwipeableCard({
 						{isTranslationVisible ? (
 							<TranslationReveal translation={phrase.translation} />
 						) : (
-							<button
-								type="button"
+							<Button
 								className={classes.showTranslationButton}
 								onClick={handleShowTranslationClick}
 							>
 								Tap to show translation
-							</button>
+							</Button>
 						)}
 					</Box>
-				</div>
-			</div>
-		</div>
+				</Box>
+			</Box>
+		</Box>
 	);
 }
-
-// --- EXTRACTED COMPONENTS ---
 
 type TranslationRevealProps = {
 	translation: string;
@@ -274,14 +292,21 @@ function TranslationReveal({ translation }: TranslationRevealProps): ReactTypes.
 	// --- STYLES ---
 	const classes = {
 		wrapper: "animate-in fade-in-0 slide-in-from-bottom-2 duration-400",
-		divider: "my-2 h-px w-full bg-white/20",
+		Boxider: "my-2 h-px w-full bg-white/20",
 		text: "text-center text-lg font-medium text-white/80 ",
 	};
 
 	return (
 		<Box className={classes.wrapper}>
-			<Box className={classes.divider} />
+			<Box className={classes.Boxider} />
 			<Paragraph className={classes.text}>{translation}</Paragraph>
 		</Box>
 	);
+}
+
+// --- UTILS ---
+
+function getTtsIconName(state: AudioState): keyof typeof IconCatalog {
+	if (state === "playing") return IconCatalog.SQUARE;
+	return IconCatalog.VOLUME_2;
 }

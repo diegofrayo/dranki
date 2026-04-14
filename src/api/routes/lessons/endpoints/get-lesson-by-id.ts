@@ -1,5 +1,4 @@
-import type { Lesson } from "~/api/types";
-
+import type { Lesson } from "../../../types";
 import getLessons from "./get-lessons";
 
 async function getLessonById(lessonId: string): Promise<GetLessonByIdResponse> {

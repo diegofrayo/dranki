@@ -3,8 +3,8 @@ import { z } from "zod";
 
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
-import getLessonById from "~/api/routes/lessons/endpoints/get-lesson-by-id";
-import type { Text } from "~/api/types";
+import type { Text } from "../../../types";
+import getLessonById from "../../lessons/endpoints/get-lesson-by-id";
 
 async function getTexts(): Promise<GetTextsResponse> {
 	const filePath = path.resolve(process.cwd(), "src/data/texts.json");

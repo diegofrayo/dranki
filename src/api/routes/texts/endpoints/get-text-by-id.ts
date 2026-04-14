@@ -1,5 +1,4 @@
-import type { Text } from "~/api/types";
-
+import type { Text } from "../../../types";
 import getTexts from "./get-texts";
 
 async function getTextById(textId: string): Promise<GetTextByIdResponse> {
