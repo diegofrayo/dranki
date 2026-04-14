@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import {
@@ -7,11 +10,13 @@ import {
 	Button,
 	ButtonSize,
 	ButtonVariant,
+	ConfirmationDialog,
 	Icon,
 	IconCatalog,
 	InlineText,
 	Title,
 } from "~/components/primitive";
+import { Routes } from "~/constants";
 
 import { useDeckSession } from "../../context/deck-session-context";
 import PracticeCards from "./components/practice-cards";
@@ -21,7 +26,12 @@ import ProgressBar from "./components/progress-bar";
 
 function PracticeView(): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const { deck, currentIndex, phrases } = useDeckSession();
+	const { deck, currentIndex, phrases, clearSession } = useDeckSession();
+	const router = useRouter();
+
+	// --- STATES & REFS ---
+	const [isBackDialogOpen, setIsBackDialogOpen] = useState(false);
+	const [isRestartDialogOpen, setIsRestartDialogOpen] = useState(false);
 
 	// --- STYLES ---
 	const classes = {
@@ -34,14 +44,34 @@ function PracticeView(): ReactTypes.JSXElement {
 		deckEmoji: "text-xl",
 		deckTitle: "text-foreground truncate text-base font-bold",
 		progressWrapper: "mt-2",
+		restartButton: "size-9 shrink-0",
 		main: "mx-auto flex w-full max-w-md flex-1 flex-col px-4 py-4",
 	};
 
 	// --- HANDLERS ---
 	function handleBackClick(): void {
-		if (typeof window !== "undefined") {
-			window.history.back();
-		}
+		setIsBackDialogOpen(true);
+	}
+
+	function handleBackConfirm(): void {
+		clearSession();
+		router.push(Routes.DECKS);
+	}
+
+	function handleBackDialogOpenChange(open: boolean): void {
+		setIsBackDialogOpen(open);
+	}
+
+	function handleRestartClick(): void {
+		setIsRestartDialogOpen(true);
+	}
+
+	function handleRestartConfirm(): void {
+		clearSession();
+	}
+
+	function handleRestartDialogOpenChange(open: boolean): void {
+		setIsRestartDialogOpen(open);
 	}
 
 	return (
@@ -81,6 +111,19 @@ function PracticeView(): ReactTypes.JSXElement {
 							/>
 						</Box>
 					</Box>
+
+					<Button
+						variant={ButtonVariant.GHOST}
+						size={ButtonSize.ICON}
+						className={classes.restartButton}
+						aria-label="Restart deck"
+						onClick={handleRestartClick}
+					>
+						<Icon
+							name={IconCatalog.ROTATE_CCW}
+							size={18}
+						/>
+					</Button>
 				</Box>
 			</Box>
 
@@ -90,6 +133,24 @@ function PracticeView(): ReactTypes.JSXElement {
 			>
 				<PracticeCards />
 			</Box>
+
+			<ConfirmationDialog
+				open={isBackDialogOpen}
+				title="Leave practice?"
+				description="Your progress will be lost and you'll be redirected to the decks page."
+				confirmLabel="Leave"
+				onConfirm={handleBackConfirm}
+				onOpenChange={handleBackDialogOpenChange}
+			/>
+
+			<ConfirmationDialog
+				open={isRestartDialogOpen}
+				title="Restart deck?"
+				description="This will reset your progress and take you back to the overview."
+				confirmLabel="Restart"
+				onConfirm={handleRestartConfirm}
+				onOpenChange={handleRestartDialogOpenChange}
+			/>
 		</Box>
 	);
 }

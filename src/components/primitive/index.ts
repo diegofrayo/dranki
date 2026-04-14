@@ -8,6 +8,7 @@ export * from "./paragraph";
 export * from "./title";
 export { default as Box } from "./box";
 export { default as Button } from "./button";
+export { default as ConfirmationDialog } from "./confirmation-dialog";
 export { default as Icon } from "./icon";
 export { default as Image } from "./image";
 export { default as InlineText } from "./inline-text";

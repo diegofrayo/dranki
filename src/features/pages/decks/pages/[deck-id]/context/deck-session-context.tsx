@@ -119,6 +119,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		clearShowTranslationByDefault();
 		clearStartTime();
 		clearEndTime();
+		setPhase("overview");
 	}
 
 	return (
