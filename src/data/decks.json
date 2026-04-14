@@ -4,7 +4,7 @@
 		"title": "Passive voice",
 		"description": "",
 		"emoji": "🌟",
-		"theme": { "background_color": "", "font_color": "" },
+		"theme": { "background_color": "#ef1717", "font_color": "" },
 		"lesson_id": "passive-voice",
 		"total_phrases": 20,
 		"created_at": ""
@@ -14,7 +14,7 @@
 		"title": "Most 20 useful phrasal verbs",
 		"description": "",
 		"emoji": "🌟",
-		"theme": { "background_color": "", "font_color": "" },
+		"theme": { "background_color": "#686b01", "font_color": "" },
 		"lesson_id": "",
 		"total_phrases": 20,
 		"created_at": ""

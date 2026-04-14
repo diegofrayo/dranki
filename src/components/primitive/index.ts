@@ -13,4 +13,5 @@ export { default as Image } from "./image";
 export { default as InlineText } from "./inline-text";
 export { default as Link } from "./link";
 export { default as Paragraph } from "./paragraph";
+export { default as Switch } from "./switch";
 export { default as Title } from "./title";

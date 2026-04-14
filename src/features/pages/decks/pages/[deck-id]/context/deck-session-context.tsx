@@ -41,35 +41,37 @@ const DeckSessionContext = createContext<DeckSessionContextValue | null>(null);
 
 function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const [phase, setPhase] = useBrowserStorage<Phase>({
+	const [phase, setPhase, clearPhase] = useBrowserStorage<Phase>({
 		key: `dranki_${deck.id}_phase`,
 		value: "overview",
 	});
-	const [phrases, setPhrases] = useBrowserStorage<DeckPhrase[]>({
+	const [phrases, setPhrases, clearPhrases] = useBrowserStorage<DeckPhrase[]>({
 		key: `dranki_${deck.id}_phrases`,
 		value: [],
 	});
-	const [currentIndex, setCurrentIndex] = useBrowserStorage<number>({
+	const [currentIndex, setCurrentIndex, clearCurrentIndex] = useBrowserStorage<number>({
 		key: `dranki_${deck.id}_currentIndex`,
 		value: 0,
 	});
-	const [recognizedCount, setRecognizedCount] = useBrowserStorage<number>({
+	const [recognizedCount, setRecognizedCount, clearRecognizedCount] = useBrowserStorage<number>({
 		key: `dranki_${deck.id}_recognized`,
 		value: 0,
 	});
-	const [practiceMoreCount, setPracticeMoreCount] = useBrowserStorage<number>({
-		key: `dranki_${deck.id}_practiceMore`,
-		value: 0,
-	});
-	const [showTranslationByDefault, setShowTranslationByDefault] = useBrowserStorage<boolean>({
-		key: `dranki_${deck.id}_showTranslation`,
-		value: false,
-	});
-	const [startTime, setStartTime] = useBrowserStorage<string>({
+	const [practiceMoreCount, setPracticeMoreCount, clearPracticeMoreCount] =
+		useBrowserStorage<number>({
+			key: `dranki_${deck.id}_practiceMore`,
+			value: 0,
+		});
+	const [showTranslationByDefault, setShowTranslationByDefault, clearShowTranslationByDefault] =
+		useBrowserStorage<boolean>({
+			key: `dranki_${deck.id}_showTranslation`,
+			value: false,
+		});
+	const [startTime, setStartTime, clearStartTime] = useBrowserStorage<string>({
 		key: `dranki_${deck.id}_startTime`,
 		value: "",
 	});
-	const [endTime, setEndTime] = useBrowserStorage<string>({
+	const [endTime, setEndTime, clearEndTime] = useBrowserStorage<string>({
 		key: `dranki_${deck.id}_endTime`,
 		value: "",
 	});
@@ -109,13 +111,14 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 	}
 
 	function clearSession(): void {
-		setPhrases([]);
-		setCurrentIndex(0);
-		setRecognizedCount(0);
-		setPracticeMoreCount(0);
-		setStartTime("");
-		setEndTime("");
-		setPhase("overview");
+		clearPhase();
+		clearPhrases();
+		clearCurrentIndex();
+		clearRecognizedCount();
+		clearPracticeMoreCount();
+		clearShowTranslationByDefault();
+		clearStartTime();
+		clearEndTime();
 	}
 
 	return (

@@ -5,7 +5,7 @@ import type { BrowserStorageState, BrowserStorageStateConfig } from "./types";
 
 function useBrowserStorage<ValueType>(
 	config: BrowserStorageStateConfig<ValueType>,
-): [ValueType, (newValue: ValueType) => void] {
+): [ValueType, (newValue: ValueType) => void, () => void] {
 	// --- STATES & REFS ---
 	const BS_StateRef = useRef<BrowserStorageState<ValueType>>(
 		BrowserStorageManager.createItem(config),
@@ -23,7 +23,11 @@ function useBrowserStorage<ValueType>(
 		setState(newValue);
 	}
 
-	return [state, setEnhancedState];
+	function clearState(): void {
+		BS_StateRef.current.remove();
+	}
+
+	return [state, setEnhancedState, clearState];
 }
 
 export default useBrowserStorage;
