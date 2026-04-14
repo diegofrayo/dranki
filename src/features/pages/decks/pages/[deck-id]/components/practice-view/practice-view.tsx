@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import type { Deck, DeckPhrase } from "~/api";
 import {
 	Box,
 	Button,
@@ -15,7 +16,6 @@ import {
 	Link,
 	Title,
 } from "~/components/primitive";
-import type { Deck, Phrase } from "~/legacy/lib/types";
 
 import CompletionScreen from "./components/completion-screen";
 import PracticeCards from "./components/practice-cards";
@@ -33,7 +33,7 @@ export default function PracticeView({
 	showTranslationByDefault,
 }: PracticeViewProps): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
-	const [phrases, setPhrases] = useState<Phrase[]>(() => shuffleArray(deck.phrases));
+	const [phrases, setPhrases] = useState<DeckPhrase[]>(() => shuffleArray(deck.phrases || []));
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [knewCount, setKnewCount] = useState(0);
 	const [studyMoreCount, setStudyMoreCount] = useState(0);
@@ -54,7 +54,7 @@ export default function PracticeView({
 	}
 
 	function handleRestart(): void {
-		setPhrases(shuffleArray(deck.phrases));
+		setPhrases(shuffleArray(deck.phrases || []));
 		setCurrentIndex(0);
 		setKnewCount(0);
 		setStudyMoreCount(0);
@@ -127,7 +127,6 @@ export default function PracticeView({
 					<PracticeCards
 						currentIndex={currentIndex}
 						deck={deck}
-						phrases={phrases}
 						showTranslationByDefault={showTranslationByDefault}
 						onSwipeLeft={handleSwipeLeft}
 						onSwipeRight={handleSwipeRight}

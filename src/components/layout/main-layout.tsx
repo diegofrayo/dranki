@@ -16,11 +16,11 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 	return (
 		<Box
 			as="main"
-			className="min-h-screen pb-24"
+			className="flex min-h-screen flex-col"
 		>
 			<Box
 				as="header"
-				className="border-border bg-background/80 sticky top-0 z-40 border-b backdrop-blur-md"
+				className="border-border bg-background/80 sticky top-0 z-40 w-full shrink-0 border-b backdrop-blur-md"
 			>
 				<Box className="mx-auto max-w-md px-4 py-4">
 					<Title
@@ -34,7 +34,7 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 				</Box>
 			</Box>
 
-			<Box className="mx-auto max-w-md px-4 py-6">{children}</Box>
+			<Box className="mx-auto min-h-0 w-full max-w-md flex-1 px-4 py-6">{children}</Box>
 		</Box>
 	);
 }

@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import type { Deck, DeckPhrase } from "~/api";
 import {
 	Box,
 	Button,
@@ -14,12 +15,10 @@ import {
 	IconCatalog,
 	Text,
 } from "~/components/primitive";
-import type { Deck, Phrase } from "~/legacy/lib/types";
 
 type PracticeCardsProps = {
 	currentIndex: number;
 	deck: Deck;
-	phrases: Phrase[];
 	showTranslationByDefault: boolean;
 	onSwipeLeft: () => void;
 	onSwipeRight: () => void;
@@ -28,7 +27,6 @@ type PracticeCardsProps = {
 export default function PracticeCards({
 	currentIndex,
 	deck,
-	phrases,
 	showTranslationByDefault,
 	onSwipeLeft,
 	onSwipeRight,
@@ -45,11 +43,11 @@ export default function PracticeCards({
 	return (
 		<>
 			<Box className="relative min-h-100 flex-1">
-				{phrases.slice(currentIndex, currentIndex + 2).map((phrase, idx) => (
+				{deck.phrases?.slice(currentIndex, currentIndex + 2).map((phrase, idx) => (
 					<SwipeableCard
-						key={`${currentIndex + idx}-${phrase.english}`}
+						key={`${currentIndex + idx}-${phrase.sentence}`}
 						phrase={phrase}
-						deckColor={deck.color}
+						deckColor={deck.theme.backgroundColor}
 						showTranslationByDefault={showTranslationByDefault}
 						onSwipeLeft={onSwipeLeft}
 						onSwipeRight={onSwipeRight}
@@ -96,7 +94,7 @@ const ROTATION_FACTOR = 0.1;
 type SwipeableCardProps = {
 	deckColor: string;
 	isTop: boolean;
-	phrase: Phrase;
+	phrase: DeckPhrase;
 	showTranslationByDefault: boolean;
 	onSwipeLeft: () => void;
 	onSwipeRight: () => void;
@@ -246,7 +244,7 @@ export function SwipeableCard({
 							English
 						</Text>
 						<Text className="text-center text-2xl leading-relaxed font-bold text-balance text-white md:text-3xl">
-							{phrase.english}
+							{phrase.sentence}
 						</Text>
 						<Text className="mt-8 text-sm text-white/50">Tap to reveal translation</Text>
 					</div>
@@ -264,7 +262,7 @@ export function SwipeableCard({
 							Japanese
 						</Text>
 						<Text className="text-center text-2xl leading-relaxed font-bold text-balance text-white md:text-3xl">
-							{phrase.japanese}
+							{phrase.translation}
 						</Text>
 						<Text className="mt-8 text-sm text-white/50">Tap to see English</Text>
 					</div>

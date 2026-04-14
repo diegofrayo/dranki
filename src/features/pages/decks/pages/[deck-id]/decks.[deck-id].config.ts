@@ -1,22 +1,9 @@
 import type { Metadata } from "next";
 
-import type { DeckPageProps } from "./decks.[deck-id].types";
+import api from "~/api";
 
-const getDeckBySlug = (
-	slug: string,
-): { emoji: string; description: string; title: string; phrases: string[]; id: string } => {
-	return {
-		emoji: "",
-		description: "",
-		title: "",
-		phrases: [],
-		id: slug,
-	};
-};
-
-export async function generateMetadata({ params }: DeckPageProps): Promise<Metadata> {
-	const { slug } = await params;
-	const deck = await getDeckBySlug(slug);
+export async function generateMetadata(deckId: string): Promise<Metadata> {
+	const deck = await api.decks.getDeckById(deckId);
 
 	if (!deck) {
 		return { title: "Deck not found - dranki" };
@@ -24,6 +11,6 @@ export async function generateMetadata({ params }: DeckPageProps): Promise<Metad
 
 	return {
 		title: `${deck.emoji} ${deck.title} - dranki`,
-		description: deck.description || `Practice ${deck.phrases.length} English phrases`,
+		description: deck.description,
 	};
 }

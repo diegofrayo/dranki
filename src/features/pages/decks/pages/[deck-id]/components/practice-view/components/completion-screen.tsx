@@ -2,6 +2,7 @@
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import type { Deck } from "~/api";
 import {
 	Box,
 	Button,
@@ -14,7 +15,6 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
-import type { Deck } from "~/legacy/lib/types";
 
 type CompletionScreenProps = {
 	deck: Deck;
@@ -48,7 +48,7 @@ export default function CompletionScreen({
 		<Box className={classes.root}>
 			<Box
 				className={classes.emojiContainer}
-				style={{ backgroundColor: deck.color }}
+				style={{ backgroundColor: deck.theme.backgroundColor }}
 			>
 				<InlineText className="text-5xl">{deck.emoji}</InlineText>
 			</Box>

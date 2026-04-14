@@ -1,84 +1,82 @@
-{
-	"phrases": [
-		{
-			"sentence": "The code is reviewed before deployment.",
-			"translation": "El código es revisado antes del despliegue."
-		},
-		{
-			"sentence": "The feature was implemented last week.",
-			"translation": "La funcionalidad fue implementada la semana pasada."
-		},
-		{
-			"sentence": "The system is being updated right now.",
-			"translation": "El sistema está siendo actualizado ahora mismo."
-		},
-		{
-			"sentence": "The bug has been fixed.",
-			"translation": "El error ha sido corregido."
-		},
-		{
-			"sentence": "The app will be released tomorrow.",
-			"translation": "La aplicación será lanzada mañana."
-		},
-		{
-			"sentence": "The database is maintained regularly.",
-			"translation": "La base de datos es mantenida regularmente."
-		},
-		{
-			"sentence": "The issue was reported by a user.",
-			"translation": "El problema fue reportado por un usuario."
-		},
-		{
-			"sentence": "The API is used by multiple services.",
-			"translation": "La API es utilizada por múltiples servicios."
-		},
-		{
-			"sentence": "The tests are executed automatically.",
-			"translation": "Las pruebas son ejecutadas automáticamente."
-		},
-		{
-			"sentence": "The configuration has been changed.",
-			"translation": "La configuración ha sido cambiada."
-		},
-		{
-			"sentence": "The server was restarted last night.",
-			"translation": "El servidor fue reiniciado anoche."
-		},
-		{
-			"sentence": "The UI is being redesigned.",
-			"translation": "La interfaz está siendo rediseñada."
-		},
-		{
-			"sentence": "The data is stored securely.",
-			"translation": "Los datos son almacenados de forma segura."
-		},
-		{
-			"sentence": "The request was processed successfully.",
-			"translation": "La solicitud fue procesada exitosamente."
-		},
-		{
-			"sentence": "The application is monitored continuously.",
-			"translation": "La aplicación es monitoreada continuamente."
-		},
-		{
-			"sentence": "The changes will be deployed soon.",
-			"translation": "Los cambios serán desplegados pronto."
-		},
-		{
-			"sentence": "The error has been logged.",
-			"translation": "El error ha sido registrado."
-		},
-		{
-			"sentence": "The system was designed for scalability.",
-			"translation": "El sistema fue diseñado para la escalabilidad."
-		},
-		{
-			"sentence": "The task is assigned to the team.",
-			"translation": "La tarea es asignada al equipo."
-		},
-		{
-			"sentence": "The documentation is updated frequently.",
-			"translation": "La documentación es actualizada frecuentemente."
-		}
-	]
-}
+[
+	{
+		"sentence": "The code is reviewed before deployment.",
+		"translation": "El código es revisado antes del despliegue."
+	},
+	{
+		"sentence": "The feature was implemented last week.",
+		"translation": "La funcionalidad fue implementada la semana pasada."
+	},
+	{
+		"sentence": "The system is being updated right now.",
+		"translation": "El sistema está siendo actualizado ahora mismo."
+	},
+	{
+		"sentence": "The bug has been fixed.",
+		"translation": "El error ha sido corregido."
+	},
+	{
+		"sentence": "The app will be released tomorrow.",
+		"translation": "La aplicación será lanzada mañana."
+	},
+	{
+		"sentence": "The database is maintained regularly.",
+		"translation": "La base de datos es mantenida regularmente."
+	},
+	{
+		"sentence": "The issue was reported by a user.",
+		"translation": "El problema fue reportado por un usuario."
+	},
+	{
+		"sentence": "The API is used by multiple services.",
+		"translation": "La API es utilizada por múltiples servicios."
+	},
+	{
+		"sentence": "The tests are executed automatically.",
+		"translation": "Las pruebas son ejecutadas automáticamente."
+	},
+	{
+		"sentence": "The configuration has been changed.",
+		"translation": "La configuración ha sido cambiada."
+	},
+	{
+		"sentence": "The server was restarted last night.",
+		"translation": "El servidor fue reiniciado anoche."
+	},
+	{
+		"sentence": "The UI is being redesigned.",
+		"translation": "La interfaz está siendo rediseñada."
+	},
+	{
+		"sentence": "The data is stored securely.",
+		"translation": "Los datos son almacenados de forma segura."
+	},
+	{
+		"sentence": "The request was processed successfully.",
+		"translation": "La solicitud fue procesada exitosamente."
+	},
+	{
+		"sentence": "The application is monitored continuously.",
+		"translation": "La aplicación es monitoreada continuamente."
+	},
+	{
+		"sentence": "The changes will be deployed soon.",
+		"translation": "Los cambios serán desplegados pronto."
+	},
+	{
+		"sentence": "The error has been logged.",
+		"translation": "El error ha sido registrado."
+	},
+	{
+		"sentence": "The system was designed for scalability.",
+		"translation": "El sistema fue diseñado para la escalabilidad."
+	},
+	{
+		"sentence": "The task is assigned to the team.",
+		"translation": "La tarea es asignada al equipo."
+	},
+	{
+		"sentence": "The documentation is updated frequently.",
+		"translation": "La documentación es actualizada frecuentemente."
+	}
+]
