@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
+import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Link, Text } from "~/components/primitive";
@@ -19,7 +20,8 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 	const classes = {
 		nav: "mt-1 flex items-center gap-1 text-sm",
 		homeLink: "text-muted-foreground transition-colors hover:text-foreground font-bold",
-		crumbItem: "flex items-center gap-1",
+		crumbItem: (isLast: boolean): string =>
+			cn("flex items-center gap-1", isLast && "min-w-0 flex-1"),
 		separator: "text-muted-foreground select-none",
 	};
 
@@ -39,18 +41,23 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 			>
 				Home
 			</Link>
-			{crumbs.map((crumb, index) => (
-				<Box
-					key={crumb.href}
-					className={classes.crumbItem}
-				>
-					<Text className={classes.separator}>›</Text>
-					<CrumbLabel
-						crumb={crumb}
-						isLast={index === crumbs.length - 1}
-					/>
-				</Box>
-			))}
+			{crumbs.map((crumb, index) => {
+				const isLast = index === crumbs.length - 1;
+				console.log(crumb, isLast);
+
+				return (
+					<Box
+						key={crumb.href}
+						className={classes.crumbItem(isLast)}
+					>
+						<Text className={classes.separator}>›</Text>
+						<CrumbLabel
+							crumb={crumb}
+							isLast={isLast}
+						/>
+					</Box>
+				);
+			})}
 		</Box>
 	);
 }
@@ -66,7 +73,7 @@ type CrumbLabelProps = {
 
 function CrumbLabel({ crumb, isLast }: CrumbLabelProps): ReactTypes.JSXElement {
 	if (isLast) {
-		return <Text className="text-foreground font-medium">{crumb.label}</Text>;
+		return <Text className="text-foreground truncate font-medium">{crumb.label}</Text>;
 	}
 
 	return (

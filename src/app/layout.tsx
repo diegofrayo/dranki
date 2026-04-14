@@ -68,6 +68,15 @@ export const metadata: Metadata = {
 		apple: `${FAVICON_PATH}/apple-touch-icon.png`,
 		shortcut: `${FAVICON_PATH}/favicon.ico`,
 	},
+	robots: {
+		index: false,
+		follow: false,
+		nocache: true,
+		googleBot: {
+			index: false,
+			follow: false,
+		},
+	},
 };
 
 export const viewport: Viewport = {

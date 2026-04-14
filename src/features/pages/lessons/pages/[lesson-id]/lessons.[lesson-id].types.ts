@@ -1,3 +1,6 @@
+import type { Lesson } from "~/api";
+
 export type LessonPageProps = {
-	params: Promise<{ "lesson-id": string }>;
+	lesson: Lesson;
+	content: string;
 };

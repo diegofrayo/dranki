@@ -45,18 +45,18 @@ export default async function HomePage(): Promise<ReactTypes.JSXElement> {
 
 const FEATURES = [
 	{
-		emoji: "📚",
-		title: "Decks",
-		description: "Bunches of phrases grouped by topic — phrasal verbs, simple past, and more.",
-		href: "/decks",
-		bgColor: "bg-blue-500",
-	},
-	{
 		emoji: "📖",
 		title: "Lessons",
 		description: "Clear explanations about grammar topics like simple present, future, and more.",
 		href: "/lessons",
 		bgColor: "bg-emerald-500",
+	},
+	{
+		emoji: "📚",
+		title: "Decks",
+		description: "Bunches of phrases grouped by topic — phrasal verbs, simple past, and more.",
+		href: "/decks",
+		bgColor: "bg-blue-500",
 	},
 	{
 		emoji: "📝",

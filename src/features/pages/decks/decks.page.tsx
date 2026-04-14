@@ -54,7 +54,7 @@ export default async function DecksPage(): Promise<ReactTypes.JSXElement> {
 					<Link
 						key={deck.id}
 						href={`/decks/${deck.id}`}
-						className="block rounded-2xl bg-blue-700 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
+						className="block rounded-2xl bg-blue-400 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
 					>
 						{deck.emoji.length > 0 && <Text className="mb-1 text-3xl">{deck.emoji}</Text>}
 						<Title

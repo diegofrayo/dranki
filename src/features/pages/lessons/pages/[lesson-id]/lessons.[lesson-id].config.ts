@@ -1,25 +1,11 @@
 import type { Metadata } from "next";
 
-import lessonsData from "~/data/lessons.json";
+import api from "~/api";
 
-import type { LessonPageProps } from "./lessons.[lesson-id].types";
+export async function generateMetadata(lessonId: string): Promise<Metadata> {
+	const lesson = await api.lessons.getLessonById(lessonId);
 
-type Lesson = {
-	id: string;
-	title: string;
-	emoji: string;
-	description: string;
-};
-
-function getLessonDetails(lessonId: string): Lesson | undefined {
-	return (lessonsData as Lesson[]).find((lesson) => lesson.id === lessonId);
-}
-
-export async function generateMetadata({ params }: LessonPageProps): Promise<Metadata> {
-	const { "lesson-id": lessonId } = await params;
-
-	const lesson = getLessonDetails(lessonId);
-	if (lesson === undefined) {
+	if (!lesson) {
 		return { title: "Lesson not found - dranki" };
 	}
 

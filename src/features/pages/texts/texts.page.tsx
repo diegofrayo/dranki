@@ -1,36 +1,15 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import type { Text as TextType } from "~/api";
 import { MainLayout } from "~/components/layout";
 import { Box, Link, Text, Title } from "~/components/primitive";
-import lessonsData from "~/data/lessons.json";
-import textsData from "~/data/texts.json";
+import { Routes } from "~/constants";
 
-type TextItem = {
-	lesson_id: string;
-	title: string;
+type TextsPageProps = {
+	texts: TextType[];
 };
 
-type Lesson = {
-	id: string;
-	title: string;
-	emoji: string;
-	description: string;
-};
-
-function getLessonDetails(lessonId: string): Lesson | undefined {
-	return (lessonsData as Lesson[]).find((lesson) => lesson.id === lessonId);
-}
-
-export default async function TextsPage(): Promise<ReactTypes.JSXElement> {
-	const texts = textsData as TextItem[];
-
-	const items = texts
-		.map((text) => ({
-			title: text.title,
-			lesson: getLessonDetails(text.lesson_id),
-		}))
-		.filter((item): item is { title: string; lesson: Lesson } => item.lesson !== undefined);
-
+export default async function TextsPage({ texts }: TextsPageProps): Promise<ReactTypes.JSXElement> {
 	return (
 		<MainLayout>
 			<Box className="mb-6">
@@ -49,26 +28,22 @@ export default async function TextsPage(): Promise<ReactTypes.JSXElement> {
 				as="section"
 				className="flex flex-col gap-4"
 			>
-				{items.map((item) => (
+				{texts.map((text) => (
 					<Link
-						key={item.title}
-						href={`/texts/${item.lesson.id}`}
-						className={`block rounded-2xl bg-purple-700 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80`}
+						key={text.title}
+						href={Routes.TEXT(text.id)}
+						className={`block rounded-2xl bg-violet-400 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80`}
 					>
-						{item.lesson.emoji.length > 0 && (
-							<Text className="mb-1 text-3xl">{item.lesson.emoji}</Text>
-						)}
+						<Text className="mb-1 text-3xl">{text.lesson.emoji}</Text>
 						<Title
 							as="h2"
 							className="text-lg font-bold text-white"
 						>
-							{item.title}
+							{text.title}
 						</Title>
-						{item.lesson.description.length > 0 && (
-							<Text className="mt-1 text-right text-sm text-white/80 italic">
-								{item.lesson.title}
-							</Text>
-						)}
+						<Text className="mt-1 text-right text-sm text-white/80 italic">
+							{text.lesson.title}
+						</Text>
 					</Link>
 				))}
 			</Box>

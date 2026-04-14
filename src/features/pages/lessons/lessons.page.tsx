@@ -1,19 +1,15 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import type { Lesson } from "~/api";
 import { MainLayout } from "~/components/layout";
 import { Box, Link, Text, Title } from "~/components/primitive";
-import lessonsData from "~/data/lessons.json";
+import { Routes } from "~/constants";
 
-type Lesson = {
-	id: string;
-	title: string;
-	emoji: string;
-	description: string;
+type LessonsPageProps = {
+	lessons: Lesson[];
 };
 
-export default async function LessonsPage(): Promise<ReactTypes.JSXElement> {
-	const lessons = lessonsData as Lesson[];
-
+async function LessonsPage({ lessons }: LessonsPageProps): Promise<ReactTypes.JSXElement> {
 	return (
 		<MainLayout>
 			<Box className="mb-6">
@@ -35,22 +31,22 @@ export default async function LessonsPage(): Promise<ReactTypes.JSXElement> {
 				{lessons.map((lesson) => (
 					<Link
 						key={lesson.id}
-						href={`/lessons/${lesson.id}`}
-						className="block rounded-2xl bg-blue-700 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
+						href={Routes.LESSON(lesson.id)}
+						className="block rounded-2xl bg-emerald-400 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
 					>
-						{lesson.emoji.length > 0 && <Text className="mb-1 text-3xl">{lesson.emoji}</Text>}
+						<Text className="mb-1 text-3xl">{lesson.emoji}</Text>
 						<Title
 							as="h2"
 							className="text-lg font-bold text-white"
 						>
 							{lesson.title}
 						</Title>
-						{lesson.description.length > 0 && (
-							<Text className="mt-1 text-sm text-white/80 italic">{lesson.description}</Text>
-						)}
+						<Text className="mt-1 text-sm text-white/80 italic">{lesson.description}</Text>
 					</Link>
 				))}
 			</Box>
 		</MainLayout>
 	);
 }
+
+export default LessonsPage;
