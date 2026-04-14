@@ -1,19 +1,20 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Text } from "~/api";
-import { MarkdownRenderer } from "~/components/common";
 import { MainLayout } from "~/components/layout";
 import { Box, Title } from "~/components/primitive";
+
+import TextContent from "./components/text-content";
 
 export type TextLessonPageProps = {
 	textDetails: Text;
 	content: string;
 };
 
-export default async function TextLessonPage({
+export default function TextLessonPage({
 	textDetails,
 	content,
-}: TextLessonPageProps): Promise<ReactTypes.JSXElement> {
+}: TextLessonPageProps): ReactTypes.JSXElement {
 	return (
 		<MainLayout>
 			<Box className="mb-6">
@@ -25,9 +26,7 @@ export default async function TextLessonPage({
 					{textDetails.title}
 				</Title>
 			</Box>
-			<Box as="article">
-				<MarkdownRenderer>{content}</MarkdownRenderer>
-			</Box>
+			<TextContent content={content} />
 		</MainLayout>
 	);
 }

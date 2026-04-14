@@ -9,7 +9,7 @@ type TextsPageProps = {
 	texts: Text[];
 };
 
-export default async function TextsPage({ texts }: TextsPageProps): Promise<ReactTypes.JSXElement> {
+export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElement {
 	return (
 		<MainLayout>
 			<Box className="mb-6">

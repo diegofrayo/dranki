@@ -5,7 +5,7 @@ import { MainLayout } from "~/components/layout";
 import { Box, Link, Paragraph, Title } from "~/components/primitive";
 import { Routes } from "~/constants";
 
-export default async function HomePage(): Promise<ReactTypes.JSXElement> {
+export default function HomePage(): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		link: (bgColor: string): string =>

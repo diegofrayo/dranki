@@ -9,7 +9,7 @@ type DecksPageProps = {
 	decks: Deck[];
 };
 
-export default async function DecksPage({ decks }: DecksPageProps): Promise<ReactTypes.JSXElement> {
+export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElement {
 	return (
 		<MainLayout>
 			<Box className="mb-6">

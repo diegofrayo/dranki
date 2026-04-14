@@ -9,7 +9,7 @@ type LessonsPageProps = {
 	lessons: Lesson[];
 };
 
-async function LessonsPage({ lessons }: LessonsPageProps): Promise<ReactTypes.JSXElement> {
+function LessonsPage({ lessons }: LessonsPageProps): ReactTypes.JSXElement {
 	return (
 		<MainLayout>
 			<Box className="mb-6">

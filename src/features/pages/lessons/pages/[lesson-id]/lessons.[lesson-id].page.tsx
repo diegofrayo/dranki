@@ -10,10 +10,7 @@ type LessonPageProps = {
 	content: string;
 };
 
-export default async function LessonPage({
-	lesson,
-	content,
-}: LessonPageProps): Promise<ReactTypes.JSXElement> {
+export default function LessonPage({ lesson, content }: LessonPageProps): ReactTypes.JSXElement {
 	return (
 		<MainLayout>
 			<Box className="mb-6">

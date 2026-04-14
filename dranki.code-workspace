@@ -6,6 +6,9 @@
 		{
 			"path": "../@diegofrayo-pkg",
 		},
+		{
+			"path": "../directorio-quindio",
+		},
 	],
 	"settings": {},
 }

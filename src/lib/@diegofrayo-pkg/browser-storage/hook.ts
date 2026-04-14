@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
+import { isFunction } from "@diegofrayo-pkg/validator";
+
 import BrowserStorageManager from "./service";
 import type { BrowserStorageState, BrowserStorageStateConfig } from "./types";
 
 function useBrowserStorage<ValueType>(
 	config: BrowserStorageStateConfig<ValueType>,
-): [ValueType, (newValue: ValueType) => void, () => void] {
+): UseBrowserStorageReturn<ValueType> {
 	// --- STATES & REFS ---
 	const BS_StateRef = useRef<BrowserStorageState<ValueType>>(
 		BrowserStorageManager.createItem(config),
@@ -18,10 +20,10 @@ function useBrowserStorage<ValueType>(
 	}, []);
 
 	// --- API ---
-	function setEnhancedState(newValue: ValueType): void {
-		BS_StateRef.current.set(newValue);
+	const setEnhancedState: SetEnhancedState<ValueType> = (newValue) => {
+		BS_StateRef.current.set(isFunction(newValue) ? newValue(state) : newValue);
 		setState(newValue);
-	}
+	};
 
 	function clearState(): void {
 		BS_StateRef.current.remove();
@@ -31,3 +33,11 @@ function useBrowserStorage<ValueType>(
 }
 
 export default useBrowserStorage;
+
+// --- TYPES ---
+
+type UseBrowserStorageReturn<ValueType> = [ValueType, SetEnhancedState<ValueType>, () => void];
+
+type SetEnhancedState<ValueType> = (newValue: ValueType | SetState<ValueType>) => void;
+
+type SetState<ValueType> = (newValue: ValueType) => ValueType;

@@ -1,19 +1,23 @@
 @reference "../../../styles/globals.css";
 
 .heading1 {
-	@apply text-foreground mt-6 mb-1 text-2xl font-bold;
+	@apply text-foreground mt-6 mb-1 font-bold;
+	font-size: 1.5em;
 }
 
 .heading2 {
-	@apply text-foreground mt-6 mb-1 text-xl font-semibold;
+	@apply text-foreground mt-6 mb-1 font-semibold;
+	font-size: 1.25em;
 }
 
 .heading3 {
-	@apply text-foreground mt-6 mb-1 text-lg font-semibold;
+	@apply text-foreground mt-6 mb-1 font-semibold;
+	font-size: 1.125em;
 }
 
 .paragraph {
-	@apply text-foreground mb-4 text-base leading-relaxed;
+	@apply text-foreground mb-4 leading-relaxed;
+	font-size: 1em;
 }
 
 .strong {
@@ -37,7 +41,8 @@
 }
 
 .li {
-	@apply text-foreground mb-1 text-base;
+	@apply text-foreground mb-1;
+	font-size: 1em;
 }
 
 .code {

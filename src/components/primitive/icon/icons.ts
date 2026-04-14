@@ -1,4 +1,6 @@
 import {
+	AArrowDown,
+	AArrowUp,
 	ArrowLeft,
 	BookOpen,
 	Check,
@@ -14,6 +16,8 @@ import {
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 export const Icons = {
+	A_ARROW_DOWN: AArrowDown,
+	A_ARROW_UP: AArrowUp,
 	ARROW_LEFT: ArrowLeft,
 	BOOK_OPEN: BookOpen,
 	CHECK: Check,
