@@ -1,6 +1,6 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Text, Title } from "~/components/primitive";
+import { Box, Paragraph, Title } from "~/components/primitive";
 
 import Breadcrumb from "./breadcrumb";
 
@@ -29,7 +29,7 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 					>
 						dranki
 					</Title>
-					<Text className="text-muted-foreground text-sm">Practice English phrases</Text>
+					<Paragraph className="text-muted-foreground text-sm">Practice English phrases</Paragraph>
 					<Breadcrumb />
 				</Box>
 			</Box>

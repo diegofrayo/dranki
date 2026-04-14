@@ -5,26 +5,26 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 // --- PROPS & TYPES ---
 
-type TextProps = ReactTypes.DOM.HTMLElementAttributes["p"];
+type ParagraphProps = ReactTypes.DOM.HTMLElementAttributes["p"];
 
 // --- COMPONENT DEFINITION ---
 
-function Text({ children, className = "", ...rest }: TextProps): ReactTypes.JSXElement {
+function Paragraph({ children, className = "", ...rest }: ParagraphProps): ReactTypes.JSXElement {
 	return (
 		<p
 			className={cn("dr-text", className)}
 			{...rest}
 		>
-			{removeTextElements(children)}
+			{removeParagraphElements(children)}
 		</p>
 	);
 }
 
-export default Text;
+export default Paragraph;
 
 // --- UTILS ---
 
-function removeTextElements(children: ReactTypes.Children): ReactTypes.Children {
+function removeParagraphElements(children: ReactTypes.Children): ReactTypes.Children {
 	if (isValidElement<ChildElementProps>(children) && children.type === "p") {
 		return children.props.children;
 	}

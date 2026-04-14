@@ -2,7 +2,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Lesson } from "~/api";
 import { MainLayout } from "~/components/layout";
-import { Box, Link, Text, Title } from "~/components/primitive";
+import { Box, Link, Paragraph, Title } from "~/components/primitive";
 import { Routes } from "~/constants";
 
 type LessonsPageProps = {
@@ -19,10 +19,10 @@ async function LessonsPage({ lessons }: LessonsPageProps): Promise<ReactTypes.JS
 				>
 					Lessons
 				</Title>
-				<Text className="text-muted-foreground text-sm">
+				<Paragraph className="text-muted-foreground text-sm">
 					Browse all available lessons organized by grammar topic. Each lesson focuses on a specific
 					concept to help you build a strong foundation in English, one rule at a time.
-				</Text>
+				</Paragraph>
 			</Box>
 			<Box
 				as="section"
@@ -34,14 +34,16 @@ async function LessonsPage({ lessons }: LessonsPageProps): Promise<ReactTypes.JS
 						href={Routes.LESSON(lesson.id)}
 						className="block rounded-2xl bg-emerald-600 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
 					>
-						<Text className="mb-1 text-3xl">{lesson.emoji}</Text>
+						<Paragraph className="mb-1 text-3xl">{lesson.emoji}</Paragraph>
 						<Title
 							as="h2"
 							className="text-lg font-bold text-white"
 						>
 							{lesson.title}
 						</Title>
-						<Text className="mt-1 text-sm text-white/80 italic">{lesson.description}</Text>
+						<Paragraph className="mt-1 text-sm text-white/80 italic">
+							{lesson.description}
+						</Paragraph>
 					</Link>
 				))}
 			</Box>

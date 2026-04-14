@@ -2,7 +2,7 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { MainLayout } from "~/components/layout";
-import { Box, Link, Text, Title } from "~/components/primitive";
+import { Box, Link, Paragraph, Title } from "~/components/primitive";
 import { Routes } from "~/constants";
 
 export default async function HomePage(): Promise<ReactTypes.JSXElement> {
@@ -27,14 +27,14 @@ export default async function HomePage(): Promise<ReactTypes.JSXElement> {
 						href={feature.href}
 						className={classes.link(feature.bgColor)}
 					>
-						<Text className="mb-1 text-3xl">{feature.emoji}</Text>
+						<Paragraph className="mb-1 text-3xl">{feature.emoji}</Paragraph>
 						<Title
 							as="h2"
 							className="text-lg font-bold text-white"
 						>
 							{feature.title}
 						</Title>
-						<Text className="mt-1 text-sm text-white/80">{feature.description}</Text>
+						<Paragraph className="mt-1 text-sm text-white/80">{feature.description}</Paragraph>
 					</Link>
 				))}
 			</Box>

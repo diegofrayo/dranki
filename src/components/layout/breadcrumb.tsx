@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Link, Text } from "~/components/primitive";
+import { Box, Link, Paragraph } from "~/components/primitive";
 
 // --- COMPONENT DEFINITION ---
 
@@ -50,7 +50,7 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 						key={crumb.href}
 						className={classes.crumbItem(isLast)}
 					>
-						<Text className={classes.separator}>›</Text>
+						<Paragraph className={classes.separator}>›</Paragraph>
 						<CrumbLabel
 							crumb={crumb}
 							isLast={isLast}
@@ -73,7 +73,7 @@ type CrumbLabelProps = {
 
 function CrumbLabel({ crumb, isLast }: CrumbLabelProps): ReactTypes.JSXElement {
 	if (isLast) {
-		return <Text className="text-foreground truncate font-medium">{crumb.label}</Text>;
+		return <Paragraph className="text-foreground truncate font-medium">{crumb.label}</Paragraph>;
 	}
 
 	return (
