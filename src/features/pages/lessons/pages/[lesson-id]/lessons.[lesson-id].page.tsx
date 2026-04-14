@@ -1,10 +1,14 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import type { Lesson } from "~/api";
 import { MarkdownRenderer } from "~/components/common";
 import { MainLayout } from "~/components/layout";
 import { Box } from "~/components/primitive";
 
-import type { LessonPageProps } from "./lessons.[lesson-id].types";
+type LessonPageProps = {
+	lesson: Lesson;
+	content: string;
+};
 
 export default async function LessonPage({
 	lesson,

@@ -1,12 +1,12 @@
 [
 	{
 		"id": "passive-voice",
-		"title": "",
+		"title": "Passive voice",
 		"description": "",
 		"emoji": "",
-		"theme": { "backgroundColor": "", "fontColor": "" },
+		"theme": { "background_color": "", "font_color": "" },
 		"lesson_id": "passive-voice",
-		"totalPhrases": 20,
+		"total_phrases": 20,
 		"created_at": ""
 	},
 	{
@@ -14,9 +14,9 @@
 		"title": "Most 20 useful phrasal verbs",
 		"description": "",
 		"emoji": "🌟",
-		"theme": { "backgroundColor": "", "fontColor": "" },
+		"theme": { "background_color": "", "font_color": "" },
 		"lesson_id": "",
-		"totalPhrases": 20,
+		"total_phrases": 20,
 		"created_at": ""
 	}
 ]

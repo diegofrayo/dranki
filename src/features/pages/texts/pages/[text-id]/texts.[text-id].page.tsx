@@ -1,10 +1,14 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import type { Text as TextType } from "~/api";
 import { MarkdownRenderer } from "~/components/common";
 import { MainLayout } from "~/components/layout";
 import { Box, Title } from "~/components/primitive";
 
-import type { TextLessonPageProps } from "./texts.[text-id].types";
+export type TextLessonPageProps = {
+	textDetails: TextType;
+	content: string;
+};
 
 export default async function TextLessonPage({
 	textDetails,

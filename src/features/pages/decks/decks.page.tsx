@@ -1,37 +1,15 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import type { Deck } from "~/api";
 import { MainLayout } from "~/components/layout";
 import { Box, Link, Text, Title } from "~/components/primitive";
-import decksData from "~/data/decks.json";
-import lessonsData from "~/data/lessons.json";
+import { Routes } from "~/constants";
 
-type DeckItem = {
-	id: string;
-	title: string;
-	description: string;
-	emoji: string;
-	lesson_id: string;
-	created_at: string;
-	theme: { backgroundColor: string; fontColor: string };
-	totalPhrases: number;
+type DecksPageProps = {
+	decks: Deck[];
 };
 
-export default async function DecksPage(): Promise<ReactTypes.JSXElement> {
-	const decks = (decksData as DeckItem[]).map((deck) => {
-		const lessonInfo = lessonsData.find((lesson) => lesson.id === deck.id);
-
-		if (lessonInfo) {
-			return {
-				...deck,
-				title: deck.title || lessonInfo.title,
-				description: deck.description || lessonInfo.description,
-				emoji: deck.emoji || lessonInfo.emoji,
-			};
-		}
-
-		return deck;
-	});
-
+export default async function DecksPage({ decks }: DecksPageProps): Promise<ReactTypes.JSXElement> {
 	return (
 		<MainLayout>
 			<Box className="mb-6">
@@ -53,8 +31,8 @@ export default async function DecksPage(): Promise<ReactTypes.JSXElement> {
 				{decks.map((deck) => (
 					<Link
 						key={deck.id}
-						href={`/decks/${deck.id}`}
-						className="block rounded-2xl bg-blue-400 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
+						href={Routes.DECK(deck.id)}
+						className="block rounded-2xl bg-blue-600 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
 					>
 						{deck.emoji.length > 0 && <Text className="mb-1 text-3xl">{deck.emoji}</Text>}
 						<Title
@@ -63,11 +41,9 @@ export default async function DecksPage(): Promise<ReactTypes.JSXElement> {
 						>
 							{deck.title}
 						</Title>
-						{deck.totalPhrases > 0 && (
-							<Text className="mt-1 text-right text-sm text-white/80 italic">
-								{deck.totalPhrases} phrases
-							</Text>
-						)}
+						<Text className="mt-1 text-right text-sm text-white/80 italic">
+							{deck.totalPhrases} phrases
+						</Text>
 					</Link>
 				))}
 			</Box>

@@ -3,6 +3,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { MainLayout } from "~/components/layout";
 import { Box, Link, Text, Title } from "~/components/primitive";
+import { Routes } from "~/constants";
 
 export default async function HomePage(): Promise<ReactTypes.JSXElement> {
 	// --- STYLES ---
@@ -48,14 +49,14 @@ const FEATURES = [
 		emoji: "📖",
 		title: "Lessons",
 		description: "Clear explanations about grammar topics like simple present, future, and more.",
-		href: "/lessons",
+		href: Routes.LESSONS,
 		bgColor: "bg-emerald-500",
 	},
 	{
 		emoji: "📚",
 		title: "Decks",
 		description: "Bunches of phrases grouped by topic — phrasal verbs, simple past, and more.",
-		href: "/decks",
+		href: Routes.DECKS,
 		bgColor: "bg-blue-500",
 	},
 	{
@@ -63,7 +64,7 @@ const FEATURES = [
 		title: "Texts",
 		description:
 			"Short texts that put vocabulary and phrases in context — read and learn naturally.",
-		href: "/texts",
+		href: Routes.TEXTS,
 		bgColor: "bg-violet-500",
 	},
 ];

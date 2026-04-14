@@ -32,7 +32,7 @@ async function LessonsPage({ lessons }: LessonsPageProps): Promise<ReactTypes.JS
 					<Link
 						key={lesson.id}
 						href={Routes.LESSON(lesson.id)}
-						className="block rounded-2xl bg-emerald-400 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
+						className="block rounded-2xl bg-emerald-600 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
 					>
 						<Text className="mb-1 text-3xl">{lesson.emoji}</Text>
 						<Title

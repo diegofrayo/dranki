@@ -32,7 +32,7 @@ export default async function TextsPage({ texts }: TextsPageProps): Promise<Reac
 					<Link
 						key={text.title}
 						href={Routes.TEXT(text.id)}
-						className={`block rounded-2xl bg-violet-400 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80`}
+						className={`block rounded-2xl bg-violet-600 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80`}
 					>
 						<Text className="mb-1 text-3xl">{text.lesson.emoji}</Text>
 						<Title
