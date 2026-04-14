@@ -1,2 +1,2 @@
 export { default } from "./lessons.[lesson-id].page";
-export * from "./lessons.[lesson-id].config";
+export { default as pageConfig } from "./lessons.[lesson-id].config";

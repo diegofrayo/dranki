@@ -2,10 +2,7 @@ import { notFound } from "next/navigation";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import api from "~/api";
-import TextPage, {
-	generateMetadata as generateMetadataImplementation,
-} from "~/features/pages/texts/pages/[text-id]";
+import TextPage, { pageConfig } from "~/features/pages/texts/pages/[text-id]";
 
 type TextPageProps = {
 	params: Promise<{ "text-id": string }>;
@@ -15,10 +12,9 @@ export default async function TextPageWrapper({
 	params,
 }: TextPageProps): Promise<ReactTypes.JSXElement> {
 	const textId = (await params)["text-id"];
-	const textDetails = await api.texts.getTextById(textId);
-	const textContent = await api.texts.getTextContent(textId);
+	const { textDetails, textContent } = await pageConfig.loader(textId);
 
-	if (!textDetails) {
+	if (!textDetails || !textContent) {
 		return notFound();
 	}
 
@@ -32,7 +28,7 @@ export default async function TextPageWrapper({
 
 export async function generateMetadata({
 	params,
-}: TextPageProps): ReturnType<typeof generateMetadataImplementation> {
+}: TextPageProps): ReturnType<typeof pageConfig.generateMetadata> {
 	const textId = (await params)["text-id"];
-	return generateMetadataImplementation(textId);
+	return pageConfig.generateMetadata(textId);
 }

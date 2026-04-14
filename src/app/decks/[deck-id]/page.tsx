@@ -2,10 +2,7 @@ import { notFound } from "next/navigation";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import api from "~/api";
-import DeckPage, {
-	generateMetadata as generateMetadataImplementation,
-} from "~/features/pages/decks/pages/[deck-id]";
+import DeckPage, { pageConfig } from "~/features/pages/decks/pages/[deck-id]";
 
 type DeckPageProps = {
 	params: Promise<{ "deck-id": string }>;
@@ -15,7 +12,7 @@ export default async function DeckPageWrapper({
 	params,
 }: DeckPageProps): Promise<ReactTypes.JSXElement> {
 	const deckId = (await params)["deck-id"];
-	const deck = await api.decks.getDeckById(deckId, { includePhrases: true });
+	const { deck } = await pageConfig.loader(deckId);
 
 	if (!deck) {
 		return notFound();
@@ -26,7 +23,7 @@ export default async function DeckPageWrapper({
 
 export async function generateMetadata({
 	params,
-}: DeckPageProps): ReturnType<typeof generateMetadataImplementation> {
+}: DeckPageProps): ReturnType<typeof pageConfig.generateMetadata> {
 	const deckId = (await params)["deck-id"];
-	return generateMetadataImplementation(deckId);
+	return pageConfig.generateMetadata(deckId);
 }

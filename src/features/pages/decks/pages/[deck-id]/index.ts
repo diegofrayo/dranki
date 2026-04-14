@@ -1,2 +1,2 @@
 export { default } from "./decks.[deck-id].page";
-export * from "./decks.[deck-id].config";
+export { default as pageConfig } from "./decks.[deck-id].config";

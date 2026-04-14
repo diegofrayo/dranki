@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-import api from "~/api";
+import api, { type Text } from "~/api";
 
-export async function generateMetadata(textId: string): Promise<Metadata> {
+async function generateMetadata(textId: string): Promise<Metadata> {
 	const textDetails = await api.texts.getTextById(textId);
 
 	if (!textDetails) {
@@ -14,3 +14,17 @@ export async function generateMetadata(textId: string): Promise<Metadata> {
 		description: textDetails.lesson.description,
 	};
 }
+
+async function loader(
+	textId: string,
+): Promise<{ textDetails: Text | undefined; textContent: string }> {
+	const textDetails = await api.texts.getTextById(textId);
+	const textContent = await api.texts.getTextContent(textId);
+
+	return { textDetails, textContent };
+}
+
+export default {
+	generateMetadata,
+	loader,
+};
