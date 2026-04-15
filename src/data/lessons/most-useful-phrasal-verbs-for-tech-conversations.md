@@ -1,3 +1,5 @@
+# Most Useful Phrasal Verbs for Tech Conversations
+
 | Phrasal Verb    | Meaning (in tech context)                  | Examples (EN → ES)                                                                                                                                                                      |
 | --------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **set up**      | Configure or initialize something          | 1. I need to set up the project locally. → Necesito configurar el proyecto localmente. <br> 2. She set up the database yesterday. → Ella configuró la base de datos ayer.               |
@@ -15,3 +17,15 @@
 | **clean up**    | Improve code / remove unnecessary parts    | 1. I need to clean up this code. → Necesito limpiar este código. <br> 2. She cleaned up unused files. → Ella eliminó archivos no usados.                                                |
 | **comment out** | Temporarily disable code                   | 1. Comment out that line for testing. → Comenta esa línea para probar. <br> 2. I commented out the function. → Comenté la función.                                                      |
 | **plug in**     | Add/connect a module or tool               | 1. You can plug in this library easily. → Puedes integrar esta librería fácilmente. <br> 2. The plugin was plugged in yesterday. → El plugin fue integrado ayer.                        |
+
+## 💡 Pro Tips (very important for sounding natural)
+
+- In real conversations, devs use these constantly instead of formal verbs:
+  - ❌ initialize the server → ✅ spin up the server
+  - ❌ investigate the bug → ✅ track down the bug
+  - ❌ connect the API → ✅ hook up the API
+- You’ll hear them a lot in:
+  - Standups
+  - Pull request comments
+  - GitHub issues
+  - Pair programming

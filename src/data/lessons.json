@@ -9,6 +9,18 @@
 		"id": "relative-clauses",
 		"title": "Relative clauses",
 		"emoji": "",
-		"description": "A relative clause is a part of a sentence that gives extra information about a noun"
+		"description": "A relative clause is a part of a sentence that gives extra information about a noun."
+	},
+	{
+		"id": "conditional-sentences",
+		"title": "Conditional sentences",
+		"emoji": "",
+		"description": "A clear and practical table with the main types of conditional sentences in English."
+	},
+	{
+		"id": "most-useful-phrasal-verbs-for-tech-conversations",
+		"title": "Most Useful Phrasal Verbs for Tech Conversations",
+		"emoji": "",
+		"description": "A clear and practical table with the Most Useful Phrasal Verbs for Tech Conversations in English."
 	}
 ]

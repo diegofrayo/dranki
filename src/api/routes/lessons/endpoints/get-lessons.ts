@@ -1,6 +1,7 @@
 import path from "path";
 import { z } from "zod";
 
+import { sortBy } from "@diegofrayo-pkg/sort";
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
 import type { Lesson } from "../../../types";
@@ -34,10 +35,12 @@ type GetLessonsResponse = Array<Lesson>;
 // --- TRANSFORMS ---
 
 function transformResponse(raw: RawGetLessonsResponse): GetLessonsResponse {
-	return raw.map((lesson) => ({
-		id: lesson.id,
-		title: lesson.title,
-		emoji: lesson.emoji || "📖",
-		description: lesson.description,
-	}));
+	return raw
+		.map((lesson) => ({
+			id: lesson.id,
+			title: lesson.title,
+			emoji: lesson.emoji || "📖",
+			description: lesson.description,
+		}))
+		.sort(sortBy("title"));
 }

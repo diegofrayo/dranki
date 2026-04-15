@@ -1,6 +1,7 @@
 import path from "path";
 import { z } from "zod";
 
+import { sortBy } from "@diegofrayo-pkg/sort";
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
 import type { Deck } from "../../../types";
@@ -42,19 +43,21 @@ type GetDecksResponse = Array<Deck>;
 // --- TRANSFORMS ---
 
 async function transformResponse(raw: RawGetDecksResponse): Promise<GetDecksResponse> {
-	return Promise.all(
-		raw.map(async (deck) => ({
-			id: deck.id,
-			title: deck.title,
-			description: deck.description,
-			emoji: deck.emoji || "📚",
-			lesson: await getLessonById(deck.lesson_id),
-			createdAt: deck.created_at,
-			theme: {
-				backgroundColor: deck.theme.background_color,
-				fontColor: deck.theme.font_color,
-			},
-			totalPhrases: (await getDeckPhrases(deck.id)).length,
-		})),
-	);
+	return (
+		await Promise.all(
+			raw.map(async (deck) => ({
+				id: deck.id,
+				title: deck.title,
+				description: deck.description,
+				emoji: deck.emoji || "📚",
+				lesson: await getLessonById(deck.lesson_id),
+				createdAt: deck.created_at,
+				theme: {
+					backgroundColor: deck.theme.background_color,
+					fontColor: deck.theme.font_color,
+				},
+				totalPhrases: (await getDeckPhrases(deck.id)).length,
+			})),
+		)
+	).sort(sortBy("title"));
 }

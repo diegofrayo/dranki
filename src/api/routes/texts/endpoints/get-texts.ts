@@ -1,6 +1,7 @@
 import path from "path";
 import { z } from "zod";
 
+import { sortBy } from "@diegofrayo-pkg/sort";
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
 import type { Text } from "../../../types";
@@ -48,5 +49,5 @@ async function transformResponse(raw: RawGetTextsResponse): Promise<GetTextsResp
 		}),
 	);
 
-	return texts;
+	return texts.sort(sortBy("title"));
 }
