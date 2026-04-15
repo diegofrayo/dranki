@@ -11,7 +11,7 @@ export const Route = createRootRoute({
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
 			{ title: PROJECT_METADATA.appName },
 		],
-		links: [{ rel: "stylesheet", href: "/src/app/globals.css" }],
+		links: [{ rel: "stylesheet", href: "/src/routes/app.css" }],
 	}),
 	component: RootComponent,
 });
@@ -32,7 +32,7 @@ function RootDocument({
 			<head>
 				<HeadContent />
 			</head>
-			<body>
+			<body className="font-sans">
 				{children}
 				<Scripts />
 			</body>

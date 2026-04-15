@@ -1,0 +1,8 @@
+@import "../styles/globals.css";
+
+@import "@fontsource-variable/nunito/wght.css";
+
+@theme inline {
+	--font-sans: "Nunito Variable", "Tahoma", system-ui, sans-serif;
+	--font-mono: "Geist Mono", "Geist Mono Fallback";
+}

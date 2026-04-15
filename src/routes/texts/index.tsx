@@ -5,7 +5,7 @@ import TextsPage from "~/features/pages/texts";
 import { textsLoader } from "~/features/router/tan-stack-loaders.server";
 
 export const getData = createServerFn().handler(async () => {
-	return textsLoader();
+	return { texts: await textsLoader() };
 });
 
 export const Route = createFileRoute("/texts/")({

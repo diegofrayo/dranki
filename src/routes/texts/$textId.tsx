@@ -11,8 +11,7 @@ const getServerData = createServerFn()
 	});
 
 export const Route = createFileRoute("/texts/$textId")({
-	ssr: true,
-	beforeLoad: async ({ params }) => {
+	loader: async ({ params }) => {
 		const textId = params["textId"];
 
 		return getServerData({ data: { textId } });

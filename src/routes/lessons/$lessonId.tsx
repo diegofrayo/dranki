@@ -11,7 +11,6 @@ const getServerData = createServerFn()
 	});
 
 export const Route = createFileRoute("/lessons/$lessonId")({
-	ssr: true,
 	loader: async ({ params }) => {
 		const lessonId = params["lessonId"];
 

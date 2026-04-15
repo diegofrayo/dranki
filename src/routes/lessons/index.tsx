@@ -5,7 +5,7 @@ import LessonsPage from "~/features/pages/lessons/lessons.page";
 import { lessonsLoader } from "~/features/router/tan-stack-loaders.server";
 
 export const getData = createServerFn().handler(async () => {
-	return lessonsLoader();
+	return { lessons: await lessonsLoader() };
 });
 
 export const Route = createFileRoute("/lessons/")({

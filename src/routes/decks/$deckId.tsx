@@ -11,7 +11,6 @@ const getServerData = createServerFn()
 	});
 
 export const Route = createFileRoute("/decks/$deckId")({
-	ssr: true,
 	loader: ({ params }) => {
 		const deckId = params["deckId"];
 
