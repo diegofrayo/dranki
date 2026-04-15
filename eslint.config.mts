@@ -56,5 +56,13 @@ export default defineConfig([
 	TYPESCRIPT_CONFIG,
 	REACT_CONFIG,
 	CSS_CONFIG,
-	globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "src/_legacy/**"]),
+	globalIgnores([
+		".next/**",
+		"out/**",
+		"build/**",
+		"next-env.d.ts",
+		"src/_legacy/**",
+		".agents",
+		".claude",
+	]),
 ]);

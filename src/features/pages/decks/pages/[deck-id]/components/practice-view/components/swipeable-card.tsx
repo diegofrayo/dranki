@@ -4,7 +4,7 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck, DeckPhrase } from "~/api";
-import { Box, Button, Icon, IconCatalog, Paragraph, Separator } from "~/components/primitive";
+import { Box, Button, Icon, IconCatalog, Paragraph } from "~/components/primitive";
 
 import useDragGesture from "../hooks/use-drag-gesture";
 
@@ -31,7 +31,7 @@ function SwipeableCard({
 }: SwipeableCardProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const { dragX, dragY, isDragging, isExiting, exitDirection, handlers } = useDragGesture({
-		isEnabled: !isCurrentCard,
+		isEnabled: isCurrentCard,
 		onSwipeLeft: onRecognized,
 		onSwipeRight: onPracticeMore,
 	});
@@ -241,15 +241,13 @@ function Translation({
 	// --- STYLES ---
 	const classes = {
 		wrapper: "animate-in fade-in-0 slide-in-from-bottom-2 duration-400",
-		separator: "my-2 h-px w-full bg-white/20",
-		text: "text-center text-lg font-medium text-white/80 ",
+		text: "text-center text-lg font-medium text-white/80",
 	};
 
 	return (
 		<Box className="w-full">
 			{visible ? (
 				<Box className={classes.wrapper}>
-					<Separator className={classes.separator} />
 					<Paragraph className={classes.text}>{text}</Paragraph>
 				</Box>
 			) : (

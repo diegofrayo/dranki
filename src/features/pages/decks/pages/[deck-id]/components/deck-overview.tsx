@@ -45,7 +45,7 @@ function DeckOverview(): ReactTypes.JSXElement {
 		description: "text-center text-sm text-white/80",
 		statsRow: "mt-4 flex items-center justify-center gap-1",
 		statsText: "text-xs font-semibold text-white/70 uppercase tracking-wider",
-		toggleRow: "flex items-center justify-between",
+		toggleRow: "flex items-center justify-between gap-3",
 		toggleLabel: "text-foreground text-sm font-semibold",
 		toggleDescription: "text-muted-foreground mt-0.5 text-xs",
 		startButton:
@@ -103,6 +103,7 @@ function DeckOverview(): ReactTypes.JSXElement {
 							</Paragraph>
 						</Box>
 						<Switch
+							className="shrink-0"
 							checked={autoPlayAudio}
 							onCheckedChange={handleAutoPlayAudioToggleChange}
 						/>
@@ -116,6 +117,7 @@ function DeckOverview(): ReactTypes.JSXElement {
 							</Paragraph>
 						</Box>
 						<Switch
+							className="shrink-0"
 							checked={showSentenceByDefault}
 							onCheckedChange={handleSentenceToggleChange}
 						/>
@@ -129,6 +131,7 @@ function DeckOverview(): ReactTypes.JSXElement {
 							</Paragraph>
 						</Box>
 						<Switch
+							className="shrink-0"
 							checked={showTranslationByDefault}
 							onCheckedChange={handleTranslationToggleChange}
 						/>

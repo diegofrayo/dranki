@@ -8,6 +8,8 @@ import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 
 import "./globals.css";
 
+import Script from "next/script";
+
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 type RootLayoutProps = Readonly<{
@@ -15,14 +17,29 @@ type RootLayoutProps = Readonly<{
 }>;
 
 export default function RootLayout({ children }: RootLayoutProps): ReactTypes.JSXElement {
-	const styles = {
+	// --- STYLES ---
+	const classes = {
 		body: cn(`font-sans antialiased`, customFont.variable),
 	};
+
 	return (
 		<html lang="en">
-			<body className={styles.body}>
+			<body className={classes.body}>
 				{children}
-				{process.env.NODE_ENV === "production" && <Analytics />}
+
+				{process.env.NODE_ENV === "production" ? (
+					<Analytics />
+				) : (
+					<>
+						<Script
+							src="https://cdn.jsdelivr.net/npm/eruda"
+							strategy="beforeInteractive"
+							async={false}
+							defer={false}
+						/>
+						<Script>window.eruda?.init();</Script>
+					</>
+				)}
 			</body>
 		</html>
 	);
@@ -84,5 +101,5 @@ export const viewport: Viewport = {
 	initialScale: 1,
 	maximumScale: 1,
 	userScalable: false,
-	themeColor: PROJECT_METADATA.backgroundColor,
+	themeColor: PROJECT_METADATA.themeColor,
 };

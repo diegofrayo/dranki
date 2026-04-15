@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 import type ReactTypes from "../types/react";
 
@@ -6,12 +6,7 @@ function withRenderInBrowser<ComponentProps extends object>(
 	Component: ReactTypes.FunctionComponent<ComponentProps>,
 ): ReactTypes.FunctionComponent<ComponentProps> {
 	function RenderInBrowserComponent(props: ComponentProps): ReactTypes.JSXElementNullable {
-		const [isMounted, setIsMounted] = useState(false);
-
-		useEffect(function onMount() {
-			// eslint-disable-next-line react-hooks/set-state-in-effect
-			setIsMounted(true);
-		}, []);
+		const isMounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
 		if (!isMounted) return null;
 
@@ -26,3 +21,14 @@ function withRenderInBrowser<ComponentProps extends object>(
 }
 
 export default withRenderInBrowser;
+
+// --- UTILS ---
+
+const subscribe = (): (() => void) => {
+	console.log("withRenderInBrowser ☑️");
+	return (): void => {};
+};
+
+const getSnapshot = (): boolean => true;
+
+const getServerSnapshot = (): boolean => false;

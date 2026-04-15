@@ -11,8 +11,8 @@ export default function manifest(): MetadataRoute.Manifest {
 		start_url: "/",
 		display_override: ["standalone", "fullscreen", "minimal-ui"],
 		display: "standalone",
-		background_color: "#FFFFFF",
-		theme_color: PROJECT_METADATA.backgroundColor,
+		background_color: PROJECT_METADATA.themeColor,
+		theme_color: PROJECT_METADATA.themeColor,
 		orientation: "portrait",
 		icons: [
 			{
@@ -30,6 +30,7 @@ export default function manifest(): MetadataRoute.Manifest {
 				sizes: "192x192",
 				type: "image/png",
 			},
+			/*
 			{
 				src: `${FAVICON_PATH}/android-chrome-512x512.png`,
 				sizes: "512x512",
@@ -42,6 +43,7 @@ export default function manifest(): MetadataRoute.Manifest {
 				type: "image/png",
 				purpose: "maskable",
 			},
+      */
 		],
 		screenshots: [
 			{

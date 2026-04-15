@@ -1,5 +1,6 @@
 "use client";
 
+import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, ButtonSize, ButtonVariant, Icon, IconCatalog } from "~/components/primitive";
@@ -26,13 +27,13 @@ function PracticeCards(): ReactTypes.JSXElement {
 
 	// --- STYLES ---
 	const classes = {
-		root: "flex flex-1 flex-col",
+		root: "flex flex-1 flex-col min-h-0 gap-4",
 		cardArea: "relative flex-1",
-		controls: "flex items-center justify-center gap-4 py-5",
+		controls: cn("grid shrink-0 grid-cols-2 items-center justify-center gap-4"),
 		recognizedButton:
 			"h-16 flex-1 rounded-2xl border-2 border-primary text-primary transition-all active:scale-95 hover:bg-primary hover:text-primary-foreground",
 		practiceMoreButton:
-			"h-16 flex-1 rounded-2xl border-2 border-destructive text-destructive transition-all active:scale-95 hover:bg-destructive hover:text-destructive-foreground",
+			"h-16 flex-1 rounded-2xl border-2 border-destructive text-destructive transition-all active:scale-95 hover:bg-destructive hover:text-destructive-foreground px-0",
 	};
 
 	// --- HANDLERS ---
