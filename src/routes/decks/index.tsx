@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import api from "~/api";
 import DecksPage from "~/features/pages/decks";
 
-export const Route = createFileRoute("/decks")({
+export const Route = createFileRoute("/decks/")({
 	loader: async () => {
 		const decks = await api.decks.getDecks();
 

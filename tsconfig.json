@@ -63,7 +63,8 @@
 		"src/**/*.ts",
 		"src/**/*.tsx",
 		".next/types/**/*.ts",
-		".next/dev/types/**/*.ts"
+		".next/dev/types/**/*.ts",
+		"src/routes/texts/$textId.tsx"
 	],
 	"exclude": ["node_modules", "src/_legacy"]
 }
