@@ -2,6 +2,7 @@
 
 import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
 import cn from "@diegofrayo-pkg/cn";
+import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { MarkdownRenderer } from "~/components/common";
@@ -12,7 +13,7 @@ type TextContentProps = {
 	content: string;
 };
 
-export default function TextContent({ content }: TextContentProps): ReactTypes.JSXElement {
+function TextContent({ content }: TextContentProps): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
 	const [fontSizeIndex, setFontSizeIndex] = useBrowserStorage<number>({
 		key: "DR_TEXT_FONT_SIZE",
@@ -77,9 +78,13 @@ export default function TextContent({ content }: TextContentProps): ReactTypes.J
 	);
 }
 
+export default withRenderInBrowser(TextContent);
+
 // --- CONSTANTS ---
 
-const FONT_SIZES = ["text-sm", "text-base", "text-lg", "text-xl", "text-2xl"] as const;
-type FontSize = (typeof FONT_SIZES)[number];
-
 const DEFAULT_FONT_SIZE_INDEX = 1;
+const FONT_SIZES = ["text-sm", "text-base", "text-lg", "text-xl", "text-2xl"] as const;
+
+// --- TYPES ---
+
+type FontSize = (typeof FONT_SIZES)[number];

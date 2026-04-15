@@ -37,7 +37,7 @@ function transformResponse(raw: RawGetLessonsResponse): GetLessonsResponse {
 	return raw.map((lesson) => ({
 		id: lesson.id,
 		title: lesson.title,
-		emoji: lesson.emoji,
+		emoji: lesson.emoji || "📖",
 		description: lesson.description,
 	}));
 }

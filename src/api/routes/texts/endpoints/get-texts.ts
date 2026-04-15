@@ -22,6 +22,7 @@ export default getTexts;
 const RawTextSchema = z.object({
 	id: z.string(),
 	title: z.string(),
+	emoji: z.string(),
 	lesson_id: z.string(),
 });
 
@@ -38,13 +39,10 @@ async function transformResponse(raw: RawGetTextsResponse): Promise<GetTextsResp
 		raw.map(async (rawText) => {
 			const lesson = await getLessonById(rawText.lesson_id);
 
-			if (!lesson) {
-				throw new Error(`Lesson with id "${rawText.lesson_id}" not found`);
-			}
-
 			return {
 				id: rawText.id,
 				title: rawText.title,
+				emoji: rawText.emoji || "📝",
 				lesson,
 			};
 		}),

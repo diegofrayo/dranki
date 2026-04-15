@@ -5,10 +5,6 @@ async function getTextById(textId: string): Promise<GetTextByIdResponse> {
 	const texts = await getTexts();
 	const text = texts.find((item) => item.id === textId);
 
-	// if (!text) {
-	// 	throw new Error(`Text with id "${textId}" not found`);
-	// }
-
 	return text;
 }
 

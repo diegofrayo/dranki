@@ -1,5 +1,4 @@
 import { cva } from "class-variance-authority";
-import FrameworkLink, { type LinkProps as FrameworkLinkComponentProps } from "next/link";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
@@ -18,17 +17,10 @@ type LinkBase = {
 interface NativeLinkProps extends AnchorHtmlAttributes, LinkBase {
 	children: ReactTypes.Children;
 	href: string;
-	isExternalLink: true;
+	isExternalLink?: boolean;
 }
 
-interface FrameworkLinkProps extends FrameworkLinkComponentProps, LinkBase {
-	children: ReactTypes.Children;
-	href: string;
-	isExternalLink?: false;
-	className?: string;
-}
-
-type LinkProps = NativeLinkProps | FrameworkLinkProps;
+type LinkProps = NativeLinkProps;
 
 // --- COMPONENT DEFINITION ---
 
@@ -39,30 +31,21 @@ function Link({
 }: LinkProps): ReactTypes.JSXElement {
 	// --- UTILS ---
 	function composeLinkAttributes(): { target?: "_blank"; rel?: "noreferrer" } {
-		if (props.href?.startsWith("#")) return {};
+		if (props.isExternalLink) {
+			return { target: "_blank", rel: "noreferrer" };
+		}
 
-		return { target: "_blank", rel: "noreferrer" };
-	}
-
-	if ("isExternalLink" in props && props.isExternalLink === true) {
-		return (
-			<a
-				className={cn(`dr-link dr-link--${variant.toLowerCase()}`, styles({ variant }), className)}
-				{...composeLinkAttributes()}
-				{...omit(props, ["isExternalLink"])}
-			>
-				{props.children}
-			</a>
-		);
+		return {};
 	}
 
 	return (
-		<FrameworkLink
+		<a
 			className={cn(`dr-link dr-link--${variant.toLowerCase()}`, styles({ variant }), className)}
+			{...composeLinkAttributes()}
 			{...omit(props, ["isExternalLink"])}
 		>
 			{props.children}
-		</FrameworkLink>
+		</a>
 	);
 }
 

@@ -4,5 +4,11 @@
 		"title": "Passive voice",
 		"emoji": "🗣️",
 		"description": "The passive voice is used when the focus is on the action, not on who performs it."
+	},
+	{
+		"id": "relative-clauses",
+		"title": "Relative clauses",
+		"emoji": "",
+		"description": "A relative clause is a part of a sentence that gives extra information about a noun"
 	}
 ]

@@ -5,10 +5,6 @@ async function getLessonById(lessonId: string): Promise<GetLessonByIdResponse> {
 	const lessons = await getLessons();
 	const lesson = lessons.find((item) => item.id === lessonId);
 
-	// if (!lesson) {
-	// 	throw new Error(`Lesson with id "${lessonId}" not found`);
-	// }
-
 	return lesson;
 }
 

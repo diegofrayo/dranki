@@ -28,24 +28,28 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 				as="section"
 				className="flex flex-col gap-4"
 			>
-				{texts.map((text) => (
-					<Link
-						key={text.title}
-						href={Routes.TEXT(text.id)}
-						className={`block rounded-2xl bg-violet-600 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80`}
-					>
-						<Paragraph className="mb-1 text-3xl">{text.lesson.emoji}</Paragraph>
-						<Title
-							as="h2"
-							className="text-lg font-bold text-white"
+				{texts.map((text) => {
+					return (
+						<Link
+							key={text.title}
+							href={Routes.TEXT(text.id)}
+							className="block rounded-2xl bg-violet-600 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
 						>
-							{text.title}
-						</Title>
-						<Paragraph className="mt-1 text-right text-sm text-white/80 italic">
-							{text.lesson.title}
-						</Paragraph>
-					</Link>
-				))}
+							<Paragraph className="mb-1 text-3xl">{text.lesson?.emoji || text.emoji}</Paragraph>
+							<Title
+								as="h2"
+								className="text-lg font-bold text-white"
+							>
+								{text.title}
+							</Title>
+							{text.lesson && (
+								<Paragraph className="mt-1 text-right text-sm text-white/80 italic">
+									{text.lesson.title}
+								</Paragraph>
+							)}
+						</Link>
+					);
+				})}
 			</Box>
 		</MainLayout>
 	);

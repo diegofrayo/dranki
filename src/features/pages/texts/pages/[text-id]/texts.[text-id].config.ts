@@ -10,8 +10,8 @@ async function generateMetadata(textId: string): Promise<Metadata> {
 	}
 
 	return {
-		title: composePageTitle(`${textDetails.lesson.emoji} ${textDetails.title}`),
-		description: textDetails.lesson.description,
+		title: composePageTitle(`${textDetails.lesson?.emoji || ""} ${textDetails.title}`).trim(),
+		description: textDetails.lesson?.description || "",
 	};
 }
 

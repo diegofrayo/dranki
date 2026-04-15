@@ -25,21 +25,28 @@ export default function RootLayout({ children }: RootLayoutProps): ReactTypes.JS
 			<body className={classes.body}>
 				{children}
 
-				{process.env.NODE_ENV === "production" ? (
-					<Analytics />
-				) : (
-					<>
-						<Script
-							src="https://cdn.jsdelivr.net/npm/eruda"
-							strategy="beforeInteractive"
-							async={false}
-							defer={false}
-						/>
-						<Script>window.eruda?.init();</Script>
-					</>
-				)}
+				{process.env.NODE_ENV === "production" && <Analytics />}
+				<RemoteDebugger />
 			</body>
 		</html>
+	);
+}
+
+// --- COMPONENTS ---
+
+function RemoteDebugger(): ReactTypes.JSXElementNullable {
+	if (process.env.NODE_ENV !== "test") return null;
+
+	return (
+		<>
+			<Script
+				src="https://cdn.jsdelivr.net/npm/eruda"
+				strategy="beforeInteractive"
+				async={false}
+				defer={false}
+			/>
+			<Script>window.eruda?.init();</Script>
+		</>
 	);
 }
 

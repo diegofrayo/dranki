@@ -58,7 +58,7 @@
 }
 
 .table {
-	@apply border-border w-full border-collapse text-sm;
+	@apply border-border w-full border-collapse;
 }
 
 .thead {
