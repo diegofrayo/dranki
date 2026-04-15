@@ -1,28 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 
-import TextPage, { pageConfig } from "~/features/pages/texts/pages/[text-id]";
+import TextLessonPage from "~/features/pages/texts/pages/[text-id]/texts.[text-id].page";
+import { textLoader } from "~/features/router/tan-stack-loaders.server";
 
 const getServerData = createServerFn()
 	.inputValidator((data: { textId: string }) => data)
 	.handler(async (ctx) => {
-		const { textContent, textDetails } = await pageConfig.loader(ctx.data.textId);
-
-		return { textContent, textDetails };
+		return textLoader(ctx.data.textId);
 	});
 
 export const Route = createFileRoute("/texts/$textId")({
 	ssr: true,
-	loader: async ({ params }) => {
+	beforeLoad: async ({ params }) => {
 		const textId = params["textId"];
 
 		return getServerData({ data: { textId } });
 	},
-	component: function TextPageWrapper() {
+	component: function TextLessonPageWrapper() {
 		const { textDetails, textContent } = Route.useLoaderData();
 
 		return (
-			<TextPage
+			<TextLessonPage
 				textDetails={textDetails}
 				content={textContent}
 			/>

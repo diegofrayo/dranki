@@ -1,13 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 
-import api from "~/api";
 import DecksPage from "~/features/pages/decks";
+import { decksLoader } from "~/features/router/tan-stack-loaders.server";
+
+export const getData = createServerFn().handler(() => {
+	return decksLoader();
+});
 
 export const Route = createFileRoute("/decks/")({
-	loader: async () => {
-		const decks = await api.decks.getDecks();
-
-		return { decks };
+	loader: () => {
+		return getData();
 	},
 	component: function DecksPageWrapper() {
 		const { decks } = Route.useLoaderData();

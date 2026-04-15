@@ -1,19 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 
-import DeckPage, { pageConfig } from "~/features/pages/decks/pages/[deck-id]";
+import DeckPage from "~/features/pages/decks/pages/[deck-id]/decks.[deck-id].page";
+import { deckLoader } from "~/features/router/tan-stack-loaders.server";
 
 const getServerData = createServerFn()
 	.inputValidator((data: { deckId: string }) => data)
-	.handler(async (ctx) => {
-		const { deck } = await pageConfig.loader(ctx.data.deckId);
-
-		return { deck };
+	.handler((ctx) => {
+		return deckLoader(ctx.data.deckId);
 	});
 
 export const Route = createFileRoute("/decks/$deckId")({
 	ssr: true,
-	loader: async ({ params }) => {
+	loader: ({ params }) => {
 		const deckId = params["deckId"];
 
 		return getServerData({ data: { deckId } });

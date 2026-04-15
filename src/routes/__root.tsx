@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-import type { ReactNode } from "react";
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
@@ -26,7 +24,9 @@ function RootComponent(): ReactTypes.JSXElement {
 	);
 }
 
-function RootDocument({ children }: Readonly<{ children: ReactNode }>): ReactTypes.JSXElement {
+function RootDocument({
+	children,
+}: Readonly<{ children: ReactTypes.Children }>): ReactTypes.JSXElement {
 	return (
 		<html>
 			<head>

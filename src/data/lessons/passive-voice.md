@@ -8,8 +8,7 @@ The developer writes the code. (focus on the doer)
 
 ## 👉 In passive voice:
 
-The code is written (by the developer). (focus on the result/action)
-Structure
+The code is written (by the developer). (focus on the result/action). Structure:
 
 > Object + verb “to be” (conjugated) + past participle (+ by + subject, optional)
 

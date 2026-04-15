@@ -1,13 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 
-import api from "~/api";
 import TextsPage from "~/features/pages/texts";
+import { textsLoader } from "~/features/router/tan-stack-loaders.server";
+
+export const getData = createServerFn().handler(async () => {
+	return textsLoader();
+});
 
 export const Route = createFileRoute("/texts/")({
 	loader: async () => {
-		const texts = await api.texts.getTexts();
-
-		return { texts };
+		return getData();
 	},
 	component: function TextsPageWrapper() {
 		const { texts } = Route.useLoaderData();

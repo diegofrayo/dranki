@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 
-import LessonPage, { pageConfig } from "~/features/pages/lessons/pages/[lesson-id]";
+import LessonPage from "~/features/pages/lessons/pages/[lesson-id]/lessons.[lesson-id].page";
+import { lessonLoader } from "~/features/router/tan-stack-loaders.server";
 
 const getServerData = createServerFn()
 	.inputValidator((data: { lessonId: string }) => data)
-	.handler(async (ctx) => {
-		const { lessonContent, lesson } = await pageConfig.loader(ctx.data.lessonId);
-		return { lessonContent, lesson };
+	.handler((ctx) => {
+		return lessonLoader(ctx.data.lessonId);
 	});
 
 export const Route = createFileRoute("/lessons/$lessonId")({

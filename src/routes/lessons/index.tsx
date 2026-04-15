@@ -1,15 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 
-import api from "~/api";
-import LessonsPage from "~/features/pages/lessons";
+import LessonsPage from "~/features/pages/lessons/lessons.page";
+import { lessonsLoader } from "~/features/router/tan-stack-loaders.server";
 
 export const getData = createServerFn().handler(async () => {
-	const lessons = await api.lessons.getLessons();
-	return { lessons };
+	return lessonsLoader();
 });
 
 export const Route = createFileRoute("/lessons/")({
+	ssr: true,
 	loader: async () => {
 		return getData();
 	},

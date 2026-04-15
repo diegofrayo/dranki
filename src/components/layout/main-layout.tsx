@@ -1,7 +1,7 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Image, Paragraph, Title } from "~/components/primitive";
-import { PROJECT_METADATA } from "~/constants";
+import { Box, Image, Link, Paragraph, Title } from "~/components/primitive";
+import { PROJECT_METADATA, Routes } from "~/constants";
 
 import Breadcrumb from "./breadcrumb";
 
@@ -24,13 +24,18 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 				className="border-border bg-background/80 sticky top-0 z-40 w-full shrink-0 border-b backdrop-blur-md"
 			>
 				<Box className="mx-auto flex max-w-md gap-3 px-4 py-4">
-					<Image
-						src="/logo/logo.png"
-						alt="dranki logo"
-						className="size-12"
-						width={32}
-						height={32}
-					/>
+					<Link
+						href={Routes.INDEX}
+						className="block"
+					>
+						<Image
+							src="/logo/logo.png"
+							alt="dranki logo"
+							className="size-12"
+							width={32}
+							height={32}
+						/>
+					</Link>
 					<Box>
 						<Title
 							as="h1"
