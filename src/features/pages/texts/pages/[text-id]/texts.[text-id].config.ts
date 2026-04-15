@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 
 import api, { type Text } from "~/api";
+import { composePageTitle } from "~/utils/misc";
 
 async function generateMetadata(textId: string): Promise<Metadata> {
 	const textDetails = await api.texts.getTextById(textId);
 
 	if (!textDetails) {
-		return { title: "Text not found - dranki" };
+		return { title: composePageTitle("Text not found") };
 	}
 
 	return {
-		title: `${textDetails.lesson.emoji} ${textDetails.title} - dranki`,
+		title: composePageTitle(`${textDetails.lesson.emoji} ${textDetails.title}`),
 		description: textDetails.lesson.description,
 	};
 }

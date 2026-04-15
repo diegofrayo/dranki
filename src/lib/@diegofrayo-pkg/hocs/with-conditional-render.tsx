@@ -1,13 +1,13 @@
 import type ReactTypes from "../types/react";
 
-type WithConditionalRenderReturn<ComponentProps> = (
+type ConditionalRenderComponent<ComponentProps> = (
 	callback: () => boolean,
 ) => ReactTypes.FunctionComponent<ComponentProps>;
 
 function withConditionalRender<ComponentProps extends object>(
 	WrappedComponent: ReactTypes.FunctionComponent<ComponentProps>,
-): WithConditionalRenderReturn<ComponentProps> {
-	const withConditionalRenderReturn: WithConditionalRenderReturn<ComponentProps> =
+): ConditionalRenderComponent<ComponentProps> {
+	const ConditionalRenderComponent: ConditionalRenderComponent<ComponentProps> =
 		function withConditionalRenderReturn(callback) {
 			function RenderIfComponent(props: ComponentProps): ReactTypes.JSXElementNullable {
 				const shouldRender = callback();
@@ -24,7 +24,7 @@ function withConditionalRender<ComponentProps extends object>(
 			return RenderIfComponent;
 		};
 
-	return withConditionalRenderReturn;
+	return ConditionalRenderComponent;
 }
 
 export default withConditionalRender;

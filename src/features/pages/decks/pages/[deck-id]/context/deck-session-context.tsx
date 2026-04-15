@@ -6,6 +6,7 @@ import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck, DeckPhrase } from "~/api";
+import { PROJECT_METADATA } from "~/constants";
 
 import type { Phase } from "../decks.[deck-id].types";
 
@@ -19,11 +20,15 @@ type DeckSessionContextValue = {
 	phrases: DeckPhrase[];
 	practiceMoreCount: number;
 	recognizedCount: number;
+	autoPlayAudio: boolean;
+	showSentenceByDefault: boolean;
 	showTranslationByDefault: boolean;
 	startTime: string;
 	clearSession: () => void;
 	markPracticeMore: () => void;
 	markRecognized: () => void;
+	setAutoPlayAudio: (value: boolean) => void;
+	setShowSentenceByDefault: (value: boolean) => void;
 	setShowTranslationByDefault: (value: boolean) => void;
 	startSession: () => void;
 };
@@ -40,39 +45,50 @@ const DeckSessionContext = createContext<DeckSessionContextValue | null>(null);
 // --- PROVIDER ---
 
 function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): ReactTypes.JSXElement {
+	const browserStorageBaseKey = `${PROJECT_METADATA.appName}_${deck.id}`;
+
 	// --- HOOKS ---
 	const [phase, setPhase, clearPhase] = useBrowserStorage<Phase>({
-		key: `dranki_${deck.id}_phase`,
+		key: `${browserStorageBaseKey}_phase`,
 		value: "overview",
 	});
 	const [phrases, setPhrases, clearPhrases] = useBrowserStorage<DeckPhrase[]>({
-		key: `dranki_${deck.id}_phrases`,
+		key: `${browserStorageBaseKey}_phrases`,
 		value: [],
 	});
 	const [currentIndex, setCurrentIndex, clearCurrentIndex] = useBrowserStorage<number>({
-		key: `dranki_${deck.id}_currentIndex`,
+		key: `${browserStorageBaseKey}_currentIndex`,
 		value: 0,
 	});
 	const [recognizedCount, setRecognizedCount, clearRecognizedCount] = useBrowserStorage<number>({
-		key: `dranki_${deck.id}_recognized`,
+		key: `${browserStorageBaseKey}_recognized`,
 		value: 0,
 	});
 	const [practiceMoreCount, setPracticeMoreCount, clearPracticeMoreCount] =
 		useBrowserStorage<number>({
-			key: `dranki_${deck.id}_practiceMore`,
+			key: `${browserStorageBaseKey}_practiceMore`,
 			value: 0,
+		});
+	const [autoPlayAudio, setAutoPlayAudio, clearAutoPlayAudio] = useBrowserStorage<boolean>({
+		key: `${browserStorageBaseKey}_autoPlayAudio`,
+		value: true,
+	});
+	const [showSentenceByDefault, setShowSentenceByDefault, clearShowSentenceByDefault] =
+		useBrowserStorage<boolean>({
+			key: `${browserStorageBaseKey}_showSentence`,
+			value: true,
 		});
 	const [showTranslationByDefault, setShowTranslationByDefault, clearShowTranslationByDefault] =
 		useBrowserStorage<boolean>({
-			key: `dranki_${deck.id}_showTranslation`,
+			key: `${browserStorageBaseKey}_showTranslation`,
 			value: false,
 		});
 	const [startTime, setStartTime, clearStartTime] = useBrowserStorage<string>({
-		key: `dranki_${deck.id}_startTime`,
+		key: `${browserStorageBaseKey}_startTime`,
 		value: "",
 	});
 	const [endTime, setEndTime, clearEndTime] = useBrowserStorage<string>({
-		key: `dranki_${deck.id}_endTime`,
+		key: `${browserStorageBaseKey}_endTime`,
 		value: "",
 	});
 
@@ -122,6 +138,8 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		clearCurrentIndex();
 		clearRecognizedCount();
 		clearPracticeMoreCount();
+		clearAutoPlayAudio();
+		clearShowSentenceByDefault();
 		clearShowTranslationByDefault();
 		clearStartTime();
 		clearEndTime();
@@ -138,11 +156,15 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 				phrases,
 				practiceMoreCount,
 				recognizedCount,
+				autoPlayAudio,
+				showSentenceByDefault,
 				showTranslationByDefault,
 				startTime,
 				clearSession,
 				markPracticeMore,
 				markRecognized,
+				setAutoPlayAudio,
+				setShowSentenceByDefault,
 				setShowTranslationByDefault,
 				startSession,
 			}}
@@ -166,9 +188,11 @@ export { DeckSessionProvider, useDeckSession };
 
 function shuffleArray<T>(array: T[]): T[] {
 	const shuffled = [...array];
+
 	for (let i = shuffled.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[shuffled[i], shuffled[j]] = [shuffled[j] as T, shuffled[i] as T];
 	}
+
 	return shuffled;
 }

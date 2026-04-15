@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 
 import api, { type Deck } from "~/api";
+import { composePageTitle } from "~/utils/misc";
 
 async function generateMetadata(deckId: string): Promise<Metadata> {
 	const deck = await api.decks.getDeckById(deckId);
 
 	if (!deck) {
-		return { title: "Deck not found - dranki" };
+		return { title: composePageTitle("Deck not found") };
 	}
 
 	return {
-		title: `${deck.emoji} ${deck.title} - dranki`,
+		title: composePageTitle(`${deck.emoji} ${deck.title}`),
 		description: deck.description,
 	};
 }

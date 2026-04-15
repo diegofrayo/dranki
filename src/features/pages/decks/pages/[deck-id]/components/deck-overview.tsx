@@ -11,6 +11,7 @@ import {
 	IconCatalog,
 	InlineText,
 	Paragraph,
+	Separator,
 	Switch,
 	Title,
 } from "~/components/primitive";
@@ -19,8 +20,16 @@ import { useDeckSession } from "../context/deck-session-context";
 
 function DeckOverview(): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const { deck, showTranslationByDefault, setShowTranslationByDefault, startSession } =
-		useDeckSession();
+	const {
+		deck,
+		autoPlayAudio,
+		showSentenceByDefault,
+		showTranslationByDefault,
+		setAutoPlayAudio,
+		setShowSentenceByDefault,
+		setShowTranslationByDefault,
+		startSession,
+	} = useDeckSession();
 
 	// --- COMPUTED STATES ---
 	const isEmptyDeck = deck.phrases?.length === 0;
@@ -44,6 +53,14 @@ function DeckOverview(): ReactTypes.JSXElement {
 	};
 
 	// --- HANDLERS ---
+	function handleAutoPlayAudioToggleChange(checked: boolean): void {
+		setAutoPlayAudio(checked);
+	}
+
+	function handleSentenceToggleChange(checked: boolean): void {
+		setShowSentenceByDefault(checked);
+	}
+
 	function handleTranslationToggleChange(checked: boolean): void {
 		setShowTranslationByDefault(checked);
 	}
@@ -78,6 +95,32 @@ function DeckOverview(): ReactTypes.JSXElement {
 				</Box>
 
 				<Box className={classes.deckCardBody}>
+					<Box className={classes.toggleRow}>
+						<Box>
+							<Paragraph className={classes.toggleLabel}>Auto-play audio</Paragraph>
+							<Paragraph className={classes.toggleDescription}>
+								Play phrase audio automatically when a card appears
+							</Paragraph>
+						</Box>
+						<Switch
+							checked={autoPlayAudio}
+							onCheckedChange={handleAutoPlayAudioToggleChange}
+						/>
+					</Box>
+					<Separator className="bg-border my-4 h-px" />
+					<Box className={classes.toggleRow}>
+						<Box>
+							<Paragraph className={classes.toggleLabel}>Show sentence</Paragraph>
+							<Paragraph className={classes.toggleDescription}>
+								Show sentence by default (disable for listening training)
+							</Paragraph>
+						</Box>
+						<Switch
+							checked={showSentenceByDefault}
+							onCheckedChange={handleSentenceToggleChange}
+						/>
+					</Box>
+					<Separator className="bg-border my-4 h-px" />
 					<Box className={classes.toggleRow}>
 						<Box>
 							<Paragraph className={classes.toggleLabel}>Show translation</Paragraph>
