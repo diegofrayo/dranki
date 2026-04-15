@@ -32,8 +32,8 @@ function SwipeableCard({
 	// --- HOOKS ---
 	const { dragX, dragY, isDragging, isExiting, exitDirection, handlers } = useDragGesture({
 		isEnabled: isCurrentCard,
-		onSwipeLeft: onRecognized,
-		onSwipeRight: onPracticeMore,
+		onSwipeLeft: onPracticeMore,
+		onSwipeRight: onRecognized,
 	});
 
 	// --- STATES & REFS ---
@@ -69,12 +69,12 @@ function SwipeableCard({
 			isCurrentCard && "animate-in fade-in-0 zoom-in-95 duration-300",
 		),
 		card: "absolute inset-0 flex flex-col overflow-hidden rounded-3xl shadow-xl bg-blue-600 text-white",
-		recognizedIndicator: cn(
-			"border-primary text-primary absolute top-6 left-6 z-20 -rotate-12 rounded-xl border-4 px-4 py-2 text-lg font-extrabold uppercase transition-opacity duration-150",
+		practiceMoreIndicator: cn(
+			"border-destructive text-destructive absolute top-6 left-6 z-20 -rotate-12 rounded-xl border-4 px-4 py-2 text-lg font-extrabold uppercase transition-opacity duration-150",
 			dragX < -30 ? "opacity-100" : "opacity-0",
 		),
-		practiceMoreIndicator: cn(
-			"border-destructive text-destructive absolute top-6 right-6 z-20 rotate-12 rounded-xl border-4 px-4 py-2 text-lg font-extrabold uppercase transition-opacity duration-150",
+		recognizedIndicator: cn(
+			"border-primary text-primary absolute top-6 right-6 z-20 rotate-12 rounded-xl border-4 px-4 py-2 text-lg font-extrabold uppercase transition-opacity duration-150",
 			dragX > 30 ? "opacity-100" : "opacity-0",
 		),
 		cardBody: "relative flex flex-1 flex-col items-center justify-center gap-6 p-8",
@@ -153,8 +153,8 @@ function SwipeableCard({
 				className={classes.card}
 				style={{ backgroundColor: deckTheme.backgroundColor, color: deckTheme.fontColor }}
 			>
-				<Box className={classes.recognizedIndicator}>Recognized!</Box>
 				<Box className={classes.practiceMoreIndicator}>Practice more!</Box>
+				<Box className={classes.recognizedIndicator}>Recognized!</Box>
 
 				<Box className={classes.cardBody}>
 					<Button

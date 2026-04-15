@@ -80,19 +80,6 @@ function PracticeCards(): ReactTypes.JSXElement {
 				<Button
 					variant={ButtonVariant.OUTLINE}
 					size={ButtonSize.LG}
-					className={classes.recognizedButton}
-					aria-label="Recognized"
-					onClick={handleRecognizedClick}
-				>
-					<Icon
-						name={IconCatalog.CHECK}
-						size={20}
-					/>
-					Recognized
-				</Button>
-				<Button
-					variant={ButtonVariant.OUTLINE}
-					size={ButtonSize.LG}
 					className={classes.practiceMoreButton}
 					aria-label="Practice more"
 					onClick={handlePracticeMoreClick}
@@ -102,6 +89,19 @@ function PracticeCards(): ReactTypes.JSXElement {
 						size={20}
 					/>
 					Practice more
+				</Button>
+				<Button
+					variant={ButtonVariant.OUTLINE}
+					size={ButtonSize.LG}
+					className={classes.recognizedButton}
+					aria-label="Recognized"
+					onClick={handleRecognizedClick}
+				>
+					<Icon
+						name={IconCatalog.CHECK}
+						size={20}
+					/>
+					Recognized
 				</Button>
 			</Box>
 		</Box>
