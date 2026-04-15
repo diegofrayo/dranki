@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
@@ -17,6 +16,7 @@ import {
 	Title,
 } from "~/components/primitive";
 import { Routes } from "~/constants";
+import { useRouter } from "~/features/router";
 
 import { useDeckSession } from "../../context/deck-session-context";
 import PracticeCards from "./components/practice-cards";

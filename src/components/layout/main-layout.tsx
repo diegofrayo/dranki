@@ -25,7 +25,7 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 			>
 				<Box className="mx-auto flex max-w-md gap-3 px-4 py-4">
 					<Image
-						src={`/logo/logo.png`}
+						src="/logo/logo.png"
 						alt="dranki logo"
 						className="size-12"
 						width={32}

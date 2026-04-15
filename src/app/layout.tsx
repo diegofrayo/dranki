@@ -1,16 +1,12 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Nunito as CustomFont } from "next/font/google";
-
-import cn from "@diegofrayo-pkg/cn";
-
-import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
-
-import "./globals.css";
-
 import Script from "next/script";
 
+import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
+
+import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 
 type RootLayoutProps = Readonly<{
 	children: React.ReactNode;
@@ -19,7 +15,7 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
-		body: cn(`font-sans antialiased`, customFont.variable),
+		body: cn("font-sans antialiased", customFont.variable),
 	};
 
 	return (

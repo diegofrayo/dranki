@@ -1,17 +1,17 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Link, Paragraph } from "~/components/primitive";
+import { Routes } from "~/constants";
+import { useRouter } from "~/features/router";
 
 // --- COMPONENT DEFINITION ---
 
 function Breadcrumb(): ReactTypes.JSXElementNullable {
 	// --- HOOKS ---
-	const pathname = usePathname();
+	const { pathname } = useRouter();
 
 	// --- COMPUTED STATES ---
 	const crumbs = buildCrumbs(pathname);
@@ -25,7 +25,7 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 		separator: "text-muted-foreground select-none",
 	};
 
-	if (pathname === "/") {
+	if (pathname === Routes.INDEX) {
 		return null;
 	}
 
@@ -36,7 +36,7 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 			className={classes.nav}
 		>
 			<Link
-				href="/"
+				href={Routes.INDEX}
 				className={classes.homeLink}
 			>
 				Home

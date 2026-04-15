@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
-
 import api, { type Lesson } from "~/api";
+import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 
 async function generateMetadata(lessonId: string): Promise<Metadata> {

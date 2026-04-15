@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
-
 import api, { type Deck } from "~/api";
+import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 
 async function generateMetadata(deckId: string): Promise<Metadata> {

@@ -27,3 +27,20 @@ public/workbox-*.js.map
 
 # Own
 src/_legacy
+
+# --- Tan stack start project ---
+
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+.output
+.vinxi
+
+# Generated files
+src/routeTree.gen.ts
+.tanstack
+
+# OS
+.DS_Store

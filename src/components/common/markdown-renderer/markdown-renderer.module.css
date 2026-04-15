@@ -1,4 +1,4 @@
-@reference "../../../styles/globals.css";
+@reference "../../../app/globals.css";
 
 .heading1 {
 	@apply text-foreground mt-6 mb-1 font-bold;
