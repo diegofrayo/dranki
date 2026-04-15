@@ -1,0 +1,199 @@
+[
+	{
+		"sentence": "The system is not responding.",
+		"translation": "El sistema no está respondiendo."
+	},
+	{
+		"sentence": "Please restart the computer.",
+		"translation": "Por favor, reinicia el ordenador / la computadora."
+	},
+	{
+		"sentence": "The file is too large to upload.",
+		"translation": "El archivo es demasiado grande para subir."
+	},
+	{
+		"sentence": "Have you tried turning it off and on again?",
+		"translation": "¿Has intentado apagarlo y encenderlo de nuevo?"
+	},
+	{ "sentence": "The server is down.", "translation": "El servidor está caído." },
+	{
+		"sentence": "We need to update the software.",
+		"translation": "Necesitamos actualizar el software."
+	},
+	{
+		"sentence": "The network connection is unstable.",
+		"translation": "La conexión de red es inestable."
+	},
+	{
+		"sentence": "The password you entered is incorrect.",
+		"translation": "La contraseña que ingresaste es incorrecta."
+	},
+	{ "sentence": "Your session has timed out.", "translation": "Tu sesión ha expirado." },
+	{
+		"sentence": "The printer is out of paper.",
+		"translation": "La impresora se ha quedado sin papel."
+	},
+	{
+		"sentence": "We need more storage space.",
+		"translation": "Necesitamos más espacio de almacenamiento."
+	},
+	{ "sentence": "The application has crashed.", "translation": "La aplicación ha fallado." },
+	{
+		"sentence": "The database needs to be backed up.",
+		"translation": "La base de datos necesita una copia de respaldo."
+	},
+	{
+		"sentence": "We need to install the latest version of the software.",
+		"translation": "Necesitamos instalar la última versión del software."
+	},
+	{
+		"sentence": "You need to clear your browser cache.",
+		"translation": "Debes borrar la caché del navegador."
+	},
+	{
+		"sentence": "Can you help me with this error message?",
+		"translation": "¿Puedes ayudarme con este mensaje de error?"
+	},
+	{
+		"sentence": "Please check your internet connection.",
+		"translation": "Por favor, verifica tu conexión a internet."
+	},
+	{
+		"sentence": "The software update is available now.",
+		"translation": "La actualización del software está disponible ahora."
+	},
+	{
+		"sentence": "I'm having trouble logging into my account.",
+		"translation": "Tengo problemas para iniciar sesión en mi cuenta."
+	},
+	{ "sentence": "Can you reset my password?", "translation": "¿Puedes reiniciar mi contraseña?" },
+	{
+		"sentence": "I need to install antivirus software.",
+		"translation": "Necesito instalar un software antivirus."
+	},
+	{
+		"sentence": "The application is not responding properly.",
+		"translation": "La aplicación no está respondiendo correctamente."
+	},
+	{
+		"sentence": "Please save your work before closing the program.",
+		"translation": "Por favor, guarda tu trabajo antes de cerrar el programa."
+	},
+	{
+		"sentence": "You need to configure your email settings.",
+		"translation": "Necesitas configurar la configuración de tu correo electrónico."
+	},
+	{
+		"sentence": "Please make sure your firewall is enabled.",
+		"translation": "Por favor, asegúrate de que tu cortafuegos está habilitado."
+	},
+	{ "sentence": "I need to reboot the system.", "translation": "Necesito reiniciar el sistema." },
+	{
+		"sentence": "The network drive is not accessible.",
+		"translation": "La unidad de red no es accesible."
+	},
+	{
+		"sentence": "The computer is running slow.",
+		"translation": "El ordenador está funcionando lento."
+	},
+	{
+		"sentence": "Can you assist me with setting up my new device?",
+		"translation": "¿Puedes asistirme con la configuración de mi nuevo dispositivo?"
+	},
+	{
+		"sentence": "The system is generating error reports.",
+		"translation": "El sistema está generando informes de errores."
+	},
+	{
+		"sentence": "The file format is not supported.",
+		"translation": "El formato del archivo no es compatible."
+	},
+	{
+		"sentence": "The email client is not syncing properly.",
+		"translation": "El cliente de correo electrónico no está sincronizando correctamente."
+	},
+	{
+		"sentence": "The system update requires a restart.",
+		"translation": "La actualización del sistema requiere un reinicio."
+	},
+	{
+		"sentence": "The software is incompatible with your operating system.",
+		"translation": "El software es incompatible con tu sistema operativo."
+	},
+	{
+		"sentence": "Please log out of all accounts.",
+		"translation": "Por favor, cierra sesión en todas las cuentas."
+	},
+	{
+		"sentence": "The email server is down for maintenance.",
+		"translation": "El servidor de correo electrónico está inactivo por mantenimiento."
+	},
+	{
+		"sentence": "The system needs a security patch.",
+		"translation": "El sistema necesita un parche de seguridad."
+	},
+	{
+		"sentence": "The system is running a diagnostic scan.",
+		"translation": "El sistema está realizando un escaneo de diagnóstico."
+	},
+	{
+		"sentence": "You should enable two-factor authentication.",
+		"translation": "Deberías habilitar la autenticación de dos factores."
+	},
+	{
+		"sentence": "Please download the latest version of the software.",
+		"translation": "Por favor, descarga la versión más reciente del software."
+	},
+	{
+		"sentence": "The system is experiencing high traffic.",
+		"translation": "El sistema está experimentando alto tráfico."
+	},
+	{
+		"sentence": "The system needs more memory.",
+		"translation": "El sistema necesita más memoria."
+	},
+	{
+		"sentence": "Please connect to the Wi-Fi network.",
+		"translation": "Por favor, conéctate a la red Wi-Fi."
+	},
+	{
+		"sentence": "Please provide your system specifications.",
+		"translation": "Por favor, proporcione las especificaciones de su sistema."
+	},
+	{
+		"sentence": "Please check the network connectivity.",
+		"translation": "Por favor, revise la conectividad de la red."
+	},
+	{
+		"sentence": "The software license has expired.",
+		"translation": "La licencia del software ha expirado."
+	},
+	{
+		"sentence": "The user account needs to be created.",
+		"translation": "Se necesita crear la cuenta de usuario."
+	},
+	{
+		"sentence": "The device is not recognizing the USB drive.",
+		"translation": "El dispositivo no está reconociendo la unidad USB."
+	},
+	{
+		"sentence": "The device is not connecting to the internet.",
+		"translation": "El dispositivo no se está conectando a internet."
+	},
+	{
+		"sentence": "Please disable the pop-up blocker temporarily.",
+		"translation": "Por favor, desactiva el bloqueador de ventanas emergentes temporalmente."
+	},
+	{
+		"sentence": "The computer needs to install the latest drivers.",
+		"translation": "El ordenador necesita instalar los últimos controladores."
+	},
+	{
+		"sentence": "Please check the system logs for more details.",
+		"translation": "Por favor, revise los registros del sistema para más detalles."
+	},
+	{
+		"sentence": "Please follow the on-screen instructions to proceed.",
+		"translation": "Por favor, sigue las instrucciones en pantalla para continuar."
+	}
+]

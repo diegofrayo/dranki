@@ -9,10 +9,19 @@
 		"created_at": ""
 	},
 	{
-		"id": "phrasal-verbs",
-		"title": "Most 20 useful phrasal verbs",
+		"id": "traveling-phrases",
+		"title": "Traveling phrases",
 		"description": "",
-		"emoji": "",
+		"emoji": "✈️",
+		"theme": { "background_color": "", "font_color": "" },
+		"lesson_id": "",
+		"created_at": ""
+	},
+	{
+		"id": "computing-phrases",
+		"title": "Computing phrases",
+		"description": "",
+		"emoji": "🤖",
 		"theme": { "background_color": "", "font_color": "" },
 		"lesson_id": "",
 		"created_at": ""

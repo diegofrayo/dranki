@@ -1,0 +1,150 @@
+[
+	{
+		"sentence": "Can you recommend a good hostel around here?",
+		"translation": "¿Puede recomendarme un buen albergue cercano?"
+	},
+	{
+		"sentence": "How much does this tour cost?",
+		"translation": "¿Cuánto cuesta este tour?"
+	},
+	{
+		"sentence": "Where can I find a local SIM card?",
+		"translation": "¿Dónde puedo encontrar una tarjeta SIM local?"
+	},
+	{
+		"sentence": "Is there a place to store my luggage?",
+		"translation": "¿Hay algún lugar para guardar mi equipaje?"
+	},
+	{
+		"sentence": "Can I pay with a credit card?",
+		"translation": "¿Puedo pagar con tarjeta de crédito?"
+	},
+	{
+		"sentence": "Where is the nearest ATM?",
+		"translation": "¿Dónde está el cajero automático más cercano?"
+	},
+	{
+		"sentence": "I need directions to the train station.",
+		"translation": "Necesito instrucciones para llegar a la estación de tren."
+	},
+	{
+		"sentence": "What time does the next bus leave?",
+		"translation": "¿A qué hora sale el próximo autobús?"
+	},
+	{
+		"sentence": "Can you help me with my backpack?",
+		"translation": "¿Puedes ayudarme con mi mochila?"
+	},
+	{
+		"sentence": "Is there a Wi-Fi connection here?",
+		"translation": "¿Hay conexión Wi-Fi aquí?"
+	},
+	{
+		"sentence": "I'm looking for a good place to eat.",
+		"translation": "Estoy buscando un buen lugar para comer."
+	},
+	{
+		"sentence": "How far is the nearest hospital?",
+		"translation": "¿Qué distancia hay al hospital más cercano?"
+	},
+	{
+		"sentence": "Can you recommend a local guide?",
+		"translation": "¿Puede recomendarme un guía local?"
+	},
+	{
+		"sentence": "Where can I buy a map?",
+		"translation": "¿Dónde puedo comprar un mapa?"
+	},
+	{
+		"sentence": "Do you have any vegetarian options?",
+		"translation": "¿Tienen opciones vegetarianas?"
+	},
+	{
+		"sentence": "What's the best way to get around the city?",
+		"translation": "¿Cuál es la mejor forma de moverse por la ciudad?"
+	},
+	{
+		"sentence": "How can I get to the airport?",
+		"translation": "¿Cómo puedo llegar al aeropuerto?"
+	},
+	{
+		"sentence": "Are there any hostels with private rooms?",
+		"translation": "¿Hay albergues con habitaciones privadas?"
+	},
+	{
+		"sentence": "I'd like to book a guided tour.",
+		"translation": "Me gustaría reservar una excursión guiada."
+	},
+	{
+		"sentence": "Can I get a discount for students?",
+		"translation": "¿Puedo obtener un descuento para estudiantes?"
+	},
+	{
+		"sentence": "Is this the right bus to the city center?",
+		"translation": "¿Es este el autobús correcto para ir al centro?"
+	},
+	{
+		"sentence": "Where can I charge my phone?",
+		"translation": "¿Dónde puedo cargar mi teléfono?"
+	},
+	{
+		"sentence": "Are there any free Wi-Fi hotspots nearby?",
+		"translation": "¿Hay puntos de acceso Wi-Fi gratuitos cerca?"
+	},
+	{
+		"sentence": "How do I get to the nearest pharmacy?",
+		"translation": "¿Cómo llego a la farmacia más cercana?"
+	},
+	{
+		"sentence": "What is the best way to get to the hostel?",
+		"translation": "¿Cuál es la mejor manera de llegar al albergue?"
+	},
+	{
+		"sentence": "Is it safe to walk around this area at night?",
+		"translation": "¿Es seguro caminar por esta área por la noche?"
+	},
+	{
+		"sentence": "Where can I buy travel insurance?",
+		"translation": "¿Dónde puedo comprar un seguro de viaje?"
+	},
+	{
+		"sentence": "Do you know any good local restaurants?",
+		"translation": "¿Conoces algún buen restaurante local?"
+	},
+	{
+		"sentence": "What time does the last train leave?",
+		"translation": "¿A qué hora sale el último tren?"
+	},
+	{
+		"sentence": "Is there a good place to buy souvenirs nearby?",
+		"translation": "¿Hay un buen lugar para comprar recuerdos?"
+	},
+	{
+		"sentence": "Where is the closest supermarket?",
+		"translation": "¿Dónde está el supermercado más cercano?"
+	},
+	{
+		"sentence": "Can you help me find a place to stay?",
+		"translation": "¿Puedes ayudarme a encontrar un lugar dónde alojarme?"
+	},
+	{
+		"sentence": "Where can I rent a bicycle?",
+		"translation": "¿Dónde puedo alquilar una bicicleta?"
+	},
+	{
+		"sentence": "Can you suggest a good place to visit?",
+		"translation": "¿Puede sugerirme un buen lugar para visitar?"
+	},
+	{
+		"sentence": "What's the best way to get to the beach?",
+		"translation": "¿Cuál es la mejor manera de llegar a la playa?"
+	},
+	{
+		"sentence": "Is there a good spot to watch the sunset?",
+		"translation": "¿Hay un buen lugar para ver la puesta de sol?"
+	},
+	{
+		"sentence": "What is the best way to exchange money?",
+		"translation": "¿Cuál es la mejor manera de cambiar dinero?"
+	}
+]

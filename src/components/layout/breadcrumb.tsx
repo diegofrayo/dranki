@@ -1,6 +1,7 @@
 "use client";
 
 import cn from "@diegofrayo-pkg/cn";
+import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Link, Paragraph } from "~/components/primitive";
@@ -61,7 +62,7 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 	);
 }
 
-export default Breadcrumb;
+export default withRenderInBrowser(Breadcrumb);
 
 // --- COMPONENTS ---
 

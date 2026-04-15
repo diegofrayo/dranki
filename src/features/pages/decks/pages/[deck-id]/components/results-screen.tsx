@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import {
@@ -60,6 +62,16 @@ function ResultsScreen(): ReactTypes.JSXElement {
 	function handleRestartClick(): void {
 		clearSession();
 	}
+
+	// --- EFFECTS ---
+	useEffect(
+		function clearSessionOnUnmount() {
+			return (): void => {
+				clearSession();
+			};
+		},
+		[clearSession],
+	);
 
 	return (
 		<Box className={classes.root}>
@@ -158,7 +170,6 @@ function ResultsScreen(): ReactTypes.JSXElement {
 						variant={ButtonVariant.OUTLINE}
 						size={ButtonSize.LG}
 						className={classes.backButton}
-						onClick={clearSession}
 					>
 						Back to Decks
 					</Button>

@@ -8,6 +8,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 
+import "./globals.css";
+
 type RootLayoutProps = Readonly<{
 	children: React.ReactNode;
 }>;

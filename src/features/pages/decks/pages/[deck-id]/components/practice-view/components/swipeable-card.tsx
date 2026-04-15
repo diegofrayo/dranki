@@ -131,17 +131,22 @@ function SwipeableCard({
 			utteranceRef.current = utterance;
 
 			if (autoPlayAudio) {
-				speechSynthesis.speak(utterance);
+				setTimeout(() => speechSynthesis.speak(utterance), 500);
 			}
 		},
 		[autoPlayAudio, isCurrentCard, phrase.sentence],
 	);
 
-	useEffect(function cancelAudioOnUnmount() {
-		return (): void => {
-			speechSynthesis.cancel();
-		};
-	}, []);
+	useEffect(
+		function cancelAudioOnUnmount() {
+			return (): void => {
+				if (!isCurrentCard) return;
+
+				speechSynthesis.cancel();
+			};
+		},
+		[isCurrentCard],
+	);
 
 	return (
 		<Box
