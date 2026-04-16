@@ -26,7 +26,7 @@ import ProgressBar from "./components/progress-bar";
 
 function PracticeView(): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const { deck, currentIndex, phrases, clearSession } = useDeckSession();
+	const { deck, currentIndex, phrases, clearSession, setPhase } = useDeckSession();
 	const router = useRouter();
 
 	// --- STATES & REFS ---
@@ -67,6 +67,7 @@ function PracticeView(): ReactTypes.JSXElement {
 
 	function handleRestartConfirm(): void {
 		clearSession();
+		setPhase("overview");
 	}
 
 	function handleRestartDialogOpenChange(open: boolean): void {

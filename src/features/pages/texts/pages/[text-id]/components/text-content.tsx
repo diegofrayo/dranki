@@ -6,8 +6,7 @@ import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { MarkdownRenderer } from "~/components/common";
-import { Box, Button, Icon } from "~/components/primitive";
-import { IconCatalog } from "~/components/primitive/icon/icons";
+import { Box, Button, Icon, IconCatalog } from "~/components/primitive";
 
 type TextContentProps = {
 	content: string;

@@ -47,7 +47,7 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 					</Box>
 				</Box>
 
-				<Box className="bg-background z-40 mx-auto w-full max-w-md px-4 py-2">
+				<Box className="bg-background z-40 mx-auto w-full max-w-md px-4">
 					<Breadcrumb />
 				</Box>
 			</Box>

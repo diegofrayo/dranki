@@ -1,3 +1,6 @@
+// import nunitoLatinUrl from "@fontsource-variable/nunito/files/nunito-latin-wght-normal.woff2?url";
+//
+
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
@@ -21,6 +24,15 @@ export const Route = createRootRoute({
 		],
 		links: [
 			{ rel: "stylesheet", href: "/src/routes/app.css" },
+			/*
+			{
+				rel: "preload",
+				href: nunitoLatinUrl,
+				as: "font",
+				type: "font/woff2",
+				crossOrigin: "anonymous",
+			},
+      */
 			{ rel: "icon", href: `${FAVICON_PATH}/favicon-16x16.png`, sizes: "16x16", type: "image/png" },
 			{ rel: "icon", href: `${FAVICON_PATH}/favicon-32x32.png`, sizes: "32x32", type: "image/png" },
 			{

@@ -40,6 +40,7 @@ function SwipeableCard({
 	const [isSentenceVisible, setIsSentenceVisible] = useState(showSentenceByDefault);
 	const [isTranslationVisible, setIsTranslationVisible] = useState(showTranslationByDefault);
 	const [audioState, setAudioState] = useState<AudioState>("idle");
+	const [wasCurrentOnMount] = useState(isCurrentCard);
 	const utteranceRef = useRef<SpeechSynthesisUtterance>(null);
 
 	// --- COMPUTED STATES ---
@@ -66,7 +67,7 @@ function SwipeableCard({
 			"absolute inset-0 touch-none select-none",
 			isCurrentCard ? "cursor-grab" : "pointer-events-none",
 			isDragging && "cursor-grabbing",
-			isCurrentCard && "animate-in fade-in-0 zoom-in-95 duration-300",
+			isCurrentCard && wasCurrentOnMount && "animate-in fade-in-0 zoom-in-95 duration-300",
 		),
 		card: "absolute inset-0 flex flex-col overflow-hidden rounded-3xl shadow-xl bg-blue-600 text-white",
 		practiceMoreIndicator: cn(

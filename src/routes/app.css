@@ -4,5 +4,11 @@
 
 @theme inline {
 	--font-sans: "Nunito Variable", "Tahoma", system-ui, sans-serif;
-	--font-mono: "Geist Mono", "Geist Mono Fallback";
 }
+
+/*
+@font-face {
+	font-family: "Nunito Variable";
+	font-display: optional;
+}
+*/

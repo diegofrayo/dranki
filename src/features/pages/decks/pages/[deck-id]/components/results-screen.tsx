@@ -24,7 +24,7 @@ import { useDeckSession } from "../context/deck-session-context";
 
 function ResultsScreen(): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const { deck, endTime, practiceMoreCount, recognizedCount, startTime, clearSession } =
+	const { deck, endTime, practiceMoreCount, recognizedCount, startTime, clearSession, setPhase } =
 		useDeckSession();
 
 	// --- COMPUTED STATES ---
@@ -61,6 +61,7 @@ function ResultsScreen(): ReactTypes.JSXElement {
 	// --- HANDLERS ---
 	function handleRestartClick(): void {
 		clearSession();
+		setPhase("overview");
 	}
 
 	// --- EFFECTS ---

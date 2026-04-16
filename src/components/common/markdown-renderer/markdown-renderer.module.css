@@ -54,11 +54,11 @@
 }
 
 .table-wrapper {
-	@apply mb-4 overflow-x-auto;
+	@apply border-border mb-4 overflow-x-auto border;
 }
 
 .table {
-	@apply border-border w-full border-collapse;
+	@apply w-full;
 }
 
 .thead {
@@ -66,7 +66,7 @@
 }
 
 .tr {
-	@apply border-border border-b;
+	@apply border-border border-b last:border-0;
 }
 
 .th {

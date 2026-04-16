@@ -26,6 +26,7 @@ type DeckSessionContextValue = {
 	markPracticeMore: () => void;
 	markRecognized: () => void;
 	setAutoPlayAudio: (value: boolean) => void;
+	setPhase: (value: Phase) => void;
 	setShowSentenceByDefault: (value: boolean) => void;
 	setShowTranslationByDefault: (value: boolean) => void;
 	startSession: () => void;
@@ -143,7 +144,6 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		clearShowTranslationByDefault();
 		clearStartTime();
 		clearEndTime();
-		setPhase("overview");
 	}
 
 	return (
@@ -167,6 +167,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 				setShowSentenceByDefault,
 				setShowTranslationByDefault,
 				startSession,
+				setPhase,
 			}}
 		>
 			{children}

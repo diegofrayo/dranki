@@ -1,7 +1,6 @@
 "use client";
 
 import cn from "@diegofrayo-pkg/cn";
-import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Link, Paragraph } from "~/components/primitive";
@@ -19,7 +18,7 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 
 	// --- STYLES ---
 	const classes = {
-		nav: "mt-1 flex items-center gap-1 text-sm",
+		nav: "flex items-center gap-1 text-sm pt-3 pb-6",
 		homeLink: "text-muted-foreground transition-colors hover:text-foreground font-bold",
 		crumbItem: (isLast: boolean): string =>
 			cn("flex items-center gap-1", isLast && "min-w-0 flex-1"),
@@ -62,7 +61,7 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 	);
 }
 
-export default withRenderInBrowser(Breadcrumb);
+export default Breadcrumb;
 
 // --- COMPONENTS ---
 

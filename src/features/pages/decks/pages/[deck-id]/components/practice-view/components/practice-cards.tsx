@@ -50,7 +50,7 @@ function PracticeCards(): ReactTypes.JSXElement {
 			<Box className={classes.cardArea}>
 				{nextPhrase !== undefined && (
 					<SwipeableCard
-						key={`next-${currentIndex + 1}`}
+						key={`card-${currentIndex + 1}`}
 						autoPlayAudio={autoPlayAudio}
 						deckTheme={deck.theme}
 						isCurrentCard={false}
@@ -63,7 +63,7 @@ function PracticeCards(): ReactTypes.JSXElement {
 				)}
 				{currentPhrase !== undefined && (
 					<SwipeableCard
-						key={`top-${currentIndex}`}
+						key={`card-${currentIndex}`}
 						autoPlayAudio={autoPlayAudio}
 						deckTheme={deck.theme}
 						isCurrentCard={true}
