@@ -2,9 +2,7 @@ import api, { type Deck } from "~/api";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 
-async function generateMetadata(deckId: string): Promise<Metadata> {
-	const deck = await api.decks.getDeckById(deckId);
-
+async function generateMetadata(deck: Deck | undefined): Promise<Metadata> {
 	if (!deck) {
 		return { title: composePageTitle("Deck not found") };
 	}

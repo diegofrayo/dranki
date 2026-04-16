@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import api from "~/api";
 import LessonPage, { pageConfig } from "~/features/pages/lessons/pages/[lesson-id]";
 
 type LessonPageProps = {
@@ -30,5 +31,7 @@ export async function generateMetadata({
 	params,
 }: LessonPageProps): ReturnType<typeof pageConfig.generateMetadata> {
 	const lessonId = (await params)["lesson-id"];
-	return pageConfig.generateMetadata(lessonId);
+	const lesson = await api.lessons.getLessonById(lessonId);
+
+	return pageConfig.generateMetadata(lesson);
 }

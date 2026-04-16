@@ -1,17 +1,13 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Image, Link, Paragraph, Title } from "~/components/primitive";
+import { Box, Icon, IconCatalog, Image, Link, Paragraph, Title } from "~/components/primitive";
 import { PROJECT_METADATA, Routes } from "~/constants";
 
 import Breadcrumb from "./breadcrumb";
 
-// --- PROPS & TYPES ---
-
 type MainLayoutProps = {
 	children: ReactTypes.Children;
 };
-
-// --- COMPONENT DEFINITION ---
 
 function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 	return (
@@ -57,6 +53,26 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 			</Box>
 
 			<Box className="mx-auto min-h-0 w-full max-w-md flex-1 px-4 py-6">{children}</Box>
+
+			<Box
+				as="footer"
+				className="border-border border-t py-3"
+			>
+				<Paragraph className="text-muted-foreground flex items-center justify-center gap-1.5 text-center text-sm">
+					<Icon
+						name={IconCatalog.CODE_2}
+						className="relative -top-px size-3.5"
+					/>
+					{"Coded by "}
+					<Link
+						href="https://diegofrayo.dev"
+						className="text-foreground font-bold underline underline-offset-2"
+						isExternalLink
+					>
+						Diego Rayo
+					</Link>
+				</Paragraph>
+			</Box>
 		</Box>
 	);
 }

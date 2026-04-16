@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import api from "~/api";
 import DeckPage, { pageConfig } from "~/features/pages/decks/pages/[deck-id]";
 
 type DeckPageProps = {
@@ -25,5 +26,7 @@ export async function generateMetadata({
 	params,
 }: DeckPageProps): ReturnType<typeof pageConfig.generateMetadata> {
 	const deckId = (await params)["deck-id"];
-	return pageConfig.generateMetadata(deckId);
+	const deck = await api.decks.getDeckById(deckId);
+
+	return pageConfig.generateMetadata(deck);
 }

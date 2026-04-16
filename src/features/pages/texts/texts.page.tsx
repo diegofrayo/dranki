@@ -35,7 +35,7 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 							href={Routes.TEXT(text.id)}
 							className="block rounded-2xl bg-violet-600 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80"
 						>
-							<Paragraph className="mb-1 text-3xl">{text.lesson?.emoji || text.emoji}</Paragraph>
+							<Paragraph className="mb-1 text-3xl">{text.emoji}</Paragraph>
 							<Title
 								as="h2"
 								className="text-lg font-bold text-white"

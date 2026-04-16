@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import api from "~/api";
 import TextPage, { pageConfig } from "~/features/pages/texts/pages/[text-id]";
 
 type TextPageProps = {
@@ -30,5 +31,7 @@ export async function generateMetadata({
 	params,
 }: TextPageProps): ReturnType<typeof pageConfig.generateMetadata> {
 	const textId = (await params)["text-id"];
-	return pageConfig.generateMetadata(textId);
+	const textDetails = await api.texts.getTextById(textId);
+
+	return pageConfig.generateMetadata(textDetails);
 }

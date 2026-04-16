@@ -4,6 +4,8 @@ import { z } from "zod";
 import { sortBy } from "@diegofrayo-pkg/sort";
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
+import { Emojis } from "~/constants";
+
 import type { Text } from "../../../types";
 import getLessonById from "../../lessons/endpoints/get-lesson-by-id";
 
@@ -43,7 +45,7 @@ async function transformResponse(raw: RawGetTextsResponse): Promise<GetTextsResp
 			return {
 				id: rawText.id,
 				title: rawText.title,
-				emoji: rawText.emoji || "📝",
+				emoji: rawText.emoji || Emojis.TEXTS,
 				lesson,
 			};
 		}),

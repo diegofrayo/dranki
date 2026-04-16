@@ -1,8 +1,10 @@
-import { isBrowser } from "@diegofrayo-pkg/validator";
+import { useLocation } from "@tanstack/react-router";
 
 export function useRouter(): { pathname: string; push: (routeName: string) => void } {
+	const location = useLocation();
+
 	return {
-		pathname: isBrowser() ? window.location.pathname : "",
+		pathname: location.pathname,
 		push: (route: string): void => {
 			window.location.href = route;
 		},

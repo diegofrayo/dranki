@@ -18,7 +18,7 @@ export default function TextLessonPage({
 	return (
 		<MainLayout>
 			<Box className="mb-6">
-				<Box className="mb-1 text-4xl">{textDetails.lesson?.emoji || textDetails.emoji}</Box>
+				<Box className="mb-1 text-4xl">{textDetails.emoji}</Box>
 				<Title
 					as="h1"
 					className="text-foreground text-2xl font-bold"

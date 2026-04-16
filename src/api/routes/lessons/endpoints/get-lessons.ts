@@ -4,6 +4,8 @@ import { z } from "zod";
 import { sortBy } from "@diegofrayo-pkg/sort";
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
+import { Emojis } from "~/constants";
+
 import type { Lesson } from "../../../types";
 
 async function getLessons(): Promise<GetLessonsResponse> {
@@ -39,7 +41,7 @@ function transformResponse(raw: RawGetLessonsResponse): GetLessonsResponse {
 		.map((lesson) => ({
 			id: lesson.id,
 			title: lesson.title,
-			emoji: lesson.emoji || "📖",
+			emoji: lesson.emoji || Emojis.LESSONS,
 			description: lesson.description,
 		}))
 		.sort(sortBy("title"));

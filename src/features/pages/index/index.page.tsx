@@ -3,7 +3,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { MainLayout } from "~/components/layout";
 import { Box, Link, Paragraph, Title } from "~/components/primitive";
-import { Routes } from "~/constants";
+import { Emojis, Routes } from "~/constants";
 
 export default function HomePage(): ReactTypes.JSXElement {
 	// --- STYLES ---
@@ -46,21 +46,21 @@ export default function HomePage(): ReactTypes.JSXElement {
 
 const FEATURES = [
 	{
-		emoji: "📖",
+		emoji: Emojis.LESSONS,
 		title: "Lessons",
 		description: "Clear explanations about grammar topics like simple present, future, and more.",
 		href: Routes.LESSONS,
 		bgColor: "bg-emerald-500",
 	},
 	{
-		emoji: "📚",
+		emoji: Emojis.DECKS,
 		title: "Decks",
 		description: "Bunches of phrases grouped by topic — phrasal verbs, simple past, and more.",
 		href: Routes.DECKS,
 		bgColor: "bg-blue-500",
 	},
 	{
-		emoji: "📝",
+		emoji: Emojis.TEXTS,
 		title: "Texts",
 		description:
 			"Short texts that put vocabulary and phrases in context — read and learn naturally.",

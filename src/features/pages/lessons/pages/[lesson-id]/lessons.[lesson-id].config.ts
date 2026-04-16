@@ -2,9 +2,7 @@ import api, { type Lesson } from "~/api";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 
-async function generateMetadata(lessonId: string): Promise<Metadata> {
-	const lesson = await api.lessons.getLessonById(lessonId);
-
+async function generateMetadata(lesson: Lesson | undefined): Promise<Metadata> {
 	if (!lesson) {
 		return { title: composePageTitle("Lesson not found") };
 	}

@@ -2,9 +2,7 @@ import api, { type Text } from "~/api";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 
-async function generateMetadata(textId: string): Promise<Metadata> {
-	const textDetails = await api.texts.getTextById(textId);
-
+async function generateMetadata(textDetails: Text | undefined): Promise<Metadata> {
 	if (!textDetails) {
 		return { title: composePageTitle("Text not found") };
 	}

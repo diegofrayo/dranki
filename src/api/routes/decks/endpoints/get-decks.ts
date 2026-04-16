@@ -4,6 +4,8 @@ import { z } from "zod";
 import { sortBy } from "@diegofrayo-pkg/sort";
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
+import { Emojis } from "~/constants";
+
 import type { Deck } from "../../../types";
 import getLessonById from "../../lessons/endpoints/get-lesson-by-id";
 import getDeckPhrases from "./get-deck-phrases";
@@ -49,7 +51,7 @@ async function transformResponse(raw: RawGetDecksResponse): Promise<GetDecksResp
 				id: deck.id,
 				title: deck.title,
 				description: deck.description,
-				emoji: deck.emoji || "📚",
+				emoji: deck.emoji || Emojis.DECKS,
 				lesson: await getLessonById(deck.lesson_id),
 				createdAt: deck.created_at,
 				theme: {

@@ -10,7 +10,7 @@ interface NativeImageProps extends ImgHtmlAttributes {
 	useNativeElement?: boolean;
 }
 
-export type ImageProps = NativeImageProps;
+type ImageProps = NativeImageProps;
 
 // --- COMPONENT DEFINITION ---
 
