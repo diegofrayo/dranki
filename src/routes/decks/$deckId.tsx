@@ -3,18 +3,22 @@ import { createServerFn } from "@tanstack/react-start";
 
 import type { NonNullableObject } from "@diegofrayo-pkg/types";
 
+import { loader } from "~/features/pages/decks/pages/[deck-id]/decks.[deck-id].loader.server";
+import { generateMetadataDeckPage } from "~/features/pages/decks/pages/[deck-id]/decks.[deck-id].metadata";
 import DeckPage from "~/features/pages/decks/pages/[deck-id]/decks.[deck-id].page";
-import { deckLoader } from "~/features/router/tan-stack-loaders.server";
 
-type LoaderData = NonNullableObject<Awaited<ReturnType<typeof deckLoader>>>;
+type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;
 
 const getServerData = createServerFn()
 	.inputValidator((data: { deckId: string }) => data)
 	.handler((ctx) => {
-		return deckLoader(ctx.data.deckId);
+		return loader(ctx.data.deckId);
 	});
 
 export const Route = createFileRoute("/decks/$deckId")({
+	head: async (ctx) => ({
+		meta: [await generateMetadataDeckPage((ctx.loaderData as unknown as LoaderData).deck)],
+	}),
 	loader: async ({ params }): Promise<LoaderData> => {
 		const deckId = params["deckId"];
 		const { deck } = await getServerData({ data: { deckId } });

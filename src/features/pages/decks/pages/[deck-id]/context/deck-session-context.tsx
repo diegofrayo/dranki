@@ -8,8 +8,6 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Deck, DeckPhrase } from "~/api";
 import { PROJECT_METADATA } from "~/constants";
 
-import type { Phase } from "../decks.[deck-id].types";
-
 // --- TYPES ---
 
 type DeckSessionContextValue = {
@@ -37,6 +35,8 @@ type DeckSessionProviderProps = {
 	children: ReactTypes.Children;
 	deck: Deck;
 };
+
+type Phase = "overview" | "practice" | "results";
 
 // --- CONTEXT ---
 

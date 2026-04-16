@@ -3,18 +3,22 @@ import { createServerFn } from "@tanstack/react-start";
 
 import type { NonNullableObject } from "@diegofrayo-pkg/types";
 
+import { loader } from "~/features/pages/texts/pages/[text-id]/texts.[text-id].loader.server";
+import { generateMetadataTextPage } from "~/features/pages/texts/pages/[text-id]/texts.[text-id].metadata";
 import TextLessonPage from "~/features/pages/texts/pages/[text-id]/texts.[text-id].page";
-import { textLoader } from "~/features/router/tan-stack-loaders.server";
 
-type LoaderData = NonNullableObject<Awaited<ReturnType<typeof textLoader>>>;
+type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;
 
 const getServerData = createServerFn()
 	.inputValidator((data: { textId: string }) => data)
 	.handler(async (ctx) => {
-		return textLoader(ctx.data.textId);
+		return loader(ctx.data.textId);
 	});
 
 export const Route = createFileRoute("/texts/$textId")({
+	head: async (ctx) => ({
+		meta: [await generateMetadataTextPage((ctx.loaderData as unknown as LoaderData).textDetails)],
+	}),
 	loader: async ({ params }): Promise<LoaderData> => {
 		const textId = params["textId"];
 		const { textDetails, textContent } = await getServerData({ data: { textId } });

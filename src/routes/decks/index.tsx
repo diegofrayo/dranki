@@ -2,11 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 
 import DecksPage from "~/features/pages/decks";
-import { decksLoader } from "~/features/router/tan-stack-loaders.server";
+import { loader } from "~/features/pages/decks/decks.loader.server";
 import { composePageTitle } from "~/utils/misc";
 
 export const getData = createServerFn().handler(async () => {
-	return { decks: await decksLoader() };
+	return loader();
 });
 
 export const Route = createFileRoute("/decks/")({

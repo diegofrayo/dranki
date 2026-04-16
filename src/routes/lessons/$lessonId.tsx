@@ -3,18 +3,22 @@ import { createServerFn } from "@tanstack/react-start";
 
 import type { NonNullableObject } from "@diegofrayo-pkg/types";
 
+import { loader } from "~/features/pages/lessons/pages/[lesson-id]/lessons.[lesson-id].loader.server";
+import { generateMetadataLessonPage } from "~/features/pages/lessons/pages/[lesson-id]/lessons.[lesson-id].metadata";
 import LessonPage from "~/features/pages/lessons/pages/[lesson-id]/lessons.[lesson-id].page";
-import { lessonLoader } from "~/features/router/tan-stack-loaders.server";
 
-type LoaderData = NonNullableObject<Awaited<ReturnType<typeof lessonLoader>>>;
+type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;
 
 const getServerData = createServerFn()
 	.inputValidator((data: { lessonId: string }) => data)
 	.handler((ctx) => {
-		return lessonLoader(ctx.data.lessonId);
+		return loader(ctx.data.lessonId);
 	});
 
 export const Route = createFileRoute("/lessons/$lessonId")({
+	head: async (ctx) => ({
+		meta: [await generateMetadataLessonPage((ctx.loaderData as unknown as LoaderData).lesson)],
+	}),
 	loader: async ({ params }): Promise<LoaderData> => {
 		const lessonId = params["lessonId"];
 		const { lesson, lessonContent } = await getServerData({ data: { lessonId } });
