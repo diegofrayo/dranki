@@ -70,9 +70,27 @@
 }
 
 .th {
-	@apply text-foreground px-4 py-2 text-left font-semibold;
+	@apply text-foreground min-w-48 px-4 py-2 text-left font-semibold;
+}
+
+.th:nth-child(2) {
+	@apply min-w-96;
+}
+
+.th:nth-child(3),
+.th:nth-child(4) {
+	@apply min-w-lg;
 }
 
 .td {
-	@apply text-foreground px-4 py-2;
+	@apply text-foreground min-w-48 px-4 py-2;
+}
+
+.td:nth-child(2) {
+	@apply min-w-96;
+}
+
+.td:nth-child(3),
+.td:nth-child(4) {
+	@apply min-w-lg;
 }
