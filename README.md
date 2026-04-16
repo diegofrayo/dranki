@@ -1,37 +1,42 @@
 # dranki
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+A mobile-first web app to learn English through flashcard decks, grammar lessons, and reading comprehension texts. Built primarily with Next.js and also integrated with TanStack Start for experimentation — both frameworks coexist and can be switched at any time without disabling code.
 
-## Built with v0
+**URL:** [dranki.diegofrayo.dev](https://dranki.diegofrayo.dev)
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+## 🛠️ Tech stack
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_ouyoEeBYYiqmVquDgvw75govY7Pz)
+- **Next.js 16** — main framework (App Router)
+- **TanStack Start + TanStack Router** — secondary framework, runs in parallel via Vite
+- **React 19**
+- **TypeScript 6**
+- **Tailwind CSS v4**
+- **Base UI** — headless UI primitives
+- **react-markdown + remark-gfm + rehype-raw** — Markdown rendering
+- **Vercel Analytics** — usage tracking
+- **Sonner** — toast notifications
+- **Zod** — schema validation
+- **Remeda** — utility functions
+- **ESLint + Prettier + Husky** — code quality and formatting
 
-## Getting Started
-
-First, run the development server:
+## ⚡ Setup
 
 ```bash
+# Install dependencies
+npm install
+
+# Run with Next.js (default)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+
+# Run with TanStack Start
+npm run dev:tns
+
+# Type-check
+npm run build:ts
+
+# Lint
+npm run lint
+
+# Format
+npm run format
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
-
-<a href="https://v0.app/chat/api/kiro/clone/diegofrayo/dranki" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
-
-**[Dranki English app - v0 by Vercel | [v0.app]](https://v0.app/diegofrayo/chat/dranki-english-app-dCZ6T7cjZUs)**

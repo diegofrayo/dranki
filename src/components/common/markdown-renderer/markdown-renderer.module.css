@@ -70,7 +70,7 @@
 }
 
 .th {
-	@apply text-foreground min-w-48 px-4 py-2 text-left font-semibold;
+	@apply text-foreground px-4 py-2 text-left font-semibold;
 }
 
 .th:nth-child(2) {
@@ -83,7 +83,7 @@
 }
 
 .td {
-	@apply text-foreground min-w-48 px-4 py-2;
+	@apply text-foreground px-4 py-2;
 }
 
 .td:nth-child(2) {
