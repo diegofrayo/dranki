@@ -38,6 +38,7 @@ function useSpeechSynthesis({
 
 			const utterance = new SpeechSynthesisUtterance(text);
 			utterance.lang = lang;
+
 			utterance.onstart = (): void => {
 				setAudioState("playing");
 			};
