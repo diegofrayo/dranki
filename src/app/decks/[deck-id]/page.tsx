@@ -4,8 +4,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import api from "~/api";
 import DeckPage from "~/features/pages/decks/pages/[deck-id]";
-import { loader } from "~/features/pages/decks/pages/[deck-id]/decks.[deck-id].loader.server";
-import { generateMetadataDeckPage } from "~/features/pages/decks/pages/[deck-id]/decks.[deck-id].metadata";
+import { loader } from "~/features/pages/decks/pages/[deck-id]/[deck-id].loader.server";
+import { generateMetadataDeckPage } from "~/features/pages/decks/pages/[deck-id]/[deck-id].metadata";
 
 type DeckPageProps = {
 	params: Promise<{ "deck-id": string }>;

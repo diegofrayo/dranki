@@ -4,8 +4,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import api from "~/api";
 import TextPage from "~/features/pages/texts/pages/[text-id]";
-import { loader } from "~/features/pages/texts/pages/[text-id]/texts.[text-id].loader.server";
-import { generateMetadataTextPage } from "~/features/pages/texts/pages/[text-id]/texts.[text-id].metadata";
+import { loader } from "~/features/pages/texts/pages/[text-id]/[text-id].loader.server";
+import { generateMetadataTextPage } from "~/features/pages/texts/pages/[text-id]/[text-id].metadata";
 
 type TextPageProps = {
 	params: Promise<{ "text-id": string }>;

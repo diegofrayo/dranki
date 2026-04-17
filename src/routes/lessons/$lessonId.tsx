@@ -3,9 +3,9 @@ import { createServerFn } from "@tanstack/react-start";
 
 import type { NonNullableObject } from "@diegofrayo-pkg/types";
 
-import { loader } from "~/features/pages/lessons/pages/[lesson-id]/lessons.[lesson-id].loader.server";
-import { generateMetadataLessonPage } from "~/features/pages/lessons/pages/[lesson-id]/lessons.[lesson-id].metadata";
-import LessonPage from "~/features/pages/lessons/pages/[lesson-id]/lessons.[lesson-id].page";
+import { loader } from "~/features/pages/lessons/pages/[lesson-id]/[lesson-id].loader.server";
+import { generateMetadataLessonPage } from "~/features/pages/lessons/pages/[lesson-id]/[lesson-id].metadata";
+import LessonPage from "~/features/pages/lessons/pages/[lesson-id]/[lesson-id].page";
 
 type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;
 

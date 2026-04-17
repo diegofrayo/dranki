@@ -1,1 +1,1 @@
-export { default } from "./decks.[deck-id].page";
+export { default } from "./[deck-id].page";

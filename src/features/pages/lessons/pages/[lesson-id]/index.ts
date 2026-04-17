@@ -1,1 +1,1 @@
-export { default } from "./lessons.[lesson-id].page";
+export { default } from "./[lesson-id].page";

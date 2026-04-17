@@ -1,1 +1,1 @@
-export { default } from "./texts.[text-id].page";
+export { default } from "./[text-id].page";
