@@ -52,11 +52,16 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 				</Box>
 			</Box>
 
-			<Box className="mx-auto min-h-0 w-full max-w-md flex-1 px-4 py-6">{children}</Box>
+			<Box
+				as="section"
+				className="mx-auto min-h-0 w-full max-w-md flex-1 px-4 py-6"
+			>
+				{children}
+			</Box>
 
 			<Box
 				as="footer"
-				className="border-border border-t py-3"
+				className="border-border mt-8 shrink-0 border-t py-3"
 			>
 				<Paragraph className="text-muted-foreground flex items-center justify-center gap-1.5 text-center text-sm">
 					<Icon

@@ -21,19 +21,24 @@ export const Route = createFileRoute("/lessons/$lessonId")({
 	}),
 	loader: async ({ params }): Promise<LoaderData> => {
 		const lessonId = params["lessonId"];
-		const { lesson, lessonContent } = await getServerData({ data: { lessonId } });
+		const { lesson, lessonContent, practiceTexts, practiceDecks } = await getServerData({
+			data: { lessonId },
+		});
 
 		if (!lesson) throw notFound();
 
-		return { lesson, lessonContent };
+		return { lesson, lessonContent, practiceTexts, practiceDecks };
 	},
 	component: function LessonPageWrapper() {
-		const { lesson, lessonContent } = Route.useLoaderData() as LoaderData;
+		const { lesson, lessonContent, practiceTexts, practiceDecks } =
+			Route.useLoaderData() as LoaderData;
 
 		return (
 			<LessonPage
 				lesson={lesson}
 				content={lessonContent}
+				practiceTexts={practiceTexts}
+				practiceDecks={practiceDecks}
 			/>
 		);
 	},

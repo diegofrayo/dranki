@@ -4,10 +4,15 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 function Separator({ orientation, className }: SeparatorProps): ReactTypes.JSXElement {
+	// --- STYLES ---
+	const classes = {
+		root: cn(orientation === "vertical" ? "w-px" : "h-px", className),
+	};
+
 	return (
 		<BaseUISeparator
 			orientation={orientation}
-			className={cn(className)}
+			className={classes.root}
 		/>
 	);
 }

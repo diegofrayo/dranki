@@ -15,7 +15,7 @@ export default async function LessonPageWrapper({
 	params,
 }: LessonPageProps): Promise<ReactTypes.JSXElement> {
 	const lessonId = (await params)["lesson-id"];
-	const { lesson, lessonContent } = await loader(lessonId);
+	const { lesson, lessonContent, practiceTexts, practiceDecks } = await loader(lessonId);
 
 	if (!lesson || !lessonContent) {
 		return notFound();
@@ -25,6 +25,8 @@ export default async function LessonPageWrapper({
 		<LessonPage
 			lesson={lesson}
 			content={lessonContent}
+			practiceTexts={practiceTexts}
+			practiceDecks={practiceDecks}
 		/>
 	);
 }

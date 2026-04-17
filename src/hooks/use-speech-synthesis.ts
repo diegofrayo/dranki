@@ -1,6 +1,8 @@
+"use client";
+
 import { useCallback, useEffect, useState } from "react";
 
-type AudioState = "idle" | "loading" | "playing";
+export type AudioState = "idle" | "loading" | "playing";
 
 type UseSpeechSynthesisOptions = {
 	text: string;
@@ -89,5 +91,3 @@ function useSpeechSynthesis({
 }
 
 export default useSpeechSynthesis;
-
-export type { AudioState };
