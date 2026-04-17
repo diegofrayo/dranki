@@ -6,9 +6,6 @@
 		{
 			"path": "../@diegofrayo-pkg",
 		},
-		{
-			"path": "../website",
-		},
 	],
 	"settings": {},
 }

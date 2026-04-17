@@ -1,11 +1,13 @@
 "use client";
 
+import { useRef } from "react";
+
 import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
 import cn from "@diegofrayo-pkg/cn";
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { MarkdownRenderer } from "~/components/common";
+import { MarkdownRenderer, SelectionAudioBar } from "~/components/common";
 import { Box, Button, Icon, IconCatalog } from "~/components/primitive";
 
 type TextContentProps = {
@@ -14,6 +16,7 @@ type TextContentProps = {
 
 function TextContent({ content }: TextContentProps): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
+	const articleRef = useRef<HTMLDivElement>(null);
 	const [fontSizeIndex, setFontSizeIndex] = useBrowserStorage<number>({
 		key: "DR_TEXT_FONT_SIZE",
 		value: DEFAULT_FONT_SIZE_INDEX,
@@ -69,10 +72,12 @@ function TextContent({ content }: TextContentProps): ReactTypes.JSXElement {
 			</Box>
 			<Box
 				as="article"
+				ref={articleRef}
 				className={classes.article}
 			>
 				<MarkdownRenderer>{content}</MarkdownRenderer>
 			</Box>
+			<SelectionAudioBar containerRef={articleRef} />
 		</>
 	);
 }

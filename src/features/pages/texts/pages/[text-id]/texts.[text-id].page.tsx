@@ -6,7 +6,7 @@ import { Box, Title } from "~/components/primitive";
 
 import TextContent from "./components/text-content";
 
-export type TextLessonPageProps = {
+type TextLessonPageProps = {
 	textDetails: Text;
 	content: string;
 };

@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck, DeckPhrase } from "~/api";
 import { Box, Button, Icon, IconCatalog, Paragraph } from "~/components/primitive";
+import type { AudioState } from "~/hooks/use-speech-synthesis";
+import useSpeechSynthesis from "~/hooks/use-speech-synthesis";
 
 import useDragGesture from "../hooks/use-drag-gesture";
 
@@ -35,13 +37,12 @@ function SwipeableCard({
 		onSwipeLeft: onPracticeMore,
 		onSwipeRight: onRecognized,
 	});
+	const { audioState, play, stop, toggle } = useSpeechSynthesis({ text: phrase.sentence });
 
 	// --- STATES & REFS ---
 	const [isSentenceVisible, setIsSentenceVisible] = useState(showSentenceByDefault);
 	const [isTranslationVisible, setIsTranslationVisible] = useState(showTranslationByDefault);
-	const [audioState, setAudioState] = useState<AudioState>("idle");
 	const [wasCurrentOnMount] = useState(isCurrentCard);
-	const utteranceRef = useRef<SpeechSynthesisUtterance>(null);
 
 	// --- COMPUTED STATES ---
 	const cardTransform = isExiting
@@ -91,16 +92,9 @@ function SwipeableCard({
 	function handleTtsClick(e: React.MouseEvent): void {
 		e.stopPropagation();
 
-		if (audioState === "loading" || !utteranceRef.current) return;
+		if (audioState === "loading") return;
 
-		if (audioState === "playing") {
-			speechSynthesis.cancel();
-			setAudioState("idle");
-			return;
-		}
-
-		setAudioState("loading");
-		speechSynthesis.speak(utteranceRef.current);
+		toggle();
 	}
 
 	function handleShowSentenceClick(): void {
@@ -114,39 +108,26 @@ function SwipeableCard({
 	// --- EFFECTS ---
 	useEffect(
 		function autoPlayAudioOnMount() {
-			if (!isCurrentCard) return;
+			if (!isCurrentCard || !autoPlayAudio) return;
 
-			const utterance = new SpeechSynthesisUtterance(phrase.sentence);
-			utterance.lang = "en-US";
+			const timeoutId = setTimeout(play, 500);
 
-			utterance.onstart = (): void => {
-				setAudioState("playing");
+			return (): void => {
+				clearTimeout(timeoutId);
 			};
-			utterance.onend = (): void => {
-				setAudioState("idle");
-			};
-			utterance.onerror = (): void => {
-				setAudioState("idle");
-			};
-
-			utteranceRef.current = utterance;
-
-			if (autoPlayAudio) {
-				setTimeout(() => speechSynthesis.speak(utterance), 500);
-			}
 		},
-		[autoPlayAudio, isCurrentCard, phrase.sentence],
+		[autoPlayAudio, isCurrentCard, play],
 	);
 
 	useEffect(
-		function cancelAudioOnUnmount() {
-			return (): void => {
-				if (!isCurrentCard) return;
+		function cancelAudioWhenCardIsNotCurrent() {
+			if (!isCurrentCard) return;
 
-				speechSynthesis.cancel();
+			return (): void => {
+				stop();
 			};
 		},
-		[isCurrentCard],
+		[isCurrentCard, stop],
 	);
 
 	return (
@@ -195,10 +176,6 @@ function SwipeableCard({
 }
 
 export default SwipeableCard;
-
-// --- TYPES ---
-
-type AudioState = "idle" | "loading" | "playing";
 
 // --- COMPONENTS ---
 
