@@ -47,7 +47,8 @@
 }
 
 .code {
-	@apply bg-muted text-foreground rounded px-1 py-0.5 font-mono text-sm italic;
+	@apply bg-muted text-foreground rounded px-1 py-0.5 font-mono italic;
+	font-size: 0.75em;
 }
 
 .pre {

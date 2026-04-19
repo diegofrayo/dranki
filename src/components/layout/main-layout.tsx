@@ -20,7 +20,7 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 				className="sticky top-0 z-40 w-full shrink-0"
 			>
 				<Box className="border-border bg-background/80 border-b backdrop-blur-md">
-					<Box className="mx-auto flex max-w-md gap-3 px-4 py-4">
+					<Box className="mx-auto flex max-w-xl gap-3 px-4 py-4">
 						<Link
 							href={Routes.INDEX}
 							className="block"
@@ -47,14 +47,14 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 					</Box>
 				</Box>
 
-				<Box className="bg-background z-40 mx-auto w-full max-w-md px-4">
+				<Box className="bg-background z-40 mx-auto w-full max-w-xl px-4">
 					<Breadcrumb />
 				</Box>
 			</Box>
 
 			<Box
 				as="section"
-				className="mx-auto min-h-0 w-full max-w-md flex-1 px-4 py-6"
+				className="mx-auto min-h-0 w-full max-w-xl flex-1 px-4 py-6"
 			>
 				{children}
 			</Box>

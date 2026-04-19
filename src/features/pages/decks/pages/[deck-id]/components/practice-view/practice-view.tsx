@@ -37,7 +37,7 @@ function PracticeView(): ReactTypes.JSXElement {
 	const classes = {
 		root: "flex min-h-svh  flex-col bg-background",
 		header: "border-border bg-background/90 sticky top-0 z-40 border-b backdrop-blur-md shrink-0",
-		headerInner: "mx-auto flex max-w-md items-center gap-3 px-4 py-3",
+		headerInner: "mx-auto flex max-w-xl items-center gap-3 px-4 py-3",
 		backButton: "size-9 shrink-0",
 		deckInfo: "min-w-0 flex-1",
 		deckTitleRow: "flex items-center gap-2",
@@ -45,7 +45,7 @@ function PracticeView(): ReactTypes.JSXElement {
 		deckTitle: "text-foreground truncate text-base font-bold",
 		progressWrapper: "mt-2",
 		restartButton: "size-9 shrink-0",
-		main: "mx-auto flex w-full max-w-md flex-1 flex-col px-4 py-4 min-h-0",
+		main: "mx-auto flex w-full max-w-xl flex-1 flex-col px-4 py-4 min-h-0",
 	};
 
 	// --- HANDLERS ---

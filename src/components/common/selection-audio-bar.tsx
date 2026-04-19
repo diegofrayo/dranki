@@ -94,7 +94,7 @@ function SelectionAudioBar({
 			role="toolbar"
 			aria-label="Selected text audio controls"
 		>
-			<Box className="mx-auto flex w-full max-w-md items-center gap-2 p-4">
+			<Box className="mx-auto flex w-full max-w-xl items-center gap-2 p-4">
 				<InlineText className={classes.text}>{selectedText}</InlineText>
 				<Button
 					variant="SECONDARY"
