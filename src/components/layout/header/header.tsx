@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import { VoiceSettingsModal } from "~/components/common";
 import {
 	Box,
 	Button,
@@ -19,7 +20,6 @@ import { PROJECT_METADATA, Routes } from "~/constants";
 import { voiceSettingsStorage, type VoiceSettings } from "~/features/voice-settings";
 
 import Breadcrumb from "./components/breadcrumb";
-import VoiceSettingsModal from "./components/voice-settings-modal";
 
 export default function Header(): ReactTypes.JSXElement {
 	// --- STATES & REFS ---

@@ -41,6 +41,7 @@ function SwipeableCard({
 	// --- STATES & REFS ---
 	const [isSentenceVisible, setIsSentenceVisible] = useState(showSentenceByDefault);
 	const [isTranslationVisible, setIsTranslationVisible] = useState(showTranslationByDefault);
+	const [isExplanationVisible, setIsExplanationVisible] = useState(false);
 	const [wasCurrentOnMount] = useState(isCurrentCard);
 
 	// --- COMPUTED STATES ---
@@ -102,6 +103,10 @@ function SwipeableCard({
 
 	function handleShowTranslationClick(): void {
 		setIsTranslationVisible(true);
+	}
+
+	function handleShowExplanationClick(): void {
+		setIsExplanationVisible(true);
 	}
 
 	// --- EFFECTS ---
@@ -167,6 +172,13 @@ function SwipeableCard({
 						text={phrase.translation}
 						visible={isTranslationVisible}
 						onClick={handleShowTranslationClick}
+					/>
+
+					<Explanation
+						className={classes.showContentButton}
+						text={phrase.explanation}
+						visible={isExplanationVisible}
+						onClick={handleShowExplanationClick}
 					/>
 				</Box>
 			</Box>
@@ -238,6 +250,45 @@ function Translation({
 					onClick={onClick}
 				>
 					Tap to show translation
+				</Button>
+			)}
+		</Box>
+	);
+}
+
+type ExplanationProps = {
+	className: string;
+	text: string | undefined;
+	visible: boolean;
+	onClick: () => void;
+};
+
+function Explanation({
+	className,
+	text,
+	visible,
+	onClick,
+}: ExplanationProps): ReactTypes.JSXElementNullable {
+	// --- STYLES ---
+	const classes = {
+		wrapper: "animate-in fade-in-0 slide-in-from-bottom-2 duration-400 bg-white/20 p-4 rounded-lg",
+		text: "text-center text-base font-medium text-white/80 italic",
+	};
+
+	if (!text) return null;
+
+	return (
+		<Box className="w-full">
+			{visible ? (
+				<Box className={classes.wrapper}>
+					<Paragraph className={classes.text}>{text}</Paragraph>
+				</Box>
+			) : (
+				<Button
+					className={className}
+					onClick={onClick}
+				>
+					Tap to show explanation
 				</Button>
 			)}
 		</Box>

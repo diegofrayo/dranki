@@ -25,5 +25,14 @@
 		"theme": { "background_color": "", "font_color": "" },
 		"lesson_id": "",
 		"created_at": ""
+	},
+	{
+		"id": "conditional-sentences",
+		"title": "Conditional sentences",
+		"description": "",
+		"emoji": "",
+		"theme": { "background_color": "", "font_color": "" },
+		"lesson_id": "conditional-sentences",
+		"created_at": ""
 	}
 ]

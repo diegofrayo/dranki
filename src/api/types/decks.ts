@@ -3,6 +3,7 @@ import type { Lesson } from "./lessons";
 export type DeckPhrase = {
 	sentence: string;
 	translation: string;
+	explanation?: string | undefined;
 };
 
 export type Deck = {

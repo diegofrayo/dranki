@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import { VoiceSettingsModal } from "~/components/common";
 import {
 	Box,
 	Button,
@@ -17,6 +18,7 @@ import {
 } from "~/components/primitive";
 import { Routes } from "~/constants";
 import { useRouter } from "~/features/router";
+import { voiceSettingsStorage, type VoiceSettings } from "~/features/voice-settings";
 
 import { useDeckSession } from "../../context/deck-session-context";
 import PracticeCards from "./components/practice-cards";
@@ -32,6 +34,7 @@ function PracticeView(): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
 	const [isBackDialogOpen, setIsBackDialogOpen] = useState(false);
 	const [isRestartDialogOpen, setIsRestartDialogOpen] = useState(false);
+	const [voiceSettingsOpen, setVoiceSettingsOpen] = useState(false);
 
 	// --- STYLES ---
 	const classes = {
@@ -44,7 +47,8 @@ function PracticeView(): ReactTypes.JSXElement {
 		deckEmoji: "text-xl",
 		deckTitle: "text-foreground truncate text-base font-bold",
 		progressWrapper: "mt-2",
-		restartButton: "size-9 shrink-0",
+		restartButton: "size-9",
+		settingsButton: "size-9",
 		main: "mx-auto flex w-full max-w-xl flex-1 flex-col px-4 py-4 min-h-0",
 	};
 
@@ -72,6 +76,19 @@ function PracticeView(): ReactTypes.JSXElement {
 
 	function handleRestartDialogOpenChange(open: boolean): void {
 		setIsRestartDialogOpen(open);
+	}
+
+	function handleSettingsClick(): void {
+		setVoiceSettingsOpen(true);
+	}
+
+	function handleVoiceSettingsClose(): void {
+		setVoiceSettingsOpen(false);
+	}
+
+	function handleVoiceSettingsSave(settings: VoiceSettings): void {
+		voiceSettingsStorage.set(settings);
+		setVoiceSettingsOpen(false);
 	}
 
 	// --- EFFECTS ---
@@ -123,18 +140,29 @@ function PracticeView(): ReactTypes.JSXElement {
 						</Box>
 					</Box>
 
-					<Button
-						variant={ButtonVariant.GHOST}
-						size={ButtonSize.ICON}
-						className={classes.restartButton}
-						aria-label="Restart deck"
-						onClick={handleRestartClick}
-					>
-						<Icon
-							name={IconCatalog.ROTATE_CCW}
-							size={18}
-						/>
-					</Button>
+					<Box className="flex flex-col gap-1">
+						<Button
+							variant={ButtonVariant.GHOST}
+							size={ButtonSize.ICON}
+							className={classes.restartButton}
+							aria-label="Restart deck"
+							onClick={handleRestartClick}
+						>
+							<Icon
+								name={IconCatalog.ROTATE_CCW}
+								size={18}
+							/>
+						</Button>
+
+						<Button
+							aria-label="Open voice settings"
+							className={classes.settingsButton}
+							variant={ButtonVariant.GHOST}
+							onClick={handleSettingsClick}
+						>
+							<Icon name={IconCatalog.SETTINGS} />
+						</Button>
+					</Box>
 				</Box>
 			</Box>
 
@@ -162,6 +190,14 @@ function PracticeView(): ReactTypes.JSXElement {
 				onConfirm={handleRestartConfirm}
 				onOpenChange={handleRestartDialogOpenChange}
 			/>
+
+			{voiceSettingsOpen && (
+				<VoiceSettingsModal
+					onClose={handleVoiceSettingsClose}
+					onSave={handleVoiceSettingsSave}
+					visible
+				/>
+			)}
 		</Box>
 	);
 }

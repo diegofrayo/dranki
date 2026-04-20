@@ -21,6 +21,7 @@ export default getDeckPhrases;
 const RawDeckPhraseSchema = z.object({
 	sentence: z.string(),
 	translation: z.string(),
+	explanation: z.optional(z.string()),
 });
 
 const RawGetDeckPhrasesResponseSchema = z.array(RawDeckPhraseSchema);
@@ -35,5 +36,6 @@ function transformResponse(raw: RawGetDeckPhrasesResponse): GetDeckPhrasesRespon
 	return raw.map((phrase) => ({
 		sentence: phrase.sentence,
 		translation: phrase.translation,
+		explanation: phrase.explanation,
 	}));
 }

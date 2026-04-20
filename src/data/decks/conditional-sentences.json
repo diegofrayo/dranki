@@ -1,0 +1,127 @@
+[
+	{
+		"sentence": "If I travel during the low season, I save money.",
+		"translation": "Si viajo en temporada baja, ahorro dinero.",
+		"explanation": "Zero Conditional: If + present simple, present simple. Used for general truths or facts."
+	},
+	{
+		"sentence": "If you book flights early, you get better prices.",
+		"translation": "Si reservas vuelos temprano, obtienes mejores precios.",
+		"explanation": "Zero Conditional: If + present simple, present simple. Used for general truths or facts."
+	},
+	{
+		"sentence": "If people travel light, they move more easily.",
+		"translation": "Si las personas viajan ligero, se mueven más fácilmente.",
+		"explanation": "Zero Conditional: If + present simple, present simple. Used for general truths or facts."
+	},
+	{
+		"sentence": "If it rains during the trip, we stay inside.",
+		"translation": "Si llueve durante el viaje, nos quedamos adentro.",
+		"explanation": "Zero Conditional: If + present simple, present simple. Used for general truths or facts."
+	},
+	{
+		"sentence": "If you visit new places, you learn new cultures.",
+		"translation": "Si visitas nuevos lugares, aprendes nuevas culturas.",
+		"explanation": "Zero Conditional: If + present simple, present simple. Used for general truths or facts."
+	},
+	{
+		"sentence": "If I save enough money, I will travel to Japan next year.",
+		"translation": "Si ahorro suficiente dinero, viajaré a Japón el próximo año.",
+		"explanation": "First Conditional: If + present simple, will + base verb. Used for real and possible future situations."
+	},
+	{
+		"sentence": "If we book the tickets today, we will get a discount.",
+		"translation": "Si reservamos los boletos hoy, obtendremos un descuento.",
+		"explanation": "First Conditional: If + present simple, will + base verb. Used for real and possible future situations."
+	},
+	{
+		"sentence": "If she finishes her project, she will join us on the trip.",
+		"translation": "Si ella termina su proyecto, se unirá a nosotros en el viaje.",
+		"explanation": "First Conditional: If + present simple, will + base verb. Used for real and possible future situations."
+	},
+	{
+		"sentence": "If the weather is good, we will go hiking tomorrow.",
+		"translation": "Si el clima es bueno, iremos a hacer senderismo mañana.",
+		"explanation": "First Conditional: If + present simple, will + base verb. Used for real and possible future situations."
+	},
+	{
+		"sentence": "If I find cheap flights, I will travel more often.",
+		"translation": "Si encuentro vuelos baratos, viajaré más a menudo.",
+		"explanation": "First Conditional: If + present simple, will + base verb. Used for real and possible future situations."
+	},
+	{
+		"sentence": "If I had more money, I would travel around the world.",
+		"translation": "Si tuviera más dinero, viajaría por todo el mundo.",
+		"explanation": "Second Conditional: If + past simple, would + base verb. Used for hypothetical or unlikely situations in the present/future."
+	},
+	{
+		"sentence": "If we had more time, we would visit more countries.",
+		"translation": "Si tuviéramos más tiempo, visitaríamos más países.",
+		"explanation": "Second Conditional: If + past simple, would + base verb. Used for hypothetical or unlikely situations in the present/future."
+	},
+	{
+		"sentence": "If she knew how to drive, she would rent a car.",
+		"translation": "Si ella supiera conducir, alquilaría un carro.",
+		"explanation": "Second Conditional: If + past simple, would + base verb. Used for hypothetical or unlikely situations in the present/future."
+	},
+	{
+		"sentence": "If I were you, I would plan the trip earlier.",
+		"translation": "Si yo fuera tú, planearía el viaje antes.",
+		"explanation": "Second Conditional: If + past simple, would + base verb. Used for hypothetical or unlikely situations in the present/future."
+	},
+	{
+		"sentence": "If they lived closer, they would travel with us.",
+		"translation": "Si vivieran más cerca, viajarían con nosotros.",
+		"explanation": "Second Conditional: If + past simple, would + base verb. Used for hypothetical or unlikely situations in the present/future."
+	},
+	{
+		"sentence": "If I had booked earlier, I would have paid less for the flight.",
+		"translation": "Si hubiera reservado antes, habría pagado menos por el vuelo.",
+		"explanation": "Third Conditional: If + past perfect, would have + past participle. Used for unreal situations in the past."
+	},
+	{
+		"sentence": "If we had checked the weather, we would have avoided the storm.",
+		"translation": "Si hubiéramos revisado el clima, habríamos evitado la tormenta.",
+		"explanation": "Third Conditional: If + past perfect, would have + past participle. Used for unreal situations in the past."
+	},
+	{
+		"sentence": "If she had taken a map, she would have found the place easily.",
+		"translation": "Si hubiera llevado un mapa, habría encontrado el lugar fácilmente.",
+		"explanation": "Third Conditional: If + past perfect, would have + past participle. Used for unreal situations in the past."
+	},
+	{
+		"sentence": "If they had left earlier, they would have arrived on time.",
+		"translation": "Si hubieran salido antes, habrían llegado a tiempo.",
+		"explanation": "Third Conditional: If + past perfect, would have + past participle. Used for unreal situations in the past."
+	},
+	{
+		"sentence": "If I had known about the delay, I would have stayed at the hotel.",
+		"translation": "Si hubiera sabido sobre el retraso, me habría quedado en el hotel.",
+		"explanation": "Third Conditional: If + past perfect, would have + past participle. Used for unreal situations in the past."
+	},
+	{
+		"sentence": "If I had traveled more when I was younger, I would be more experienced now.",
+		"translation": "Si hubiera viajado más cuando era joven, ahora tendría más experiencia.",
+		"explanation": "Mixed Conditional: Combination of second and third conditionals. Used to connect past conditions with present results."
+	},
+	{
+		"sentence": "If she had studied abroad, she would have more opportunities today.",
+		"translation": "Si hubiera estudiado en el extranjero, tendría más oportunidades hoy.",
+		"explanation": "Mixed Conditional: Combination of second and third conditionals. Used to connect past conditions with present results."
+	},
+	{
+		"sentence": "If we were more organized, we would have planned a better trip.",
+		"translation": "Si fuéramos más organizados, habríamos planeado un mejor viaje.",
+		"explanation": "Mixed Conditional: Combination of second and third conditionals. Used to connect present conditions with past results."
+	},
+	{
+		"sentence": "If I were more adventurous, I would have tried local food.",
+		"translation": "Si fuera más aventurero, habría probado comida local.",
+		"explanation": "Mixed Conditional: Combination of second and third conditionals. Used to connect present conditions with past results."
+	},
+	{
+		"sentence": "If they had saved more money, they would be traveling now.",
+		"translation": "Si hubieran ahorrado más dinero, ahora estarían viajando.",
+		"explanation": "Mixed Conditional: Combination of second and third conditionals. Used to connect past conditions with present results."
+	}
+]
