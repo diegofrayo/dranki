@@ -1,14 +1,10 @@
 @import "../styles/globals.css";
-
-@import "@fontsource-variable/nunito/wght.css";
+@import "@fontsource/poppins";
 
 @theme inline {
-	--font-sans: "Nunito Variable", "Tahoma", system-ui, sans-serif;
+	--font-sans: "Poppins", sans-serif;
 }
 
-/*
-@font-face {
-	font-family: "Nunito Variable";
-	font-display: optional;
+body {
+	font-family: "Poppins", sans-serif;
 }
-*/

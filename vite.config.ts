@@ -1,12 +1,14 @@
 import path from "path";
+import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
 
-// Maps each adapter file (Next.js default) to its TanStack counterpart.
-// Vite's resolve.alias works on raw import specifiers, so it can't match
-// relative imports like "./image/image.adapter" against absolute paths.
-// This plugin resolves first, then swaps — the correct approach.
+/* Maps each adapter file (Next.js default) to its TanStack counterpart.
+ * Vite's resolve.alias works on raw import specifiers, so it can't match
+ * relative imports like "./image/image.adapter" against absolute paths.
+ * This plugin resolves first, then swaps — the correct approach.
+ */
 function frameworkAdapterPlugin(): Plugin {
 	const ADAPTER_MAP: Record<string, string> = {
 		[path.resolve(__dirname, "src/features/router/use-router.adapter.ts")]: path.resolve(
@@ -43,5 +45,5 @@ export default defineConfig({
 	resolve: {
 		tsconfigPaths: true,
 	},
-	plugins: [frameworkAdapterPlugin(), tanstackStart(), viteReact()],
+	plugins: [frameworkAdapterPlugin(), tanstackStart(), viteReact(), tailwindcss()],
 });

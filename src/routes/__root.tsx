@@ -1,12 +1,12 @@
-// import nunitoLatinUrl from "@fontsource-variable/nunito/files/nunito-latin-wght-normal.woff2?url";
-//
-
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 import NotFoundPage from "~/features/pages/not-found";
+
+// @ts-expect-error - This file is only used in the Vite build, so these imports are safe.
+import appCss from "./app.css?url";
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -23,16 +23,7 @@ export const Route = createRootRoute({
 			{ name: "googlebot", content: "noindex, nofollow" },
 		],
 		links: [
-			{ rel: "stylesheet", href: "/src/routes/app.css" },
-			/*
-			{
-				rel: "preload",
-				href: nunitoLatinUrl,
-				as: "font",
-				type: "font/woff2",
-				crossOrigin: "anonymous",
-			},
-      */
+			{ rel: "stylesheet", href: appCss },
 			{ rel: "icon", href: `${FAVICON_PATH}/favicon-16x16.png`, sizes: "16x16", type: "image/png" },
 			{ rel: "icon", href: `${FAVICON_PATH}/favicon-32x32.png`, sizes: "32x32", type: "image/png" },
 			{
