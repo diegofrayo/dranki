@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { voiceSettingsStorage } from "~/features/voice-settings";
+
 export type AudioState = "idle" | "loading" | "playing";
 
 type UseSpeechSynthesisOptions = {
@@ -40,6 +42,16 @@ function useSpeechSynthesis({
 
 			const utterance = new SpeechSynthesisUtterance(text);
 			utterance.lang = lang;
+
+			const settings = voiceSettingsStorage.get();
+			utterance.pitch = settings.pitch;
+			utterance.rate = settings.rate;
+			if (settings.voiceURI) {
+				const voice = window.speechSynthesis
+					.getVoices()
+					.find((v) => v.voiceURI === settings.voiceURI);
+				if (voice) utterance.voice = voice;
+			}
 
 			utterance.onstart = (): void => {
 				setAudioState("playing");

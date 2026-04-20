@@ -11,6 +11,7 @@ async function getDeckById(
 
 	if (options?.includePhrases && deck) {
 		deck.phrases = await getDeckPhrases(deck.id);
+		deck.totalPhrases = deck.phrases.length;
 	}
 
 	return deck;

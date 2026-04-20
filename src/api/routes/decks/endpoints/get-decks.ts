@@ -10,13 +10,13 @@ import type { Deck } from "../../../types";
 import getLessonById from "../../lessons/endpoints/get-lesson-by-id";
 import getDeckPhrases from "./get-deck-phrases";
 
-async function getDecks(): Promise<GetDecksResponse> {
+async function getDecks(options?: { includePhrases: boolean }): Promise<GetDecksResponse> {
 	const filePath = path.resolve(process.cwd(), "src/data/decks.json");
 	const rawResponse = readFile<RawGetDecksResponse>(filePath, "json");
 
 	RawGetDecksResponseSchema.parse(rawResponse);
 
-	return transformResponse(rawResponse);
+	return transformResponse(rawResponse, options);
 }
 
 export default getDecks;
@@ -44,22 +44,30 @@ type GetDecksResponse = Array<Deck>;
 
 // --- TRANSFORMS ---
 
-async function transformResponse(raw: RawGetDecksResponse): Promise<GetDecksResponse> {
+async function transformResponse(
+	raw: RawGetDecksResponse,
+	options?: { includePhrases: boolean },
+): Promise<GetDecksResponse> {
 	return (
 		await Promise.all(
-			raw.map(async (deck) => ({
-				id: deck.id,
-				title: deck.title,
-				description: deck.description,
-				emoji: deck.emoji || Emojis.DECKS,
-				lesson: await getLessonById(deck.lesson_id),
-				createdAt: deck.created_at,
-				theme: {
-					backgroundColor: deck.theme.background_color,
-					fontColor: deck.theme.font_color,
-				},
-				totalPhrases: (await getDeckPhrases(deck.id)).length,
-			})),
+			raw.map(async (deck) => {
+				const phrases = await getDeckPhrases(deck.id);
+
+				return {
+					id: deck.id,
+					title: deck.title,
+					description: deck.description,
+					emoji: deck.emoji || Emojis.DECKS,
+					lesson: await getLessonById(deck.lesson_id),
+					createdAt: deck.created_at,
+					theme: {
+						backgroundColor: deck.theme.background_color,
+						fontColor: deck.theme.font_color,
+					},
+					phrases: options?.includePhrases ? phrases : [],
+					totalPhrases: phrases.length,
+				};
+			}),
 		)
 	).sort(sortBy("title"));
 }

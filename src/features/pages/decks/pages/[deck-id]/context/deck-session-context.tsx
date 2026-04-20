@@ -95,7 +95,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 
 	// --- HANDLERS ---
 	function startSession(): void {
-		const shuffledPhrases = shuffleArray(deck.phrases ?? []);
+		const shuffledPhrases = shuffleArray(deck.phrases);
 
 		setPhrases(shuffledPhrases);
 		setCurrentIndex(0);

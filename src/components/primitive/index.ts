@@ -3,8 +3,11 @@ export * from "./button";
 export * from "./confirmation-dialog";
 export * from "./icon";
 export * from "./inline-text";
+export * from "./modal";
 export * from "./paragraph";
+export * from "./select";
 export * from "./separator";
+export * from "./slider";
 export * from "./switch";
 export * from "./title";
 
@@ -13,8 +16,11 @@ export { default as Button } from "./button";
 export { default as ConfirmationDialog } from "./confirmation-dialog";
 export { default as Icon } from "./icon";
 export { default as InlineText } from "./inline-text";
+export { default as Modal } from "./modal";
 export { default as Paragraph } from "./paragraph";
+export { default as Select } from "./select";
 export { default as Separator } from "./separator";
+export { default as Slider } from "./slider";
 export { default as Switch } from "./switch";
 export { default as Title } from "./title";
 

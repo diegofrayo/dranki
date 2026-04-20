@@ -1,7 +1,26 @@
+"use client";
+
+import { useState } from "react";
+
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Icon, IconCatalog, Image, Link, Paragraph, Title } from "~/components/primitive";
+import {
+	Box,
+	Button,
+	ButtonVariant,
+	Icon,
+	IconCatalog,
+	Image,
+	Link,
+	Paragraph,
+	Title,
+} from "~/components/primitive";
 import { PROJECT_METADATA, Routes } from "~/constants";
+import {
+	VoiceSettingsModal,
+	voiceSettingsStorage,
+	type VoiceSettings,
+} from "~/features/voice-settings";
 
 import Breadcrumb from "./breadcrumb";
 
@@ -10,6 +29,28 @@ type MainLayoutProps = {
 };
 
 function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
+	// --- STATES & REFS ---
+	const [voiceSettingsOpen, setVoiceSettingsOpen] = useState(false);
+
+	// --- STYLES ---
+	const classes = {
+		settingsButton: "ml-auto flex size-10 items-center justify-center",
+	};
+
+	// --- HANDLERS ---
+	function handleSettingsClick(): void {
+		setVoiceSettingsOpen(true);
+	}
+
+	function handleVoiceSettingsClose(): void {
+		setVoiceSettingsOpen(false);
+	}
+
+	function handleVoiceSettingsSave(settings: VoiceSettings): void {
+		voiceSettingsStorage.set(settings);
+		setVoiceSettingsOpen(false);
+	}
+
 	return (
 		<Box
 			as="main"
@@ -20,7 +61,7 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 				className="sticky top-0 z-40 w-full shrink-0"
 			>
 				<Box className="border-border bg-background/80 border-b backdrop-blur-md">
-					<Box className="mx-auto flex max-w-xl gap-3 px-4 py-4">
+					<Box className="mx-auto flex max-w-xl items-center gap-3 px-4 py-4">
 						<Link
 							href={Routes.INDEX}
 							className="block"
@@ -44,6 +85,14 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 								{PROJECT_METADATA.slogan}
 							</Paragraph>
 						</Box>
+						<Button
+							aria-label="Open voice settings"
+							className={classes.settingsButton}
+							variant={ButtonVariant.GHOST}
+							onClick={handleSettingsClick}
+						>
+							<Icon name={IconCatalog.SETTINGS} />
+						</Button>
 					</Box>
 				</Box>
 
@@ -78,6 +127,12 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 					</Link>
 				</Paragraph>
 			</Box>
+
+			<VoiceSettingsModal
+				visible={voiceSettingsOpen}
+				onClose={handleVoiceSettingsClose}
+				onSave={handleVoiceSettingsSave}
+			/>
 		</Box>
 	);
 }

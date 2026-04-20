@@ -12,7 +12,7 @@ export type Deck = {
 	emoji: string;
 	lesson?: Lesson | undefined;
 	theme: { backgroundColor: string; fontColor: string };
-	phrases?: DeckPhrase[] | undefined;
+	phrases: DeckPhrase[];
 	totalPhrases: number;
 	createdAt: string;
 };

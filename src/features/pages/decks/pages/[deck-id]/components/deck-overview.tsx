@@ -32,7 +32,7 @@ function DeckOverview(): ReactTypes.JSXElement {
 	} = useDeckSession();
 
 	// --- COMPUTED STATES ---
-	const isEmptyDeck = deck.phrases?.length === 0;
+	const isEmptyDeck = deck.phrases.length === 0;
 
 	// --- STYLES ---
 	const classes = {
