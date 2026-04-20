@@ -6,7 +6,7 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, Icon, IconCatalog, InlineText } from "~/components/primitive";
-import { useSpeechSynthesis } from "~/hooks";
+import { useSpeechSynthesis } from "~/features/voice-settings";
 
 type SelectionAudioBarProps = {
 	containerRef: ReactTypes.Ref<HTMLDivElement | null>;

@@ -26,7 +26,7 @@ function frameworkAdapterPlugin(): Plugin {
 	return {
 		name: "framework-adapter",
 		enforce: "pre",
-		async resolveId(source, importer, options) {
+		async resolveId(source, importer, options): Promise<string | null> {
 			if (!importer) return null;
 			const resolved = await this.resolve(source, importer, { skipSelf: true, ...options });
 			if (!resolved) return null;

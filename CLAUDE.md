@@ -29,14 +29,15 @@ No test suite exists.
 
 ### Page structure
 
-Every page follows a strict layout. `src/app/` pages are thin re-exports; all logic lives under `src/features/pages/`:
+Every page is split in two: a thin framework-attached entry under `src/app/` and a framework-agnostic implementation under `src/features/pages/`. Only the `src/app/` entry may call Next.js APIs.
 
 ```
-src/app/my-page/page.tsx              → export { default } from "~/features/pages/my-page"
+src/app/my-page/page.tsx              → framework-attached entry; calls the loader, wires generateMetadata, exports the page component
 src/features/pages/my-page/
-  my-page.page.tsx                    → default-exported React component
+  my-page.page.tsx                    → default-exported React component (framework-agnostic)
   my-page.types.ts                    → types scoped to this page
-  my-page.config.ts                   → generateMetadata, loaders
+  my-page.loader.server.ts            → data-fetching function (framework-agnostic, server-only)
+  my-page.metadata.ts                 → metadata builder (framework-agnostic)
   index.ts                            → barrel file; default export is my-page.page.tsx
   components/                         → components used only within this page
   pages/my-subpage/                   → nested routes (same structure recursively)

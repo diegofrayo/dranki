@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
@@ -18,10 +18,11 @@ import {
 	Slider,
 	Title,
 } from "~/components/primitive";
-
-
-import { DEFAULT_VOICE_SETTINGS, voiceSettingsStorage, type VoiceSettings } from "./service";
-import useVoices from "./use-voices";
+import {
+	useSpeechSynthesis,
+	voiceSettingsStorage,
+	type VoiceSettings,
+} from "~/features/voice-settings";
 
 // --- PROPS & TYPES ---
 
@@ -39,13 +40,14 @@ function VoiceSettingsModal({
 	onSave,
 }: VoiceSettingsModalProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const voices = useVoices();
+	const { voices, play, stop } = useSpeechSynthesis({ text: TEST_PHRASE });
 
 	// --- STATES & REFS ---
-	const [voiceURI, setVoiceURI] = useState<string | null>(null);
-	const [pitch, setPitch] = useState<number>(DEFAULT_VOICE_SETTINGS.pitch);
-	const [rate, setRate] = useState<number>(DEFAULT_VOICE_SETTINGS.rate);
-	const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+	const [voiceURI, setVoiceURI] = useState<string | null>(
+		() => voiceSettingsStorage.get().voiceURI,
+	);
+	const [pitch, setPitch] = useState<number>(() => voiceSettingsStorage.get().pitch);
+	const [rate, setRate] = useState<number>(() => voiceSettingsStorage.get().rate);
 
 	// --- COMPUTED STATES ---
 	const voiceItems = voices.map((voice) => ({
@@ -76,22 +78,7 @@ function VoiceSettingsModal({
 	}
 
 	function handleTestPlayClick(): void {
-		if (typeof window === "undefined" || !window.speechSynthesis) return;
-
-		window.speechSynthesis.cancel();
-
-		const utterance = new SpeechSynthesisUtterance(TEST_PHRASE);
-		utterance.lang = "en-US";
-		utterance.pitch = pitch;
-		utterance.rate = rate;
-
-		const selectedVoice = voices.find((voice) => voice.voiceURI === voiceURI);
-		if (selectedVoice) {
-			utterance.voice = selectedVoice;
-		}
-
-		utteranceRef.current = utterance;
-		window.speechSynthesis.speak(utterance);
+		play({ rate, pitch, voiceURI });
 	}
 
 	function handleSaveClick(): void {
@@ -99,43 +86,14 @@ function VoiceSettingsModal({
 	}
 
 	function handleCancelClick(): void {
-		stopSpeaking();
+		stop();
 		onClose();
 	}
 
 	function handleCloseFromModal(): void {
-		stopSpeaking();
+		stop();
 		onClose();
 	}
-
-	// --- EFFECTS ---
-	useEffect(
-		function hydrateFromStorageOnOpen() {
-			if (!visible) return;
-			const stored = voiceSettingsStorage.get();
-			setVoiceURI(stored.voiceURI);
-			setPitch(stored.pitch);
-			setRate(stored.rate);
-		},
-		[visible],
-	);
-
-	useEffect(
-		function ensureVoiceSelected() {
-			if (voiceURI || voices.length === 0) return;
-			const firstVoice = voices[0];
-			if (firstVoice) setVoiceURI(firstVoice.voiceURI);
-		},
-		[voiceURI, voices],
-	);
-
-	useEffect(function cancelSpeechOnUnmount() {
-		return (): void => {
-			if (typeof window !== "undefined" && window.speechSynthesis) {
-				window.speechSynthesis.cancel();
-			}
-		};
-	}, []);
 
 	return (
 		<Modal
@@ -209,14 +167,6 @@ const RATE_MIN = 0.5;
 const RATE_MAX = 2;
 const RATE_STEP = 0.1;
 
-// --- UTILS ---
-
-function stopSpeaking(): void {
-	if (typeof window !== "undefined" && window.speechSynthesis) {
-		window.speechSynthesis.cancel();
-	}
-}
-
 // --- COMPONENTS ---
 
 type ModalHeaderProps = {
@@ -228,8 +178,7 @@ function ModalHeader({ onClose }: ModalHeaderProps): ReactTypes.JSXElement {
 	const classes = {
 		header: "mb-5 flex items-start justify-between gap-3",
 		title: "text-foreground text-lg font-bold",
-		closeButton:
-			"text-muted-foreground hover:text-foreground -mt-1 -mr-1 cursor-pointer rounded p-1 transition-colors",
+		closeButton: "text-muted-foreground hover:text-foreground -mt-1 -mr-1 p-1",
 	};
 
 	// --- HANDLERS ---
@@ -245,14 +194,14 @@ function ModalHeader({ onClose }: ModalHeaderProps): ReactTypes.JSXElement {
 			>
 				Voice settings
 			</Title>
-			<button
-				type="button"
+			<Button
 				className={classes.closeButton}
 				aria-label="Close"
+				variant={ButtonVariant.LINK}
 				onClick={handleCloseClick}
 			>
 				<Icon name={IconCatalog.X_MARK} />
-			</button>
+			</Button>
 		</Box>
 	);
 }

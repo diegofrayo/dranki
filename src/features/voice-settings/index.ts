@@ -1,7 +1,3 @@
-export { default as VoiceSettingsModal } from "./voice-settings-modal";
-export {
-	DEFAULT_VOICE_SETTINGS,
-	VOICE_SETTINGS_STORAGE_KEY,
-	voiceSettingsStorage,
-	type VoiceSettings,
-} from "./service";
+export * from "./use-speech-synthesis";
+export { default as useSpeechSynthesis } from "./use-speech-synthesis";
+export { voiceSettingsStorage, type VoiceSettings, DEFAULT_VOICE_SETTINGS } from "./service";

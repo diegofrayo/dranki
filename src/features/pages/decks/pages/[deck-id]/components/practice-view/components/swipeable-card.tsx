@@ -5,8 +5,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck, DeckPhrase } from "~/api";
 import { Box, Button, Icon, IconCatalog, Paragraph } from "~/components/primitive";
-import type { AudioState } from "~/hooks/use-speech-synthesis";
-import useSpeechSynthesis from "~/hooks/use-speech-synthesis";
+import { useSpeechSynthesis, type AudioState } from "~/features/voice-settings";
 
 import useDragGesture from "../hooks/use-drag-gesture";
 
