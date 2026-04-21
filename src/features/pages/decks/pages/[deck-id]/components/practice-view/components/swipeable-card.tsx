@@ -6,6 +6,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Deck, DeckPhrase } from "~/api";
 import { Box, Button, Icon, IconCatalog, Paragraph } from "~/components/primitive";
 import { useSpeechSynthesis, type AudioState } from "~/features/voice-settings";
+import { sounds } from "~/utils/sounds";
 
 import useDragGesture from "../hooks/use-drag-gesture";
 
@@ -99,14 +100,17 @@ function SwipeableCard({
 
 	function handleShowSentenceClick(): void {
 		setIsSentenceVisible(true);
+		sounds.click();
 	}
 
 	function handleShowTranslationClick(): void {
 		setIsTranslationVisible(true);
+		sounds.click();
 	}
 
 	function handleShowExplanationClick(): void {
 		setIsExplanationVisible(true);
+		sounds.click();
 	}
 
 	// --- EFFECTS ---

@@ -9,7 +9,7 @@
 		"===== DEV =====": "",
 		"dev": "npm run dev:tns:pl",
 		"dev:next": "next dev",
-		"dev:next:pl": "portless dranki next dev",
+		"dev:next:pl": "portless --lan dranki next dev",
 		"dev:tns": "vite dev",
 		"dev:tns:pl": "portless --lan dranki vite dev",
 		"build:ts": "tsc --noEmit",
@@ -24,6 +24,7 @@
 	"dependencies": {
 		"@base-ui/react": "^1.3.0",
 		"@fontsource/poppins": "^5.2.7",
+		"@rexa-developer/tiks": "^0.1.8",
 		"@tailwindcss/vite": "^4.2.3",
 		"@tanstack/react-router": "^1.168.22",
 		"@tanstack/react-start": "^1.167.41",

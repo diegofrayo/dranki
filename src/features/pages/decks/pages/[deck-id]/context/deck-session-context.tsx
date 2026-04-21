@@ -7,6 +7,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck, DeckPhrase } from "~/api";
 import { PROJECT_METADATA } from "~/constants";
+import { sounds } from "~/utils/sounds";
 
 // --- TYPES ---
 
@@ -112,6 +113,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 
 		setCurrentIndex(newIndex);
 		setRecognizedCount(newCount);
+		sounds.success();
 
 		checkIfDeckEnds(newIndex);
 	}
@@ -122,6 +124,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 
 		setCurrentIndex(newIndex);
 		setPracticeMoreCount(newCount);
+		sounds.error();
 
 		checkIfDeckEnds(newIndex);
 	}
@@ -130,6 +133,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		if (newIndex >= phrases.length && phrases.length > 0) {
 			setEndTime(new Date().toISOString());
 			setPhase("results");
+			sounds.notify();
 		}
 	}
 
