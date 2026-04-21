@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { replaceAll } from "@diegofrayo-pkg/utilities/strings";
+
 import { voiceSettingsStorage, type VoiceSettings } from "~/features/voice-settings";
 
 export type AudioState = "idle" | "loading" | "playing";
@@ -33,7 +35,7 @@ function useSpeechSynthesis({
 	// --- COMPUTED STATES ---
 	const TARGET_LANG = "en-US";
 
-	// --- HANDLERS ---
+	// --- UTILS ---
 	const findVoice = function findVoice(voiceURI: string): SpeechSynthesisVoice | null {
 		if (!voiceURI) return null;
 
@@ -42,6 +44,7 @@ function useSpeechSynthesis({
 		return voice || null;
 	};
 
+	// --- HANDLERS ---
 	const stop = useCallback(function stop(): void {
 		window.speechSynthesis.cancel();
 		setAudioState("idle");
@@ -94,7 +97,7 @@ function useSpeechSynthesis({
 
 		function updateVoices(): void {
 			const all = window.speechSynthesis.getVoices();
-			const filtered = all.filter((voice) => voice.lang === TARGET_LANG);
+			const filtered = all.filter((voice) => replaceAll(voice.lang, "_", "-") === TARGET_LANG);
 			setVoices(filtered);
 		}
 

@@ -1,11 +1,11 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Nunito as CustomFont } from "next/font/google";
-import Script from "next/script";
+import { Poppins as CustomFont } from "next/font/google";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import { RemoteDebugger } from "~/components/common";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 
 import "./app.css";
@@ -32,30 +32,12 @@ export default function RootLayout({ children }: RootLayoutProps): ReactTypes.JS
 	);
 }
 
-// --- COMPONENTS ---
-
-function RemoteDebugger(): ReactTypes.JSXElementNullable {
-	if (process.env.NODE_ENV !== "test") return null;
-
-	return (
-		<>
-			<Script
-				src="https://cdn.jsdelivr.net/npm/eruda"
-				strategy="beforeInteractive"
-				async={false}
-				defer={false}
-			/>
-			<Script>window.eruda?.init();</Script>
-		</>
-	);
-}
-
 // --- FONTS ---
 
 const customFont = CustomFont({
 	subsets: ["latin"],
 	weight: ["400", "600", "700", "800"],
-	variable: "--font-nunito",
+	variable: "--font-poppins",
 });
 
 // --- METADATA ---

@@ -2,6 +2,7 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-r
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
+import { RemoteDebugger } from "~/components/common";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 import NotFoundPage from "~/features/pages/not-found";
 
@@ -65,6 +66,7 @@ function RootDocument({
 			<body className="font-sans">
 				{children}
 				<Scripts />
+				<RemoteDebugger />
 			</body>
 		</html>
 	);

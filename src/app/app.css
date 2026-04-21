@@ -1,6 +1,5 @@
 @import "../styles/globals.css";
 
 @theme inline {
-	--font-sans: var(--font-nunito), "Nunito", system-ui, sans-serif;
-	--font-mono: "Geist Mono", "Geist Mono Fallback";
+	--font-sans: var(--font-poppins), "Poppins", system-ui, sans-serif;
 }
