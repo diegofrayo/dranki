@@ -5,4 +5,5 @@ export type Text = {
 	title: string;
 	emoji: string;
 	lesson: Lesson | undefined;
+	practiceWords: Array<{ word: string; translation: string; example: string }>;
 };

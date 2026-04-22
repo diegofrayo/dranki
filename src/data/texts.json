@@ -9,6 +9,38 @@
 		"id": "what-if-a-conversation-about-life-choices-and-possibilities",
 		"title": "What If? A Conversation About Life, Choices, and Possibilities",
 		"emoji": "",
-		"lesson_id": "conditional-sentences"
+		"lesson_id": "conditional-sentences",
+		"practice_words": [
+			{
+				"word": "look like",
+				"translation": "parecer / verse como",
+				"example": "My future will look like something completely different if I change careers."
+			},
+			{
+				"word": "abroad",
+				"translation": "en el extranjero",
+				"example": "She wants to study abroad next year."
+			},
+			{
+				"word": "Europe",
+				"translation": "Europa",
+				"example": "They are planning to travel to Europe this summer."
+			},
+			{
+				"word": "by now",
+				"translation": "a estas alturas / para ahora",
+				"example": "I thought I would have finished the project by now."
+			},
+			{
+				"word": "right away",
+				"translation": "de inmediato / enseguida",
+				"example": "I will start working on the task right away."
+			},
+			{
+				"word": "work out",
+				"translation": "funcionar / salir bien",
+				"example": "I hope everything will work out in the end."
+			}
+		]
 	}
 ]

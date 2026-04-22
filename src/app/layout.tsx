@@ -36,8 +36,8 @@ export default function RootLayout({ children }: RootLayoutProps): ReactTypes.JS
 
 const customFont = CustomFont({
 	subsets: ["latin"],
-	weight: ["400", "600", "700", "800"],
-	variable: "--font-poppins",
+	weight: ["100", "400", "500", "700"],
+	variable: "--next-custom-font",
 });
 
 // --- METADATA ---

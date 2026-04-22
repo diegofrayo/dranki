@@ -27,6 +27,15 @@ const RawTextSchema = z.object({
 	title: z.string(),
 	emoji: z.string(),
 	lesson_id: z.string(),
+	practice_words: z
+		.array(
+			z.object({
+				word: z.string(),
+				translation: z.string(),
+				example: z.string(),
+			}),
+		)
+		.optional(),
 });
 
 const RawGetTextsResponseSchema = z.array(RawTextSchema);
@@ -47,6 +56,7 @@ async function transformResponse(raw: RawGetTextsResponse): Promise<GetTextsResp
 				title: rawText.title,
 				emoji: rawText.emoji || Emojis.TEXTS,
 				lesson,
+				practiceWords: rawText.practice_words || [],
 			};
 		}),
 	);

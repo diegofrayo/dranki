@@ -2,9 +2,9 @@
 @import "@fontsource/poppins";
 
 @theme inline {
-	--font-sans: "Poppins", sans-serif;
+	--font-sans: "Poppins", system-ui, sans-serif;
 }
 
 body {
-	font-family: "Poppins", sans-serif;
+	font-family: var(--font-sans);
 }

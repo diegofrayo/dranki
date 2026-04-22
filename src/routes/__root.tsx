@@ -63,7 +63,7 @@ function RootDocument({
 			<head>
 				<HeadContent />
 			</head>
-			<body className="font-sans">
+			<body className="font-sans antialiased">
 				{children}
 				<Scripts />
 				<RemoteDebugger />

@@ -11,6 +11,8 @@ import { MainLayout } from "~/components/layout";
 import { Box, Title } from "~/components/primitive";
 import { useFontSize } from "~/hooks";
 
+import PracticeWordsTable from "./components/practice-words-table";
+
 type TextLessonPageProps = {
 	textDetails: Text;
 	content: string;
@@ -53,6 +55,9 @@ export default function TextLessonPage({
 			>
 				<MarkdownRenderer>{content}</MarkdownRenderer>
 			</Box>
+
+			<PracticeWordsTable practiceWords={textDetails.practiceWords} />
+
 			<SelectionAudioBar containerRef={contentRef} />
 		</MainLayout>
 	);

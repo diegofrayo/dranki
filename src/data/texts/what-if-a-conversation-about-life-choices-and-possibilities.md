@@ -27,3 +27,5 @@
 **B:** Yeah, you’re right. At the end of the day, **if we keep trying, things will eventually work out**.
 
 **A:** Exactly. It’s all about taking action now.
+
+<!-- TRANSLATION SEPARATOR -->

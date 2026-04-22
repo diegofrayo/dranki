@@ -13,3 +13,5 @@ Once the system is ready, it **is deployed** to production environments where it
 Throughout the lifecycle, documentation **is maintained** so that knowledge **is preserved** and shared across the team. Security measures **are applied** to protect sensitive data, and access **is controlled** through authentication mechanisms. Backups **are created** regularly to prevent data loss, and recovery procedures **are established** in advance.
 
 In this way, modern software and AI systems **are built** through structured processes where collaboration **is enabled** and quality **is ensured**. Rather than focusing on who performs each task, attention **is directed** toward what **is achieved**, and how reliable, scalable, and efficient solutions **are delivered**.
+
+<!-- TRANSLATION SEPARATOR -->

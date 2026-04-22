@@ -88,11 +88,11 @@ function PracticeSection({ decks, texts }: PracticeSectionProps): ReactTypes.JSX
 
 	// --- STYLES ---
 	const classes = {
-		section: "bg-muted/40 border-border rounded-2xl border p-5 shadow-sm",
-		title: "text-foreground mb-4 text-center text-2xl font-bold",
-		groupTitle: "text-foreground mb-2 text-base font-semibold",
-		group: "mb-6 last:mb-0",
-		list: "flex flex-col gap-3",
+		section: "bg-muted border-border  rounded-lg border p-4",
+		title: "text-foreground mb-8 text-center text-3xl font-bold uppercase font-serif",
+		groupTitle: "text-foreground mb-2 text-xl uppercase font-semibold hidden",
+		group: "mb-3 last:mb-0",
+		list: "flex flex-col gap-2",
 	};
 
 	if (!hasPracticeContent) {
