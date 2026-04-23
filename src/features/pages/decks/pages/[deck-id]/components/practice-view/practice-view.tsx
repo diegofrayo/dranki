@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
@@ -32,7 +32,6 @@ function PracticeView(): ReactTypes.JSXElement {
 	const router = useRouter();
 
 	// --- STATES & REFS ---
-	const [isBackDialogOpen, setIsBackDialogOpen] = useState(false);
 	const [isRestartDialogOpen, setIsRestartDialogOpen] = useState(false);
 	const [voiceSettingsOpen, setVoiceSettingsOpen] = useState(false);
 
@@ -54,15 +53,7 @@ function PracticeView(): ReactTypes.JSXElement {
 
 	// --- HANDLERS ---
 	function handleBackClick(): void {
-		setIsBackDialogOpen(true);
-	}
-
-	function handleBackConfirm(): void {
 		router.push(Routes.DECKS);
-	}
-
-	function handleBackDialogOpenChange(open: boolean): void {
-		setIsBackDialogOpen(open);
 	}
 
 	function handleRestartClick(): void {
@@ -90,17 +81,6 @@ function PracticeView(): ReactTypes.JSXElement {
 		voiceSettingsStorage.set(settings);
 		setVoiceSettingsOpen(false);
 	}
-
-	// --- EFFECTS ---
-	useEffect(
-		function clearSessionWhenGoBack() {
-			return (): void => {
-				if (!isBackDialogOpen) return;
-				clearSession();
-			};
-		},
-		[isBackDialogOpen, clearSession],
-	);
 
 	return (
 		<Box className={classes.root}>
@@ -172,15 +152,6 @@ function PracticeView(): ReactTypes.JSXElement {
 			>
 				<PracticeCards />
 			</Box>
-
-			<ConfirmationDialog
-				open={isBackDialogOpen}
-				title="Leave practice?"
-				description="Your progress will be lost and you'll be redirected to the decks page."
-				confirmLabel="Leave"
-				onConfirm={handleBackConfirm}
-				onOpenChange={handleBackDialogOpenChange}
-			/>
 
 			<ConfirmationDialog
 				open={isRestartDialogOpen}
