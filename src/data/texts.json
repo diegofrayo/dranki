@@ -52,6 +52,7 @@
 		"id": "casual-conversation",
 		"title": "Casual conversation",
 		"emoji": "",
-		"lesson_id": ""
+		"lesson_id": "",
+		"public": false
 	}
 ]

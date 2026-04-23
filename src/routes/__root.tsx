@@ -4,9 +4,9 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { RemoteDebugger } from "~/components/common";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
+import { AuthProvider } from "~/features/auth";
 import NotFoundPage from "~/features/pages/not-found";
 
-// @ts-expect-error - This file is only used in the Vite build, so these imports are safe.
 import appCss from "./app.css?url";
 
 export const Route = createRootRoute({
@@ -64,7 +64,7 @@ function RootDocument({
 				<HeadContent />
 			</head>
 			<body className="font-sans antialiased">
-				{children}
+				<AuthProvider>{children}</AuthProvider>
 				<Scripts />
 				<RemoteDebugger />
 			</body>

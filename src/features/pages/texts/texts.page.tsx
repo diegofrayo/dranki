@@ -4,12 +4,15 @@ import type { Text } from "~/api";
 import { TextItem } from "~/components/common";
 import { MainLayout } from "~/components/layout";
 import { Box, Paragraph, Title } from "~/components/primitive";
+import { useAuth } from "~/features/auth";
 
 type TextsPageProps = {
 	texts: Text[];
 };
 
 export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElement {
+	const auth = useAuth();
+
 	return (
 		<MainLayout>
 			<Box className="mb-6">
@@ -28,12 +31,18 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 				as="section"
 				className="flex flex-col gap-4"
 			>
-				{texts.map((text) => (
-					<TextItem
-						key={text.id}
-						text={text}
-					/>
-				))}
+				{texts.map((text) => {
+					if (auth.status !== "authenticated" && text.public === false) {
+						return null;
+					}
+
+					return (
+						<TextItem
+							key={text.id}
+							text={text}
+						/>
+					);
+				})}
 			</Box>
 		</MainLayout>
 	);

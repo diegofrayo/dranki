@@ -2,7 +2,7 @@ import path from "path";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig, loadEnv, type Plugin } from "vite";
 
 /* Maps each adapter file (Next.js default) to its TanStack counterpart.
  * Vite's resolve.alias works on raw import specifiers, so it can't match
@@ -11,17 +11,25 @@ import { defineConfig, type Plugin } from "vite";
  */
 function frameworkAdapterPlugin(): Plugin {
 	const ADAPTER_MAP: Record<string, string> = {
-		[path.resolve(__dirname, "src/features/router/use-router.adapter.ts")]: path.resolve(
+		[path.resolve(__dirname, "src/components/primitive/image/image.adapter.tsx")]: path.resolve(
 			__dirname,
-			"src/features/router/use-router.tns.ts",
+			"src/components/primitive/image/image.tns.tsx",
 		),
 		[path.resolve(__dirname, "src/components/primitive/link/link.adapter.tsx")]: path.resolve(
 			__dirname,
 			"src/components/primitive/link/link.tns.tsx",
 		),
-		[path.resolve(__dirname, "src/components/primitive/image/image.adapter.tsx")]: path.resolve(
+		[path.resolve(__dirname, "src/features/auth/supabase/server.adapter.ts")]: path.resolve(
 			__dirname,
-			"src/components/primitive/image/image.tns.tsx",
+			"src/features/auth/supabase/server.tns.ts",
+		),
+		[path.resolve(__dirname, "src/features/env/env.next.ts")]: path.resolve(
+			__dirname,
+			"src/features/env/env.tns.ts",
+		),
+		[path.resolve(__dirname, "src/features/router/use-router.adapter.ts")]: path.resolve(
+			__dirname,
+			"src/features/router/use-router.tns.ts",
 		),
 	};
 
@@ -37,13 +45,15 @@ function frameworkAdapterPlugin(): Plugin {
 	};
 }
 
-export default defineConfig({
-	server: {
-		host: "0.0.0.0",
-		port: 3000,
-	},
-	resolve: {
-		tsconfigPaths: true,
-	},
-	plugins: [frameworkAdapterPlugin(), tanstackStart(), viteReact(), tailwindcss()],
+export default defineConfig(() => {
+	return {
+		server: {
+			host: "0.0.0.0",
+			port: 3000,
+		},
+		resolve: {
+			tsconfigPaths: true,
+		},
+		plugins: [frameworkAdapterPlugin(), tanstackStart(), viteReact(), tailwindcss()],
+	};
 });

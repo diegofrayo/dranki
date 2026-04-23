@@ -36,6 +36,7 @@ const RawTextSchema = z.object({
 			}),
 		)
 		.optional(),
+	public: z.boolean().optional(),
 });
 
 const RawGetTextsResponseSchema = z.array(RawTextSchema);
@@ -57,6 +58,7 @@ async function transformResponse(raw: RawGetTextsResponse): Promise<GetTextsResp
 				emoji: rawText.emoji || Emojis.TEXTS,
 				lesson,
 				practiceWords: rawText.practice_words || [],
+				public: rawText.public || true,
 			};
 		}),
 	);

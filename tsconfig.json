@@ -28,6 +28,7 @@
 		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 		"allowImportingTsExtensions": true,
+		"types": ["vite/client"],
 
 		// JavaScript support
 		"allowJs": true,
@@ -60,11 +61,11 @@
 	},
 	"include": [
 		"next-env.d.ts",
+		"middleware.ts",
 		"src/**/*.ts",
 		"src/**/*.tsx",
 		".next/types/**/*.ts",
-		".next/dev/types/**/*.ts",
-		"src/routes/texts/$textId.tsx"
+		".next/dev/types/**/*.ts"
 	],
 	"exclude": ["node_modules", "src/_legacy"]
 }

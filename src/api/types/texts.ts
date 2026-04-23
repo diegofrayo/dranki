@@ -6,6 +6,7 @@ export type Text = {
 	emoji: string;
 	lesson: Lesson | undefined;
 	practiceWords: Array<{ word: string; translation: string; example: string }>;
+	public: boolean;
 };
 
 export type TextContent = { originalText: string; translation: string };

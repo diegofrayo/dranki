@@ -7,6 +7,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { RemoteDebugger } from "~/components/common";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
+import { AuthProvider } from "~/features/auth";
+import { getUser } from "~/features/auth/actions/get-user.server";
 
 import "./app.css";
 
@@ -14,16 +16,20 @@ type RootLayoutProps = Readonly<{
 	children: React.ReactNode;
 }>;
 
-export default function RootLayout({ children }: RootLayoutProps): ReactTypes.JSXElement {
+export default async function RootLayout({
+	children,
+}: RootLayoutProps): Promise<ReactTypes.JSXElement> {
 	// --- STYLES ---
 	const classes = {
 		body: cn("font-sans antialiased", customFont.variable),
 	};
 
+	const initialUser = await getUser();
+
 	return (
 		<html lang="en">
 			<body className={classes.body}>
-				{children}
+				<AuthProvider initialUser={initialUser}>{children}</AuthProvider>
 
 				{process.env.NODE_ENV === "production" && <Analytics />}
 				<RemoteDebugger />
