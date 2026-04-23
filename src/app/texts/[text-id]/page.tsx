@@ -15,16 +15,16 @@ export default async function TextPageWrapper({
 	params,
 }: TextPageProps): Promise<ReactTypes.JSXElement> {
 	const textId = (await params)["text-id"];
-	const { textDetails, textContent } = await loader(textId);
+	const { details, content } = await loader(textId);
 
-	if (!textDetails || !textContent) {
+	if (!details || !content) {
 		return notFound();
 	}
 
 	return (
 		<TextPage
-			textDetails={textDetails}
-			content={textContent}
+			details={details}
+			content={content}
 		/>
 	);
 }

@@ -7,3 +7,5 @@ export type Text = {
 	lesson: Lesson | undefined;
 	practiceWords: Array<{ word: string; translation: string; example: string }>;
 };
+
+export type TextContent = { originalText: string; translation: string };

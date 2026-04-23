@@ -1,10 +1,12 @@
-import api, { type Text } from "~/api";
+import api from "~/api";
+
+import type { TextPageProps } from "./[text-id].types";
 
 export async function loader(
 	textId: string,
-): Promise<{ textDetails: Text | undefined; textContent: string }> {
-	const textDetails = await api.texts.getTextById(textId);
-	const textContent = await api.texts.getTextContent(textId);
+): Promise<{ details: TextPageProps["details"] | undefined } & Pick<TextPageProps, "content">> {
+	const details = await api.texts.getTextById(textId);
+	const content = await api.texts.getTextContent(textId);
 
-	return { textDetails, textContent };
+	return { details, content };
 }
