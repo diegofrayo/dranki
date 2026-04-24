@@ -11,5 +11,6 @@ export async function exchangeCodeForSession(code: string): Promise<ExchangeCode
 	if (error) {
 		return { ok: false, error: error.message };
 	}
+
 	return { ok: true };
 }

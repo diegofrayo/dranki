@@ -6,5 +6,6 @@ export async function getUser(): Promise<User | null> {
 	const { data, error } = await supabase.auth.getUser();
 
 	if (error || !data.user) return null;
+
 	return data.user;
 }

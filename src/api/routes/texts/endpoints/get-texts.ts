@@ -58,7 +58,7 @@ async function transformResponse(raw: RawGetTextsResponse): Promise<GetTextsResp
 				emoji: rawText.emoji || Emojis.TEXTS,
 				lesson,
 				practiceWords: rawText.practice_words || [],
-				public: rawText.public || true,
+				public: rawText.public ?? true,
 			};
 		}),
 	);

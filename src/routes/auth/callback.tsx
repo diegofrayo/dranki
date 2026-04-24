@@ -2,12 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { exchangeCodeForSession } from "~/features/auth/callback/exchange-code.tns";
 
-function redirectResponse(location: string, setCookieHeaders: string[]): Response {
-	const headers = new Headers({ Location: location });
-	setCookieHeaders.forEach((cookie) => headers.append("Set-Cookie", cookie));
-	return new Response(null, { status: 302, headers });
-}
-
 export const Route = createFileRoute("/auth/callback")({
 	server: {
 		handlers: {
@@ -21,6 +15,7 @@ export const Route = createFileRoute("/auth/callback")({
 				}
 
 				const result = await exchangeCodeForSession(code);
+
 				if (!result.ok) {
 					return redirectResponse(
 						`${url.origin}/sign-in?error=${encodeURIComponent(result.error)}`,
@@ -33,3 +28,9 @@ export const Route = createFileRoute("/auth/callback")({
 		},
 	},
 });
+
+function redirectResponse(location: string, setCookieHeaders: string[]): Response {
+	const headers = new Headers({ Location: location });
+	setCookieHeaders.forEach((cookie) => headers.append("Set-Cookie", cookie));
+	return new Response(null, { status: 302, headers });
+}

@@ -9,17 +9,13 @@ import { composePageTitle } from "~/utils/misc";
 
 type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;
 
-export const getData = createServerFn().handler(async () => {
-	return loader();
-});
+export const decksPageLoader = createServerFn().handler(loader);
 
 export const Route = createFileRoute("/decks/")({
 	head: () => ({
 		meta: [{ title: composePageTitle("Decks") }],
 	}),
-	loader: () => {
-		return getData();
-	},
+	loader: () => decksPageLoader(),
 	component: function DecksPageWrapper() {
 		const { decks } = Route.useLoaderData() as LoaderData;
 

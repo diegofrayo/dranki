@@ -5,10 +5,10 @@ import { useState } from "react";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Button, Paragraph, Title } from "~/components/primitive";
+import { Box, Button, Input, Paragraph, Title } from "~/components/primitive";
 import { useAuth } from "~/features/auth";
 
-export function SignInForm(): ReactTypes.JSXElement {
+export default function SignInForm(): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const { signInWithMagicLink } = useAuth();
 
@@ -19,8 +19,6 @@ export function SignInForm(): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		form: cn("flex flex-col gap-3"),
-		input:
-			"border-border bg-background text-foreground h-10 rounded-md border px-3 text-sm outline-none focus-visible:ring-ring/50 focus-visible:ring-[3px]",
 		hint: "text-muted-foreground text-xs",
 		error: "text-destructive text-sm",
 		success: "text-emerald-600 text-sm",
@@ -70,7 +68,7 @@ export function SignInForm(): ReactTypes.JSXElement {
 				onSubmit={handleFormSubmit}
 				className={classes.form}
 			>
-				<input
+				<Input
 					type="email"
 					name="email"
 					required
@@ -79,7 +77,6 @@ export function SignInForm(): ReactTypes.JSXElement {
 					value={email}
 					onChange={handleEmailChange}
 					disabled={isSubmitting || isSent}
-					className={classes.input}
 				/>
 				<Button
 					type="submit"

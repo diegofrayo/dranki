@@ -3,7 +3,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { MainLayout } from "~/components/layout";
 import { Box } from "~/components/primitive";
 
-import { SignInForm } from "./components/sign-in-form";
+import SignInForm from "./components/sign-in-form";
 
 export default function SignInPage(): ReactTypes.JSXElement {
 	return (

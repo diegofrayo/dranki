@@ -11,5 +11,6 @@ export async function exchangeCodeForSession(code: string): Promise<ExchangeCode
 	if (error) {
 		return { ok: false, error: error.message, setCookieHeaders: getSetCookieHeaders() };
 	}
+
 	return { ok: true, setCookieHeaders: getSetCookieHeaders() };
 }

@@ -7,19 +7,15 @@ import TextsPage from "~/features/pages/texts";
 import { loader } from "~/features/pages/texts/texts.loader.server";
 import { composePageTitle } from "~/utils/misc";
 
-type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;
+type LoaderData = NonNullableObject<Awaited<ReturnType<typeof textsPageLoader>>>;
 
-export const getData = createServerFn().handler(async () => {
-	return loader();
-});
+const textsPageLoader = createServerFn().handler(loader);
 
 export const Route = createFileRoute("/texts/")({
 	head: () => ({
 		meta: [{ title: composePageTitle("Texts") }],
 	}),
-	loader: async () => {
-		return getData();
-	},
+	loader: () => textsPageLoader(),
 	component: function TextsPageWrapper() {
 		const { texts } = Route.useLoaderData() as LoaderData;
 

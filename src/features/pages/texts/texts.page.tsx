@@ -1,3 +1,5 @@
+"use client";
+
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Text } from "~/api";
@@ -11,6 +13,7 @@ type TextsPageProps = {
 };
 
 export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElement {
+	// --- HOOKS ---
 	const auth = useAuth();
 
 	return (
@@ -32,16 +35,16 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 				className="flex flex-col gap-4"
 			>
 				{texts.map((text) => {
-					if (auth.status !== "authenticated" && text.public === false) {
-						return null;
+					if (text.public === true || auth.status === "authenticated") {
+						return (
+							<TextItem
+								key={text.id}
+								text={text}
+							/>
+						);
 					}
 
-					return (
-						<TextItem
-							key={text.id}
-							text={text}
-						/>
-					);
+					return null;
 				})}
 			</Box>
 		</MainLayout>
