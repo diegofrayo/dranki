@@ -1,3 +1,5 @@
+"use client";
+
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck } from "~/api";
@@ -32,13 +34,6 @@ export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElem
 				as="section"
 				className="flex flex-col gap-4"
 			>
-				{decks.map((deck) => (
-					<DeckItem
-						key={deck.id}
-						deck={deck}
-					/>
-				))}
-
 				{decks.map((deck) => {
 					if (deck.public === true || auth.status === "authenticated") {
 						return (

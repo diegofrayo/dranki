@@ -1,1 +1,3 @@
-export { default } from "~/features/pages/not-found";
+"use client";
+
+export { default } from "~/features/pages/error/not-found.page";

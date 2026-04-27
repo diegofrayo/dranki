@@ -5,7 +5,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { RemoteDebugger } from "~/components/common";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 import { AuthProvider } from "~/features/auth";
-import NotFoundPage from "~/features/pages/not-found";
+import ErrorPage from "~/features/pages/error/error.page";
+import NotFoundPage from "~/features/pages/error/not-found.page";
 
 import appCss from "./app.css?url";
 
@@ -45,6 +46,7 @@ export const Route = createRootRoute({
 	}),
 	component: RootComponent,
 	notFoundComponent: NotFoundPage,
+	errorComponent: ErrorPage,
 });
 
 function RootComponent(): ReactTypes.JSXElement {
