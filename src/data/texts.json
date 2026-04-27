@@ -53,6 +53,17 @@
 		"title": "Casual conversation",
 		"emoji": "",
 		"lesson_id": "",
-		"public": false
+		"public": false,
+		"practice_words": [
+			{ "word": "Ideally", "translation": "-", "example": "-" },
+			{ "word": "Looking at ", "translation": "-", "example": "-" },
+			{ "word": "well-thought-out", "translation": "-", "example": "-" },
+			{ "word": "As for", "translation": "-", "example": "-" },
+			{ "word": "But let me point something out", "translation": "-", "example": "-" },
+			{ "word": "Right before", "translation": "-", "example": "-" },
+			{ "word": "Gradually", "translation": "-", "example": "-" },
+			{ "word": "Further", "translation": "-", "example": "-" },
+			{ "word": "Hesitate", "translation": "-", "example": "-" }
+		]
 	}
 ]

@@ -21,7 +21,7 @@ export default getDeckPhrases;
 const RawDeckPhraseSchema = z.object({
 	sentence: z.string(),
 	translation: z.string(),
-	explanation: z.optional(z.string()),
+	explanation: z.string().optional(),
 });
 
 const RawGetDeckPhrasesResponseSchema = z.array(RawDeckPhraseSchema);

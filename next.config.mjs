@@ -7,7 +7,7 @@ const nextConfig = {
 	images: {
 		unoptimized: true,
 	},
-	allowedDevOrigins: ["192.168.40.*"],
+	allowedDevOrigins: ["192.168.40.*", "dranki.local"],
 };
 
 export default nextConfig;

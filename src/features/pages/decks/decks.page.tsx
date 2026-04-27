@@ -4,12 +4,16 @@ import type { Deck } from "~/api";
 import { DeckItem } from "~/components/common";
 import { MainLayout } from "~/components/layout";
 import { Box, Paragraph, Title } from "~/components/primitive";
+import { useAuth } from "~/features/auth";
 
 type DecksPageProps = {
 	decks: Deck[];
 };
 
 export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElement {
+	// --- HOOKS ---
+	const auth = useAuth();
+
 	return (
 		<MainLayout>
 			<Box className="mb-6">
@@ -34,6 +38,19 @@ export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElem
 						deck={deck}
 					/>
 				))}
+
+				{decks.map((deck) => {
+					if (deck.public === true || auth.status === "authenticated") {
+						return (
+							<DeckItem
+								key={deck.id}
+								deck={deck}
+							/>
+						);
+					}
+
+					return null;
+				})}
 			</Box>
 		</MainLayout>
 	);

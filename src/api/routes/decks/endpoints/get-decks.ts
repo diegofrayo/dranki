@@ -34,6 +34,7 @@ const RawDeckSchema = z.object({
 		background_color: z.string(),
 		font_color: z.string(),
 	}),
+	public: z.boolean().optional(),
 });
 
 const RawGetDecksResponseSchema = z.array(RawDeckSchema);
@@ -66,6 +67,7 @@ async function transformResponse(
 					},
 					phrases: options?.includePhrases ? phrases : [],
 					totalPhrases: phrases.length,
+					public: deck.public ?? true,
 				};
 			}),
 		)

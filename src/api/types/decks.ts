@@ -16,4 +16,5 @@ export type Deck = {
 	phrases: DeckPhrase[];
 	totalPhrases: number;
 	createdAt: string;
+	public: boolean;
 };

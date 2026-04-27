@@ -16,12 +16,12 @@ function PracticeWordsTable({
 }: PracticeWordsTableProps): ReactTypes.JSXElementNullable {
 	// --- STYLES ---
 	const classes = {
-		section: "bg-muted border-border rounded-lg border p-4",
+		section: "bg-muted border-border rounded-lg border p-4 border-b-0",
 		title: "text-foreground mb-8 text-center text-3xl font-bold uppercase font-serif",
-		tableWrapper: "border-border bg-background overflow-x-auto rounded-md border",
+		tableWrapper: "border-border bg-background rounded-md border overflow-x-auto",
 		table: "w-full border-collapse text-left text-sm",
-		th: "bg-muted/50 text-black border-border border-b px-3 py-2 font-bold nth-3:min-w-48",
-		td: "border-border align-top border-b px-3 py-2 nth-3:min-w-48",
+		th: "bg-muted/50 text-black border-border border-b px-3 py-2 font-bold", // nth-3:min-w-48
+		td: "border-border align-top border-b px-3 py-2", // nth-3:min-w-48
 		word: "text-foreground font-medium",
 		translation: "text-muted-foreground",
 		example: "text-foreground italic",
