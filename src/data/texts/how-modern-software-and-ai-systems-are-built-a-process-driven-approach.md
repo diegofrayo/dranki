@@ -1,5 +1,3 @@
-# How Modern Software and AI Systems Are Built: A Process-Driven Approach
-
 Modern software development and artificial intelligence systems are increasingly shaped by processes in which actions are emphasized over individual contributors. In many teams, applications **are designed, built, and deployed** through workflows where responsibilities **are distributed** and outcomes **are highlighted**.
 
 At the beginning of a project, requirements **are gathered** from stakeholders and **are documented** in shared systems. Architectural decisions **are made** based on scalability, performance, and maintainability. Once a direction **has been chosen**, the system **is broken down** into smaller components, and clear interfaces **are defined**. During this phase, prototypes **are often created**, and assumptions **are tested** before major resources **are committed**.
@@ -15,3 +13,19 @@ Throughout the lifecycle, documentation **is maintained** so that knowledge **is
 In this way, modern software and AI systems **are built** through structured processes where collaboration **is enabled** and quality **is ensured**. Rather than focusing on who performs each task, attention **is directed** toward what **is achieved**, and how reliable, scalable, and efficient solutions **are delivered**.
 
 <!-- TRANSLATION SEPARATOR -->
+
+# Cómo se Construyen los Sistemas Modernos de Software e IA: Un Enfoque Basado en Procesos
+
+El desarrollo moderno de software y los sistemas de inteligencia artificial están cada vez más moldeados por procesos en los que las acciones son enfatizadas por encima de los contribuyentes individuales. En muchos equipos, las aplicaciones **son diseñadas, construidas y desplegadas** mediante flujos de trabajo donde las responsabilidades **son distribuidas** y los resultados **son destacados**.
+
+Al comienzo de un proyecto, los requisitos **son recopilados** de las partes interesadas y **son documentados** en sistemas compartidos. Las decisiones arquitectónicas **son tomadas** basándose en la escalabilidad, el rendimiento y la mantenibilidad. Una vez que una dirección **ha sido elegida**, el sistema **es dividido** en componentes más pequeños y se **definen** interfaces claras. Durante esta fase, los prototipos **son creados con frecuencia**, y las suposiciones **son probadas** antes de que recursos importantes **sean comprometidos**.
+
+A medida que el desarrollo avanza, el código **es escrito** siguiendo estándares acordados, y las mejores prácticas **son aplicadas** mediante herramientas automatizadas. Las pull requests **son revisadas** cuidadosamente, y la retroalimentación **es proporcionada** para garantizar consistencia y calidad. Los errores **son identificados** durante las pruebas y **son rastreados** en sistemas de gestión de incidencias. Cuando los problemas **son detectados**, **son analizados**, y las correcciones **son implementadas** lo más rápido posible.
+
+En los proyectos de IA, grandes conjuntos de datos **son recopilados** y **son procesados** antes de que los modelos **sean entrenados**. Los datos **son limpiados, etiquetados y validados** para garantizar precisión. Los modelos **son entrenados** utilizando hardware potente, y el rendimiento **es evaluado** usando métricas específicas. Si los resultados **no son satisfactorios**, los parámetros **son ajustados** y los experimentos **son repetidos** hasta que las mejoras **son logradas**.
+
+Una vez que el sistema está listo, **es desplegado** en entornos de producción donde puede ser accedido por los usuarios. Las herramientas de monitoreo **son configuradas** para que el rendimiento pueda ser observado en tiempo real. Si anomalías **son detectadas**, las alertas **son activadas** y las investigaciones **son iniciadas**. Con el tiempo, los sistemas **son actualizados, optimizados y escalados** para manejar una demanda creciente.
+
+A lo largo del ciclo de vida, la documentación **es mantenida** para que el conocimiento **sea preservado** y compartido entre el equipo. Las medidas de seguridad **son aplicadas** para proteger datos sensibles, y el acceso **es controlado** mediante mecanismos de autenticación. Los respaldos **son creados** regularmente para prevenir la pérdida de datos, y los procedimientos de recuperación **son establecidos** con anticipación.
+
+De esta manera, los sistemas modernos de software e IA **son construidos** mediante procesos estructurados donde la colaboración **es habilitada** y la calidad **es garantizada**. En lugar de enfocarse en quién realiza cada tarea, la atención **es dirigida** hacia lo que **es logrado**, y hacia cómo soluciones confiables, escalables y eficientes **son entregadas**.

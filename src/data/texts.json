@@ -3,7 +3,39 @@
 		"id": "how-modern-software-and-ai-systems-are-built-a-process-driven-approach",
 		"title": "How Modern Software and AI Systems Are Built: A Process-Driven Approach",
 		"emoji": "",
-		"lesson_id": "passive-voice"
+		"lesson_id": "passive-voice",
+		"practice_words": [
+			{
+				"word": "individual",
+				"translation": "individual",
+				"example": "Actions are emphasized over individual contributors."
+			},
+			{
+				"word": "architectural",
+				"translation": "arquitectónico",
+				"example": "Architectural decisions are made based on scalability, performance, and maintainability."
+			},
+			{
+				"word": "automated",
+				"translation": "automatizado",
+				"example": "Best practices are enforced through automated tools."
+			},
+			{
+				"word": "accuracy",
+				"translation": "precisión / exactitud",
+				"example": "Data is cleaned, labeled, and validated to ensure accuracy."
+			},
+			{
+				"word": "measures",
+				"translation": "medidas",
+				"example": "Security measures are applied to protect sensitive data."
+			},
+			{
+				"word": "procedures",
+				"translation": "procedimientos",
+				"example": "Recovery procedures are established in advance."
+			}
+		]
 	},
 	{
 		"id": "what-if-a-conversation-about-life-choices-and-possibilities",
@@ -55,15 +87,51 @@
 		"lesson_id": "",
 		"public": false,
 		"practice_words": [
-			{ "word": "Ideally", "translation": "-", "example": "-" },
-			{ "word": "Looking at ", "translation": "-", "example": "-" },
-			{ "word": "well-thought-out", "translation": "-", "example": "-" },
-			{ "word": "As for", "translation": "-", "example": "-" },
-			{ "word": "But let me point something out", "translation": "-", "example": "-" },
-			{ "word": "Right before", "translation": "-", "example": "-" },
-			{ "word": "Gradually", "translation": "-", "example": "-" },
-			{ "word": "Further", "translation": "-", "example": "-" },
-			{ "word": "Hesitate", "translation": "-", "example": "-" }
+			{
+				"word": "Ideally",
+				"translation": "idealmente / en un caso ideal",
+				"example": "Ideally, you should be releasing bubbles the whole time and just turning to inhale quickly."
+			},
+			{
+				"word": "Looking at",
+				"translation": "revisando / mirando",
+				"example": "I was reviewing job postings, looking at the most common requirements."
+			},
+			{
+				"word": "well-thought-out",
+				"translation": "bien pensado / bien elaborado",
+				"example": "With your experience, it sounds like a well-thought-out decision."
+			},
+			{
+				"word": "As for",
+				"translation": "en cuanto a / respecto a",
+				"example": "As for earplugs, I ordered some from Temu and they will arrive this week, maybe tomorrow."
+			},
+			{
+				"word": "But let me point something out",
+				"translation": "pero déjame señalar algo / pero permíteme aclarar algo",
+				"example": "But let me point something out: if you always stay there, your progress might be slower."
+			},
+			{
+				"word": "Right before",
+				"translation": "justo antes de",
+				"example": "Are you releasing all the air right before turning your head?"
+			},
+			{
+				"word": "Gradually",
+				"translation": "gradualmente / poco a poco",
+				"example": "Take advantage of that to move a bit further from the edge, even gradually."
+			},
+			{
+				"word": "Further",
+				"translation": "más lejos / más allá",
+				"example": "Take advantage of that to move a bit further from the edge, even gradually."
+			},
+			{
+				"word": "Hesitate",
+				"translation": "dudar / vacilar",
+				"example": "They might reject you if you hesitate on answers like the ones you mentioned."
+			}
 		]
 	}
 ]

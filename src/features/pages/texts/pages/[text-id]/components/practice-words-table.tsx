@@ -97,7 +97,7 @@ function PracticeWordRow({
 	word,
 }: PracticeWordRowProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const { isPlaying, toggle } = useSpeechSynthesis({ text: example });
+	const { isPlaying, toggle } = useSpeechSynthesis({ text: word });
 
 	// --- HANDLERS ---
 	function handleTogglePlayClick(): void {

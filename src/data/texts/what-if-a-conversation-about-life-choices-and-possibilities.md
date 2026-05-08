@@ -29,3 +29,33 @@
 **A:** Exactly. It’s all about taking action now.
 
 <!-- TRANSLATION SEPARATOR -->
+
+**A:** ¡Hola! He estado pensando mucho sobre mi futuro últimamente.
+
+**B:** Yo también. A veces me pregunto cómo sería mi vida bajo diferentes circunstancias.
+
+**A:** Sí… por ejemplo, **si hubiera estudiado en el extranjero, tendría más experiencia internacional ahora**.
+
+**B:** Esa es buena. Siento que **si hubiera elegido una carrera diferente, estaría viviendo en otro país**.
+
+**A:** Es cierto. Pero oye, todavía no es demasiado tarde. **Si hacemos un plan ahora, todavía tendremos tiempo para cambiar las cosas**.
+
+**B:** Exactamente. De hecho, **si ahorro suficiente dinero este año, viajaré a Europa el próximo verano**.
+
+**A:** Eso suena increíble. Honestamente, **si fuera más disciplinado, ya estaría más cerca de mis metas**.
+
+**B:** Entiendo eso. A veces pienso que **si me despierto más temprano, soy más productivo durante el día**.
+
+**A:** Eso definitivamente es cierto. Además, **si inviertes tiempo en aprender nuevas habilidades, mejoras tus oportunidades**.
+
+**B:** Totalmente. Pero mirando hacia atrás, **si hubiera tomado más riesgos, habría logrado más hasta ahora**.
+
+**A:** Tal vez, pero también **si todo hubiera salido perfectamente, no habríamos aprendido tanto**.
+
+**B:** Ese es un gran punto. Y honestamente, **si consigo un trabajo remoto pronto, me mudaré a otra ciudad**.
+
+**A:** ¡Genial! Y oye, **si yo fuera tú, empezaría a postularme de inmediato**.
+
+**B:** Sí, tienes razón. Al final del día, **si seguimos intentándolo, las cosas eventualmente saldrán bien**.
+
+**A:** Exactamente. Todo se trata de tomar acción ahora.

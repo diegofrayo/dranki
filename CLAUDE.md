@@ -54,7 +54,7 @@ Content lives in `src/data/` as JSON and Markdown files — no runtime API calls
 
 ### API layer (when needed)
 
-When adding remote data access, all calls must go through `src/api/`. See `.claude/skills/api-structure/SKILL.md` for the full spec. The pattern:
+When adding remote data access, all calls must go through `src/api/`. See `.claude/skills/api-integration/SKILL.md` for the full spec. The pattern:
 
 ```
 src/api/
@@ -138,7 +138,7 @@ Audit and improve web accessibility following WCAG 2.2 guidelines. Use when aske
 
 Enforces the API layer architecture for diegofrayo's TypeScript/Next.js projects. Use this skill whenever creating, editing, or reviewing files inside the `src/api/` folder, adding a new API endpoint function, creating a route module, or wiring up a new data source call. Triggers on requests like...
 
-- `.claude/skills/api-structure/SKILL.md`
+- `.claude/skills/api-integration/SKILL.md`
 
 ## Steps
 
