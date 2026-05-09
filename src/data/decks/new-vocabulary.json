@@ -12,5 +12,29 @@
 		"translation": "Ayer caí en cuenta que me falta intentar hacer mas cosas"
 	},
 	{ "sentence": "I feel a bit sluggish", "translation": "Estoy un poco adormecido" },
-	{ "sentence": "What do I want to talk about?", "translation": "Sobre que quiero hablar?" }
+	{ "sentence": "What do I want to talk about?", "translation": "Sobre que quiero hablar?" },
+	{
+		"sentence": "I’m going to get through this",
+		"translation": "Voy a salir de esto"
+	},
+	{
+		"sentence": "I’m not going to lift weights tomorrow",
+		"translation": "Mañana no voy a levantar pesas"
+	},
+	{
+		"sentence": "This activity is not very enjoyable",
+		"translation": "Esta actividad no es muy disfrutable"
+	},
+	{
+		"sentence": "Doing this is not fun, it’s a little boring, but I’m still going to do it",
+		"translation": "Hacer esto no es divertido, es un poco aburrido pero igual voy a hacerlo"
+	},
+	{
+		"sentence": "I’m meeting my daily goal",
+		"translation": "Estoy cumpliendo con mi objetivo diario"
+	},
+	{
+		"sentence": "I hope to stay calm when I’m being interviewed",
+		"translation": "Espero estar tranquilo para cuando yo esté siendo entrevistado"
+	}
 ]

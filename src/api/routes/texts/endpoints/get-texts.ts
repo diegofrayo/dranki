@@ -57,7 +57,7 @@ async function transformResponse(raw: RawGetTextsResponse): Promise<GetTextsResp
 				title: rawText.title,
 				emoji: rawText.emoji || Emojis.TEXTS,
 				lesson,
-				practiceWords: rawText.practice_words || [],
+				practiceWords: (rawText.practice_words || []).sort(sortBy("word")),
 				public: rawText.public ?? true,
 			};
 		}),
