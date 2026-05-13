@@ -7,7 +7,7 @@
 		"===== SETUP =====": "",
 		"husky:install": "husky",
 		"===== DEV =====": "",
-		"dev": "npm run dev:tns:pl",
+		"dev": "npm run dev:next:pl",
 		"dev:next": "next dev",
 		"dev:next:pl": "portless --lan dranki next dev",
 		"dev:tns": "vite dev",

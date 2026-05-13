@@ -9,6 +9,7 @@ import { RemoteDebugger } from "~/components/common";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 import { AuthProvider } from "~/features/auth";
 import { getUser } from "~/features/auth/actions/get-user.server";
+import { SoundsProvider } from "~/features/sounds";
 
 import "./app.css";
 
@@ -24,6 +25,7 @@ export default async function RootLayout({
 		body: cn("font-sans antialiased", customFont.variable),
 	};
 
+	// --- COMPUTE STATES ---
 	const initialUser = await getUser();
 
 	return (
@@ -32,6 +34,7 @@ export default async function RootLayout({
 				<AuthProvider initialUser={initialUser}>{children}</AuthProvider>
 
 				{process.env.NODE_ENV === "production" && <Analytics />}
+				<SoundsProvider />
 				<RemoteDebugger />
 			</body>
 		</html>

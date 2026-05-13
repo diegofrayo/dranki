@@ -15,7 +15,7 @@ import {
 	Switch,
 	Title,
 } from "~/components/primitive";
-import { sounds } from "~/utils/sounds";
+import { SoundsService } from "~/features/sounds";
 
 import { useDeckSession } from "../context/deck-session-context";
 
@@ -56,17 +56,17 @@ function DeckOverview(): ReactTypes.JSXElement {
 	// --- HANDLERS ---
 	function handleAutoPlayAudioToggleChange(checked: boolean): void {
 		setAutoPlayAudio(checked);
-		sounds.toggle(checked);
+		SoundsService.toggle(checked);
 	}
 
 	function handleSentenceToggleChange(checked: boolean): void {
 		setShowSentenceByDefault(checked);
-		sounds.toggle(checked);
+		SoundsService.toggle(checked);
 	}
 
 	function handleTranslationToggleChange(checked: boolean): void {
 		setShowTranslationByDefault(checked);
-		sounds.toggle(checked);
+		SoundsService.toggle(checked);
 	}
 
 	function handleStartClick(): void {

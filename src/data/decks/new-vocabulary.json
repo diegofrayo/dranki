@@ -36,5 +36,14 @@
 	{
 		"sentence": "I hope to stay calm when I’m being interviewed",
 		"translation": "Espero estar tranquilo para cuando yo esté siendo entrevistado"
+	},
+	{ "sentence": "I'm improving day by day.", "translation": "Voy mejorando dia tras dia" },
+	{
+		"sentence": "My friend is a polyglot who speaks five languages",
+		"translation": "Mi amigo es un poliglota que habla cinco idiomas"
+	},
+	{
+		"sentence": "We don’t have stores that sell those chairs",
+		"translation": "No tenemos tiendas que vendan esas sillas"
 	}
 ]

@@ -24,6 +24,15 @@ These clauses are necessary to understand which person or thing we are talking a
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Defining Relative Clauses** | 1. The book that I bought is very interesting. → El libro que compré es muy interesante. <br> 2. The person who called you is my friend. → La persona que te llamó es mi amiga. |
 
+| Pronoun | Used For      | Example                                    |
+| ------- | ------------- | ------------------------------------------ |
+| who     | people        | The girl **who called me** is my friend.   |
+| that    | people/things | The book **that I bought** is interesting. |
+| which   | things        | The car **which broke down** was old.      |
+| where   | places        | The city **where I was born** is small.    |
+| whose   | possession    | The man **whose phone rang** left early.   |
+
+
 ### 2. Non-Defining Relative Clauses (Extra information)
 
 These clauses add extra (non-essential) information.
@@ -48,9 +57,10 @@ Used to show that something belongs to someone.
 
 Used to refer to places.
 
-| Type                   | Examples (EN → ES)                                                                                                                                                                                                         |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Whose (possession)** | 1. The developer whose code is clean works here. → El desarrollador cuyo código es limpio trabaja aquí. <br> 2. The company whose product we use is growing fast. → La empresa cuyo producto usamos está creciendo rápido. |
+| Type              | Examples (EN → ES)                                                                                                                                             |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Where (place)** | 1. This is the office where I work. → Esta es la oficina donde trabajo. <br> 2. The city where she lives is beautiful. → La ciudad donde ella vive es hermosa. |
+
 
 ### 5. Relative Clauses with “when” (Time)
 
@@ -67,3 +77,9 @@ Used to refer to time.
 - whose → possession
 - where → place
 - when → time
+
+| Type         | Meaning               | Commas? | `that` allowed? |
+| ------------ | --------------------- | ------- | --------------- |
+| Defining     | Essential information | No      | Yes             |
+| Non-defining | Extra information     | Yes     | No              |
+

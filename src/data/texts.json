@@ -158,5 +158,13 @@
 				"example": "That could help you a lot with what you're aiming for: real confidence."
 			}
 		]
+	},
+	{
+		"id": "relative-clauses",
+		"title": "Relative clauses",
+		"emoji": "",
+		"lesson_id": "relative-clauses",
+		"public": true,
+		"practice_words": []
 	}
 ]

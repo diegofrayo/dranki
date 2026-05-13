@@ -1,0 +1,77 @@
+[
+	{
+		"sentence": "The woman who works at the supermarket is very friendly.",
+		"translation": "La mujer que trabaja en el supermercado es muy amable.",
+		"explanation": "Defining Relative Clause. It describes a person and identifies which woman we are talking about."
+	},
+	{
+		"sentence": "The coffee shop where I usually study is always quiet.",
+		"translation": "La cafetería donde normalmente estudio siempre es tranquila.",
+		"explanation": "Defining Relative Clause. It represents a place using 'where'."
+	},
+	{
+		"sentence": "My friend, who lives near my house, goes running every morning.",
+		"translation": "Mi amigo, que vive cerca de mi casa, sale a correr todas las mañanas.",
+		"explanation": "Non-Defining Relative Clause. It adds extra information about the friend."
+	},
+	{
+		"sentence": "The laptop that I use for work is very fast.",
+		"translation": "La laptop que uso para trabajar es muy rápida.",
+		"explanation": "Defining Relative Clause. It identifies which laptop is being mentioned."
+	},
+	{
+		"sentence": "I remember the day when we started learning English together.",
+		"translation": "Recuerdo el día cuando empezamos a aprender inglés juntos.",
+		"explanation": "Defining Relative Clause. It represents time using 'when'."
+	},
+	{
+		"sentence": "The neighbor whose dog barks every night finally moved away.",
+		"translation": "El vecino cuyo perro ladra todas las noches finalmente se mudó.",
+		"explanation": "Defining Relative Clause. It represents possession using 'whose'."
+	},
+	{
+		"sentence": "My teacher, who loves traveling, speaks three languages.",
+		"translation": "Mi profesora, a quien le encanta viajar, habla tres idiomas.",
+		"explanation": "Non-Defining Relative Clause. It adds extra information about the teacher."
+	},
+	{
+		"sentence": "The gym where I exercise opens very early.",
+		"translation": "El gimnasio donde hago ejercicio abre muy temprano.",
+		"explanation": "Defining Relative Clause. It represents a place using 'where'."
+	},
+	{
+		"sentence": "The movie that we watched last night was really funny.",
+		"translation": "La película que vimos anoche fue realmente divertida.",
+		"explanation": "Defining Relative Clause. It identifies which movie is being discussed."
+	},
+	{
+		"sentence": "The student whose notes I borrowed explained everything clearly.",
+		"translation": "El estudiante cuyos apuntes pedí prestados explicó todo claramente.",
+		"explanation": "Defining Relative Clause. It represents possession using 'whose'."
+	},
+	{
+		"sentence": "Summer is the season when many people travel abroad.",
+		"translation": "El verano es la estación cuando muchas personas viajan al extranjero.",
+		"explanation": "Defining Relative Clause. It represents time using 'when'."
+	},
+	{
+		"sentence": "My brother, who recently started cooking, makes delicious pasta.",
+		"translation": "Mi hermano, que recientemente empezó a cocinar, prepara una pasta deliciosa.",
+		"explanation": "Non-Defining Relative Clause. It adds extra information about the brother."
+	},
+	{
+		"sentence": "The park where we play soccer on weekends is very large.",
+		"translation": "El parque donde jugamos fútbol los fines de semana es muy grande.",
+		"explanation": "Defining Relative Clause. It represents a place using 'where'."
+	},
+	{
+		"sentence": "The phone that my parents gave me still works perfectly.",
+		"translation": "El teléfono que mis padres me dieron todavía funciona perfectamente.",
+		"explanation": "Defining Relative Clause. It identifies which phone is being mentioned."
+	},
+	{
+		"sentence": "The artist whose paintings are displayed downtown became famous.",
+		"translation": "El artista cuyas pinturas están exhibidas en el centro se volvió famoso.",
+		"explanation": "Defining Relative Clause. It represents possession using 'whose'."
+	}
+]

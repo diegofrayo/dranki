@@ -1,3 +1,4 @@
+import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Text } from "~/api";
@@ -15,10 +16,12 @@ export default function TextItem({
 }: TextItemProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
-		link: "block rounded-2xl bg-violet-600 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80",
-		emoji: "mb-1 text-3xl",
-		title: "text-lg font-bold text-white",
-		footer: "mt-1 text-right text-sm text-white/80 italic",
+		link: cn(
+			"relative flex items-center gap-2 rounded-2xl bg-violet-600 px-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80",
+		),
+		emoji: cn("text-3xl"),
+		title: cn("my-6 text-lg leading-normal font-bold text-white"),
+		footer: cn("absolute right-4 bottom-2 text-right text-xs text-white/80 italic"),
 	};
 
 	return (

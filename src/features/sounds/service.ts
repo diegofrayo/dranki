@@ -1,8 +1,13 @@
 import { tiks } from "@rexa-developer/tiks";
 
-export const sounds = {
+const SoundsService = {
 	init(): void {
-		tiks.init();
+		tiks.init({
+			theme: "crisp",
+			volume: 1,
+			muted: false,
+			respectReducedMotion: true,
+		});
 	},
 	click(): void {
 		tiks.click();
@@ -20,3 +25,5 @@ export const sounds = {
 		tiks.toggle(state);
 	},
 };
+
+export default SoundsService;

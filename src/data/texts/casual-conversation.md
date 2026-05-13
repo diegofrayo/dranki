@@ -114,46 +114,44 @@ Now, let’s refine the most critical parts:
 
 1. “Difficult” questions
 
-Let me ask you first to help you better:
+    Let me ask you first to help you better:
 
-Why did you leave your last job? (answer as you would in an interview, in English if you want)
-Do you already have a salary range in mind? Even approximate
+    Why did you leave your last job? (answer as you would in an interview, in English if you want)
+    Do you already have a salary range in mind? Even approximate
 
-Important note:
-It’s not just about the right answer, but how you sound when you say it (confidence, clarity, not hesitating too much).
+    Important note:
+    It’s not just about the right answer, but how you sound when you say it (confidence, clarity, not hesitating too much).
 
 2. Confidence in interviews
 
-What you’re feeling is completely normal, but here’s something key:
+    What you’re feeling is completely normal, but here’s something key:
 
-You don’t need the perfect answer.
-You need a clear and well-practiced answer.
+    You don’t need the perfect answer.
+    You need a clear and well-practiced answer.
 
 3. English (very important in your case)
 
-To be honest:
-From what you write, you have a good level, but your main challenge is probably fluency and speed, not knowledge.
+    To be honest:
+    From what you write, you have a good level, but your main challenge is probably fluency and speed, not knowledge.
 
-So let me ask you:
-Have you practiced answering these questions out loud or have you only thought/written them?
+    So let me ask you:
+    Have you practiced answering these questions out loud or have you only thought/written them?
 
-Because there’s a big difference.
+    Because there’s a big difference.
 
 4. Strategy I suggest (very practical)
 
-We can do something if you want:
+    We can do something if you want:
 
-We simulate a real interview in English
-I ask you typical questions
-You answer
-And I correct you + give you a more natural version
+    We simulate a real interview in English
+    I ask you typical questions
+    You answer
+    And I correct you + give you a more natural version
 
-That could help you a lot with what you’re aiming for: real confidence
+    That could help you a lot with what you’re aiming for: real confidence
 
 But before that, continuing as friends 😄
-
-Tell me:
-What did you do today regarding this? Were you studying, applying, or mostly planning?
+Tell me: What did you do today regarding this? Were you studying, applying, or mostly planning?
 
 **Friend 2:**
 Well, let’s leave the conversation here for today.
