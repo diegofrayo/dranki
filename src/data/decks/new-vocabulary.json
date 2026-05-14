@@ -45,5 +45,45 @@
 	{
 		"sentence": "We don’t have stores that sell those chairs",
 		"translation": "No tenemos tiendas que vendan esas sillas"
+	},
+	{
+		"sentence": "I want to implement a function to enter the sentence in English and compare it with the sentence on the card",
+		"translation": "Quiero implementar una función para poder ingresar la frase en ingles y compararla con la frase que hay en la tarjeta"
+	},
+	{
+		"sentence": "I worked on the task about buying a new chair",
+		"translation": "Trabajé en la tarea sobre comprar una nueva silla"
+	},
+	{
+		"sentence": "This can lead you down a good path",
+		"translation": "Esto puede llevarlo por un buen camino"
+	},
+	{
+		"sentence": "I’m very satisfied with the results obtained",
+		"translation": "Estoy muy satisfecho con los resultados obtenidos"
+	},
+	{
+		"sentence": "I played for a short time",
+		"translation": "Jugué por poco tiempo"
+	},
+	{
+		"sentence": "I wasn’t there for very long",
+		"translation": "No estuve mucho tiempo allí"
+	},
+	{
+		"sentence": "I’m betting on him",
+		"translation": "Estoy apostando por el"
+	},
+	{
+		"sentence": "It’s not worth doing that",
+		"translation": "No vale la pena hacer eso"
+	},
+	{
+		"sentence": "It’s not worth it",
+		"translation": "No vale la pena"
+	},
+	{
+		"sentence": "It’s worth it",
+		"translation": "Vale la pena"
 	}
 ]

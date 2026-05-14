@@ -7,7 +7,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { ContentActions, MarkdownRenderer, SelectionAudioBar } from "~/components/common";
 import { MainLayout } from "~/components/layout";
-import { Box, Button, Icon, IconCatalog, Title } from "~/components/primitive";
+import { Box, Button, Icon, IconCatalog, InlineText, Title } from "~/components/primitive";
 import { useFontSize } from "~/hooks";
 
 import type { TextPageProps } from "./[text-id].types";
@@ -38,7 +38,12 @@ export default function TextPage({ details, content }: TextPageProps): ReactType
 	return (
 		<MainLayout>
 			<Box className="mb-6">
-				<Box className="mb-1 text-4xl">{details.emoji}</Box>
+				<Box className="mb-1 flex items-center gap-2">
+					<InlineText className="text-4xl">{details.emoji}</InlineText>
+					<InlineText className="text-muted-foreground text-sm font-bold italic underline underline-offset-2">
+						{details.lesson?.title}
+					</InlineText>
+				</Box>
 				<Title
 					as="h1"
 					className="text-foreground text-2xl font-bold"

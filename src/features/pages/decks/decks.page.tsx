@@ -40,6 +40,7 @@ export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElem
 							<DeckItem
 								key={deck.id}
 								deck={deck}
+								showTotalPhrases
 							/>
 						);
 					}

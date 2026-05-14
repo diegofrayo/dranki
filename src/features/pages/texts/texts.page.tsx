@@ -40,6 +40,7 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 							<TextItem
 								key={text.id}
 								text={text}
+								showLesson
 							/>
 						);
 					}

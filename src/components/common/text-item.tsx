@@ -24,6 +24,19 @@ export default function TextItem({
 		footer: cn("absolute right-4 bottom-2 text-right text-xs text-white/80 italic"),
 	};
 
+	// --- RENDERS ---
+	function renderFooter(): ReactTypes.JSXElement | null {
+		if (showLesson) {
+			if (text.lesson) {
+				return <Paragraph className={classes.footer}>{text.lesson.title}</Paragraph>;
+			}
+
+			return null;
+		}
+
+		return <Paragraph className={classes.footer}>Text</Paragraph>;
+	}
+
 	return (
 		<Link
 			href={Routes.TEXT(text.id)}
@@ -36,9 +49,7 @@ export default function TextItem({
 			>
 				{text.title}
 			</Title>
-			{showLesson && text.lesson && (
-				<Paragraph className={classes.footer}>{text.lesson.title}</Paragraph>
-			)}
+			{renderFooter()}
 		</Link>
 	);
 }

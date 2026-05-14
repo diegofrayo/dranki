@@ -7,9 +7,10 @@ import { Routes } from "~/constants";
 
 type DeckItemProps = {
 	deck: Deck;
+	showTotalPhrases?: boolean;
 };
 
-export default function DeckItem({ deck }: DeckItemProps): ReactTypes.JSXElement {
+export default function DeckItem({ deck, showTotalPhrases }: DeckItemProps): ReactTypes.JSXElement {
 	// --- STYLES ---
 	const classes = {
 		link: cn(
@@ -19,6 +20,15 @@ export default function DeckItem({ deck }: DeckItemProps): ReactTypes.JSXElement
 		title: cn("text-lg leading-none font-bold text-white"),
 		footer: cn("absolute right-3 bottom-2 mt-1 text-right text-xs text-white/80 italic"),
 	};
+
+	// --- RENDERS ---
+	function renderFooter(): ReactTypes.JSXElement | null {
+		if (showTotalPhrases) {
+			return <Paragraph className={classes.footer}>{deck.totalPhrases} phrases</Paragraph>;
+		}
+
+		return <Paragraph className={classes.footer}>Deck</Paragraph>;
+	}
 
 	return (
 		<Link
@@ -33,7 +43,7 @@ export default function DeckItem({ deck }: DeckItemProps): ReactTypes.JSXElement
 			>
 				{deck.title}
 			</Title>
-			<Paragraph className={classes.footer}>{deck.totalPhrases} phrases</Paragraph>
+			{renderFooter()}
 		</Link>
 	);
 }

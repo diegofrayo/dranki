@@ -143,7 +143,6 @@ function PracticeSection({ decks, texts }: PracticeSectionProps): ReactTypes.JSX
 								<TextItem
 									key={text.id}
 									text={text}
-									showLesson={false}
 								/>
 							))}
 						</Box>
