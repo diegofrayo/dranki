@@ -103,7 +103,7 @@ function SelectionAudioBar({
 					onClick={handleTogglePlayClick}
 				>
 					<Icon
-						name={isPlaying ? IconCatalog.SQUARE : IconCatalog.VOLUME_2}
+						name={isPlaying ? IconCatalog.SQUARE : IconCatalog.VOLUME}
 						size={18}
 					/>
 				</Button>

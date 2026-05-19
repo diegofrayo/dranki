@@ -5,7 +5,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Text } from "~/api";
 import { TextItem } from "~/components/common";
 import { MainLayout } from "~/components/layout";
-import { Box, Paragraph, Title } from "~/components/primitive";
+import { Box, Icon, IconCatalog, Paragraph, Title } from "~/components/primitive";
 import { useAuth } from "~/features/auth";
 
 type TextsPageProps = {
@@ -35,13 +35,25 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 				className="flex flex-col gap-4"
 			>
 				{texts.map((text) => {
-					if (text.public === true || auth.status === "authenticated") {
+					const isTextPublic = text.public === true;
+
+					if (isTextPublic || auth.status === "authenticated") {
 						return (
-							<TextItem
+							<Box
 								key={text.id}
-								text={text}
-								showLesson
-							/>
+								className="relative"
+							>
+								<TextItem
+									text={text}
+									showLesson
+								/>
+								{!isTextPublic && (
+									<Icon
+										name={IconCatalog.LOCK}
+										className="absolute top-1.5 right-2 fill-amber-500 text-amber-300"
+									/>
+								)}
+							</Box>
 						);
 					}
 

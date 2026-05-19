@@ -6,7 +6,8 @@
 		"emoji": "",
 		"theme": { "background_color": "", "font_color": "" },
 		"lesson_id": "passive-voice",
-		"created_at": ""
+		"created_at": "",
+		"public": true
 	},
 	{
 		"id": "traveling-phrases",
@@ -15,7 +16,8 @@
 		"emoji": "✈️",
 		"theme": { "background_color": "", "font_color": "" },
 		"lesson_id": "",
-		"created_at": ""
+		"created_at": "",
+		"public": true
 	},
 	{
 		"id": "computing-phrases",
@@ -24,7 +26,8 @@
 		"emoji": "🤖",
 		"theme": { "background_color": "", "font_color": "" },
 		"lesson_id": "",
-		"created_at": ""
+		"created_at": "",
+		"public": true
 	},
 	{
 		"id": "conditional-sentences",
@@ -33,7 +36,8 @@
 		"emoji": "",
 		"theme": { "background_color": "", "font_color": "" },
 		"lesson_id": "conditional-sentences",
-		"created_at": ""
+		"created_at": "",
+		"public": true
 	},
 	{
 		"id": "new-vocabulary",
@@ -52,6 +56,66 @@
 		"emoji": "",
 		"theme": { "background_color": "", "font_color": "" },
 		"lesson_id": "relative-clauses",
+		"created_at": "",
+		"public": true
+	},
+	{
+		"id": "parts-of-the-day",
+		"title": "Parts of the day",
+		"description": "",
+		"emoji": "🌅",
+		"theme": { "background_color": "", "font_color": "" },
+		"lesson_id": "",
+		"created_at": "",
+		"public": true
+	},
+	{
+		"id": "words-for-size-1",
+		"title": "Words for size 1",
+		"description": "",
+		"emoji": "",
+		"theme": { "background_color": "", "font_color": "" },
+		"lesson_id": "",
+		"created_at": "",
+		"public": true
+	},
+	{
+		"id": "words-for-size-2",
+		"title": "Words for size 2",
+		"description": "",
+		"emoji": "",
+		"theme": { "background_color": "", "font_color": "" },
+		"lesson_id": "",
+		"created_at": "",
+		"public": true
+	},
+	{
+		"id": "keep-vs-stay",
+		"title": "Keep vs Stay",
+		"description": "",
+		"emoji": "",
+		"theme": { "background_color": "", "font_color": "" },
+		"lesson_id": "",
+		"created_at": "",
+		"public": true
+	},
+	{
+		"id": "bring-vs-carry-vs-take",
+		"title": "Bring vs Carry vs Take",
+		"description": "",
+		"emoji": "",
+		"theme": { "background_color": "", "font_color": "" },
+		"lesson_id": "",
+		"created_at": "",
+		"public": true
+	},
+	{
+		"id": "through-vs-across-vs-around-vs-along",
+		"title": "Through vs Across vs Around vs Along",
+		"description": "",
+		"emoji": "",
+		"theme": { "background_color": "", "font_color": "" },
+		"lesson_id": "",
 		"created_at": "",
 		"public": true
 	}

@@ -38,7 +38,7 @@ export default function ContentActions({
 				onClick={handleDecreaseClick}
 			>
 				<Icon
-					name={IconCatalog.A_ARROW_DOWN}
+					name={IconCatalog.ARROW_DOWN}
 					size={18}
 				/>
 			</Button>
@@ -49,7 +49,7 @@ export default function ContentActions({
 				onClick={handleIncreaseClick}
 			>
 				<Icon
-					name={IconCatalog.A_ARROW_UP}
+					name={IconCatalog.ARROW_UP}
 					size={18}
 				/>
 			</Button>

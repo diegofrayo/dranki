@@ -4,6 +4,7 @@
 		"title": "How Modern Software and AI Systems Are Built: A Process-Driven Approach",
 		"emoji": "",
 		"lesson_id": "passive-voice",
+		"public": true,
 		"practice_words": [
 			{
 				"word": "individual",
@@ -42,6 +43,7 @@
 		"title": "What If? A Conversation About Life, Choices, and Possibilities",
 		"emoji": "",
 		"lesson_id": "conditional-sentences",
+		"public": true,
 		"practice_words": [
 			{
 				"word": "look like",
@@ -165,6 +167,12 @@
 		"emoji": "",
 		"lesson_id": "relative-clauses",
 		"public": true,
-		"practice_words": []
+		"practice_words": [
+			{
+				"word": "overlooks",
+				"translation": "da a / tiene vista a",
+				"example": "She lives in an apartment that overlooks a busy street where people walk their dogs every morning."
+			}
+		]
 	}
 ]

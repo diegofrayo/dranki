@@ -1,0 +1,102 @@
+[
+	{
+		"sentence": "She has a short memory and often forgets where she put things.",
+		"translation": "Ella tiene poca memoria y frecuentemente olvida dónde pone las cosas.",
+		"explanation": "'Short memory' is an idiomatic expression meaning someone forgets things quickly or easily."
+	},
+	{
+		"sentence": "The meeting was short but very productive.",
+		"translation": "La reunión fue corta pero muy productiva.",
+		"explanation": "'Short' describes something that lasts a brief amount of time, as opposed to long."
+	},
+	{
+		"sentence": "He took a short break before continuing with the project.",
+		"translation": "Él tomó un descanso corto antes de continuar con el proyecto.",
+		"explanation": "'Short break' means a brief pause, often used in work or study contexts."
+	},
+	{
+		"sentence": "We were short on time, so we skipped the introduction.",
+		"translation": "Estábamos cortos de tiempo, así que omitimos la introducción.",
+		"explanation": "'Short on time' is a common phrase meaning there is not enough time available."
+	},
+	{
+		"sentence": "In short, the plan was a complete failure.",
+		"translation": "En resumen, el plan fue un fracaso total.",
+		"explanation": "'In short' is a discourse marker used to summarize something briefly."
+	},
+	{
+		"sentence": "Could you please use a smaller font size in your presentation?",
+		"translation": "¿Podrías usar un tamaño de fuente más pequeño en tu presentación?",
+		"explanation": "'Small' describes something of limited size, below average or less than expected."
+	},
+	{
+		"sentence": "They started with a small investment and grew the company over time.",
+		"translation": "Empezaron con una pequeña inversión y hicieron crecer la empresa con el tiempo.",
+		"explanation": "'Small investment' means putting in a limited amount of money, often at the beginning of a venture."
+	},
+	{
+		"sentence": "It's the small things that make a big difference in a relationship.",
+		"translation": "Son las pequeñas cosas las que marcan una gran diferencia en una relación.",
+		"explanation": "'Small things' refers to minor details or gestures that may have a significant emotional impact."
+	},
+	{
+		"sentence": "There is only a small chance of rain this afternoon.",
+		"translation": "Hay solo una pequeña probabilidad de lluvia esta tarde.",
+		"explanation": "'Small chance' means a low probability of something happening."
+	},
+	{
+		"sentence": "She felt small in front of such a large crowd.",
+		"translation": "Ella se sintió pequeña frente a una multitud tan grande.",
+		"explanation": "'Feel small' is an idiomatic expression meaning to feel insignificant, embarrassed, or humiliated."
+	},
+	{
+		"sentence": "Could you give me a little more time to finish?",
+		"translation": "¿Podrías darme un poco más de tiempo para terminar?",
+		"explanation": "'A little more' means a small additional amount of something, used as a polite request."
+	},
+	{
+		"sentence": "She was a little nervous before her job interview.",
+		"translation": "Ella estaba un poco nerviosa antes de su entrevista de trabajo.",
+		"explanation": "'A little' is used as an adverb to soften the degree of an adjective, meaning slightly."
+	},
+	{
+		"sentence": "He said very little during the entire conversation.",
+		"translation": "Él dijo muy poco durante toda la conversación.",
+		"explanation": "'Very little' means almost nothing, used to describe a minimal amount of something."
+	},
+	{
+		"sentence": "Little by little, she improved her English skills.",
+		"translation": "Poco a poco, ella fue mejorando su inglés.",
+		"explanation": "'Little by little' is an idiom meaning gradually, in small steps over time."
+	},
+	{
+		"sentence": "There is little doubt that she is the best candidate for the job.",
+		"translation": "Hay pocas dudas de que ella es la mejor candidata para el puesto.",
+		"explanation": "'Little doubt' means almost no uncertainty; it emphasizes a high degree of confidence."
+	},
+	{
+		"sentence": "Please keep your voice low while the baby is sleeping.",
+		"translation": "Por favor mantén la voz baja mientras el bebé está durmiendo.",
+		"explanation": "'Low' describes a sound or volume that is quiet or not loud."
+	},
+	{
+		"sentence": "The store is selling winter coats at a low price.",
+		"translation": "La tienda está vendiendo abrigos de invierno a un precio bajo.",
+		"explanation": "'Low price' means the cost is below average or reduced, often used to describe a bargain."
+	},
+	{
+		"sentence": "He was feeling low after hearing the bad news.",
+		"translation": "Él se sentía desanimado después de escuchar las malas noticias.",
+		"explanation": "'Feeling low' is an idiomatic expression meaning to feel sad, depressed, or discouraged."
+	},
+	{
+		"sentence": "The battery on my phone is running low.",
+		"translation": "La batería de mi teléfono se está agotando.",
+		"explanation": "'Running low' means a resource or supply is nearly depleted and needs to be refilled or recharged."
+	},
+	{
+		"sentence": "They kept a low profile during the investigation.",
+		"translation": "Mantuvieron un perfil bajo durante la investigación.",
+		"explanation": "'Keep a low profile' is an idiom meaning to avoid drawing attention to oneself."
+	}
+]

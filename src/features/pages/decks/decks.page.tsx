@@ -5,7 +5,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Deck } from "~/api";
 import { DeckItem } from "~/components/common";
 import { MainLayout } from "~/components/layout";
-import { Box, Paragraph, Title } from "~/components/primitive";
+import { Box, Icon, IconCatalog, Paragraph, Title } from "~/components/primitive";
 import { useAuth } from "~/features/auth";
 
 type DecksPageProps = {
@@ -35,13 +35,25 @@ export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElem
 				className="flex flex-col gap-4"
 			>
 				{decks.map((deck) => {
-					if (deck.public === true || auth.status === "authenticated") {
+					const isDeckPublic = deck.public === true;
+
+					if (isDeckPublic || auth.status === "authenticated") {
 						return (
-							<DeckItem
+							<Box
 								key={deck.id}
-								deck={deck}
-								showTotalPhrases
-							/>
+								className="relative"
+							>
+								<DeckItem
+									deck={deck}
+									showTotalPhrases
+								/>
+								{!isDeckPublic && (
+									<Icon
+										name={IconCatalog.LOCK}
+										className="absolute top-1.5 right-2 fill-amber-500 text-amber-300"
+									/>
+								)}
+							</Box>
 						);
 					}
 

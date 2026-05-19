@@ -85,5 +85,37 @@
 	{
 		"sentence": "It’s worth it",
 		"translation": "Vale la pena"
+	},
+	{
+		"sentence": "I am able to speak English",
+		"translation": "Soy capaz de hablar en ingles"
+	},
+	{
+		"sentence": "I have the ability to finish my tasks quickly",
+		"translation": "Tengo la habilidad de terminar mis tareas rapido"
+	},
+	{
+		"sentence": "I have the capacity to solve complex problems",
+		"translation": "Tengo la capacidad de resolver problemas complejos"
+	},
+	{
+		"sentence": "She likes to take care of her body",
+		"translation": "A ella le gusta cuidar su cuerpo"
+	},
+	{
+		"sentence": "He does not like taking care of dogs",
+		"translation": "A el no le gusta cuidar perros"
+	},
+	{
+		"sentence": "I like spending afternoons in the park outdoors",
+		"translation": "Me gusta pasar las tardes en el parque al aire libre"
+	},
+	{
+		"sentence": "He is a driven person who always works hard to achieve his goals",
+		"translation": "Él es una persona motivada que siempre trabaja duro para alcanzar sus metas"
+	},
+	{
+		"sentence": "She is career-oriented and focused on her future",
+		"translation": "Ella está orientada a su carrera y enfocada en su futuro"
 	}
 ]

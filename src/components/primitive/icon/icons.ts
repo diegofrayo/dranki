@@ -9,6 +9,7 @@ import {
 	Code2,
 	Languages,
 	Loader2,
+	Lock,
 	Play,
 	RotateCcw,
 	Settings,
@@ -21,22 +22,23 @@ import {
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 export const Icons = {
-	A_ARROW_DOWN: AArrowDown,
-	A_ARROW_UP: AArrowUp,
+	ARROW_DOWN: AArrowDown,
+	ARROW_UP: AArrowUp,
 	ARROW_LEFT: ArrowLeft,
 	BOOK_OPEN: BookOpen,
 	CHECK: Check,
 	CHEVRON_DOWN: ChevronDown,
 	CLOCK: Clock,
-	CODE_2: Code2,
+	CODE: Code2,
 	LANGUAGES: Languages,
-	LOADER_2: Loader2,
+	LOADER: Loader2,
+	LOCK: Lock,
 	PLAY: Play,
 	ROTATE_CCW: RotateCcw,
 	SETTINGS: Settings,
 	SQUARE: Square,
 	TROPHY: Trophy,
-	VOLUME_2: Volume2,
+	VOLUME: Volume2,
 	X_MARK: X,
 } as const;
 

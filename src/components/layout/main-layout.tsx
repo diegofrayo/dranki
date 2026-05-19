@@ -31,7 +31,7 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 			>
 				<Paragraph className="text-muted-foreground flex items-center justify-center gap-1.5 text-center text-sm">
 					<Icon
-						name={IconCatalog.CODE_2}
+						name={IconCatalog.CODE}
 						className="relative -top-px size-3.5"
 					/>
 					{"Coded by "}

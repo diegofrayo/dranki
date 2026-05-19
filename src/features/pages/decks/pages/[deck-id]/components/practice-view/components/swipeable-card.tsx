@@ -303,5 +303,5 @@ function Explanation({
 
 function getTtsIconName(state: AudioState): keyof typeof IconCatalog {
 	if (state === "playing") return IconCatalog.SQUARE;
-	return IconCatalog.VOLUME_2;
+	return IconCatalog.VOLUME;
 }
