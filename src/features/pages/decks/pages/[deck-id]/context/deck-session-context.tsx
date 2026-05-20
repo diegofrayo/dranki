@@ -73,17 +73,17 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		});
 	const [autoPlayAudio, setAutoPlayAudio, clearAutoPlayAudio] = useBrowserStorage<boolean>({
 		key: `${browserStorageBaseKey}_autoPlayAudio`,
-		value: true,
+		value: false,
 	});
 	const [showSentenceByDefault, setShowSentenceByDefault, clearShowSentenceByDefault] =
 		useBrowserStorage<boolean>({
 			key: `${browserStorageBaseKey}_showSentence`,
-			value: true,
+			value: false,
 		});
 	const [showTranslationByDefault, setShowTranslationByDefault, clearShowTranslationByDefault] =
 		useBrowserStorage<boolean>({
 			key: `${browserStorageBaseKey}_showTranslation`,
-			value: false,
+			value: true,
 		});
 	const [startTime, setStartTime, clearStartTime] = useBrowserStorage<string>({
 		key: `${browserStorageBaseKey}_startTime`,

@@ -22,5 +22,23 @@
 		"title": "Most Useful Phrasal Verbs for Tech Conversations",
 		"emoji": "",
 		"description": "A clear and practical table with the Most Useful Phrasal Verbs for Tech Conversations in English."
+	},
+	{
+		"id": "keep-vs-stay",
+		"title": "Keep vs Stay",
+		"emoji": "",
+		"description": "Keep and Stay can sometimes look similar because both can express continuity, but they are used differently."
+	},
+	{
+		"id": "bring-vs-carry-vs-take",
+		"title": "Bring vs Carry vs Take",
+		"emoji": "",
+		"description": "Bring, Carry, and Take can all involve moving something, but they focus on different ideas."
+	},
+	{
+		"id": "through-vs-across-vs-around-vs-along",
+		"title": "Through vs Across vs Around vs Along",
+		"emoji": "",
+		"description": "These four prepositions are all about movement and space, but they describe completely different directions and environments. The easiest way to master them is to visualize how you are moving through a space."
 	}
 ]
