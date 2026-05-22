@@ -30,7 +30,11 @@ async function downloadFile<File>(storageFilePath: string, config: RequestConfig
 		throw result.error;
 	}
 
-	return JSON.parse(result.data) as File;
+	if (config.contentType?.includes("json")) {
+		return JSON.parse(result.data) as File;
+	}
+
+	return result.data as File;
 }
 
 async function getFileURL(storageFilePath: string, config: RequestConfig): Promise<string> {
