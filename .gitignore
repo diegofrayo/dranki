@@ -25,9 +25,6 @@ public/workbox-*.js.map
 # Claude
 .claude/settings.local.json
 
-# Own
-src/_legacy
-
 # --- Tan stack start project ---
 
 # Dependencies
@@ -44,3 +41,8 @@ src/routeTree.gen.ts
 
 # OS
 .DS_Store
+
+# --- Common ---
+
+src/_legacy
+src/data
