@@ -1,10 +1,9 @@
-import path from "path";
-
-import { readFile } from "@diegofrayo-pkg/utilities/server/files";
+import DataLoader from "../../../utils/data-loader";
 
 async function getLessonContent(lessonId: string): Promise<GetLessonContentResponse> {
-	const filePath = path.resolve(process.cwd(), `src/data/lessons/${lessonId}.md`);
-	const content = readFile(filePath);
+	const content = await DataLoader.get<string>(`lessons/${lessonId}.md`, {
+		contentType: "md",
+	});
 
 	return content;
 }

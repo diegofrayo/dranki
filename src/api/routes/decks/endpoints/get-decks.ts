@@ -1,18 +1,18 @@
-import path from "path";
 import { z } from "zod";
 
 import { sortBy } from "@diegofrayo-pkg/sort";
-import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
 import { Emojis } from "~/constants";
 
 import type { Deck } from "../../../types";
+import DataLoader from "../../../utils/data-loader";
 import getLessonById from "../../lessons/endpoints/get-lesson-by-id";
 import getDeckPhrases from "./get-deck-phrases";
 
 async function getDecks(options?: { includePhrases: boolean }): Promise<GetDecksResponse> {
-	const filePath = path.resolve(process.cwd(), "src/data/decks.json");
-	const rawResponse = readFile<RawGetDecksResponse>(filePath, "json");
+	const rawResponse = await DataLoader.get<RawGetDecksResponse>("decks.json", {
+		contentType: "json",
+	});
 
 	RawGetDecksResponseSchema.parse(rawResponse);
 

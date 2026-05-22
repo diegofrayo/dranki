@@ -1,16 +1,16 @@
-import path from "path";
 import { z } from "zod";
 
 import { sortBy } from "@diegofrayo-pkg/sort";
-import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
 import { Emojis } from "~/constants";
 
 import type { Lesson } from "../../../types";
+import DataLoader from "../../../utils/data-loader";
 
 async function getLessons(): Promise<GetLessonsResponse> {
-	const filePath = path.resolve(process.cwd(), "src/data/lessons.json");
-	const rawResponse = readFile<RawGetLessonsResponse>(filePath, "json");
+	const rawResponse = await DataLoader.get<RawGetLessonsResponse>("lessons.json", {
+		contentType: "json",
+	});
 
 	RawGetLessonsResponseSchema.parse(rawResponse);
 
