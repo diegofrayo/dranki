@@ -37,3 +37,11 @@ export async function generateMetadata({
 
 	return generateMetadataTextPage(textDetails);
 }
+
+export async function generateStaticParams(): Promise<Array<{ "text-id": string }>> {
+	const texts = await api.texts.getTexts();
+
+	return texts.slice(0, 5).map((text) => ({
+		"text-id": text.id,
+	}));
+}

@@ -26,6 +26,7 @@ const RawLessonSchema = z.object({
 	title: z.string(),
 	emoji: z.string(),
 	description: z.string(),
+	created_at: z.string(),
 });
 
 const RawGetLessonsResponseSchema = z.array(RawLessonSchema);
@@ -43,6 +44,7 @@ function transformResponse(raw: RawGetLessonsResponse): GetLessonsResponse {
 			title: lesson.title,
 			emoji: lesson.emoji || Emojis.LESSONS,
 			description: lesson.description,
+			createdAt: lesson.created_at,
 		}))
-		.sort(sortBy("title"));
+		.sort(sortBy("-createdAt", "title"));
 }

@@ -14,7 +14,7 @@ function ProgressBar({ current, total }: ProgressBarProps): ReactTypes.JSXElemen
 
 	// --- STYLES ---
 	const classes = {
-		wrapper: "flex items-center gap-3",
+		wrapper: "flex items-center gap-2",
 		barContainer: "relative h-5 flex-1 overflow-hidden rounded-full bg-secondary",
 		barFill: "absolute inset-0 h-full rounded-full bg-primary transition-all duration-500 ease-out",
 		barLabel: cn(

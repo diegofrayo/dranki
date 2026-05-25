@@ -32,3 +32,11 @@ export async function generateMetadata({
 
 	return generateMetadataDeckPage(deck);
 }
+
+export async function generateStaticParams(): Promise<Array<{ "deck-id": string }>> {
+	const decks = await api.decks.getDecks();
+
+	return decks.slice(0, 5).map((deck) => ({
+		"deck-id": deck.id,
+	}));
+}

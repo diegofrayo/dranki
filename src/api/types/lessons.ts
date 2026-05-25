@@ -3,4 +3,5 @@ export type Lesson = {
 	title: string;
 	emoji: string;
 	description: string;
+	createdAt: string;
 };

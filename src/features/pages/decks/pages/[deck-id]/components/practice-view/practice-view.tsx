@@ -14,6 +14,7 @@ import {
 	Icon,
 	IconCatalog,
 	InlineText,
+	Link,
 	Title,
 } from "~/components/primitive";
 import { Routes } from "~/constants";
@@ -44,7 +45,7 @@ function PracticeView(): ReactTypes.JSXElement {
 		deckInfo: "min-w-0 flex-1",
 		deckTitleRow: "flex items-center gap-2",
 		deckEmoji: "text-xl",
-		deckTitle: "text-foreground truncate text-base font-bold",
+		deckTitle: "text-foreground text-base font-bold flex-1 min-w-0",
 		progressWrapper: "mt-2",
 		restartButton: "size-9",
 		settingsButton: "size-9",
@@ -109,7 +110,20 @@ function PracticeView(): ReactTypes.JSXElement {
 								as="h1"
 								className={classes.deckTitle}
 							>
-								{deck.title}
+								{deck.lesson ? (
+									<Link
+										href={Routes.LESSON(deck.lesson.id)}
+										className="flex items-center gap-1 underline"
+									>
+										<InlineText className="min-w-0 flex-1 truncate">{deck.title}</InlineText>
+										<Icon
+											name={IconCatalog.EXTERNAL_LINK}
+											className="size-4 shrink-0"
+										/>
+									</Link>
+								) : (
+									deck.title
+								)}
 							</Title>
 						</Box>
 						<Box className={classes.progressWrapper}>

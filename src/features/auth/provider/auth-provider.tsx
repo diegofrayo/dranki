@@ -21,7 +21,7 @@ export function AuthProvider({
 	initialUser = null,
 }: AuthProviderProps): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
-	const [session, setSession] = useState<Session | null>(null);
+	const [session, setSession] = useState<Session | null | undefined>(undefined);
 	const [user, setUser] = useState<User | null>(initialUser);
 	const [status, setStatus] = useState<AuthStatus>(initialUser ? "authenticated" : "loading");
 
@@ -41,7 +41,7 @@ export function AuthProvider({
 			setStatus(nextSession ? "authenticated" : "unauthenticated");
 		});
 
-		return function cleanup() {
+		return function cleanup(): void {
 			subscription.subscription.unsubscribe();
 		};
 	}, []);
@@ -58,7 +58,7 @@ export function AuthProvider({
 		[session, status, user],
 	);
 
-	return <AuthContext value={value}>{children}</AuthContext>;
+	return <AuthContext value={value}>{session === undefined ? null : children}</AuthContext>;
 }
 
 export function useAuth(): AuthContextValue {

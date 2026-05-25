@@ -5,8 +5,9 @@ export type Text = {
 	title: string;
 	emoji: string;
 	lesson: Lesson | undefined;
-	practiceWords: Array<{ word: string; translation: string; example: string }>;
 	public: boolean;
+	createdAt: string;
+	practiceWords: Array<{ word: string; translation: string; example: string }>;
 };
 
 export type TextContent = { originalText: string; translation: string };

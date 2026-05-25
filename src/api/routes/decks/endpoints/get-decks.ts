@@ -71,5 +71,5 @@ async function transformResponse(
 				};
 			}),
 		)
-	).sort(sortBy("title"));
+	).sort(sortBy("-createdAt", "title"));
 }

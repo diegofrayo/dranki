@@ -27,6 +27,8 @@ const RawTextSchema = z.object({
 	title: z.string(),
 	emoji: z.string(),
 	lesson_id: z.string(),
+	public: z.boolean().optional(),
+	created_at: z.string(),
 	practice_words: z
 		.array(
 			z.object({
@@ -36,7 +38,6 @@ const RawTextSchema = z.object({
 			}),
 		)
 		.optional(),
-	public: z.boolean().optional(),
 });
 
 const RawGetTextsResponseSchema = z.array(RawTextSchema);
@@ -57,11 +58,12 @@ async function transformResponse(raw: RawGetTextsResponse): Promise<GetTextsResp
 				title: rawText.title,
 				emoji: rawText.emoji || Emojis.TEXTS,
 				lesson,
-				practiceWords: (rawText.practice_words || []).sort(sortBy("word")),
 				public: rawText.public ?? true,
+				createdAt: rawText.created_at,
+				practiceWords: (rawText.practice_words || []).sort(sortBy("word")),
 			};
 		}),
 	);
 
-	return texts.sort(sortBy("title"));
+	return texts.sort(sortBy("-createdAt", "title"));
 }

@@ -7,7 +7,7 @@ export type Session = SupabaseSession;
 export type AuthStatus = "loading" | "authenticated" | "unauthenticated";
 
 export type AuthContextValue = {
-	session: Session | null;
+	session: Session | null | undefined;
 	status: AuthStatus;
 	user: User | null;
 	signInWithMagicLink: (email: string) => Promise<{ error: Error | null }>;

@@ -39,3 +39,11 @@ export async function generateMetadata({
 
 	return generateMetadataLessonPage(lesson);
 }
+
+export async function generateStaticParams(): Promise<Array<{ "lesson-id": string }>> {
+	const lessons = await api.lessons.getLessons();
+
+	return lessons.slice(0, 5).map((lesson) => ({
+		"lesson-id": lesson.id,
+	}));
+}
