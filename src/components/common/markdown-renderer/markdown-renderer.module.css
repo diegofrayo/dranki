@@ -96,3 +96,7 @@
 .td:nth-child(4) {
 	@apply min-w-lg;
 }
+
+.hr {
+	@apply my-5;
+}

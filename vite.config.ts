@@ -2,7 +2,7 @@ import path from "path";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import { defineConfig, loadEnv, type Plugin } from "vite";
+import { defineConfig, type Plugin } from "vite";
 
 /* Maps each adapter file (Next.js default) to its TanStack counterpart.
  * Vite's resolve.alias works on raw import specifiers, so it can't match

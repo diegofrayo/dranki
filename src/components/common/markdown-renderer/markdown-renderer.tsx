@@ -53,4 +53,5 @@ const components: Components = {
 	li: ({ children }) => <li className={styles["li"]}>{children}</li>,
 	code: ({ children }) => <code className={styles["code"]}>{children}</code>,
 	pre: ({ children }) => <pre className={styles["pre"]}>{children}</pre>,
+	hr: () => <hr className={styles["hr"]} />,
 };
