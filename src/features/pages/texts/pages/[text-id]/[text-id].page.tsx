@@ -6,7 +6,6 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { ContentActions, MarkdownRenderer, SelectionAudioBar } from "~/components/common";
-import { MainLayout } from "~/components/layout";
 import { Box, Button, Icon, IconCatalog, InlineText, Title } from "~/components/primitive";
 import { useFontSize } from "~/hooks";
 
@@ -36,7 +35,7 @@ export default function TextPage({ details, content }: TextPageProps): ReactType
 	}
 
 	return (
-		<MainLayout>
+		<Box>
 			<Box className="mb-6">
 				<Box className="mb-1 flex items-center gap-2">
 					<InlineText className="text-4xl">{details.emoji}</InlineText>
@@ -86,6 +85,6 @@ export default function TextPage({ details, content }: TextPageProps): ReactType
 			</Box>
 
 			<SelectionAudioBar containerRef={contentRef} />
-		</MainLayout>
+		</Box>
 	);
 }

@@ -3,6 +3,7 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-r
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { RemoteDebugger } from "~/components/common";
+import { MainLayout } from "~/components/layout";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 import { AuthProvider } from "~/features/auth";
 import ErrorPage from "~/features/pages/error/error.page";
@@ -66,7 +67,9 @@ function RootDocument({
 				<HeadContent />
 			</head>
 			<body className="font-sans antialiased">
-				<AuthProvider>{children}</AuthProvider>
+				<AuthProvider>
+					<MainLayout>{children}</MainLayout>
+				</AuthProvider>
 				<Scripts />
 				<RemoteDebugger />
 			</body>

@@ -1,15 +1,16 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Poppins as CustomFont } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { RemoteDebugger } from "~/components/common";
+import { MainLayout } from "~/components/layout";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 import { AuthProvider } from "~/features/auth";
 import { getUser } from "~/features/auth/actions/get-user.server";
-import { SoundsProvider } from "~/features/sounds";
 
 import "./app.css";
 
@@ -31,11 +32,16 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body className={classes.body}>
-				<AuthProvider initialUser={initialUser}>{children}</AuthProvider>
+				<AuthProvider initialUser={initialUser}>
+					<MainLayout>{children}</MainLayout>
+				</AuthProvider>
 
-				{process.env.NODE_ENV === "production" && <Analytics />}
-				<SoundsProvider />
+				<NextTopLoader
+					showSpinner={false}
+					color="var(--color-primary)"
+				/>
 				<RemoteDebugger />
+				{process.env.NODE_ENV === "production" && <Analytics />}
 			</body>
 		</html>
 	);

@@ -1,13 +1,14 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import { useSound } from "react-sounds";
 
 import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck, DeckPhrase } from "~/api";
 import { PROJECT_METADATA } from "~/constants";
-import { SoundsService } from "~/features/sounds";
+import { Sounds } from "~/features/sounds";
 
 // --- TYPES ---
 
@@ -50,6 +51,9 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 	const browserStorageBaseKey = `${PROJECT_METADATA.appName}_${deck.id}`;
 
 	// --- HOOKS ---
+	const { play: playSuccessSound } = useSound(Sounds.SUCCESS);
+	const { play: playErrorSound } = useSound(Sounds.ERROR);
+	const { play: playNotifySound } = useSound(Sounds.NOTIFY);
 	const [phase, setPhase, clearPhase] = useBrowserStorage<Phase>({
 		key: `${browserStorageBaseKey}_phase`,
 		value: "overview",
@@ -113,7 +117,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 
 		setCurrentIndex(newIndex);
 		setRecognizedCount(newCount);
-		SoundsService.success();
+		playSuccessSound();
 
 		checkIfDeckEnds(newIndex);
 	}
@@ -124,7 +128,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 
 		setCurrentIndex(newIndex);
 		setPracticeMoreCount(newCount);
-		SoundsService.error();
+		playErrorSound();
 
 		checkIfDeckEnds(newIndex);
 	}
@@ -133,7 +137,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		if (newIndex >= phrases.length && phrases.length > 0) {
 			setEndTime(new Date().toISOString());
 			setPhase("results");
-			SoundsService.notify();
+			playNotifySound();
 		}
 	}
 

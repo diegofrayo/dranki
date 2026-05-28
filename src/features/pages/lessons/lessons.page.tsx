@@ -1,7 +1,6 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Lesson } from "~/api";
-import { MainLayout } from "~/components/layout";
 import { Box, Link, Paragraph, Title } from "~/components/primitive";
 import { Routes } from "~/constants";
 
@@ -11,7 +10,7 @@ type LessonsPageProps = {
 
 function LessonsPage({ lessons }: LessonsPageProps): ReactTypes.JSXElement {
 	return (
-		<MainLayout>
+		<Box>
 			<Box className="mb-6">
 				<Title
 					as="h2"
@@ -47,7 +46,7 @@ function LessonsPage({ lessons }: LessonsPageProps): ReactTypes.JSXElement {
 					</Link>
 				))}
 			</Box>
-		</MainLayout>
+		</Box>
 	);
 }
 

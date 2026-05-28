@@ -4,7 +4,6 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Text } from "~/api";
 import { TextItem } from "~/components/common";
-import { MainLayout } from "~/components/layout";
 import { Box, Icon, IconCatalog, Paragraph, Title } from "~/components/primitive";
 import { useAuth } from "~/features/auth";
 
@@ -17,7 +16,7 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 	const auth = useAuth();
 
 	return (
-		<MainLayout>
+		<Box>
 			<Box className="mb-6">
 				<Title
 					as="h2"
@@ -60,6 +59,6 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 					return null;
 				})}
 			</Box>
-		</MainLayout>
+		</Box>
 	);
 }

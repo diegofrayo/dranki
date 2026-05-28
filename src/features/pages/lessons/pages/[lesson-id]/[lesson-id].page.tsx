@@ -14,7 +14,6 @@ import {
 	SelectionAudioBar,
 	TextItem,
 } from "~/components/common";
-import { MainLayout } from "~/components/layout";
 import { Box, Separator, Title } from "~/components/primitive";
 import { useFontSize } from "~/hooks";
 
@@ -43,7 +42,7 @@ function LessonPage({
 	};
 
 	return (
-		<MainLayout>
+		<Box>
 			<Box className="mb-6">
 				<Box className="mb-1 text-4xl">{lesson.emoji}</Box>
 				<Title
@@ -69,7 +68,7 @@ function LessonPage({
 				texts={practiceTexts}
 			/>
 			<SelectionAudioBar containerRef={contentRef} />
-		</MainLayout>
+		</Box>
 	);
 }
 

@@ -16,13 +16,13 @@ type LinkBase = {
 };
 
 interface NativeLinkProps extends AnchorHtmlAttributes, LinkBase {
-	children: ReactTypes.Children;
+	children?: ReactTypes.Children;
 	href: string;
 	isExternalLink: true;
 }
 
 interface FrameworkLinkProps extends FrameworkLinkComponentProps, LinkBase {
-	children: ReactTypes.Children;
+	children?: ReactTypes.Children;
 	href: string;
 	isExternalLink?: false;
 	className?: string;

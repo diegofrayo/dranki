@@ -4,7 +4,6 @@ import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck } from "~/api";
-import { MainLayout } from "~/components/layout";
 
 import DeckOverview from "./components/deck-overview";
 import PracticeView from "./components/practice-view";
@@ -36,6 +35,6 @@ const DeckPageContent = withRenderInBrowser(
 			return <PracticeView />;
 		}
 
-		return <MainLayout>{phase === "results" ? <ResultsScreen /> : <DeckOverview />}</MainLayout>;
+		return phase === "results" ? <ResultsScreen /> : <DeckOverview />;
 	},
 );

@@ -1,5 +1,7 @@
 "use client";
 
+import { useSound } from "react-sounds";
+
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import {
@@ -15,12 +17,14 @@ import {
 	Switch,
 	Title,
 } from "~/components/primitive";
-import { SoundsService } from "~/features/sounds";
+import { Sounds } from "~/features/sounds";
 
 import { useDeckSession } from "../context/deck-session-context";
 
 function DeckOverview(): ReactTypes.JSXElement {
 	// --- HOOKS ---
+	const { play: playToggleOnSound } = useSound(Sounds.TOGGLE_ON);
+	const { play: playToggleOffSound } = useSound(Sounds.TOGGLE_OFF);
 	const {
 		deck,
 		autoPlayAudio,
@@ -53,20 +57,29 @@ function DeckOverview(): ReactTypes.JSXElement {
 			"h-14 w-full rounded-2xl text-base font-extrabold tracking-wide shadow-lg transition-transform active:scale-95",
 	};
 
+	// --- UTILS ---
+	function playToggleSound(checked: boolean): void {
+		if (checked) {
+			playToggleOnSound();
+		} else {
+			playToggleOffSound();
+		}
+	}
+
 	// --- HANDLERS ---
 	function handleAutoPlayAudioToggleChange(checked: boolean): void {
 		setAutoPlayAudio(checked);
-		SoundsService.toggle(checked);
+		playToggleSound(checked);
 	}
 
 	function handleSentenceToggleChange(checked: boolean): void {
 		setShowSentenceByDefault(checked);
-		SoundsService.toggle(checked);
+		playToggleSound(checked);
 	}
 
 	function handleTranslationToggleChange(checked: boolean): void {
 		setShowTranslationByDefault(checked);
-		SoundsService.toggle(checked);
+		playToggleSound(checked);
 	}
 
 	function handleStartClick(): void {

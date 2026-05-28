@@ -166,15 +166,14 @@ function ResultsScreen(): ReactTypes.JSXElement {
 					/>
 					Practice Again
 				</Button>
-				<Link href={Routes.DECKS}>
-					<Button
-						variant={ButtonVariant.OUTLINE}
-						size={ButtonSize.LG}
-						className={classes.backButton}
-					>
-						Back to Decks
-					</Button>
-				</Link>
+				<Button
+					variant={ButtonVariant.OUTLINE}
+					size={ButtonSize.LG}
+					className={classes.backButton}
+					render={<Link href={Routes.DECKS} />}
+				>
+					Back to Decks
+				</Button>
 			</Box>
 		</Box>
 	);

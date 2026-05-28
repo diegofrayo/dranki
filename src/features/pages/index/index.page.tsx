@@ -1,7 +1,6 @@
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { MainLayout } from "~/components/layout";
 import { Box, Link, Paragraph, Title } from "~/components/primitive";
 import { Emojis, Routes } from "~/constants";
 
@@ -16,29 +15,27 @@ export default function HomePage(): ReactTypes.JSXElement {
 	};
 
 	return (
-		<MainLayout>
-			<Box
-				as="section"
-				className="flex flex-col gap-4"
-			>
-				{FEATURES.map((feature) => (
-					<Link
-						key={feature.href}
-						href={feature.href}
-						className={classes.link(feature.bgColor)}
+		<Box
+			as="section"
+			className="flex flex-col gap-4"
+		>
+			{FEATURES.map((feature) => (
+				<Link
+					key={feature.href}
+					href={feature.href}
+					className={classes.link(feature.bgColor)}
+				>
+					<Paragraph className="mb-1 text-3xl">{feature.emoji}</Paragraph>
+					<Title
+						as="h2"
+						className="text-lg font-bold text-white"
 					>
-						<Paragraph className="mb-1 text-3xl">{feature.emoji}</Paragraph>
-						<Title
-							as="h2"
-							className="text-lg font-bold text-white"
-						>
-							{feature.title}
-						</Title>
-						<Paragraph className="mt-1 text-sm text-white/80">{feature.description}</Paragraph>
-					</Link>
-				))}
-			</Box>
-		</MainLayout>
+						{feature.title}
+					</Title>
+					<Paragraph className="mt-1 text-sm text-white/80">{feature.description}</Paragraph>
+				</Link>
+			))}
+		</Box>
 	);
 }
 

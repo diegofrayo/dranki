@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { useSound } from "react-sounds";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck, DeckPhrase } from "~/api";
 import { Box, Button, Icon, IconCatalog, Paragraph } from "~/components/primitive";
-import { SoundsService } from "~/features/sounds";
+import { Sounds } from "~/features/sounds";
 import { useSpeechSynthesis, type AudioState } from "~/features/voice-settings";
 
 import useDragGesture from "../hooks/use-drag-gesture";
@@ -38,6 +39,7 @@ function SwipeableCard({
 		onSwipeRight: onRecognized,
 	});
 	const { audioState, play, stop, toggle } = useSpeechSynthesis({ text: phrase.sentence });
+	const { play: playClickSound } = useSound(Sounds.CLICK);
 
 	// --- STATES & REFS ---
 	const [isSentenceVisible, setIsSentenceVisible] = useState(showSentenceByDefault);
@@ -100,17 +102,17 @@ function SwipeableCard({
 
 	function handleShowSentenceClick(): void {
 		setIsSentenceVisible(true);
-		SoundsService.click();
+		playClickSound();
 	}
 
 	function handleShowTranslationClick(): void {
 		setIsTranslationVisible(true);
-		SoundsService.click();
+		playClickSound();
 	}
 
 	function handleShowExplanationClick(): void {
 		setIsExplanationVisible(true);
-		SoundsService.click();
+		playClickSound();
 	}
 
 	// --- EFFECTS ---
