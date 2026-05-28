@@ -7,9 +7,12 @@ import EnvVars from "~/features/env";
 function readCookiesFromRequest(): { name: string; value: string }[] {
 	const request = getRequest();
 	const header = request?.headers.get("cookie") ?? "";
-	return parseCookieHeader(header).filter(
+
+	const cookies = parseCookieHeader(header).filter(
 		(c): c is { name: string; value: string } => typeof c.value === "string",
 	);
+
+	return cookies;
 }
 
 /* Read-only server client — callers get the session but cannot refresh cookies.
@@ -44,7 +47,8 @@ export function createSupabaseServerClientWithResponse(): {
 			},
 			setAll(cookiesToSet) {
 				cookiesToSet.forEach(({ name, value, options }) => {
-					outgoing.push(serializeCookieHeader(name, value, options));
+					const cookie = serializeCookieHeader(name, value, options);
+					outgoing.push(cookie);
 				});
 			},
 		},

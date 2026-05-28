@@ -12,7 +12,8 @@ async function proxy(request: NextRequest): Promise<NextResponse> {
 		{
 			cookies: {
 				getAll() {
-					return request.cookies.getAll();
+					const cookies = request.cookies.getAll();
+					return cookies;
 				},
 				setAll(cookiesToSet) {
 					cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));

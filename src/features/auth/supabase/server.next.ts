@@ -12,7 +12,8 @@ export async function createSupabaseServerClient(): Promise<SupabaseClient> {
 	return createServerClient(EnvVars.PUBLIC_SUPABASE_URL, EnvVars.PUBLIC_SUPABASE_ANON_KEY, {
 		cookies: {
 			getAll() {
-				return cookieStore.getAll();
+				const cookies = cookieStore.getAll();
+				return cookies;
 			},
 			setAll(cookiesToSet) {
 				try {
