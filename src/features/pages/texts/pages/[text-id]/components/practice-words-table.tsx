@@ -4,7 +4,8 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Text } from "~/api";
-import { Box, Button, Icon, IconCatalog, Separator, Title } from "~/components/primitive";
+import { SectionCard } from "~/components/common";
+import { Box, Button, Icon, IconCatalog, Separator } from "~/components/primitive";
 import { useSpeechSynthesis } from "~/features/voice-settings";
 
 type PracticeWordsTableProps = {
@@ -16,8 +17,6 @@ function PracticeWordsTable({
 }: PracticeWordsTableProps): ReactTypes.JSXElementNullable {
 	// --- STYLES ---
 	const classes = {
-		section: "bg-muted border-border rounded-lg border p-4 border-b-0",
-		title: "text-foreground mb-8 text-center text-3xl font-bold uppercase font-serif",
 		tableWrapper: "border-border bg-background rounded-md border overflow-x-auto relative",
 		table: "w-full border-collapse text-left text-sm",
 		th: "bg-muted/50 text-black border-border border-b px-3 py-2 font-bold", // nth-3:min-w-48
@@ -33,16 +32,7 @@ function PracticeWordsTable({
 	return (
 		<>
 			<Separator className="bg-border my-16" />
-			<Box
-				as="section"
-				className={classes.section}
-			>
-				<Title
-					as="h2"
-					className={classes.title}
-				>
-					Practice
-				</Title>
+			<SectionCard title="Practice">
 				<Box className={classes.tableWrapper}>
 					<table className={classes.table}>
 						<thead>
@@ -68,7 +58,7 @@ function PracticeWordsTable({
 						</tbody>
 					</table>
 				</Box>
-			</Box>
+			</SectionCard>
 		</>
 	);
 }

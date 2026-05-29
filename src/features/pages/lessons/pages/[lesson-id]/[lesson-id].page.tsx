@@ -11,6 +11,7 @@ import {
 	ContentActions,
 	DeckItem,
 	MarkdownRenderer,
+	SectionCard,
 	SelectionAudioBar,
 	TextItem,
 } from "~/components/common";
@@ -87,11 +88,7 @@ function PracticeSection({ decks, texts }: PracticeSectionProps): ReactTypes.JSX
 
 	// --- STYLES ---
 	const classes = {
-		section: "bg-muted border-border  rounded-lg border p-4",
-		title: "text-foreground mb-8 text-center text-3xl font-bold uppercase font-serif",
-		groupTitle: "text-foreground mb-2 text-xl uppercase font-semibold hidden",
-		group: "mb-3 last:mb-0",
-		list: "flex flex-col gap-2",
+		group: "mb-3 last:mb-0 flex flex-col gap-2",
 	};
 
 	if (!hasPracticeContent) {
@@ -101,53 +98,28 @@ function PracticeSection({ decks, texts }: PracticeSectionProps): ReactTypes.JSX
 	return (
 		<>
 			<Separator className="bg-border my-16" />
-			<Box
-				as="section"
-				className={classes.section}
-			>
-				<Title
-					as="h2"
-					className={classes.title}
-				>
-					Practice
-				</Title>
+			<SectionCard title="Practice">
 				{decks.length > 0 && (
 					<Box className={classes.group}>
-						<Title
-							as="h3"
-							className={classes.groupTitle}
-						>
-							Decks
-						</Title>
-						<Box className={classes.list}>
-							{decks.map((deck) => (
-								<DeckItem
-									key={deck.id}
-									deck={deck}
-								/>
-							))}
-						</Box>
+						{decks.map((deck) => (
+							<DeckItem
+								key={deck.id}
+								deck={deck}
+							/>
+						))}
 					</Box>
 				)}
 				{texts.length > 0 && (
 					<Box className={classes.group}>
-						<Title
-							as="h3"
-							className={classes.groupTitle}
-						>
-							Texts
-						</Title>
-						<Box className={classes.list}>
-							{texts.map((text) => (
-								<TextItem
-									key={text.id}
-									text={text}
-								/>
-							))}
-						</Box>
+						{texts.map((text) => (
+							<TextItem
+								key={text.id}
+								text={text}
+							/>
+						))}
 					</Box>
 				)}
-			</Box>
+			</SectionCard>
 		</>
 	);
 }
