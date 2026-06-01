@@ -26,7 +26,7 @@ function Switch({
 			"relative inline-flex h-6 w-11 cursor-pointer items-center rounded-full transition-colors duration-200",
 			"focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
 			"data-checked:bg-primary data-unchecked:bg-muted",
-			"disabled:cursor-not-allowed disabled:opacity-50",
+			"data-disabled:cursor-not-allowed data-disabled:opacity-50",
 			className,
 		),
 		thumb: cn(

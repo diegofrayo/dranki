@@ -29,7 +29,7 @@ import ProgressBar from "./components/progress-bar";
 
 function PracticeView(): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const { deck, currentIndex, phrases, clearSession, setPhase } = useDeckSession();
+	const { deck, currentIndex, phrases, clearSession, setDeckPhase } = useDeckSession();
 	const router = useRouter();
 
 	// --- STATES & REFS ---
@@ -63,7 +63,7 @@ function PracticeView(): ReactTypes.JSXElement {
 
 	function handleRestartConfirm(): void {
 		clearSession();
-		setPhase("overview");
+		setDeckPhase("OVERVIEW");
 	}
 
 	function handleRestartDialogOpenChange(open: boolean): void {
@@ -115,7 +115,7 @@ function PracticeView(): ReactTypes.JSXElement {
 										href={Routes.LESSON(deck.lesson.id)}
 										className="flex items-center gap-1 underline"
 									>
-										<InlineText className="min-w-0 flex-1 truncate">{deck.title}</InlineText>
+										<InlineText className="truncate">{deck.title}</InlineText>
 										<Icon
 											name={IconCatalog.EXTERNAL_LINK}
 											className="size-4 shrink-0"

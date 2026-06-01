@@ -26,7 +26,7 @@ export default async function RootLayout({
 		body: cn("font-sans antialiased", customFont.variable),
 	};
 
-	// --- COMPUTE STATES ---
+	// --- COMPUTED STATES ---
 	const initialUser = await getUser();
 
 	return (

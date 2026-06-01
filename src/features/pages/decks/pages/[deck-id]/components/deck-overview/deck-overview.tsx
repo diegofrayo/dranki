@@ -1,7 +1,5 @@
 "use client";
 
-import { useSound } from "react-sounds";
-
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import {
@@ -14,23 +12,26 @@ import {
 	InlineText,
 	Paragraph,
 	Separator,
-	Switch,
 	Title,
 } from "~/components/primitive";
-import { Sounds } from "~/features/sounds";
+import { Sounds, useSound } from "~/features/sounds";
 
-import { useDeckSession } from "../context/deck-session-context";
+import { useDeckSession, type PracticeMode } from "../../context/deck-session-context";
+import PracticeModeButton, { PRACTICE_MODES } from "./components/practice-mode-button";
+import Settings from "./components/settings";
 
 function DeckOverview(): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const { play: playToggleOnSound } = useSound(Sounds.TOGGLE_ON);
-	const { play: playToggleOffSound } = useSound(Sounds.TOGGLE_OFF);
+	const [playToggleOnSound] = useSound(Sounds.TOGGLE_ON);
+	const [playToggleOffSound] = useSound(Sounds.TOGGLE_OFF);
 	const {
 		deck,
+		practiceMode,
 		autoPlayAudio,
 		showSentenceByDefault,
 		showTranslationByDefault,
 		setAutoPlayAudio,
+		setPracticeMode,
 		setShowSentenceByDefault,
 		setShowTranslationByDefault,
 		startSession,
@@ -38,6 +39,7 @@ function DeckOverview(): ReactTypes.JSXElement {
 
 	// --- COMPUTED STATES ---
 	const isEmptyDeck = deck.phrases.length === 0;
+	const isCustomMode = practiceMode === "CUSTOM";
 
 	// --- STYLES ---
 	const classes = {
@@ -50,9 +52,8 @@ function DeckOverview(): ReactTypes.JSXElement {
 		description: "text-center text-sm text-white/80",
 		statsRow: "mt-4 flex items-center justify-center gap-1",
 		statsText: "text-xs font-semibold text-white/70 uppercase tracking-wider",
-		toggleRow: "flex items-center justify-between gap-3",
-		toggleLabel: "text-foreground text-sm font-semibold",
-		toggleDescription: "text-muted-foreground mt-0.5 text-xs",
+		modeSectionLabel: "text-foreground mb-2 text-xs font-semibold uppercase tracking-wider",
+		modeGrid: "grid grid-cols-1 sm:grid-cols-2 gap-2",
 		startButton:
 			"h-14 w-full rounded-2xl text-base font-extrabold tracking-wide shadow-lg transition-transform active:scale-95",
 	};
@@ -67,6 +68,10 @@ function DeckOverview(): ReactTypes.JSXElement {
 	}
 
 	// --- HANDLERS ---
+	function handlePracticeModeClick(mode: PracticeMode): void {
+		setPracticeMode(mode);
+	}
+
 	function handleAutoPlayAudioToggleChange(checked: boolean): void {
 		setAutoPlayAudio(checked);
 		playToggleSound(checked);
@@ -112,47 +117,32 @@ function DeckOverview(): ReactTypes.JSXElement {
 				</Box>
 
 				<Box className={classes.deckCardBody}>
-					<Box className={classes.toggleRow}>
-						<Box>
-							<Paragraph className={classes.toggleLabel}>Auto-play audio</Paragraph>
-							<Paragraph className={classes.toggleDescription}>
-								Play phrase audio automatically when a card appears
-							</Paragraph>
-						</Box>
-						<Switch
-							className="shrink-0"
-							checked={autoPlayAudio}
-							onCheckedChange={handleAutoPlayAudioToggleChange}
-						/>
+					<Paragraph className={classes.modeSectionLabel}>Practice Mode</Paragraph>
+					<Box className={classes.modeGrid}>
+						{PRACTICE_MODES.map((mode) => (
+							<PracticeModeButton
+								key={mode.id}
+								description={mode.description}
+								icon={mode.icon}
+								id={mode.id}
+								isSelected={practiceMode === mode.id}
+								label={mode.label}
+								onClick={handlePracticeModeClick}
+							/>
+						))}
 					</Box>
-					<Separator className="bg-border my-4 h-px" />
-					<Box className={classes.toggleRow}>
-						<Box>
-							<Paragraph className={classes.toggleLabel}>Show sentence</Paragraph>
-							<Paragraph className={classes.toggleDescription}>
-								Show sentence by default (disable for listening training)
-							</Paragraph>
-						</Box>
-						<Switch
-							className="shrink-0"
-							checked={showSentenceByDefault}
-							onCheckedChange={handleSentenceToggleChange}
-						/>
-					</Box>
-					<Separator className="bg-border my-4 h-px" />
-					<Box className={classes.toggleRow}>
-						<Box>
-							<Paragraph className={classes.toggleLabel}>Show translation</Paragraph>
-							<Paragraph className={classes.toggleDescription}>
-								Show Spanish translation by default
-							</Paragraph>
-						</Box>
-						<Switch
-							className="shrink-0"
-							checked={showTranslationByDefault}
-							onCheckedChange={handleTranslationToggleChange}
-						/>
-					</Box>
+
+					<Separator className="bg-border my-4" />
+
+					<Settings
+						autoPlayAudio={autoPlayAudio}
+						isCustomMode={isCustomMode}
+						showSentenceByDefault={showSentenceByDefault}
+						showTranslationByDefault={showTranslationByDefault}
+						onAutoPlayAudioChange={handleAutoPlayAudioToggleChange}
+						onSentenceChange={handleSentenceToggleChange}
+						onTranslationChange={handleTranslationToggleChange}
+					/>
 				</Box>
 			</Box>
 

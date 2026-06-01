@@ -8,7 +8,15 @@ import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const ButtonVariant = mirror(["DEFAULT", "DESTRUCTIVE", "OUTLINE", "SECONDARY", "GHOST", "LINK"]);
+const ButtonVariant = mirror([
+	"DEFAULT",
+	"DESTRUCTIVE",
+	"OUTLINE",
+	"SECONDARY",
+	"GHOST",
+	"LINK",
+	"ACCENT",
+]);
 type ButtonVariant = keyof typeof ButtonVariant;
 const ButtonSize = mirror(["DEFAULT", "SM", "LG", "ICON", "ICON_SM", "ICON_LG"]);
 type ButtonSize = keyof typeof ButtonSize;
@@ -75,6 +83,7 @@ const styles = cva(
 				[ButtonVariant.SECONDARY]: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
 				[ButtonVariant.GHOST]: "hover:bg-accent hover:text-accent-foreground",
 				[ButtonVariant.LINK]: "text-primary underline-offset-4 hover:underline",
+				[ButtonVariant.ACCENT]: "bg-accent text-primary-foreground hover:bg-accent/90",
 			},
 			size: {
 				[ButtonSize.DEFAULT]: "h-9 px-4 py-2",

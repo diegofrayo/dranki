@@ -1,21 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { useSound } from "react-sounds";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, InlineText, Paragraph, Title } from "~/components/primitive";
-import { Sounds } from "~/features/sounds";
+import { Sounds, useSound } from "~/features/sounds";
 
 export default function SoundsPage(): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const { play: playClickSound } = useSound(Sounds.CLICK);
-	const { play: playSuccessSound } = useSound(Sounds.SUCCESS);
-	const { play: playErrorSound } = useSound(Sounds.ERROR);
-	const { play: playNotifySound } = useSound(Sounds.NOTIFY);
-	const { play: playToggleOnSound } = useSound(Sounds.TOGGLE_ON);
-	const { play: playToggleOffSound } = useSound(Sounds.TOGGLE_OFF);
+	const [playClickSound] = useSound(Sounds.CLICK);
+	const [playSuccessSound] = useSound(Sounds.SUCCESS);
+	const [playErrorSound] = useSound(Sounds.ERROR);
+	const [playNotifySound] = useSound(Sounds.NOTIFY);
+	const [playToggleOnSound] = useSound(Sounds.TOGGLE_ON);
+	const [playToggleOffSound] = useSound(Sounds.TOGGLE_OFF);
 
 	// --- STATES & REFS ---
 	const [lastPlayed, setLastPlayed] = useState("");

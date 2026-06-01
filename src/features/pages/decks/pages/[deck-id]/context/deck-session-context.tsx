@@ -1,45 +1,17 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import { useSound } from "react-sounds";
 
 import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
+import { useDidMount } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import type { Deck, DeckPhrase } from "~/api";
 import { PROJECT_METADATA } from "~/constants";
-import { Sounds } from "~/features/sounds";
+import { Sounds, useSound } from "~/features/sounds";
+import { useDeckStore } from "~/stores/deck-store";
 
-// --- TYPES ---
-
-type DeckSessionContextValue = {
-	deck: Deck;
-	endTime: string;
-	currentIndex: number;
-	phase: Phase;
-	phrases: DeckPhrase[];
-	practiceMoreCount: number;
-	recognizedCount: number;
-	autoPlayAudio: boolean;
-	showSentenceByDefault: boolean;
-	showTranslationByDefault: boolean;
-	startTime: string;
-	clearSession: () => void;
-	markPracticeMore: () => void;
-	markRecognized: () => void;
-	setAutoPlayAudio: (value: boolean) => void;
-	setPhase: (value: Phase) => void;
-	setShowSentenceByDefault: (value: boolean) => void;
-	setShowTranslationByDefault: (value: boolean) => void;
-	startSession: () => void;
-};
-
-type DeckSessionProviderProps = {
-	children: ReactTypes.Children;
-	deck: Deck;
-};
-
-type Phase = "overview" | "practice" | "results";
+import type { DeckPhase, DeckSessionContextValue, PracticeMode } from "../../[deck-id].types";
 
 // --- CONTEXT ---
 
@@ -47,16 +19,24 @@ const DeckSessionContext = createContext<DeckSessionContextValue | null>(null);
 
 // --- PROVIDER ---
 
+type DeckSessionProviderProps = {
+	children: ReactTypes.Children;
+	deck: Deck;
+};
+
 function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): ReactTypes.JSXElement {
 	const browserStorageBaseKey = `${PROJECT_METADATA.appName}_${deck.id}`;
 
 	// --- HOOKS ---
-	const { play: playSuccessSound } = useSound(Sounds.SUCCESS);
-	const { play: playErrorSound } = useSound(Sounds.ERROR);
-	const { play: playNotifySound } = useSound(Sounds.NOTIFY);
-	const [phase, setPhase, clearPhase] = useBrowserStorage<Phase>({
+	const setDeckInProgress = useDeckStore((store) => store.setDeckInProgress);
+	const [playSuccessSound] = useSound(Sounds.SUCCESS);
+	const [playErrorSound] = useSound(Sounds.ERROR);
+	const [playNotifySound] = useSound(Sounds.NOTIFY);
+
+	// --- STATES & REFS ---
+	const [phase, setDeckPhase, clearPhase] = useBrowserStorage<DeckPhase>({
 		key: `${browserStorageBaseKey}_phase`,
-		value: "overview",
+		value: "OVERVIEW",
 	});
 	const [phrases, setPhrases, clearPhrases] = useBrowserStorage<DeckPhrase[]>({
 		key: `${browserStorageBaseKey}_phrases`,
@@ -77,7 +57,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		});
 	const [autoPlayAudio, setAutoPlayAudio, clearAutoPlayAudio] = useBrowserStorage<boolean>({
 		key: `${browserStorageBaseKey}_autoPlayAudio`,
-		value: false,
+		value: true,
 	});
 	const [showSentenceByDefault, setShowSentenceByDefault, clearShowSentenceByDefault] =
 		useBrowserStorage<boolean>({
@@ -87,7 +67,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 	const [showTranslationByDefault, setShowTranslationByDefault, clearShowTranslationByDefault] =
 		useBrowserStorage<boolean>({
 			key: `${browserStorageBaseKey}_showTranslation`,
-			value: true,
+			value: false,
 		});
 	const [startTime, setStartTime, clearStartTime] = useBrowserStorage<string>({
 		key: `${browserStorageBaseKey}_startTime`,
@@ -96,6 +76,15 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 	const [endTime, setEndTime, clearEndTime] = useBrowserStorage<string>({
 		key: `${browserStorageBaseKey}_endTime`,
 		value: "",
+	});
+	const [practiceMode, setPracticeModeRaw, clearPracticeMode] = useBrowserStorage<PracticeMode>({
+		key: `${browserStorageBaseKey}_practiceMode`,
+		value: "LISTENING",
+	});
+
+	// --- EFFECTS ---
+	useDidMount(function syncDeckInProgressOnMount() {
+		setDeckInProgress(phase === "PRACTICE");
 	});
 
 	// --- HANDLERS ---
@@ -108,37 +97,48 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		setPracticeMoreCount(0);
 		setStartTime(new Date().toISOString());
 		setEndTime("");
-		setPhase("practice");
+		setDeckPhase("PRACTICE");
+		setDeckInProgress(true);
 	}
 
-	function markRecognized(): void {
+	const markRecognized: DeckSessionContextValue["markRecognized"] = (config) => {
 		const newIndex = currentIndex + 1;
 		const newCount = recognizedCount + 1;
 
 		setCurrentIndex(newIndex);
 		setRecognizedCount(newCount);
-		playSuccessSound();
+		if (config.enableSounds) playSuccessSound();
 
 		checkIfDeckEnds(newIndex);
-	}
+	};
 
-	function markPracticeMore(): void {
+	const markPracticeMore: DeckSessionContextValue["markPracticeMore"] = (config) => {
 		const newIndex = currentIndex + 1;
 		const newCount = practiceMoreCount + 1;
 
 		setCurrentIndex(newIndex);
 		setPracticeMoreCount(newCount);
-		playErrorSound();
+		if (config.enableSounds) playErrorSound();
 
 		checkIfDeckEnds(newIndex);
-	}
+	};
 
 	function checkIfDeckEnds(newIndex: number): void {
 		if (newIndex >= phrases.length && phrases.length > 0) {
 			setEndTime(new Date().toISOString());
-			setPhase("results");
+			setDeckPhase("RESULTS");
+			setDeckInProgress(false);
 			playNotifySound();
 		}
+	}
+
+	function setPracticeMode(mode: PracticeMode): void {
+		const defaults = PRACTICE_MODE_DEFAULTS[mode];
+
+		setPracticeModeRaw(mode);
+		setAutoPlayAudio(defaults.autoPlayAudio);
+		setShowSentenceByDefault(defaults.showSentenceByDefault);
+		setShowTranslationByDefault(defaults.showTranslationByDefault);
 	}
 
 	function clearSession(): void {
@@ -150,21 +150,24 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		clearAutoPlayAudio();
 		clearShowSentenceByDefault();
 		clearShowTranslationByDefault();
+		clearPracticeMode();
 		clearStartTime();
 		clearEndTime();
+		setDeckInProgress(false);
 	}
 
 	return (
 		<DeckSessionContext.Provider
 			value={{
+				autoPlayAudio,
+				currentIndex,
 				deck,
 				endTime,
-				currentIndex,
 				phase,
 				phrases,
+				practiceMode,
 				practiceMoreCount,
 				recognizedCount,
-				autoPlayAudio,
 				showSentenceByDefault,
 				showTranslationByDefault,
 				startTime,
@@ -172,10 +175,11 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 				markPracticeMore,
 				markRecognized,
 				setAutoPlayAudio,
+				setDeckPhase,
+				setPracticeMode,
 				setShowSentenceByDefault,
 				setShowTranslationByDefault,
 				startSession,
-				setPhase,
 			}}
 		>
 			{children}
@@ -191,7 +195,7 @@ function useDeckSession(): DeckSessionContextValue {
 	return context;
 }
 
-export { DeckSessionProvider, useDeckSession };
+export { DeckSessionProvider, useDeckSession, type PracticeMode };
 
 // --- UTILS ---
 
@@ -205,3 +209,35 @@ function shuffleArray<T>(array: T[]): T[] {
 
 	return shuffled;
 }
+
+// --- CONSTANTS ---
+
+const PRACTICE_MODE_DEFAULTS: Record<
+	PracticeMode,
+	{
+		autoPlayAudio: boolean;
+		showSentenceByDefault: boolean;
+		showTranslationByDefault: boolean;
+	}
+> = {
+	LISTENING: {
+		autoPlayAudio: true,
+		showSentenceByDefault: false,
+		showTranslationByDefault: false,
+	},
+	VOCABULARY: {
+		autoPlayAudio: false,
+		showSentenceByDefault: false,
+		showTranslationByDefault: true,
+	},
+	REGULAR: {
+		autoPlayAudio: true,
+		showSentenceByDefault: true,
+		showTranslationByDefault: false,
+	},
+	CUSTOM: {
+		autoPlayAudio: false,
+		showSentenceByDefault: false,
+		showTranslationByDefault: false,
+	},
+};

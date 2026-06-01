@@ -1,45 +1,53 @@
 import { useEffect, useState } from "react";
-import { useSound } from "react-sounds";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { Deck, DeckPhrase } from "~/api";
-import { Box, Button, Icon, IconCatalog, Paragraph } from "~/components/primitive";
-import { Sounds } from "~/features/sounds";
-import { useSpeechSynthesis, type AudioState } from "~/features/voice-settings";
+import type { DeckPhrase } from "~/api";
+import { Box, Button, Icon } from "~/components/primitive";
+import { Sounds, useSound } from "~/features/sounds";
+import { useSpeechSynthesis } from "~/features/voice-settings";
 
+import { useDeckSession } from "../../../context/deck-session-context";
 import useDragGesture from "../hooks/use-drag-gesture";
+import {
+	ExplanationSection,
+	getTtsIconName,
+	SentenceSection,
+	TranslationSection,
+} from "./card-sections";
 
 type SwipeableCardProps = {
-	autoPlayAudio: boolean;
-	deckTheme: Deck["theme"];
 	isCurrentCard: boolean;
 	phrase: DeckPhrase;
-	showSentenceByDefault: boolean;
-	showTranslationByDefault: boolean;
-	onPracticeMore: () => void;
-	onRecognized: () => void;
+	showCardExplanation: boolean;
+	swipeEnabled: boolean;
+	userAnswered: boolean;
 };
 
 function SwipeableCard({
-	autoPlayAudio,
-	deckTheme,
 	isCurrentCard,
 	phrase,
-	showSentenceByDefault,
-	showTranslationByDefault,
-	onPracticeMore,
-	onRecognized,
+	showCardExplanation,
+	swipeEnabled,
+	userAnswered,
 }: SwipeableCardProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
+	const {
+		practiceMode,
+		markPracticeMore,
+		markRecognized,
+		showSentenceByDefault,
+		showTranslationByDefault,
+		autoPlayAudio,
+	} = useDeckSession();
 	const { dragX, dragY, isDragging, isExiting, exitDirection, handlers } = useDragGesture({
-		isEnabled: isCurrentCard,
-		onSwipeLeft: onPracticeMore,
-		onSwipeRight: onRecognized,
+		isEnabled: isCurrentCard && swipeEnabled,
+		onSwipeLeft: () => markPracticeMore({ enableSounds: true }),
+		onSwipeRight: () => markRecognized({ enableSounds: true }),
 	});
 	const { audioState, play, stop, toggle } = useSpeechSynthesis({ text: phrase.sentence });
-	const { play: playClickSound } = useSound(Sounds.CLICK);
+	const [playClickSound] = useSound(Sounds.CLICK);
 
 	// --- STATES & REFS ---
 	const [isSentenceVisible, setIsSentenceVisible] = useState(showSentenceByDefault);
@@ -64,6 +72,8 @@ function SwipeableCard({
 		opacity: isCurrentCard ? Math.max(0.5, 1 - Math.abs(dragX) / 350) : 0.65,
 		zIndex: isCurrentCard ? 10 : 5,
 	};
+	const isAudioLoading = audioState === "loading";
+	const isAudioPlaying = audioState === "playing";
 
 	// --- STYLES ---
 	const classes = {
@@ -94,9 +104,7 @@ function SwipeableCard({
 	// --- HANDLERS ---
 	function handleTtsClick(e: React.MouseEvent): void {
 		e.stopPropagation();
-
-		if (audioState === "loading") return;
-
+		if (isAudioLoading) return;
 		toggle();
 	}
 
@@ -122,9 +130,7 @@ function SwipeableCard({
 
 			const timeoutId = setTimeout(play, 500);
 
-			return (): void => {
-				clearTimeout(timeoutId);
-			};
+			return (): void => clearTimeout(timeoutId);
 		},
 		[autoPlayAudio, isCurrentCard, play],
 	);
@@ -133,9 +139,7 @@ function SwipeableCard({
 		function cancelAudioWhenCardIsNotCurrent() {
 			if (!isCurrentCard) return;
 
-			return (): void => {
-				stop();
-			};
+			return (): void => stop();
 		},
 		[isCurrentCard, stop],
 	);
@@ -146,42 +150,42 @@ function SwipeableCard({
 			style={cardStyles}
 			{...handlers}
 		>
-			<Box
-				className={classes.card}
-				style={{ backgroundColor: deckTheme.backgroundColor, color: deckTheme.fontColor }}
-			>
+			<Box className={classes.card}>
 				<Box className={classes.practiceMoreIndicator}>Practice more!</Box>
 				<Box className={classes.recognizedIndicator}>Recognized!</Box>
 
 				<Box className={classes.cardBody}>
 					<Button
 						className={classes.ttsButton}
-						aria-label={audioState === "playing" ? "Stop audio" : "Play audio"}
+						aria-label={isAudioPlaying ? "Stop audio" : "Play audio"}
 						onClick={handleTtsClick}
 					>
 						<Icon
 							name={getTtsIconName(audioState)}
 							size={18}
-							className={audioState === "loading" ? "animate-spin" : ""}
+							className={cn(isAudioLoading && "animate-spin")}
 						/>
 					</Button>
 
-					<Phrase
-						className={classes.showContentButton}
+					<SentenceSection
+						buttonClassName={classes.showContentButton}
+						practiceMode={practiceMode}
 						text={phrase.sentence}
+						userAnswered={userAnswered}
 						visible={isSentenceVisible}
 						onClick={handleShowSentenceClick}
 					/>
-
-					<Translation
-						className={classes.showContentButton}
+					<TranslationSection
+						buttonClassName={classes.showContentButton}
+						practiceMode={practiceMode}
 						text={phrase.translation}
+						userAnswered={userAnswered}
 						visible={isTranslationVisible}
 						onClick={handleShowTranslationClick}
 					/>
-
-					<Explanation
-						className={classes.showContentButton}
+					<ExplanationSection
+						buttonClassName={classes.showContentButton}
+						showCardExplanation={showCardExplanation}
 						text={phrase.explanation}
 						visible={isExplanationVisible}
 						onClick={handleShowExplanationClick}
@@ -193,117 +197,3 @@ function SwipeableCard({
 }
 
 export default SwipeableCard;
-
-// --- COMPONENTS ---
-
-type PhraseProps = {
-	className: string;
-	text: string;
-	visible: boolean;
-	onClick: () => void;
-};
-
-function Phrase({ className, text, visible, onClick }: PhraseProps): ReactTypes.JSXElement {
-	// --- STYLES ---
-	const classes = {
-		text: "text-center text-2xl leading-relaxed font-bold text-white md:text-3xl text-balance",
-	};
-
-	return (
-		<Box className="w-full">
-			{visible ? (
-				<Paragraph className={classes.text}>{text}</Paragraph>
-			) : (
-				<Button
-					className={className}
-					onClick={onClick}
-				>
-					Tap to show sentence
-				</Button>
-			)}
-		</Box>
-	);
-}
-
-type TranslationProps = {
-	className: string;
-	text: string;
-	visible: boolean;
-	onClick: () => void;
-};
-
-function Translation({
-	className,
-	text,
-	visible,
-	onClick,
-}: TranslationProps): ReactTypes.JSXElement {
-	// --- STYLES ---
-	const classes = {
-		wrapper: "animate-in fade-in-0 slide-in-from-bottom-2 duration-400",
-		text: "text-center text-lg font-medium text-white/80",
-	};
-
-	return (
-		<Box className="w-full">
-			{visible ? (
-				<Box className={classes.wrapper}>
-					<Paragraph className={classes.text}>{text}</Paragraph>
-				</Box>
-			) : (
-				<Button
-					className={className}
-					onClick={onClick}
-				>
-					Tap to show translation
-				</Button>
-			)}
-		</Box>
-	);
-}
-
-type ExplanationProps = {
-	className: string;
-	text: string | undefined;
-	visible: boolean;
-	onClick: () => void;
-};
-
-function Explanation({
-	className,
-	text,
-	visible,
-	onClick,
-}: ExplanationProps): ReactTypes.JSXElementNullable {
-	// --- STYLES ---
-	const classes = {
-		wrapper: "animate-in fade-in-0 slide-in-from-bottom-2 duration-400 bg-white/20 p-4 rounded-lg",
-		text: "text-center text-base font-medium text-white/80 italic",
-	};
-
-	if (!text) return null;
-
-	return (
-		<Box className="w-full">
-			{visible ? (
-				<Box className={classes.wrapper}>
-					<Paragraph className={classes.text}>{text}</Paragraph>
-				</Box>
-			) : (
-				<Button
-					className={className}
-					onClick={onClick}
-				>
-					Tap to show explanation
-				</Button>
-			)}
-		</Box>
-	);
-}
-
-// --- UTILS ---
-
-function getTtsIconName(state: AudioState): keyof typeof IconCatalog {
-	if (state === "playing") return IconCatalog.SQUARE;
-	return IconCatalog.VOLUME;
-}

@@ -31,10 +31,10 @@ const DeckPageContent = withRenderInBrowser(
 		// --- HOOKS ---
 		const { phase } = useDeckSession();
 
-		if (phase === "practice") {
+		if (phase === "PRACTICE") {
 			return <PracticeView />;
 		}
 
-		return phase === "results" ? <ResultsScreen /> : <DeckOverview />;
+		return phase === "RESULTS" ? <ResultsScreen /> : <DeckOverview />;
 	},
 );

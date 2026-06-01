@@ -5,4 +5,6 @@ export const Sounds = {
 	TOGGLE_ON: "ui/toggle_on",
 	TOGGLE_OFF: "ui/toggle_off",
 	NOTIFY: "notification/notification",
-};
+} as const;
+
+export type Sounds = (typeof Sounds)[keyof typeof Sounds];

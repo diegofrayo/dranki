@@ -3,6 +3,8 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Icon, IconCatalog, Link, Paragraph } from "~/components/primitive";
+import { useRouter } from "~/features/router";
+import { useDeckStore } from "~/stores/deck-store";
 
 import Header from "./header";
 
@@ -11,6 +13,17 @@ type MainLayoutProps = {
 };
 
 function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
+	// --- HOOKS ---
+	const { pathname } = useRouter();
+	const deckInProgress = useDeckStore((store) => store.deckInProgress);
+
+	// --- COMPUTED STATES ---
+	const isDeckPage = pathname.startsWith("/decks/");
+
+	if (isDeckPage && deckInProgress) {
+		return <>{children}</>;
+	}
+
 	return (
 		<Box
 			as="main"
