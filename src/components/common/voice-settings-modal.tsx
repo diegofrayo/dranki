@@ -12,6 +12,7 @@ import {
 	Icon,
 	IconCatalog,
 	InlineText,
+	Label,
 	Modal,
 	Paragraph,
 	Select,
@@ -104,7 +105,7 @@ function VoiceSettingsModal({
 			<ModalHeader onClose={handleCloseFromModal} />
 
 			<Box className={classes.field}>
-				<label className={classes.label}>Voice</label>
+				<Label className={classes.label}>Voice</Label>
 				<Select
 					items={voiceItems}
 					value={selectValue}
@@ -116,7 +117,7 @@ function VoiceSettingsModal({
 
 			<Box className={classes.field}>
 				<Box className="mb-2 flex items-center justify-between">
-					<label className={classes.label}>Speed</label>
+					<Label className={classes.label}>Speed</Label>
 					<InlineText className={classes.valueHint}>{rate.toFixed(1)}x</InlineText>
 				</Box>
 				<Slider
@@ -130,7 +131,7 @@ function VoiceSettingsModal({
 
 			<Box className={classes.field}>
 				<Box className="mb-2 flex items-center justify-between">
-					<label className={classes.label}>Pitch</label>
+					<Label className={classes.label}>Pitch</Label>
 					<InlineText className={classes.valueHint}>{pitch.toFixed(1)}</InlineText>
 				</Box>
 				<Slider

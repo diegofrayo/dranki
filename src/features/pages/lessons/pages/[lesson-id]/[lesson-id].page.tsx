@@ -32,7 +32,7 @@ function LessonPage({
 	practiceTexts,
 }: LessonPageProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const fontSizeConfig = useFontSize({ storageKey: "DR_LESSON_FONT_SIZE" });
+	const fontSizeConfig = useFontSize({ storageKey: "dranki_lesson_font_size" });
 
 	// --- STATES & REFS ---
 	const contentRef = useRef<HTMLDivElement>(null);

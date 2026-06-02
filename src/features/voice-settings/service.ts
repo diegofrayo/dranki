@@ -13,7 +13,7 @@ export const DEFAULT_VOICE_SETTINGS = {
 };
 
 export const voiceSettingsStorage = BrowserStorageManager.createItem<VoiceSettings>({
-	key: "DR_VOICE_SETTINGS",
+	key: "dranki_voice_settings",
 	value: DEFAULT_VOICE_SETTINGS,
 	readInitialValueFromStorage: true,
 	saveDuringCreation: true,

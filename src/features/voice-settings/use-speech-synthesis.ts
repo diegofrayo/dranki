@@ -6,7 +6,7 @@ import { replaceAll } from "@diegofrayo-pkg/utilities/strings";
 
 import { voiceSettingsStorage, type VoiceSettings } from "~/features/voice-settings";
 
-export type AudioState = "idle" | "loading" | "playing";
+export type AudioState = "IDLE" | "LOADING" | "PLAYING";
 
 type UseSpeechSynthesisOptions = {
 	text: string;
@@ -29,7 +29,7 @@ function useSpeechSynthesis({
 	lang = "en-US",
 }: UseSpeechSynthesisOptions): UseSpeechSynthesisResult {
 	// --- STATES & REFS ---
-	const [audioState, setAudioState] = useState<AudioState>("idle");
+	const [audioState, setAudioState] = useState<AudioState>("IDLE");
 	const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
 
 	// --- COMPUTED STATES ---
@@ -47,7 +47,7 @@ function useSpeechSynthesis({
 	// --- HANDLERS ---
 	const stop = useCallback(function stop(): void {
 		window.speechSynthesis.cancel();
-		setAudioState("idle");
+		setAudioState("IDLE");
 	}, []);
 
 	const play: UseSpeechSynthesisResult["play"] = useCallback(
@@ -65,16 +65,16 @@ function useSpeechSynthesis({
 			utterance.voice = findVoice(settings.voiceURI || "");
 
 			utterance.onstart = (): void => {
-				setAudioState("playing");
+				setAudioState("PLAYING");
 			};
 			utterance.onend = (): void => {
-				setAudioState("idle");
+				setAudioState("IDLE");
 			};
 			utterance.onerror = (): void => {
-				setAudioState("idle");
+				setAudioState("IDLE");
 			};
 
-			setAudioState("loading");
+			setAudioState("LOADING");
 			window.speechSynthesis.speak(utterance);
 		},
 		[text, lang],
@@ -82,7 +82,7 @@ function useSpeechSynthesis({
 
 	const toggle = useCallback(
 		function toggle(): void {
-			if (audioState === "idle") {
+			if (audioState === "IDLE") {
 				play();
 			} else {
 				stop();
@@ -113,7 +113,7 @@ function useSpeechSynthesis({
 		function cancelSpeechOnTextChange() {
 			return (): void => {
 				window.speechSynthesis.cancel();
-				setAudioState("idle");
+				setAudioState("IDLE");
 			};
 		},
 		[text],
@@ -121,9 +121,9 @@ function useSpeechSynthesis({
 
 	return {
 		audioState,
-		isIdle: audioState === "idle",
-		isLoading: audioState === "loading",
-		isPlaying: audioState === "playing",
+		isIdle: audioState === "IDLE",
+		isLoading: audioState === "LOADING",
+		isPlaying: audioState === "PLAYING",
 		voices,
 		play,
 		stop,

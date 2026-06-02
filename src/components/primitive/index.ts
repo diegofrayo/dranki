@@ -18,12 +18,14 @@ export { default as ConfirmationDialog } from "./confirmation-dialog";
 export { default as Icon } from "./icon";
 export { default as InlineText } from "./inline-text";
 export { default as Input } from "./input";
+export { default as Label } from "./label";
 export { default as Modal } from "./modal";
 export { default as Paragraph } from "./paragraph";
 export { default as Select } from "./select";
 export { default as Separator } from "./separator";
 export { default as Slider } from "./slider";
 export { default as Switch } from "./switch";
+export { default as Textarea } from "./textarea";
 export { default as Title } from "./title";
 
 export { default as Image } from "./image/image.adapter";

@@ -83,6 +83,26 @@ function PracticeView(): ReactTypes.JSXElement {
 		setVoiceSettingsOpen(false);
 	}
 
+	// --- RENDERS ---
+	function renderTitleContent(): ReactTypes.JSXElement {
+		if (deck.lesson) {
+			return (
+				<Link
+					href={Routes.LESSON(deck.lesson.id)}
+					className="flex items-center gap-1 underline"
+				>
+					<InlineText className="truncate">{deck.title}</InlineText>
+					<Icon
+						name={IconCatalog.EXTERNAL_LINK}
+						className="size-4 shrink-0"
+					/>
+				</Link>
+			);
+		}
+
+		return <>{deck.title}</>;
+	}
+
 	return (
 		<Box className={classes.root}>
 			<Box
@@ -110,20 +130,7 @@ function PracticeView(): ReactTypes.JSXElement {
 								as="h1"
 								className={classes.deckTitle}
 							>
-								{deck.lesson ? (
-									<Link
-										href={Routes.LESSON(deck.lesson.id)}
-										className="flex items-center gap-1 underline"
-									>
-										<InlineText className="truncate">{deck.title}</InlineText>
-										<Icon
-											name={IconCatalog.EXTERNAL_LINK}
-											className="size-4 shrink-0"
-										/>
-									</Link>
-								) : (
-									deck.title
-								)}
+								{renderTitleContent()}
 							</Title>
 						</Box>
 						<Box className={classes.progressWrapper}>

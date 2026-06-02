@@ -1,8 +1,6 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Button, IconCatalog, Paragraph } from "~/components/primitive";
-import type { IconName } from "~/components/primitive/icon/icons";
-import type { AudioState } from "~/features/voice-settings";
+import { Box, Button, Paragraph } from "~/components/primitive";
 
 import type { PracticeMode } from "../../../../[deck-id].types";
 
@@ -202,11 +200,4 @@ export function ExplanationSection({
 			onClick={onClick}
 		/>
 	);
-}
-
-// --- UTILS ---
-
-export function getTtsIconName(state: AudioState): IconName {
-	if (state === "playing") return IconCatalog.SQUARE;
-	return IconCatalog.VOLUME;
 }

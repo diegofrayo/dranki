@@ -15,8 +15,9 @@ import {
 	ButtonVariant,
 	Icon,
 	IconCatalog,
-	Input,
+	Label,
 	Paragraph,
+	Textarea,
 	type IconName,
 } from "~/components/primitive";
 import { Sounds, useSound } from "~/features/sounds";
@@ -185,7 +186,7 @@ function SentenceInput({
 	// --- STYLES ---
 	const classes = {
 		root: "flex shrink-0 flex-col gap-4",
-		input: "h-12 text-base w-full",
+		textarea: "w-full min-h-16",
 		button: "h-12 shrink-0",
 		feedback: cn(
 			"animate-in fade-in-0 flex items-center gap-2 rounded-xl px-4 py-3 text-sm duration-200",
@@ -198,12 +199,12 @@ function SentenceInput({
 	};
 
 	// --- HANDLERS ---
-	function handleInputChange(e: React.ChangeEvent<HTMLInputElement>): void {
+	function handleInputChange(e: React.ChangeEvent<HTMLTextAreaElement>): void {
 		setInputText(e.target.value);
 	}
 
-	function handleInputKeyDown(e: React.KeyboardEvent<HTMLInputElement>): void {
-		if (e.key === "Enter") handleCheckClick();
+	function handleInputKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>): void {
+		if (e.key === "Enter") e.preventDefault();
 	}
 
 	function handleCheckClick(): void {
@@ -272,16 +273,17 @@ function SentenceInput({
 		}
 
 		return (
-			<label>
+			<Label>
 				<Paragraph className="mb-1 text-sm font-bold">{inputLabel}</Paragraph>
-				<Input
+				<Textarea
 					autoFocus
-					className={classes.input}
+					id="sentence-textarea"
+					className={classes.textarea}
 					value={inputText}
 					onChange={handleInputChange}
 					onKeyDown={handleInputKeyDown}
 				/>
-			</label>
+			</Label>
 		);
 	}
 

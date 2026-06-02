@@ -14,7 +14,7 @@ import PracticeWordsTable from "./components/practice-words-table";
 
 export default function TextPage({ details, content }: TextPageProps): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const fontSizeConfig = useFontSize({ storageKey: "DR_TEXT_FONT_SIZE" });
+	const fontSizeConfig = useFontSize({ storageKey: "dranki_text_font_size" });
 
 	// --- STATES & REFS ---
 	const contentRef = useRef<HTMLDivElement>(null);
