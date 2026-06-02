@@ -2,7 +2,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Button, Paragraph } from "~/components/primitive";
 
-import type { PracticeMode } from "../../../../[deck-id].types";
+import type { PracticeMode } from "../../../[deck-id].types";
 
 // --- COMPONENTS ---
 
