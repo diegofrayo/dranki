@@ -14,11 +14,12 @@ export default function DeckItem({ deck, showTotalPhrases }: DeckItemProps): Rea
 	// --- STYLES ---
 	const classes = {
 		link: cn(
-			"relative flex items-center gap-2 rounded-2xl bg-blue-600 p-5 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80",
+			"relative flex items-center justify-between gap-2 rounded-2xl bg-blue-600 px-3 py-2 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80",
+			{ "bg-blue-800": !deck.public },
 		),
-		emoji: cn("text-3xl"),
-		title: cn("text-lg leading-none font-bold text-white"),
-		footer: cn("absolute right-3 bottom-2 mt-1 text-right text-xs text-white/80 italic"),
+		emoji: cn("text-base"),
+		title: cn("flex-1 truncate text-base font-bold text-white"),
+		footer: cn("text-right text-xs text-white/80 italic"),
 	};
 
 	// --- RENDERS ---
