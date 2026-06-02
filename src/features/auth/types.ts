@@ -4,7 +4,7 @@ export type User = SupabaseUser;
 
 export type Session = SupabaseSession;
 
-export type AuthStatus = "loading" | "authenticated" | "unauthenticated";
+export type AuthStatus = "LOADING" | "AUTHENTICATED" | "UNAUTHENTICATED";
 
 export type AuthContextValue = {
 	session: Session | null | undefined;

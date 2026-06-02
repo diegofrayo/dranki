@@ -101,7 +101,7 @@ export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElem
 				{sortedDecks.map((deck) => {
 					const isDeckPublic = deck.public === true;
 
-					if (isDeckPublic || auth.status === "authenticated") {
+					if (isDeckPublic || auth.status === "AUTHENTICATED") {
 						return (
 							<Box
 								key={deck.id}

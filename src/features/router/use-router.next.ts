@@ -1,11 +1,15 @@
-import { usePathname, useRouter as useRouterNext } from "next/navigation";
+import { usePathname, useRouter as useRouterNext, useSearchParams } from "next/navigation";
 
-export function useRouter(): { pathname: string; push: (routeName: string) => void } {
+import type { UseRouterReturn } from "./types";
+
+export function useRouter(): UseRouterReturn {
 	const pathname = usePathname();
 	const { push } = useRouterNext();
+	const searchParams = useSearchParams();
 
 	return {
 		pathname,
 		push,
+		searchParams,
 	};
 }

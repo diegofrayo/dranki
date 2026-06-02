@@ -1,13 +1,25 @@
-import { useLocation, useNavigate } from "@tanstack/react-router";
+import { useLocation, useNavigate, useSearch } from "@tanstack/react-router";
 
-export function useRouter(): { pathname: string; push: (routeName: string) => void } {
+import type { UseRouterReturn } from "./types";
+
+export function useRouter(): UseRouterReturn {
 	const location = useLocation();
 	const navigate = useNavigate();
+	const searchParams = useSearch({
+		from: window.location.pathname,
+	});
 
-	return {
+	const api: UseRouterReturn = {
 		pathname: location.pathname,
-		push: (route: string): void => {
+		push: (route) => {
 			navigate({ href: route });
 		},
+		searchParams: {
+			get(urlParam) {
+				return searchParams[urlParam] ?? null;
+			},
+		},
 	};
+
+	return api;
 }

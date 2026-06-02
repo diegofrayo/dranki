@@ -5,16 +5,18 @@ import { useState } from "react";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Button, Input, Paragraph, Title } from "~/components/primitive";
+import { Box, Button, InlineText, Input, Paragraph, Title } from "~/components/primitive";
 import { useAuth } from "~/features/auth";
+import { useRouter } from "~/features/router";
 
 export default function SignInForm(): ReactTypes.JSXElement {
 	// --- HOOKS ---
 	const { signInWithMagicLink } = useAuth();
+	const { searchParams } = useRouter();
 
 	// --- STATES & REFS ---
 	const [email, setEmail] = useState("");
-	const [submitState, setSubmitState] = useState<SubmitState>({ kind: "idle" });
+	const [submitState, setSubmitState] = useState<SubmitState>({ kind: "IDLE" });
 
 	// --- STYLES ---
 	const classes = {
@@ -27,27 +29,28 @@ export default function SignInForm(): ReactTypes.JSXElement {
 	// --- HANDLERS ---
 	async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
 		event.preventDefault();
-		if (submitState.kind === "submitting") return;
+		if (submitState.kind === "SUBMITTING") return;
 
-		setSubmitState({ kind: "submitting" });
+		setSubmitState({ kind: "SUBMITTING" });
 		const { error } = await signInWithMagicLink(email.trim());
 
 		if (error) {
-			setSubmitState({ kind: "error", message: error.message });
+			setSubmitState({ kind: "ERROR", message: error.message });
 			return;
 		}
 
-		setSubmitState({ kind: "sent" });
+		setSubmitState({ kind: "SENT" });
 	}
 
 	function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		setEmail(event.target.value);
-		if (submitState.kind === "error") setSubmitState({ kind: "idle" });
+		if (submitState.kind === "ERROR") setSubmitState({ kind: "IDLE" });
 	}
 
 	// --- COMPUTED STATES ---
-	const isSubmitting = submitState.kind === "submitting";
-	const isSent = submitState.kind === "sent";
+	const isSubmitting = submitState.kind === "SUBMITTING";
+	const isSent = submitState.kind === "SENT";
+	const urlError = submitState.kind === "IDLE" && searchParams.get("error");
 
 	return (
 		<Box
@@ -85,12 +88,19 @@ export default function SignInForm(): ReactTypes.JSXElement {
 					{isSubmitting ? "Sending…" : isSent ? "Check your email" : "Send magic link"}
 				</Button>
 
-				{submitState.kind === "error" && (
+				{submitState.kind === "ERROR" && (
 					<Paragraph className={classes.error}>{submitState.message}</Paragraph>
 				)}
 				{isSent && (
 					<Paragraph className={classes.success}>
 						Magic link sent to {email}. Open it on this device to finish signing in.
+					</Paragraph>
+				)}
+				{urlError !== null && (
+					<Paragraph className="bg-destructive/70 rounded-md p-3 text-sm text-white">
+						<InlineText as="strong">Error!</InlineText>
+						<br />
+						{urlError}
 					</Paragraph>
 				)}
 			</form>
@@ -101,7 +111,7 @@ export default function SignInForm(): ReactTypes.JSXElement {
 // --- TYPES ---
 
 type SubmitState =
-	| { kind: "idle" }
-	| { kind: "submitting" }
-	| { kind: "sent" }
-	| { kind: "error"; message: string };
+	| { kind: "IDLE" }
+	| { kind: "SUBMITTING" }
+	| { kind: "SENT" }
+	| { kind: "ERROR"; message: string };

@@ -23,7 +23,7 @@ export function AuthProvider({
 	// --- STATES & REFS ---
 	const [session, setSession] = useState<Session | null | undefined>(undefined);
 	const [user, setUser] = useState<User | null>(initialUser);
-	const [status, setStatus] = useState<AuthStatus>(initialUser ? "authenticated" : "loading");
+	const [status, setStatus] = useState<AuthStatus>(initialUser ? "AUTHENTICATED" : "LOADING");
 
 	// --- EFFECTS ---
 	useEffect(function syncAuthState() {
@@ -32,13 +32,13 @@ export function AuthProvider({
 		supabase.auth.getSession().then(({ data }) => {
 			setSession(data.session);
 			setUser(data.session?.user ?? null);
-			setStatus(data.session ? "authenticated" : "unauthenticated");
+			setStatus(data.session ? "AUTHENTICATED" : "UNAUTHENTICATED");
 		});
 
 		const { data: subscription } = supabase.auth.onAuthStateChange((_event, nextSession) => {
 			setSession(nextSession);
 			setUser(nextSession?.user ?? null);
-			setStatus(nextSession ? "authenticated" : "unauthenticated");
+			setStatus(nextSession ? "AUTHENTICATED" : "UNAUTHENTICATED");
 		});
 
 		return function cleanup(): void {
@@ -46,7 +46,6 @@ export function AuthProvider({
 		};
 	}, []);
 
-	// --- COMPUTED STATES ---
 	const value = useMemo<AuthContextValue>(
 		() => ({
 			session,

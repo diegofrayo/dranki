@@ -6,6 +6,7 @@ import { RemoteDebugger } from "~/components/common";
 import { MainLayout } from "~/components/layout";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 import { AuthProvider } from "~/features/auth";
+import { getUser } from "~/features/auth/actions/get-user.server";
 import ErrorPage from "~/features/pages/error/error.page";
 import NotFoundPage from "~/features/pages/error/not-found.page";
 
@@ -58,16 +59,19 @@ function RootComponent(): ReactTypes.JSXElement {
 	);
 }
 
-function RootDocument({
+async function RootDocument({
 	children,
-}: Readonly<{ children: ReactTypes.Children }>): ReactTypes.JSXElement {
+}: Readonly<{ children: ReactTypes.Children }>): Promise<ReactTypes.JSXElement> {
+	// --- COMPUTED STATES ---
+	const initialUser = await getUser();
+
 	return (
 		<html>
 			<head>
 				<HeadContent />
 			</head>
 			<body className="font-sans antialiased">
-				<AuthProvider>
+				<AuthProvider initialUser={initialUser}>
 					<MainLayout>{children}</MainLayout>
 				</AuthProvider>
 				<Scripts />

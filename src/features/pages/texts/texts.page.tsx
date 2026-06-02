@@ -36,7 +36,7 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 				{texts.map((text) => {
 					const isTextPublic = text.public === true;
 
-					if (isTextPublic || auth.status === "authenticated") {
+					if (isTextPublic || auth.status === "AUTHENTICATED") {
 						return (
 							<Box
 								key={text.id}

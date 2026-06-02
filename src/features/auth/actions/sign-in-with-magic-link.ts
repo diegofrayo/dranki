@@ -8,7 +8,7 @@ export async function signInWithMagicLink(email: string): Promise<{ error: Error
 		email,
 		options: {
 			emailRedirectTo: redirectTo,
-			shouldCreateUser: true,
+			shouldCreateUser: false,
 		},
 	});
 
