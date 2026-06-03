@@ -1,20 +1,24 @@
 export * from "./box";
 export * from "./button";
 export * from "./confirmation-dialog";
+export * from "./form";
 export * from "./icon";
 export * from "./inline-text";
 export * from "./input";
+export * from "./label";
 export * from "./modal";
 export * from "./paragraph";
 export * from "./select";
 export * from "./separator";
 export * from "./slider";
 export * from "./switch";
+export * from "./textarea";
 export * from "./title";
 
 export { default as Box } from "./box";
 export { default as Button } from "./button";
 export { default as ConfirmationDialog } from "./confirmation-dialog";
+export { default as Form } from "./form";
 export { default as Icon } from "./icon";
 export { default as InlineText } from "./inline-text";
 export { default as Input } from "./input";

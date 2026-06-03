@@ -5,7 +5,7 @@ import { useState } from "react";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import { Box, Button, InlineText, Input, Paragraph, Title } from "~/components/primitive";
+import { Box, Button, Form, InlineText, Input, Paragraph, Title } from "~/components/primitive";
 import { useAuth } from "~/features/auth";
 import { useRouter } from "~/features/router";
 
@@ -17,14 +17,6 @@ export default function SignInForm(): ReactTypes.JSXElement {
 	// --- STATES & REFS ---
 	const [email, setEmail] = useState("");
 	const [submitState, setSubmitState] = useState<SubmitState>({ kind: "IDLE" });
-
-	// --- STYLES ---
-	const classes = {
-		form: cn("flex flex-col gap-3"),
-		hint: "text-muted-foreground text-xs",
-		error: "text-destructive text-sm",
-		success: "text-emerald-600 text-sm",
-	};
 
 	// --- HANDLERS ---
 	async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
@@ -44,13 +36,14 @@ export default function SignInForm(): ReactTypes.JSXElement {
 
 	function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		setEmail(event.target.value);
-		if (submitState.kind === "ERROR") setSubmitState({ kind: "IDLE" });
+		if (hasErrorFromSubmit) setSubmitState({ kind: "IDLE" });
 	}
 
 	// --- COMPUTED STATES ---
 	const isSubmitting = submitState.kind === "SUBMITTING";
 	const isSent = submitState.kind === "SENT";
-	const urlError = submitState.kind === "IDLE" && searchParams.get("error");
+	const hasErrorFromURL = submitState.kind === "IDLE" && !!searchParams.get("error");
+	const hasErrorFromSubmit = submitState.kind == "ERROR";
 
 	return (
 		<Box
@@ -67,19 +60,19 @@ export default function SignInForm(): ReactTypes.JSXElement {
 				We&apos;ll email you a magic link for a passwordless sign in.
 			</Paragraph>
 
-			<form
+			<Form
+				className="flex flex-col gap-3"
 				onSubmit={handleFormSubmit}
-				className={classes.form}
 			>
 				<Input
 					type="email"
 					name="email"
-					required
 					autoComplete="email"
 					placeholder="you@example.com"
 					value={email}
 					onChange={handleEmailChange}
 					disabled={isSubmitting || isSent}
+					required
 				/>
 				<Button
 					type="submit"
@@ -88,22 +81,14 @@ export default function SignInForm(): ReactTypes.JSXElement {
 					{isSubmitting ? "Sending…" : isSent ? "Check your email" : "Send magic link"}
 				</Button>
 
-				{submitState.kind === "ERROR" && (
-					<Paragraph className={classes.error}>{submitState.message}</Paragraph>
-				)}
 				{isSent && (
-					<Paragraph className={classes.success}>
+					<FormMessage type="SUCCESS">
 						Magic link sent to {email}. Open it on this device to finish signing in.
-					</Paragraph>
+					</FormMessage>
 				)}
-				{urlError !== null && (
-					<Paragraph className="bg-destructive/70 rounded-md p-3 text-sm text-white">
-						<InlineText as="strong">Error!</InlineText>
-						<br />
-						{urlError}
-					</Paragraph>
-				)}
-			</form>
+				{hasErrorFromSubmit && <FormMessage type="SUCCESS">{submitState.message}</FormMessage>}
+				{hasErrorFromURL && <FormMessage type="ERROR">{hasErrorFromURL}</FormMessage>}
+			</Form>
 		</Box>
 	);
 }
@@ -115,3 +100,33 @@ type SubmitState =
 	| { kind: "SUBMITTING" }
 	| { kind: "SENT" }
 	| { kind: "ERROR"; message: string };
+
+// --- COMPONENTS ---
+
+type FormMessageProps = {
+	children: ReactTypes.Children;
+	type: "ERROR" | "SUCCESS";
+};
+
+function FormMessage({ children, type }: FormMessageProps): ReactTypes.JSXElement {
+	// --- STYLES ---
+	const classes = {
+		root: cn(
+			"rounded-md p-3 text-sm",
+			type === "ERROR" && "bg-destructive text-white",
+			type === "SUCCESS" && "bg-emerald-600 text-white",
+		),
+	};
+
+	return (
+		<Box className={classes.root}>
+			<InlineText
+				as="strong"
+				className="capitalize"
+			>
+				{type}!
+			</InlineText>
+			<Paragraph>{children}</Paragraph>
+		</Box>
+	);
+}

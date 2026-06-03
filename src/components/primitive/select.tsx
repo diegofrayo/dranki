@@ -4,6 +4,7 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import Icon, { IconCatalog } from "./icon";
+import InlineText from "./inline-text";
 
 // --- PROPS & TYPES ---
 
@@ -93,11 +94,11 @@ function Select({
 								className={classes.item}
 							>
 								<BaseSelect.ItemText className={classes.itemText}>{item.label}</BaseSelect.ItemText>
-								<span className={classes.itemIndicatorWrap}>
+								<InlineText className={classes.itemIndicatorWrap}>
 									<BaseSelect.ItemIndicator className={classes.itemIndicator}>
 										<Icon name={IconCatalog.CHECK} />
 									</BaseSelect.ItemIndicator>
-								</span>
+								</InlineText>
 							</BaseSelect.Item>
 						))}
 					</BaseSelect.Popup>

@@ -1,15 +1,14 @@
 import { NextResponse } from "next/server";
 
-import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
-
 import { Routes } from "~/constants";
 import { exchangeCodeForSession } from "~/features/auth/callback/exchange-code.next";
+import EnvVars from "~/features/env";
 
 export async function GET(request: Request): Promise<NextResponse> {
 	const url = new URL(request.url);
 	const code = url.searchParams.get("code");
 	const next = url.searchParams.get("next") ?? "/";
-	const origin = isDevelopmentEnvironment() ? "https://dranki.local" : url.origin;
+	const origin = EnvVars.PUBLIC_WEBSITE_URL;
 
 	if (!code) {
 		return NextResponse.redirect(new URL(`${Routes.SIGN_IN}?error=${"Invalid URL."}`, origin));
