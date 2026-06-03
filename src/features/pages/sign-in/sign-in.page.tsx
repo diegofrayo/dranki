@@ -90,7 +90,7 @@ export default function SignInPage(): ReactTypes.JSXElement {
 							Magic link sent to {email}. Open it on this device to finish signing in.
 						</FormMessage>
 					)}
-					{hasErrorFromSubmit && <FormMessage type="SUCCESS">{submitState.message}</FormMessage>}
+					{hasErrorFromSubmit && <FormMessage type="ERROR">{submitState.message}</FormMessage>}
 					{hasErrorFromURL && <FormMessage type="ERROR">{searchParams.get("error")}</FormMessage>}
 				</Form>
 			</Box>

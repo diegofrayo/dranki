@@ -86,9 +86,7 @@ export default function Header(): ReactTypes.JSXElement {
 										<Icon name={IconCatalog.LOG_OUT} />
 									</Link>
 								}
-							>
-								Back to Decks
-							</Button>
+							/>
 						)}
 						<Button
 							aria-label="Open voice settings"

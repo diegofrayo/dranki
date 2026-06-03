@@ -14,19 +14,18 @@ export const Route = createFileRoute("/auth/callback")({
 				const origin = EnvVars.PUBLIC_WEBSITE_URL;
 
 				if (!code) {
-					return redirectResponse(`${origin}/${Routes.SIGN_IN}?error=${"Invalid URL."}`, []);
+					return redirectResponse(`${origin}${Routes.SIGN_IN}?error=${"Invalid URL."}`, []);
 				}
 
 				const result = await exchangeCodeForSession(code);
 
 				if (!result.ok) {
 					console.log(result.error);
-					console.log("code:", code);
-					console.log("next:", next);
+					console.log({ EnvVars, origin, code, next });
 					console.log("");
 
 					return redirectResponse(
-						`${url.origin}/${Routes.SIGN_IN}?error=${encodeURIComponent("Something went wrong. Please try again.")}`,
+						`${origin}${Routes.SIGN_IN}?error=${encodeURIComponent("Something went wrong. Please try again.")}`,
 						result.setCookieHeaders,
 					);
 				}

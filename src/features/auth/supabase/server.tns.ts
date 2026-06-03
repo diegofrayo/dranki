@@ -21,7 +21,7 @@ function readCookiesFromRequest(): { name: string; value: string }[] {
 export async function createSupabaseServerClient(): Promise<SupabaseClient> {
 	const cookies = readCookiesFromRequest();
 
-	return createServerClient(EnvVars.PUBLIC_SUPABASE_URL, EnvVars.PUBLIC_SUPABASE_URL, {
+	return createServerClient(EnvVars.PUBLIC_SUPABASE_URL, EnvVars.PUBLIC_SUPABASE_ANON_KEY, {
 		cookies: {
 			getAll() {
 				return cookies;
@@ -40,7 +40,7 @@ export function createSupabaseServerClientWithResponse(): {
 	const cookies = readCookiesFromRequest();
 	const outgoing: string[] = [];
 
-	const client = createServerClient(EnvVars.PUBLIC_SUPABASE_URL, EnvVars.PUBLIC_SUPABASE_URL, {
+	const client = createServerClient(EnvVars.PUBLIC_SUPABASE_URL, EnvVars.PUBLIC_SUPABASE_ANON_KEY, {
 		cookies: {
 			getAll() {
 				return cookies;

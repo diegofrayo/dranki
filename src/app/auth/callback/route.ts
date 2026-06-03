@@ -18,8 +18,7 @@ export async function GET(request: Request): Promise<NextResponse> {
 
 	if (!result.ok) {
 		console.log(result.error);
-		console.log("code:", code);
-		console.log("next:", next);
+		console.log({ EnvVars, origin, code, next });
 		console.log("");
 
 		return NextResponse.redirect(
