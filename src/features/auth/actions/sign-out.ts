@@ -1,6 +1,6 @@
-import { createSupabaseBrowserClient } from "../supabase/client";
+import { createSupabaseServerClient } from "../supabase/server.adapter";
 
-export async function signOut(): Promise<void> {
-	const supabase = createSupabaseBrowserClient();
-	await supabase.auth.signOut();
+export async function signOut(): Promise<unknown> {
+	const supabase = await createSupabaseServerClient();
+	return supabase.auth.signOut();
 }

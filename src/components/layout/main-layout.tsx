@@ -19,8 +19,9 @@ function MainLayout({ children }: MainLayoutProps): ReactTypes.JSXElement {
 
 	// --- COMPUTED STATES ---
 	const isDeckPage = pathname.startsWith("/decks/");
+	const isSignOutPage = pathname.includes("/sign-out");
 
-	if (isDeckPage && deckInProgress) {
+	if ((isDeckPage && deckInProgress) || isSignOutPage) {
 		return <>{children}</>;
 	}
 

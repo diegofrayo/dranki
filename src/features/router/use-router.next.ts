@@ -1,3 +1,5 @@
+"use client";
+
 import { usePathname, useRouter as useRouterNext, useSearchParams } from "next/navigation";
 
 import type { UseRouterReturn } from "./types";

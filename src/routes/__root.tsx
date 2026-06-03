@@ -5,7 +5,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { RemoteDebugger } from "~/components/common";
 import { MainLayout } from "~/components/layout";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
-import { AuthProvider } from "~/features/auth";
+import { AuthProvider, type User } from "~/features/auth";
 import { getUser } from "~/features/auth/actions/get-user.server";
 import ErrorPage from "~/features/pages/error/error.page";
 import NotFoundPage from "~/features/pages/error/not-found.page";
@@ -46,32 +46,35 @@ export const Route = createRootRoute({
 			{ rel: "shortcut icon", href: `${FAVICON_PATH}/favicon.ico` },
 		],
 	}),
-	component: RootComponent,
+	loader: () => getUser(),
+	component: function RootWrapper() {
+		const user = Route.useLoaderData() as User;
+
+		return <RootComponent user={user} />;
+	},
 	notFoundComponent: NotFoundPage,
 	errorComponent: ErrorPage,
 });
 
-function RootComponent(): ReactTypes.JSXElement {
+function RootComponent({ user }: { user: User }): ReactTypes.JSXElement {
 	return (
-		<RootDocument>
+		<RootDocument user={user}>
 			<Outlet />
 		</RootDocument>
 	);
 }
 
-async function RootDocument({
+function RootDocument({
 	children,
-}: Readonly<{ children: ReactTypes.Children }>): Promise<ReactTypes.JSXElement> {
-	// --- COMPUTED STATES ---
-	const initialUser = await getUser();
-
+	user,
+}: Readonly<{ children: ReactTypes.Children; user: User }>): ReactTypes.JSXElement {
 	return (
 		<html>
 			<head>
 				<HeadContent />
 			</head>
 			<body className="font-sans antialiased">
-				<AuthProvider initialUser={initialUser}>
+				<AuthProvider initialUser={user}>
 					<MainLayout>{children}</MainLayout>
 				</AuthProvider>
 				<Scripts />

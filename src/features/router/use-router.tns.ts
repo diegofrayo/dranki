@@ -1,13 +1,13 @@
-import { useLocation, useNavigate, useSearch } from "@tanstack/react-router";
+import { useLocation, useNavigate } from "@tanstack/react-router";
+
+import { useUrlParams } from "@diegofrayo-pkg/hooks";
 
 import type { UseRouterReturn } from "./types";
 
 export function useRouter(): UseRouterReturn {
 	const location = useLocation();
 	const navigate = useNavigate();
-	const searchParams = useSearch({
-		from: window.location.pathname,
-	});
+	const urlParams = useUrlParams();
 
 	const api: UseRouterReturn = {
 		pathname: location.pathname,
@@ -16,7 +16,7 @@ export function useRouter(): UseRouterReturn {
 		},
 		searchParams: {
 			get(urlParam) {
-				return searchParams[urlParam] ?? null;
+				return urlParams.get(urlParam) ?? null;
 			},
 		},
 	};

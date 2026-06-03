@@ -11,5 +11,4 @@ export type AuthContextValue = {
 	status: AuthStatus;
 	user: User | null;
 	signInWithMagicLink: (email: string) => Promise<{ error: Error | null }>;
-	signOut: () => Promise<void>;
 };

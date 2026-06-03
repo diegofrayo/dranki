@@ -5,7 +5,6 @@ import { createContext, use, useEffect, useMemo, useState } from "react";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { signInWithMagicLink } from "../actions/sign-in-with-magic-link";
-import { signOut } from "../actions/sign-out";
 import { createSupabaseBrowserClient } from "../supabase/client";
 import type { AuthContextValue, AuthStatus, Session, User } from "../types";
 
@@ -52,7 +51,6 @@ export function AuthProvider({
 			status,
 			user,
 			signInWithMagicLink,
-			signOut,
 		}),
 		[session, status, user],
 	);

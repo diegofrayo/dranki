@@ -17,11 +17,15 @@ import {
 	Title,
 } from "~/components/primitive";
 import { PROJECT_METADATA, Routes } from "~/constants";
+import { useAuth } from "~/features/auth";
 import { voiceSettingsStorage, type VoiceSettings } from "~/features/voice-settings";
 
 import Breadcrumb from "./components/breadcrumb";
 
 export default function Header(): ReactTypes.JSXElement {
+	// --- HOOKS ---
+	const { status } = useAuth();
+
 	// --- STATES & REFS ---
 	const [voiceSettingsOpen, setVoiceSettingsOpen] = useState(false);
 
@@ -39,11 +43,6 @@ export default function Header(): ReactTypes.JSXElement {
 		setVoiceSettingsOpen(false);
 	}
 
-	// --- STYLES ---
-	const classes = {
-		settingsButton: "ml-auto flex size-10 items-center justify-center",
-	};
-
 	return (
 		<Box
 			as="header"
@@ -53,7 +52,7 @@ export default function Header(): ReactTypes.JSXElement {
 				<Box className="mx-auto flex max-w-xl items-center gap-3 px-4 py-4">
 					<Link
 						href={Routes.INDEX}
-						className="block"
+						className="block shrink-0"
 					>
 						<Image
 							src="/logo/logo.png"
@@ -63,7 +62,7 @@ export default function Header(): ReactTypes.JSXElement {
 							height={32}
 						/>
 					</Link>
-					<Box>
+					<Box className="flex-1">
 						<Title
 							as="h1"
 							className="text-foreground text-2xl font-extrabold"
@@ -74,14 +73,32 @@ export default function Header(): ReactTypes.JSXElement {
 							{PROJECT_METADATA.slogan}
 						</Paragraph>
 					</Box>
-					<Button
-						aria-label="Open voice settings"
-						className={classes.settingsButton}
-						variant={ButtonVariant.GHOST}
-						onClick={handleSettingsClick}
-					>
-						<Icon name={IconCatalog.SETTINGS} />
-					</Button>
+					<Box className="flex shrink-0 items-center justify-center gap-2">
+						{status === "AUTHENTICATED" && (
+							<Button
+								variant={ButtonVariant.GHOST}
+								className="flex size-8 items-center justify-center"
+								render={
+									<Link
+										href={Routes.SIGN_OUT}
+										aria-label="Sign out"
+									>
+										<Icon name={IconCatalog.LOG_OUT} />
+									</Link>
+								}
+							>
+								Back to Decks
+							</Button>
+						)}
+						<Button
+							aria-label="Open voice settings"
+							className="flex size-8 items-center justify-center"
+							variant={ButtonVariant.GHOST}
+							onClick={handleSettingsClick}
+						>
+							<Icon name={IconCatalog.SETTINGS} />
+						</Button>
+					</Box>
 				</Box>
 			</Box>
 
