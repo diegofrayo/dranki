@@ -8,10 +8,10 @@ export async function loader(lessonId: string): Promise<{
 	practiceDecks: Deck[];
 }> {
 	const [lesson, lessonContent, practiceTexts, practiceDecks] = await Promise.all([
-		api.lessons.getLessonById(lessonId),
-		api.lessons.getLessonContent(lessonId),
-		api.texts.getTextsByLessonId(lessonId),
-		api.decks.getDecksByLessonId(lessonId),
+		api().lessons.getLessonById(lessonId),
+		api().lessons.getLessonContent(lessonId),
+		api().texts.getTextsByLessonId(lessonId),
+		api().decks.getDecksByLessonId(lessonId),
 	]);
 
 	return { lesson, lessonContent, practiceTexts, practiceDecks };

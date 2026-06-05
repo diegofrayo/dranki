@@ -28,13 +28,13 @@ export async function generateMetadata({
 	params,
 }: DeckPageProps): ReturnType<typeof generateMetadataDeckPage> {
 	const deckId = (await params)["deck-id"];
-	const deck = await api.decks.getDeckById(deckId);
+	const deck = await api().decks.getDeckById(deckId);
 
 	return generateMetadataDeckPage(deck);
 }
 
 export async function generateStaticParams(): Promise<Array<{ "deck-id": string }>> {
-	const decks = await api.decks.getDecks();
+	const decks = await api().decks.getDecks();
 
 	return decks.slice(0, 5).map((deck) => ({
 		"deck-id": deck.id,

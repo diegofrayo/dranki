@@ -31,6 +31,7 @@ function frameworkAdapterPlugin(): Plugin {
 			__dirname,
 			"src/features/router/use-router.tns.ts",
 		),
+		[path.resolve(__dirname, "src/api/index.ts")]: path.resolve(__dirname, "src/api/index.tns.ts"),
 	};
 
 	return {

@@ -1,3 +1,5 @@
+import { createServerOnlyFn } from "@tanstack/react-start";
+
 import decksRouter from "./routes/decks";
 import lessonsRouter from "./routes/lessons";
 import textsRouter from "./routes/texts";
@@ -8,7 +10,11 @@ const api = (): API => ({
 	texts: textsRouter,
 });
 
-export default api;
+const apiProtected = createServerOnlyFn(() => {
+	return api();
+});
+
+export default apiProtected;
 
 // --- TYPES ---
 

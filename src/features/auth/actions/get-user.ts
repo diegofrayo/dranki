@@ -1,5 +1,3 @@
-import "@tanstack/react-start/server-only";
-
 import { createSupabaseServerClient } from "../supabase/server.adapter";
 import type { User } from "../types";
 

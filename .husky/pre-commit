@@ -1,3 +1,4 @@
 npm run build:ts
 npx lint-staged
 npm run build
+npm run build:tns

@@ -35,13 +35,13 @@ export async function generateMetadata({
 	params,
 }: LessonPageProps): ReturnType<typeof generateMetadataLessonPage> {
 	const lessonId = (await params)["lesson-id"];
-	const lesson = await api.lessons.getLessonById(lessonId);
+	const lesson = await api().lessons.getLessonById(lessonId);
 
 	return generateMetadataLessonPage(lesson);
 }
 
 export async function generateStaticParams(): Promise<Array<{ "lesson-id": string }>> {
-	const lessons = await api.lessons.getLessons();
+	const lessons = await api().lessons.getLessons();
 
 	return lessons.slice(0, 5).map((lesson) => ({
 		"lesson-id": lesson.id,

@@ -33,13 +33,13 @@ export async function generateMetadata({
 	params,
 }: TextPageProps): ReturnType<typeof generateMetadataTextPage> {
 	const textId = (await params)["text-id"];
-	const textDetails = await api.texts.getTextById(textId);
+	const textDetails = await api().texts.getTextById(textId);
 
 	return generateMetadataTextPage(textDetails);
 }
 
 export async function generateStaticParams(): Promise<Array<{ "text-id": string }>> {
-	const texts = await api.texts.getTexts();
+	const texts = await api().texts.getTexts();
 
 	return texts.slice(0, 5).map((text) => ({
 		"text-id": text.id,

@@ -1,4 +1,5 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
@@ -11,6 +12,10 @@ import ErrorPage from "~/features/pages/error/error.page";
 import NotFoundPage from "~/features/pages/error/not-found.page";
 
 import appCss from "./app.css?url";
+
+const getServerData = createServerFn({ method: "POST" }).handler(() => {
+	return getUser();
+});
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -46,7 +51,7 @@ export const Route = createRootRoute({
 			{ rel: "shortcut icon", href: `${FAVICON_PATH}/favicon.ico` },
 		],
 	}),
-	loader: () => getUser(),
+	loader: () => getServerData(),
 	component: function RootWrapper() {
 		const user = Route.useLoaderData() as User;
 
