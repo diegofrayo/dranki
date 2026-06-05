@@ -2,7 +2,7 @@
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { Text } from "~/api";
+import type { Text } from "~/api/types";
 import { TextItem } from "~/components/common";
 import { Box, Paragraph, Title } from "~/components/primitive";
 import { useAuth } from "~/features/auth";

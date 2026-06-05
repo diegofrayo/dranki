@@ -50,4 +50,4 @@ export const Icons = {
 
 export type IconName = keyof typeof Icons;
 
-export const IconCatalog = mirror(Object.keys(Icons)) as Record<IconName, IconName>;
+export const IconCatalog = mirror(Object.keys(Icons)) satisfies Record<IconName, IconName>;

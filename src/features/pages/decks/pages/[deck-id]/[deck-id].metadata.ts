@@ -1,4 +1,4 @@
-import type { Deck } from "~/api";
+import type { Deck } from "~/api/types";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 

@@ -1,7 +1,7 @@
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { Deck } from "~/api";
+import type { Deck } from "~/api/types";
 import { Link, Paragraph, Title } from "~/components/primitive";
 import { Routes } from "~/constants";
 

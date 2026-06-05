@@ -1,4 +1,4 @@
-import type { Text } from "~/api";
+import type { Text } from "~/api/types";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 

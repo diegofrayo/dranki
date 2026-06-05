@@ -3,7 +3,7 @@
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { Deck } from "~/api";
+import type { Deck } from "~/api/types";
 
 import DeckOverview from "./components/deck-overview";
 import PracticeView from "./components/practice-view";

@@ -45,6 +45,7 @@ src/routeTree.gen.ts
 # --- Common ---
 
 src/_legacy
+temp
 
 # Data files (keep only metadata.json)
 src/data/*

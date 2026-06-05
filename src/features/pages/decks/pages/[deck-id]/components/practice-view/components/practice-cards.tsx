@@ -7,7 +7,7 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isEmptyString } from "@diegofrayo-pkg/validator";
 
-import type { DeckPhrase } from "~/api";
+import type { DeckPhrase } from "~/api/types";
 import {
 	Box,
 	Button,

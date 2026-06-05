@@ -5,7 +5,7 @@ import { useState } from "react";
 import { sortBy } from "@diegofrayo-pkg/sort";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { Deck } from "~/api";
+import type { Deck } from "~/api/types";
 import { DeckItem } from "~/components/common";
 import {
 	Box,

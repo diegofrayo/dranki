@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { DeckPhrase } from "~/api";
+import type { DeckPhrase } from "~/api/types";
 import { Box, Button, Icon } from "~/components/primitive";
 import { Sounds, useSound } from "~/features/sounds";
 import { useSpeechSynthesis, type AudioState } from "~/features/voice-settings";

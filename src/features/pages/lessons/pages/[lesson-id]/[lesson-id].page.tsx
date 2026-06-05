@@ -6,7 +6,7 @@ import cn from "@diegofrayo-pkg/cn";
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { Deck, Lesson, Text } from "~/api";
+import type { Deck, Lesson, Text } from "~/api/types";
 import {
 	ContentActions,
 	DeckItem,

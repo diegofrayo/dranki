@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useEffect } from "react";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { Deck, DeckPhrase } from "~/api";
+import type { Deck, DeckPhrase } from "~/api/types";
 import { Sounds, useSound } from "~/features/sounds";
 import { useDeckStore } from "~/stores/deck-store";
 

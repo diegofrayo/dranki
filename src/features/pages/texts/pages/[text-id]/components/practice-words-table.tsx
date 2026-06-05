@@ -3,7 +3,7 @@
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import type { Text } from "~/api";
+import type { Text } from "~/api/types";
 import { SectionCard } from "~/components/common";
 import { Box, Button, Icon, IconCatalog, Separator } from "~/components/primitive";
 import { useSpeechSynthesis } from "~/features/voice-settings";

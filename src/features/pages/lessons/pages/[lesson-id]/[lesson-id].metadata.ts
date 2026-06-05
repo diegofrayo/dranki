@@ -1,4 +1,4 @@
-import type { Lesson } from "~/api";
+import type { Lesson } from "~/api/types";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 

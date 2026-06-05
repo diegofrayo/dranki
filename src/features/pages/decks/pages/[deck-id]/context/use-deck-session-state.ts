@@ -2,7 +2,7 @@ import { useCallback, useEffect, useReducer, type ActionDispatch } from "react";
 
 import { isServer } from "@diegofrayo-pkg/validator";
 
-import type { DeckPhrase } from "~/api";
+import type { DeckPhrase } from "~/api/types";
 
 import type { DeckPhase } from "../[deck-id].types";
 import type { PracticeMode } from "./deck-session-context";

@@ -1,12 +1,12 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
-import api from "~/api";
 import LessonsPage from "~/features/pages/lessons";
+import { loader } from "~/features/pages/lessons/lessons.loader.server";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 
 export default async function LessonsPageWrapper(): Promise<ReactTypes.JSXElement> {
-	const lessons = await api.lessons.getLessons();
+	const { lessons } = await loader();
 
 	return <LessonsPage lessons={lessons} />;
 }
