@@ -8,12 +8,17 @@ import { Routes } from "~/constants";
 type TextItemProps = {
 	text: Text;
 	showLesson?: boolean;
+	variant?: "DEFAULT" | "FROM_LESSON";
 };
 
 export default function TextItem({
 	text,
 	showLesson = true,
+	variant,
 }: TextItemProps): ReactTypes.JSXElement {
+	// --- COMPUTED STATES ---
+	const isFromLessonVariant = variant === "FROM_LESSON";
+
 	// --- STYLES ---
 	const classes = {
 		link: cn(
@@ -43,6 +48,11 @@ export default function TextItem({
 			href={Routes.TEXT(text.id)}
 			className={classes.link}
 		>
+			{isFromLessonVariant && (
+				<InlineText className="absolute top-2 right-2 rounded-md bg-white/20 px-2 py-1 text-xs font-bold">
+					Text
+				</InlineText>
+			)}
 			<InlineText className={classes.emoji}>{text.emoji}</InlineText>
 			<Title
 				as="h3"

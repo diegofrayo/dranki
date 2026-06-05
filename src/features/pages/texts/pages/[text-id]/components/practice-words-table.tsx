@@ -19,8 +19,8 @@ function PracticeWordsTable({
 	const classes = {
 		tableWrapper: "border-border bg-background rounded-md border overflow-x-auto relative",
 		table: "w-full border-collapse text-left text-sm",
-		th: "bg-muted/50 text-black border-border border-b px-3 py-2 font-bold", // nth-3:min-w-48
-		td: "border-border align-top border-b px-3 py-2", // nth-3:min-w-48
+		th: "bg-muted/50 text-black border-border border-b px-3 py-2 font-bold nth-3:min-w-72",
+		td: "border-border align-top border-b px-3 py-2 nth-3:min-w-72",
 		word: "text-foreground font-medium",
 		translation: "text-muted-foreground",
 		example: "text-foreground italic",

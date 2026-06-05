@@ -88,15 +88,6 @@
 	@apply text-foreground px-4 py-2;
 }
 
-.td:nth-child(2) {
-	@apply min-w-96;
-}
-
-.td:nth-child(3),
-.td:nth-child(4) {
-	@apply min-w-lg;
-}
-
 .hr {
 	@apply my-5;
 }

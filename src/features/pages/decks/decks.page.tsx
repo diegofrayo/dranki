@@ -108,8 +108,8 @@ export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElem
 								className="relative"
 							>
 								<DeckItem
+									variant="DEFAULT"
 									deck={deck}
-									showTotalPhrases
 								/>
 							</Box>
 						);

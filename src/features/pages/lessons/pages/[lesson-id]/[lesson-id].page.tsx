@@ -104,6 +104,7 @@ function PracticeSection({ decks, texts }: PracticeSectionProps): ReactTypes.JSX
 						{decks.map((deck) => (
 							<DeckItem
 								key={deck.id}
+								variant="FROM_LESSON"
 								deck={deck}
 							/>
 						))}
@@ -114,6 +115,7 @@ function PracticeSection({ decks, texts }: PracticeSectionProps): ReactTypes.JSX
 						{texts.map((text) => (
 							<TextItem
 								key={text.id}
+								variant="FROM_LESSON"
 								text={text}
 							/>
 						))}
