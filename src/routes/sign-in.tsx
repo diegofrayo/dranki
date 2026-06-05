@@ -2,7 +2,7 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 
 import { Routes } from "~/constants/routes";
-import { getUser } from "~/features/auth/actions/get-user.server";
+import { getUser } from "~/features/auth/actions/get-user";
 import SignInPage from "~/features/pages/sign-in";
 import { composePageTitle } from "~/utils/misc";
 

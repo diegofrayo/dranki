@@ -1,7 +1,7 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import TextsPage from "~/features/pages/texts";
-import { loader } from "~/features/pages/texts/texts.loader.server";
+import { loader } from "~/features/pages/texts/texts.loader";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 

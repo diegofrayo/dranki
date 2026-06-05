@@ -1,7 +1,7 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import DecksPage from "~/features/pages/decks";
-import { loader } from "~/features/pages/decks/decks.loader.server";
+import { loader } from "~/features/pages/decks/decks.loader";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 

@@ -10,7 +10,7 @@ import { RemoteDebugger } from "~/components/common";
 import { MainLayout } from "~/components/layout";
 import { FAVICON_PATH, PROJECT_METADATA } from "~/constants";
 import { AuthProvider } from "~/features/auth";
-import { getUser } from "~/features/auth/actions/get-user.server";
+import { getUser } from "~/features/auth/actions/get-user";
 
 import "./app.css";
 

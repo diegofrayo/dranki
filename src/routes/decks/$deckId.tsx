@@ -3,7 +3,7 @@ import { createServerFn } from "@tanstack/react-start";
 
 import type { NonNullableObject } from "@diegofrayo-pkg/types";
 
-import { loader } from "~/features/pages/decks/pages/[deck-id]/[deck-id].loader.server";
+import { loader } from "~/features/pages/decks/pages/[deck-id]/[deck-id].loader";
 import { generateMetadataDeckPage } from "~/features/pages/decks/pages/[deck-id]/[deck-id].metadata";
 import DeckPage from "~/features/pages/decks/pages/[deck-id]/[deck-id].page";
 

@@ -4,7 +4,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import api from "~/api";
 import LessonPage from "~/features/pages/lessons/pages/[lesson-id]";
-import { loader } from "~/features/pages/lessons/pages/[lesson-id]/[lesson-id].loader.server";
+import { loader } from "~/features/pages/lessons/pages/[lesson-id]/[lesson-id].loader";
 import { generateMetadataLessonPage } from "~/features/pages/lessons/pages/[lesson-id]/[lesson-id].metadata";
 
 type LessonPageProps = {

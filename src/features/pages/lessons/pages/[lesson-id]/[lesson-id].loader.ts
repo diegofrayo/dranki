@@ -1,4 +1,5 @@
-import api, { type Deck, type Lesson, type Text } from "~/api";
+import api from "~/api";
+import type { Deck, Lesson, Text } from "~/api/types";
 
 export async function loader(lessonId: string): Promise<{
 	lesson: Lesson | undefined;

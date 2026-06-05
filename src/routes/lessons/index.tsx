@@ -3,7 +3,7 @@ import { createServerFn } from "@tanstack/react-start";
 
 import type { NonNullableObject } from "@diegofrayo-pkg/types";
 
-import { loader } from "~/features/pages/lessons/lessons.loader.server";
+import { loader } from "~/features/pages/lessons/lessons.loader";
 import LessonsPage from "~/features/pages/lessons/lessons.page";
 import { composePageTitle } from "~/utils/misc";
 

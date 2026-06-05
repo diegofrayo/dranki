@@ -4,7 +4,7 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import api from "~/api";
 import DeckPage from "~/features/pages/decks/pages/[deck-id]";
-import { loader } from "~/features/pages/decks/pages/[deck-id]/[deck-id].loader.server";
+import { loader } from "~/features/pages/decks/pages/[deck-id]/[deck-id].loader";
 import { generateMetadataDeckPage } from "~/features/pages/decks/pages/[deck-id]/[deck-id].metadata";
 
 type DeckPageProps = {

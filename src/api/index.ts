@@ -1,3 +1,5 @@
+import "@tanstack/react-start/server-only";
+
 import decksRouter from "./routes/decks";
 import lessonsRouter from "./routes/lessons";
 import textsRouter from "./routes/texts";
@@ -15,4 +17,3 @@ export default api;
 export * from "./routes/decks";
 export * from "./routes/lessons";
 export * from "./routes/texts";
-export * from "./types";

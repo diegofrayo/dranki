@@ -4,7 +4,7 @@ import { createServerFn } from "@tanstack/react-start";
 import type { NonNullableObject } from "@diegofrayo-pkg/types";
 
 import DecksPage from "~/features/pages/decks";
-import { loader } from "~/features/pages/decks/decks.loader.server";
+import { loader } from "~/features/pages/decks/decks.loader";
 import { composePageTitle } from "~/utils/misc";
 
 type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;

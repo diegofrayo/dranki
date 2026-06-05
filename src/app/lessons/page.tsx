@@ -1,7 +1,7 @@
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import LessonsPage from "~/features/pages/lessons";
-import { loader } from "~/features/pages/lessons/lessons.loader.server";
+import { loader } from "~/features/pages/lessons/lessons.loader";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 

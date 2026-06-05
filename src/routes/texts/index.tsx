@@ -4,7 +4,7 @@ import { createServerFn } from "@tanstack/react-start";
 import type { NonNullableObject } from "@diegofrayo-pkg/types";
 
 import TextsPage from "~/features/pages/texts";
-import { loader } from "~/features/pages/texts/texts.loader.server";
+import { loader } from "~/features/pages/texts/texts.loader";
 import { composePageTitle } from "~/utils/misc";
 
 type LoaderData = NonNullableObject<Awaited<ReturnType<typeof textsPageLoader>>>;
