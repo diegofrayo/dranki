@@ -103,15 +103,11 @@ export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElem
 
 					if (isDeckPublic || auth.status === "AUTHENTICATED") {
 						return (
-							<Box
+							<DeckItem
 								key={deck.id}
-								className="relative"
-							>
-								<DeckItem
-									variant="DEFAULT"
-									deck={deck}
-								/>
-							</Box>
+								variant="DEFAULT"
+								deck={deck}
+							/>
 						);
 					}
 

@@ -18,16 +18,19 @@ export default function TextItem({
 }: TextItemProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
 	const isFromLessonVariant = variant === "FROM_LESSON";
+	const hasLesson = !!text.lesson;
+	const isPublic = text.public;
 
 	// --- STYLES ---
 	const classes = {
 		link: cn(
-			"relative flex h-30 flex-col items-start justify-center gap-1 rounded-2xl bg-violet-600 px-4 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80",
-			{ "bg-violet-800": !text.public },
+			"relative flex h-30 flex-col items-start justify-start gap-1 rounded-2xl bg-violet-600 px-3 py-3 text-white shadow-md transition-opacity hover:opacity-90 active:opacity-80",
+			{ "bg-violet-800": !isPublic },
+			{ "justify-center": !hasLesson },
 		),
-		emoji: cn("text-2xl"),
-		title: cn("text-base leading-normal font-bold text-white"),
-		footer: cn("w-full text-right text-xs text-white/80 italic"),
+		emoji: cn("text-base", { "text-2xl": isFromLessonVariant }),
+		title: cn("text-base font-bold break-normal text-white"),
+		footer: cn("mt-auto w-full text-right text-xs text-white/80 italic"),
 	};
 
 	// --- RENDERS ---

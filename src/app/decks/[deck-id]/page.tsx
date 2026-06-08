@@ -1,8 +1,10 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import api from "~/api";
+import { Routes } from "~/constants";
+import { getUser } from "~/features/auth/actions/get-user";
 import DeckPage from "~/features/pages/decks/pages/[deck-id]";
 import { loader } from "~/features/pages/decks/pages/[deck-id]/[deck-id].loader";
 import { generateMetadataDeckPage } from "~/features/pages/decks/pages/[deck-id]/[deck-id].metadata";
@@ -19,6 +21,14 @@ export default async function DeckPageWrapper({
 
 	if (!deck) {
 		return notFound();
+	}
+
+	const isPrivateText = !deck.public;
+	const isUserLoggedIn = !!(await getUser());
+	const shouldProtectRoute = isPrivateText && !isUserLoggedIn;
+
+	if (shouldProtectRoute) {
+		return redirect(Routes.DECKS);
 	}
 
 	return <DeckPage deck={deck} />;

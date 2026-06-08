@@ -38,15 +38,11 @@ export default function TextsPage({ texts }: TextsPageProps): ReactTypes.JSXElem
 
 					if (isTextPublic || auth.status === "AUTHENTICATED") {
 						return (
-							<Box
+							<TextItem
 								key={text.id}
-								className="relative"
-							>
-								<TextItem
-									text={text}
-									showLesson
-								/>
-							</Box>
+								text={text}
+								showLesson
+							/>
 						);
 					}
 

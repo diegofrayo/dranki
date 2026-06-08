@@ -1,8 +1,10 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import api from "~/api";
+import { Routes } from "~/constants";
+import { getUser } from "~/features/auth/actions/get-user";
 import TextPage from "~/features/pages/texts/pages/[text-id]";
 import { loader } from "~/features/pages/texts/pages/[text-id]/[text-id].loader";
 import { generateMetadataTextPage } from "~/features/pages/texts/pages/[text-id]/[text-id].metadata";
@@ -19,6 +21,14 @@ export default async function TextPageWrapper({
 
 	if (!details || !content) {
 		return notFound();
+	}
+
+	const isPrivateText = !details.public;
+	const isUserLoggedIn = !!(await getUser());
+	const shouldProtectRoute = isPrivateText && !isUserLoggedIn;
+
+	if (shouldProtectRoute) {
+		return redirect(Routes.TEXTS);
 	}
 
 	return (

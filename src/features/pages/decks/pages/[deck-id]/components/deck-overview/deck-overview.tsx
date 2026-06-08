@@ -116,34 +116,36 @@ function DeckOverview(): ReactTypes.JSXElement {
 					</Box>
 				</Box>
 
-				<Box className={classes.deckCardBody}>
-					<Paragraph className={classes.modeSectionLabel}>Practice Mode</Paragraph>
-					<Box className={classes.modeGrid}>
-						{PRACTICE_MODES.map((mode) => (
-							<PracticeModeButton
-								key={mode.id}
-								description={mode.description}
-								icon={mode.icon}
-								id={mode.id}
-								isSelected={practiceMode === mode.id}
-								label={mode.label}
-								onClick={handlePracticeModeClick}
-							/>
-						))}
+				{!isEmptyDeck && (
+					<Box className={classes.deckCardBody}>
+						<Paragraph className={classes.modeSectionLabel}>Practice Mode</Paragraph>
+						<Box className={classes.modeGrid}>
+							{PRACTICE_MODES.map((mode) => (
+								<PracticeModeButton
+									key={mode.id}
+									description={mode.description}
+									icon={mode.icon}
+									id={mode.id}
+									isSelected={practiceMode === mode.id}
+									label={mode.label}
+									onClick={handlePracticeModeClick}
+								/>
+							))}
+						</Box>
+
+						<Separator className="bg-border my-4" />
+
+						<Settings
+							autoPlayAudio={autoPlayAudio}
+							isCustomMode={isCustomMode}
+							showSentenceByDefault={showSentenceByDefault}
+							showTranslationByDefault={showTranslationByDefault}
+							onAutoPlayAudioChange={handleAutoPlayAudioToggleChange}
+							onSentenceChange={handleSentenceToggleChange}
+							onTranslationChange={handleTranslationToggleChange}
+						/>
 					</Box>
-
-					<Separator className="bg-border my-4" />
-
-					<Settings
-						autoPlayAudio={autoPlayAudio}
-						isCustomMode={isCustomMode}
-						showSentenceByDefault={showSentenceByDefault}
-						showTranslationByDefault={showTranslationByDefault}
-						onAutoPlayAudioChange={handleAutoPlayAudioToggleChange}
-						onSentenceChange={handleSentenceToggleChange}
-						onTranslationChange={handleTranslationToggleChange}
-					/>
-				</Box>
+				)}
 			</Box>
 
 			<Button

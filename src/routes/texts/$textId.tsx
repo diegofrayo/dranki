@@ -1,8 +1,10 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
-import { createServerFn } from "@tanstack/react-start";
+import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
+import { createServerFn, createServerOnlyFn } from "@tanstack/react-start";
 
 import type { NonNullableObject } from "@diegofrayo-pkg/types";
 
+import { Routes } from "~/constants";
+import { getUser } from "~/features/auth/actions/get-user";
 import { loader } from "~/features/pages/texts/pages/[text-id]/[text-id].loader";
 import { generateMetadataTextPage } from "~/features/pages/texts/pages/[text-id]/[text-id].metadata";
 import TextPage from "~/features/pages/texts/pages/[text-id]/[text-id].page";
@@ -15,6 +17,8 @@ const getServerData = createServerFn()
 		return loader(ctx.data.textId);
 	});
 
+const getUserOnlyServer = createServerOnlyFn(getUser);
+
 export const Route = createFileRoute("/texts/$textId")({
 	head: async (ctx) => ({
 		meta: [await generateMetadataTextPage((ctx.loaderData as unknown as LoaderData).details)],
@@ -25,6 +29,14 @@ export const Route = createFileRoute("/texts/$textId")({
 
 		if (!details || !content) {
 			throw notFound();
+		}
+
+		const isPrivateText = !details.public;
+		const isUserLoggedIn = !!(await getUserOnlyServer());
+		const shouldProtectRoute = isPrivateText && !isUserLoggedIn;
+
+		if (shouldProtectRoute) {
+			throw redirect({ to: Routes.TEXTS, replace: true });
 		}
 
 		return { details, content };

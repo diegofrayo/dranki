@@ -1,5 +1,5 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
-import { createServerFn } from "@tanstack/react-start";
+import { createServerOnlyFn } from "@tanstack/react-start";
 
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 
@@ -13,7 +13,7 @@ import NotFoundPage from "~/features/pages/error/not-found.page";
 
 import appCss from "./app.css?url";
 
-const getServerData = createServerFn({ method: "POST" }).handler(() => {
+const getServerData = createServerOnlyFn(() => {
 	return getUser();
 });
 

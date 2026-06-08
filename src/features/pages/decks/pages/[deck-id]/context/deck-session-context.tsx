@@ -59,7 +59,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		function syncDeckInProgress() {
 			setDeckInProgress(state.phase === "PRACTICE");
 		},
-		[state.phase],
+		[state.phase, setDeckInProgress],
 	);
 
 	// --- UTILS ---
