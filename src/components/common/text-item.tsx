@@ -7,17 +7,16 @@ import { Routes } from "~/constants";
 
 type TextItemProps = {
 	text: Text;
-	showLesson?: boolean;
 	variant?: "DEFAULT" | "FROM_LESSON";
 };
 
 export default function TextItem({
 	text,
-	showLesson = true,
-	variant,
+	variant = "DEFAULT",
 }: TextItemProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
 	const isFromLessonVariant = variant === "FROM_LESSON";
+	const isDefaultVariant = variant === "DEFAULT";
 	const hasLesson = !!text.lesson;
 	const isPublic = text.public;
 
@@ -35,15 +34,11 @@ export default function TextItem({
 
 	// --- RENDERS ---
 	function renderFooter(): ReactTypes.JSXElement | null {
-		if (showLesson) {
-			if (text.lesson) {
-				return <Paragraph className={classes.footer}>{text.lesson.title}</Paragraph>;
-			}
-
-			return null;
+		if (isDefaultVariant && text.lesson) {
+			return <Paragraph className={classes.footer}>{text.lesson.title}</Paragraph>;
 		}
 
-		return <Paragraph className={classes.footer}>Text</Paragraph>;
+		return null;
 	}
 
 	return (

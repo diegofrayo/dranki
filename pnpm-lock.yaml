@@ -151,8 +151,8 @@ importers:
         specifier: ^0.7.2
         version: 0.7.2(@ianvs/prettier-plugin-sort-imports@4.7.1(prettier@3.8.2))(prettier@3.8.2)
       tailwindcss:
-        specifier: ^4.2.0
-        version: 4.2.0
+        specifier: ^4.3.0
+        version: 4.3.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -3305,6 +3305,9 @@ packages:
 
   tailwindcss@4.2.3:
     resolution: {integrity: sha512-fA/NX5gMf0ooCLISgB0wScaWgaj6rjTN2SVAwleURjiya7ITNkV+VMmoHtKkldP6CIZoYCZyxb8zP/e2TWoEtQ==}
+
+  tailwindcss@4.3.0:
+    resolution: {integrity: sha512-y6nxMGB1nMW9R6k96e5gdIFzcfL/gTJRNaqGes1YvkLnPVXzWgbqFF2yLC0T8G774n24cx3Pe8XrKoniCOAH+Q==}
 
   tapable@2.3.0:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
@@ -7204,6 +7207,8 @@ snapshots:
   tailwindcss@4.2.0: {}
 
   tailwindcss@4.2.3: {}
+
+  tailwindcss@4.3.0: {}
 
   tapable@2.3.0: {}
 
