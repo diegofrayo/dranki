@@ -1,7 +1,7 @@
 import path from "path";
 
 import { isProductionEnvironment } from "@diegofrayo-pkg/utilities/environment";
-import StorageService from "@diegofrayo-pkg/utilities/server/cloud/storage";
+import StorageService from "@diegofrayo-pkg/utilities/server/cloud/storage-supabase";
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
 
 const DataLoader = {

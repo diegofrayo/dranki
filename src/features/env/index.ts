@@ -13,13 +13,11 @@ const sharedEnvVarsSchema = {
 const envSchema = isServer()
 	? z.object({
 			...sharedEnvVarsSchema,
-			STORAGE_KEY_ID: z.string().nonempty(),
-			STORAGE_SECRET_ACCESS: z.string().nonempty(),
+			SUPABASE_SERVICE_ROLE_KEY: z.string().nonempty(),
 		})
 	: z.object({
 			...sharedEnvVarsSchema,
-			STORAGE_KEY_ID: z.string().optional(),
-			STORAGE_SECRET_ACCESS: z.string().optional(),
+			SUPABASE_SERVICE_ROLE_KEY: z.string().optional(),
 		});
 
 const EnvVars = envSchema.parse(RawEnvVars);

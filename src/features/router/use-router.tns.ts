@@ -11,8 +11,12 @@ export function useRouter(): UseRouterReturn {
 
 	const api: UseRouterReturn = {
 		pathname: location.pathname,
-		push: (route) => {
-			navigate({ href: route });
+		push: (routeName, reload) => {
+			if (reload) {
+				window.location.href = routeName;
+			} else {
+				navigate({ href: routeName });
+			}
 		},
 		searchParams: {
 			get(urlParam) {

@@ -54,7 +54,7 @@ function PracticeView(): ReactTypes.JSXElement {
 
 	// --- HANDLERS ---
 	function handleBackClick(): void {
-		router.push(Routes.DECKS);
+		router.push(Routes.DECKS, true);
 	}
 
 	function handleRestartClick(): void {

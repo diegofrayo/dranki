@@ -11,7 +11,13 @@ export function useRouter(): UseRouterReturn {
 
 	return {
 		pathname,
-		push,
+		push: (routeName, reload): void => {
+			if (reload) {
+				window.location.href = routeName;
+			} else {
+				push(routeName);
+			}
+		},
 		searchParams,
 	};
 }

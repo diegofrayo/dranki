@@ -5,6 +5,6 @@ export type Metadata = {
 
 export type UseRouterReturn = {
 	pathname: string;
-	push: (routeName: string) => void;
+	push: (routeName: string, reload?: boolean) => void;
 	searchParams: { get: (urlParam: string) => string | null };
 };
