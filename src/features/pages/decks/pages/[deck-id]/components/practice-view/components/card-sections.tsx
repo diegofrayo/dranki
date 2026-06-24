@@ -178,7 +178,7 @@ export function TranslationSection({
 type ExplanationSectionProps = {
 	buttonClassName: string;
 	showCardExplanation: boolean;
-	text: string | undefined;
+	explanation: string | undefined;
 	visible: boolean;
 	onClick: () => void;
 };
@@ -186,16 +186,16 @@ type ExplanationSectionProps = {
 export function ExplanationSection({
 	buttonClassName,
 	showCardExplanation,
-	text,
+	explanation,
 	visible,
 	onClick,
 }: ExplanationSectionProps): ReactTypes.JSXElementNullable {
-	if (showCardExplanation || !text) return null;
+	if (!showCardExplanation || !explanation) return null;
 
 	return (
 		<Explanation
 			className={buttonClassName}
-			text={text}
+			text={explanation}
 			visible={visible}
 			onClick={onClick}
 		/>

@@ -172,7 +172,7 @@ function SentenceInput({
 
 	// --- COMPUTED STATES ---
 	const SCORES = {
-		HIGH: 0.9,
+		HIGH: 0.95,
 		MEDIUM: 0.75,
 	};
 	const isCheckButtonDisabled =
@@ -259,7 +259,7 @@ function SentenceInput({
 				/>
 				<Box className="flex-1">
 					<Paragraph>Your answer:</Paragraph>
-					<Paragraph className="mt-1 text-xs font-bold break-all italic">
+					<Paragraph className="mt-1 text-xs font-bold break-normal italic">
 						&quot;{inputText}&quot;
 					</Paragraph>
 				</Box>

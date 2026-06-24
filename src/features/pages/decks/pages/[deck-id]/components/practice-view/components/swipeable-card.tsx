@@ -120,7 +120,7 @@ function SwipeableCard({
 						<ExplanationSection
 							buttonClassName={classes.showContentButton}
 							showCardExplanation={showCardExplanation}
-							text={phrase.explanation}
+							explanation={phrase.explanation}
 							visible={isExplanationVisible}
 							onClick={handleShowExplanationClick}
 						/>
