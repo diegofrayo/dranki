@@ -23,15 +23,16 @@ type DeckSessionProviderProps = {
 };
 
 type DeckSessionContextValue = {
+	autoPlayAudio: boolean;
+	currentIndex: number;
 	deck: Deck;
 	endTime: string;
-	currentIndex: number;
+	isInputMode: boolean;
 	phase: DeckPhase;
 	phrases: DeckPhrase[];
 	practiceMode: PracticeMode;
 	practiceMoreCount: number;
 	recognizedCount: number;
-	autoPlayAudio: boolean;
 	showSentenceByDefault: boolean;
 	showTranslationByDefault: boolean;
 	startTime: string;
@@ -53,6 +54,9 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 	const [playErrorSound] = useSound(Sounds.ERROR);
 	const [playNotifySound] = useSound(Sounds.NOTIFY);
 	const { state, dispatch, cleanStateFromLocalStorage } = useDeckSessionState(deck.id);
+
+	// --- COMPUTED STATES ---
+	const isInputMode = state.practiceMode === "LISTENING" || state.practiceMode === "VOCABULARY";
 
 	// --- EFFECTS ---
 	useEffect(
@@ -154,6 +158,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 				currentIndex: state.currentIndex,
 				deck,
 				endTime: state.endTime,
+				isInputMode,
 				phase: state.phase,
 				phrases: state.phrases,
 				practiceMode: state.practiceMode,

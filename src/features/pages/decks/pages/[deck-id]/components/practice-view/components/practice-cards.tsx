@@ -27,8 +27,7 @@ import SwipeableCard from "./swipeable-card";
 
 function PracticeCards(): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const { phrases, currentIndex, practiceMode, markRecognized, markPracticeMore } =
-		useDeckSession();
+	const { phrases, currentIndex, markRecognized, markPracticeMore, isInputMode } = useDeckSession();
 
 	// --- STATES & REFS ---
 	const [sentencesComparisonFeedback, setSentencesComparisonFeedback] =
@@ -37,7 +36,6 @@ function PracticeCards(): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
 	const currentPhrase = phrases[currentIndex] as DeckPhrase;
 	const nextPhrase = phrases[currentIndex + 1];
-	const isInputMode = practiceMode === "LISTENING" || practiceMode === "VOCABULARY";
 	const swipeEnabled = !isInputMode;
 	const userAnswered = sentencesComparisonFeedback !== null;
 	const showCardExplanation = (isInputMode && userAnswered) || !isInputMode;

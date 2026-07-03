@@ -28,19 +28,21 @@ function SwipeableCard({
 	swipeEnabled,
 	userAnswered,
 }: SwipeableCardProps): ReactTypes.JSXElement {
+	// --- HOOKS ---
 	const {
-		practiceMode,
 		audioState,
+		cardStyles,
 		dragX,
-		isDragging,
 		handlers,
 		isAudioLoading,
 		isAudioPlaying,
+		isDragging,
+		isExplanationVisible,
+		isInputMode,
 		isSentenceVisible,
 		isTranslationVisible,
-		isExplanationVisible,
+		practiceMode,
 		wasCurrentOnMount,
-		cardStyles,
 		handleTtsClick,
 		handleShowSentenceClick,
 		handleShowTranslationClick,
@@ -51,7 +53,7 @@ function SwipeableCard({
 	const classes = {
 		container: cn(
 			"absolute inset-0 touch-none select-none",
-			isCurrentCard ? "cursor-grab" : "pointer-events-none",
+			isCurrentCard && !isInputMode ? "cursor-grab" : "pointer-events-none",
 			isDragging && "cursor-grabbing",
 			isCurrentCard && wasCurrentOnMount && "animate-in fade-in-0 zoom-in-95 duration-300",
 		),
@@ -160,6 +162,7 @@ type UseSwipeableCardReturn = {
 	isSentenceVisible: boolean;
 	isTranslationVisible: boolean;
 	isExplanationVisible: boolean;
+	isInputMode: boolean;
 	wasCurrentOnMount: boolean;
 	cardStyles: ReactTypes.Styles;
 	handleTtsClick: (e: React.MouseEvent) => void;
@@ -181,6 +184,7 @@ function useSwipeableCard({
 		showSentenceByDefault,
 		showTranslationByDefault,
 		autoPlayAudio,
+		isInputMode,
 	} = useDeckSession();
 	const { dragX, dragY, isDragging, isExiting, exitDirection, handlers } = useDragGesture({
 		isEnabled: isCurrentCard && swipeEnabled,
@@ -260,18 +264,19 @@ function useSwipeableCard({
 	);
 
 	return {
-		practiceMode,
 		audioState,
+		cardStyles,
 		dragX,
-		isDragging,
 		handlers,
 		isAudioLoading,
 		isAudioPlaying,
+		isDragging,
+		isExplanationVisible,
+		isInputMode,
 		isSentenceVisible,
 		isTranslationVisible,
-		isExplanationVisible,
+		practiceMode,
 		wasCurrentOnMount,
-		cardStyles,
 		handleTtsClick,
 		handleShowSentenceClick,
 		handleShowTranslationClick,
