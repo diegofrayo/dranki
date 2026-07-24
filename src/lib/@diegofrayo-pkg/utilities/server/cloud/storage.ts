@@ -24,7 +24,10 @@ async function uploadFile(
 
 	if (error) throw error;
 
-	return getFileURL(storageFilePath, config);
+	const url = await getFileURL(storageFilePath, config);
+	console.log("File uploaded:", storageFilePath, url);
+
+	return url;
 }
 
 async function downloadFile<File>(storageFilePath: string, config: RequestConfig): Promise<File> {
