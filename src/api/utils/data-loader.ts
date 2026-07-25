@@ -1,8 +1,9 @@
 import path from "path";
 
 import { isProductionEnvironment } from "@diegofrayo-pkg/utilities/environment";
-import StorageService from "@diegofrayo-pkg/utilities/server/cloud/storage";
-import { readFile } from "@diegofrayo-pkg/utilities/server/files";
+import { readFile } from "@diegofrayo-pkg/utilities/files";
+
+import StorageService from "./storage";
 
 const DataLoader = {
 	get<Data>(filePath: string, config: { contentType: "json" | "md" }): Promise<Data> {

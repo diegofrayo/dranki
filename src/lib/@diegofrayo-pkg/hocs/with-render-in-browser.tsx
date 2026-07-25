@@ -7,13 +7,8 @@ function withRenderInBrowser<ComponentProps extends object>(
 ): ReactTypes.FunctionComponent<ComponentProps> {
 	function RenderInBrowserComponent(props: ComponentProps): ReactTypes.JSXElementNullable {
 		const isMounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-		if (!isMounted) return null;
 
-		/*
-		const [isMounted, setIsMounted] = useState(false);
-		useEffect(() => setIsMounted(true), []);
 		if (!isMounted) return null;
-    */
 
 		return <Component {...props} />;
 	}

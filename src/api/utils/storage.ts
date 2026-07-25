@@ -1,11 +1,11 @@
 import { isArrayBufferView } from "util/types";
 import { StorageClient } from "@supabase/storage-js";
 
-import EnvVars from "~/features/env";
+import { throwError } from "@diegofrayo-pkg/utilities/errors";
+import { jsonToBlob } from "@diegofrayo-pkg/utilities/files";
+import { isBlob } from "@diegofrayo-pkg/validator";
 
-import { isBlob } from "../../../validator";
-import { throwError } from "../../errors";
-import { jsonToBlob } from "../files";
+import EnvVars from "~/features/env";
 
 async function uploadFile(
 	storageFilePath: string,

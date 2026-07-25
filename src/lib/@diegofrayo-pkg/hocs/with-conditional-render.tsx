@@ -1,3 +1,5 @@
+import hoistNonReactStatics from "hoist-non-react-statics";
+
 import type ReactTypes from "../types/react";
 
 type ConditionalRenderComponent<ComponentProps> = (
@@ -21,7 +23,7 @@ function withConditionalRender<ComponentProps extends object>(
 				WrappedComponent.displayName || WrappedComponent.name || "Component"
 			})`;
 
-			return RenderIfComponent;
+			return hoistNonReactStatics(RenderIfComponent, WrappedComponent);
 		};
 
 	return ConditionalRenderComponent;
