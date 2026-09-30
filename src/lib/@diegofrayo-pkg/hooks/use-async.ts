@@ -94,7 +94,7 @@ function useAsync<AsyncFnArgs extends unknown[], AsyncFnReturn>(
 	// --- EFFECTS ---
 	useDidMount(() => {
 		if (opts.autoLaunch === true) {
-			attemptAsync(() => enhancedAsyncFn(...([] as unknown[] as AsyncFnArgs)));
+			void attemptAsync(() => enhancedAsyncFn(...([] as unknown[] as AsyncFnArgs)));
 		}
 	});
 
@@ -142,7 +142,7 @@ function createReducer<Data>() {
 			}
 
 			default: {
-				throw Error(`Unknown action: ${action["type"]}`);
+				throw Error(`Unknown action: ${action["type"] as string}`);
 			}
 		}
 	};
