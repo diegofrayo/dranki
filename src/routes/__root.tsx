@@ -17,6 +17,8 @@ const getServerData = createServerOnlyFn(() => {
 	return getUser();
 });
 
+type LoaderData = NonNullable<Awaited<ReturnType<typeof getServerData>>>;
+
 export const Route = createRootRoute({
 	head: () => ({
 		meta: [
@@ -53,7 +55,7 @@ export const Route = createRootRoute({
 	}),
 	loader: () => getServerData(),
 	component: function RootWrapper() {
-		const user = Route.useLoaderData() as User;
+		const user = Route.useLoaderData() as LoaderData;
 
 		return <RootComponent user={user} />;
 	},

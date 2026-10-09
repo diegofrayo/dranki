@@ -11,6 +11,6 @@ export default async function LessonsPageWrapper(): Promise<ReactTypes.JSXElemen
 	return <LessonsPage lessons={lessons} />;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
 	return { title: composePageTitle("Lessons") };
 }

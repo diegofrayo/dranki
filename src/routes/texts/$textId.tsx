@@ -20,8 +20,8 @@ const getServerData = createServerFn()
 const getUserOnlyServer = createServerOnlyFn(getUser);
 
 export const Route = createFileRoute("/texts/$textId")({
-	head: async (ctx) => ({
-		meta: [await generateMetadataTextPage((ctx.loaderData as unknown as LoaderData).details)],
+	head: (ctx) => ({
+		meta: [generateMetadataTextPage((ctx.loaderData as unknown as LoaderData).details)],
 	}),
 	loader: async ({ params }): Promise<LoaderData> => {
 		const textId = params["textId"];

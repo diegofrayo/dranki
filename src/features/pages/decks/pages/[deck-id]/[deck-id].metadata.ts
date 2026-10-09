@@ -2,7 +2,7 @@ import type { Deck } from "~/api/types";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 
-export async function generateMetadataDeckPage(deck: Deck | undefined): Promise<Metadata> {
+export function generateMetadataDeckPage(deck: Deck | undefined): Metadata {
 	if (!deck) {
 		return { title: composePageTitle("Deck not found") };
 	}

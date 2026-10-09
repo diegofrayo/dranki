@@ -18,6 +18,6 @@ export default async function SignInPageWrapper(): Promise<ReactTypes.JSXElement
 	return <SignInPage />;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
 	return { title: composePageTitle("Sign in") };
 }

@@ -15,10 +15,7 @@ const DataLoader = {
 		}
 
 		if (config.contentType === "json") {
-			return readFile<Data>(
-				path.join(process.cwd(), "src/data", filePath),
-				"json",
-			) as Promise<Data>;
+			return readFile<Data>(path.join(process.cwd(), "src/data", filePath), "json") as Promise<Data>;
 		}
 
 		return readFile(path.join(process.cwd(), "src/data", filePath)) as unknown as Promise<Data>;

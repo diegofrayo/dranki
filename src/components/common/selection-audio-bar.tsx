@@ -12,9 +12,7 @@ type SelectionAudioBarProps = {
 	containerRef: ReactTypes.Ref<HTMLDivElement | null>;
 };
 
-function SelectionAudioBar({
-	containerRef,
-}: SelectionAudioBarProps): ReactTypes.JSXElementNullable {
+function SelectionAudioBar({ containerRef }: SelectionAudioBarProps): ReactTypes.JSXElementNullable {
 	// --- STATES & REFS ---
 	const [selectedText, setSelectedText] = useState("");
 	const [isDismissed, setIsDismissed] = useState(false);

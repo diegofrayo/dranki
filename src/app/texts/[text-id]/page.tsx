@@ -41,7 +41,7 @@ export default async function TextPageWrapper({
 
 export async function generateMetadata({
 	params,
-}: TextPageProps): ReturnType<typeof generateMetadataTextPage> {
+}: TextPageProps): Promise<ReturnType<typeof generateMetadataTextPage>> {
 	const textId = (await params)["text-id"];
 	const textDetails = await api().texts.getTextById(textId);
 

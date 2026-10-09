@@ -18,9 +18,10 @@ function readCookiesFromRequest(): { name: string; value: string }[] {
 /* Read-only server client — callers get the session but cannot refresh cookies.
  * For flows that must write Set-Cookie (callback, sign-out), use
  * `createSupabaseServerClientWithResponse` and attach the returned headers to the Response. */
-export async function createSupabaseServerClient(): Promise<SupabaseClient> {
+export function createSupabaseServerClient(): SupabaseClient {
 	const cookies = readCookiesFromRequest();
 
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 	return createServerClient(EnvVars.PUBLIC_SUPABASE_URL, EnvVars.PUBLIC_SUPABASE_ANON_KEY, {
 		cookies: {
 			getAll() {

@@ -2,7 +2,7 @@ import type { Lesson } from "~/api/types";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 
-export async function generateMetadataLessonPage(lesson: Lesson | undefined): Promise<Metadata> {
+export function generateMetadataLessonPage(lesson: Lesson | undefined): Metadata {
 	if (!lesson) {
 		return { title: composePageTitle("Lesson not found") };
 	}

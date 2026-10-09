@@ -11,8 +11,7 @@ export default function ColorsPage(): ReactTypes.JSXElement {
 		page: "min-h-screen p-6 bg-background",
 		header: "mb-8",
 		groupWrapper: "mb-10",
-		groupLabel:
-			"text-foreground mb-3 block text-sm font-semibold uppercase tracking-widest opacity-50",
+		groupLabel: "text-foreground mb-3 block text-sm font-semibold uppercase tracking-widest opacity-50",
 		grid: cn("grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3"),
 	};
 
@@ -25,9 +24,7 @@ export default function ColorsPage(): ReactTypes.JSXElement {
 				>
 					Color Palette
 				</Title>
-				<Paragraph className="text-muted-foreground mt-1 text-sm">
-					CSS custom property tokens
-				</Paragraph>
+				<Paragraph className="text-muted-foreground mt-1 text-sm">CSS custom property tokens</Paragraph>
 			</Box>
 
 			{COLOR_GROUPS.map((group) => (

@@ -66,8 +66,8 @@ export default function DecksPage({ decks }: DecksPageProps): ReactTypes.JSXElem
 					Decks
 				</Title>
 				<Paragraph className="text-muted-foreground text-sm">
-					Flashcard decks to help you memorize vocabulary and phrases. Practice each deck to build
-					your English fluency through repetition.
+					Flashcard decks to help you memorize vocabulary and phrases. Practice each deck to build your
+					English fluency through repetition.
 				</Paragraph>
 			</Box>
 			<Box className="bg-muted border-border mb-4 flex items-center gap-2 rounded-sm border p-3">

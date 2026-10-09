@@ -20,8 +20,7 @@ function Breadcrumb(): ReactTypes.JSXElementNullable {
 	const classes = {
 		nav: "flex items-center gap-1 text-sm pt-3 pb-4",
 		homeLink: "text-muted-foreground transition-colors hover:text-foreground font-bold",
-		crumbItem: (isLast: boolean): string =>
-			cn("flex items-center gap-1", isLast && "min-w-0 flex-1"),
+		crumbItem: (isLast: boolean): string => cn("flex items-center gap-1", isLast && "min-w-0 flex-1"),
 		separator: "text-muted-foreground select-none",
 	};
 

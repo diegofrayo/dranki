@@ -15,7 +15,7 @@ export function useRouter(): UseRouterReturn {
 			if (reload) {
 				window.location.href = routeName;
 			} else {
-				navigate({ href: routeName });
+				void navigate({ href: routeName });
 			}
 		},
 		searchParams: {

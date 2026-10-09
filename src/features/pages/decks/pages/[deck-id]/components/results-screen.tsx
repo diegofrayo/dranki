@@ -24,15 +24,8 @@ import { useDeckSession } from "../context/deck-session-context";
 
 function ResultsScreen(): ReactTypes.JSXElement {
 	// --- HOOKS ---
-	const {
-		deck,
-		endTime,
-		practiceMoreCount,
-		recognizedCount,
-		startTime,
-		clearSession,
-		setDeckPhase,
-	} = useDeckSession();
+	const { deck, endTime, practiceMoreCount, recognizedCount, startTime, clearSession, setDeckPhase } =
+		useDeckSession();
 
 	// --- COMPUTED STATES ---
 	const totalMinutes = computeTotalMinutes(startTime, endTime);

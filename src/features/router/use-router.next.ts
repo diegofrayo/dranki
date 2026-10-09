@@ -6,7 +6,7 @@ import type { UseRouterReturn } from "./types";
 
 export function useRouter(): UseRouterReturn {
 	const pathname = usePathname();
-	const { push } = useRouterNext();
+	const router = useRouterNext();
 	const searchParams = useSearchParams();
 
 	return {
@@ -15,7 +15,7 @@ export function useRouter(): UseRouterReturn {
 			if (reload) {
 				window.location.href = routeName;
 			} else {
-				push(routeName);
+				router.push(routeName);
 			}
 		},
 		searchParams,

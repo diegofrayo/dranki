@@ -11,6 +11,6 @@ export default async function DecksPageWrapper(): Promise<ReactTypes.JSXElement>
 	return <DecksPage decks={decks} />;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
 	return { title: composePageTitle("Decks") };
 }

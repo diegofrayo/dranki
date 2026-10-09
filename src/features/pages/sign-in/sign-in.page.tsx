@@ -19,7 +19,7 @@ export default function SignInPage(): ReactTypes.JSXElement {
 	const [submitState, setSubmitState] = useState<SubmitState>({ kind: "IDLE" });
 
 	// --- HANDLERS ---
-	async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
+	async function handleFormSubmit(event: React.SubmitEvent<HTMLFormElement>): Promise<void> {
 		event.preventDefault();
 		if (submitState.kind === "SUBMITTING") return;
 
@@ -66,7 +66,7 @@ export default function SignInPage(): ReactTypes.JSXElement {
 
 				<Form
 					className="flex flex-col gap-3"
-					onSubmit={handleFormSubmit}
+					onSubmit={handleFormSubmit} // eslint-disable-line @typescript-eslint/no-misused-promises
 				>
 					<Input
 						type="email"

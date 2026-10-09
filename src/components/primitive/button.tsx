@@ -4,11 +4,11 @@ import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const ButtonVariant = mirror([
+const ButtonVariant = keyMirror([
 	"DEFAULT",
 	"DESTRUCTIVE",
 	"OUTLINE",
@@ -18,7 +18,7 @@ const ButtonVariant = mirror([
 	"ACCENT",
 ]);
 type ButtonVariant = keyof typeof ButtonVariant;
-const ButtonSize = mirror(["DEFAULT", "SM", "LG", "ICON", "ICON_SM", "ICON_LG"]);
+const ButtonSize = keyMirror(["DEFAULT", "SM", "LG", "ICON", "ICON_SM", "ICON_LG"]);
 type ButtonSize = keyof typeof ButtonSize;
 type ButtonProps = useRender.ComponentProps<"button"> & {
 	size?: ButtonSize;
@@ -40,11 +40,7 @@ const Button = function Button({
 	...otherProps
 }: ButtonProps): ReactTypes.JSXElement {
 	const classes = {
-		element: cn(
-			`dr-button dr-button--${variant.toLowerCase()}`,
-			styles({ variant, size }),
-			className,
-		),
+		element: cn(`dr-button dr-button--${variant.toLowerCase()}`, styles({ variant, size }), className),
 	};
 
 	const defaultProps: useRender.ElementProps<"button"> = {

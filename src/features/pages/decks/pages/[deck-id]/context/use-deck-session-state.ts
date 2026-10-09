@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useReducer, type ActionDispatch } from "react";
 
-import { isServer } from "@diegofrayo-pkg/validator";
+import { isNonBrowser } from "@diegofrayo-pkg/validator";
 
 import type { DeckPhrase } from "~/api/types";
 
@@ -21,7 +21,7 @@ export default function useDeckSessionState(deckId: string): UseDeckSessionState
 	const [state, dispatch] = useReducer(deckSessionReducer, deckId, getInitialStateFromStorage);
 
 	function getInitialStateFromStorage(): typeof INITIAL_STATE {
-		if (isServer()) return INITIAL_STATE;
+		if (isNonBrowser()) return INITIAL_STATE;
 
 		try {
 			const stored = window.localStorage.getItem(localStorageKey);

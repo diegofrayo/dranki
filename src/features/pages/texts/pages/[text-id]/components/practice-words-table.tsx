@@ -12,9 +12,7 @@ type PracticeWordsTableProps = {
 	practiceWords: Text["practiceWords"];
 };
 
-function PracticeWordsTable({
-	practiceWords,
-}: PracticeWordsTableProps): ReactTypes.JSXElementNullable {
+function PracticeWordsTable({ practiceWords }: PracticeWordsTableProps): ReactTypes.JSXElementNullable {
 	// --- STYLES ---
 	const classes = {
 		tableWrapper: "border-border bg-background rounded-md border overflow-x-auto relative",

@@ -31,9 +31,7 @@ async function uploadFile(
 }
 
 async function downloadFile<File>(storageFilePath: string, config: RequestConfig): Promise<File> {
-	const { data, error } = await createClient()
-		.from(resolveBucket(config))
-		.download(storageFilePath);
+	const { data, error } = await createClient().from(resolveBucket(config)).download(storageFilePath);
 
 	if (error) throw error;
 

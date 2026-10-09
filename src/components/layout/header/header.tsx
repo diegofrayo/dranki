@@ -69,9 +69,7 @@ export default function Header(): ReactTypes.JSXElement {
 						>
 							{PROJECT_METADATA.appName}
 						</Title>
-						<Paragraph className="text-muted-foreground text-sm">
-							{PROJECT_METADATA.slogan}
-						</Paragraph>
+						<Paragraph className="text-muted-foreground text-sm">{PROJECT_METADATA.slogan}</Paragraph>
 					</Box>
 					<Box className="flex shrink-0 items-center justify-center gap-2">
 						{status === "AUTHENTICATED" && (

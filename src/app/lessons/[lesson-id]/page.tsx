@@ -33,7 +33,7 @@ export default async function LessonPageWrapper({
 
 export async function generateMetadata({
 	params,
-}: LessonPageProps): ReturnType<typeof generateMetadataLessonPage> {
+}: LessonPageProps): Promise<ReturnType<typeof generateMetadataLessonPage>> {
 	const lessonId = (await params)["lesson-id"];
 	const lesson = await api().lessons.getLessonById(lessonId);
 

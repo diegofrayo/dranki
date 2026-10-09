@@ -28,7 +28,7 @@ export function AuthProvider({
 	useEffect(function syncAuthState() {
 		const supabase = createSupabaseBrowserClient();
 
-		supabase.auth.getSession().then(({ data }) => {
+		void supabase.auth.getSession().then(({ data }) => {
 			setSession(data.session);
 			setUser(data.session?.user ?? null);
 			setStatus(data.session ? "AUTHENTICATED" : "UNAUTHENTICATED");

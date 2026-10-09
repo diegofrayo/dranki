@@ -8,10 +8,7 @@ let browserClient: SupabaseClient | null = null;
 export function createSupabaseBrowserClient(): SupabaseClient {
 	if (browserClient) return browserClient;
 
-	browserClient = createBrowserClient(
-		EnvVars.PUBLIC_SUPABASE_URL,
-		EnvVars.PUBLIC_SUPABASE_ANON_KEY,
-	);
+	browserClient = createBrowserClient(EnvVars.PUBLIC_SUPABASE_URL, EnvVars.PUBLIC_SUPABASE_ANON_KEY);
 
 	return browserClient;
 }

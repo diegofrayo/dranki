@@ -46,13 +46,7 @@ export function pipeAsync<Input, A, B, C, D>(
 ): Promise<D>;
 export function pipeAsync<Input, A, B, C, D, E>(
 	input: Input,
-	functions: [
-		AsyncStep<Input, A>,
-		AsyncStep<A, B>,
-		AsyncStep<B, C>,
-		AsyncStep<C, D>,
-		AsyncStep<D, E>,
-	],
+	functions: [AsyncStep<Input, A>, AsyncStep<A, B>, AsyncStep<B, C>, AsyncStep<C, D>, AsyncStep<D, E>],
 ): Promise<E>;
 export function pipeAsync<Input, A, B, C, D, E, F>(
 	input: Input,
@@ -76,7 +70,7 @@ export function pipeAsync(input: any, functions: AsyncStep<any, any>[]): Promise
 
 // --- UTILS ---
 
-export const is = <Input>(input: Input, options: Input[]): boolean => {
+export const isOneOf = <Input>(input: Input, options: Input[]): boolean => {
 	return options.includes(input);
 };
 
@@ -90,8 +84,10 @@ export const map =
 		arr.map(mapper);
 
 export const filter =
-	(predicate: () => boolean): (<ArrayElement>(arr: ArrayElement[]) => ArrayElement[]) =>
-	<ArrayElement>(arr: ArrayElement[]): ArrayElement[] =>
+	<ArrayElement>(
+		predicate: (element: ArrayElement) => boolean,
+	): ((arr: ArrayElement[]) => ArrayElement[]) =>
+	(arr: ArrayElement[]): ArrayElement[] =>
 		arr.filter(predicate);
 
 export const slice =
@@ -111,12 +107,12 @@ export const sort =
 	(arr: ArrayElement[]): ArrayElement[] =>
 		[...arr].sort(sortFn);
 
-export const push =
+export const append =
 	<ArrayElement>(element: ArrayElement): ((arr: ArrayElement[]) => ArrayElement[]) =>
 	(arr: ArrayElement[]): ArrayElement[] =>
 		[...arr].concat([element]);
 
-export const unshift =
+export const prepend =
 	<ArrayElement>(element: ArrayElement): ((arr: ArrayElement[]) => ArrayElement[]) =>
 	(arr: ArrayElement[]): ArrayElement[] =>
 		[element].concat(arr);

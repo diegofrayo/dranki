@@ -26,15 +26,13 @@ export default DeckPage;
 
 // --- COMPONENTS ---
 
-const DeckPageContent = withRenderInBrowser(
-	function DeckPageContent(): ReactTypes.JSXElementNullable {
-		// --- HOOKS ---
-		const { phase } = useDeckSession();
+const DeckPageContent = withRenderInBrowser(function DeckPageContent(): ReactTypes.JSXElementNullable {
+	// --- HOOKS ---
+	const { phase } = useDeckSession();
 
-		if (phase === "PRACTICE") {
-			return <PracticeView />;
-		}
+	if (phase === "PRACTICE") {
+		return <PracticeView />;
+	}
 
-		return phase === "RESULTS" ? <ResultsScreen /> : <DeckOverview />;
-	},
-);
+	return phase === "RESULTS" ? <ResultsScreen /> : <DeckOverview />;
+});

@@ -2,11 +2,11 @@ import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import { mirror, omit } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror, omit } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const LinkVariants = mirror(["UNSTYLED", "SMOOTH", "STYLED"]);
+const LinkVariants = keyMirror(["UNSTYLED", "SMOOTH", "STYLED"]);
 type Variant = keyof typeof LinkVariants;
 
 type AnchorHtmlAttributes = ReactTypes.DOM.HTMLElementAttributes["a"];

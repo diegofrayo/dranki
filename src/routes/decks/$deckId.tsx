@@ -20,8 +20,8 @@ const getServerData = createServerFn()
 const getUserOnlyServer = createServerOnlyFn(getUser);
 
 export const Route = createFileRoute("/decks/$deckId")({
-	head: async (ctx) => ({
-		meta: [await generateMetadataDeckPage((ctx.loaderData as unknown as LoaderData).deck)],
+	head: (ctx) => ({
+		meta: [generateMetadataDeckPage((ctx.loaderData as unknown as LoaderData).deck)],
 	}),
 	loader: async ({ params }): Promise<LoaderData> => {
 		const deckId = params["deckId"];

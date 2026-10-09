@@ -3,9 +3,7 @@ import { isBoolean, isFalse, isTrue } from "../validator";
 
 type SortableType = string | number | boolean | Date;
 
-export function sortPlainArray(
-	order: "asc" | "desc",
-): (a: SortableType, b: SortableType) => number {
+export function sortPlainArray(order: "asc" | "desc"): (a: SortableType, b: SortableType) => number {
 	return function sortByReturn(a, b) {
 		const greater = order === "desc" ? -1 : 1;
 		const smaller = order === "desc" ? 1 : -1;

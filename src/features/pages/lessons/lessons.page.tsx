@@ -40,9 +40,7 @@ function LessonsPage({ lessons }: LessonsPageProps): ReactTypes.JSXElement {
 						>
 							{lesson.title}
 						</Title>
-						<Paragraph className="mt-1 text-sm text-white/80 italic">
-							{lesson.description}
-						</Paragraph>
+						<Paragraph className="mt-1 text-sm text-white/80 italic">{lesson.description}</Paragraph>
 					</Link>
 				))}
 			</Box>

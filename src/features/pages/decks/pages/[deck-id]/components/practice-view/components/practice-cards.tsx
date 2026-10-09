@@ -212,10 +212,10 @@ function SentenceInput({
 		setScore(score);
 
 		if (score >= SCORES.MEDIUM) {
-			playSuccessSound();
+			void playSuccessSound();
 			setSentencesComparisonFeedback("CORRECT");
 		} else {
-			playErrorSound();
+			void playErrorSound();
 			setSentencesComparisonFeedback("INCORRECT");
 		}
 	}
@@ -231,11 +231,11 @@ function SentenceInput({
 
 		setInputText("");
 		setSentencesComparisonFeedback(null);
-		playClickSound();
+		void playClickSound();
 	}
 
 	function handleSkipClick(): void {
-		playErrorSound();
+		void playErrorSound();
 		setSentencesComparisonFeedback("INCORRECT");
 	}
 

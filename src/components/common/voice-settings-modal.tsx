@@ -19,11 +19,7 @@ import {
 	Slider,
 	Title,
 } from "~/components/primitive";
-import {
-	useSpeechSynthesis,
-	voiceSettingsStorage,
-	type VoiceSettings,
-} from "~/features/voice-settings";
+import { useSpeechSynthesis, voiceSettingsStorage, type VoiceSettings } from "~/features/voice-settings";
 
 // --- PROPS & TYPES ---
 
@@ -44,9 +40,7 @@ function VoiceSettingsModal({
 	const { voices, play, stop } = useSpeechSynthesis({ text: TEST_PHRASE });
 
 	// --- STATES & REFS ---
-	const [voiceURI, setVoiceURI] = useState<string | null>(
-		() => voiceSettingsStorage.get().voiceURI,
-	);
+	const [voiceURI, setVoiceURI] = useState<string | null>(() => voiceSettingsStorage.get().voiceURI);
 	const [pitch, setPitch] = useState<number>(() => voiceSettingsStorage.get().pitch);
 	const [rate, setRate] = useState<number>(() => voiceSettingsStorage.get().rate);
 

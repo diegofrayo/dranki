@@ -10,10 +10,7 @@ type TextItemProps = {
 	variant?: "DEFAULT" | "FROM_LESSON";
 };
 
-export default function TextItem({
-	text,
-	variant = "DEFAULT",
-}: TextItemProps): ReactTypes.JSXElement {
+export default function TextItem({ text, variant = "DEFAULT" }: TextItemProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
 	const isFromLessonVariant = variant === "FROM_LESSON";
 	const isDefaultVariant = variant === "DEFAULT";

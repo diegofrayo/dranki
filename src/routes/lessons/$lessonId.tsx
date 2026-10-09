@@ -16,8 +16,8 @@ const getServerData = createServerFn()
 	});
 
 export const Route = createFileRoute("/lessons/$lessonId")({
-	head: async (ctx) => ({
-		meta: [await generateMetadataLessonPage((ctx.loaderData as unknown as LoaderData).lesson)],
+	head: (ctx) => ({
+		meta: [generateMetadataLessonPage((ctx.loaderData as unknown as LoaderData).lesson)],
 	}),
 	loader: async ({ params }): Promise<LoaderData> => {
 		const lessonId = params["lessonId"];
@@ -30,8 +30,7 @@ export const Route = createFileRoute("/lessons/$lessonId")({
 		return { lesson, lessonContent, practiceTexts, practiceDecks };
 	},
 	component: function LessonPageWrapper() {
-		const { lesson, lessonContent, practiceTexts, practiceDecks } =
-			Route.useLoaderData() as LoaderData;
+		const { lesson, lessonContent, practiceTexts, practiceDecks } = Route.useLoaderData() as LoaderData;
 
 		return (
 			<LessonPage

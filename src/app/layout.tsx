@@ -18,9 +18,7 @@ type RootLayoutProps = Readonly<{
 	children: React.ReactNode;
 }>;
 
-export default async function RootLayout({
-	children,
-}: RootLayoutProps): Promise<ReactTypes.JSXElement> {
+export default async function RootLayout({ children }: RootLayoutProps): Promise<ReactTypes.JSXElement> {
 	// --- STYLES ---
 	const classes = {
 		body: cn("font-sans antialiased", customFont.variable),

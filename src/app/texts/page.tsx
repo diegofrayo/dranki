@@ -11,6 +11,6 @@ export default async function TextsPageWrapper(): Promise<ReactTypes.JSXElement>
 	return <TextsPage texts={texts} />;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
 	return { title: composePageTitle("Texts") };
 }

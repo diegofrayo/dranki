@@ -59,8 +59,7 @@ const FEATURES = [
 	{
 		emoji: Emojis.TEXTS,
 		title: "Texts",
-		description:
-			"Short texts that put vocabulary and phrases in context — read and learn naturally.",
+		description: "Short texts that put vocabulary and phrases in context — read and learn naturally.",
 		href: Routes.TEXTS,
 		bgColor: "bg-violet-500",
 	},

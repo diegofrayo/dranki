@@ -71,7 +71,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 		(newIndex: number, totalDeckPhrases: number): void => {
 			if (newIndex >= totalDeckPhrases && totalDeckPhrases > 0) {
 				dispatch({ type: "DECK_FINISHED" });
-				playNotifySound();
+				void playNotifySound();
 			}
 		},
 		[dispatch, playNotifySound],
@@ -90,7 +90,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 			const newIndex = state.currentIndex + 1;
 
 			dispatch({ type: "MARK_RECOGNIZED" });
-			if (config.enableSounds) playSuccessSound();
+			if (config.enableSounds) void playSuccessSound();
 			checkIfDeckEnds(newIndex, state.phrases.length);
 		},
 		[state.currentIndex, state.phrases.length, dispatch, checkIfDeckEnds, playSuccessSound],
@@ -101,7 +101,7 @@ function DeckSessionProvider({ deck, children }: DeckSessionProviderProps): Reac
 			const newIndex = state.currentIndex + 1;
 
 			dispatch({ type: "MARK_PRACTICE_MORE" });
-			if (config.enableSounds) playErrorSound();
+			if (config.enableSounds) void playErrorSound();
 			checkIfDeckEnds(newIndex, state.phrases.length);
 		},
 		[state.currentIndex, state.phrases.length, dispatch, checkIfDeckEnds, playErrorSound],

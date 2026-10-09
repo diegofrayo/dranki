@@ -229,17 +229,17 @@ function useSwipeableCard({
 
 	function handleShowSentenceClick(): void {
 		setIsSentenceVisible(true);
-		playClickSound();
+		void playClickSound();
 	}
 
 	function handleShowTranslationClick(): void {
 		setIsTranslationVisible(true);
-		playClickSound();
+		void playClickSound();
 	}
 
 	function handleShowExplanationClick(): void {
 		setIsExplanationVisible(true);
-		playClickSound();
+		void playClickSound();
 	}
 
 	// --- EFFECTS ---

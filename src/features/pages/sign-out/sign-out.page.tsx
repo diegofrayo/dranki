@@ -1,6 +1,6 @@
 "use client";
 
-import { useDidMount } from "@diegofrayo-pkg/hooks";
+import { useMountEffect } from "@diegofrayo-pkg/hooks";
 
 import { Routes } from "~/constants";
 import { signOut } from "~/features/auth/actions/sign-out";
@@ -14,8 +14,8 @@ export default function SignOutPage(): null {
 	}
 
 	// --- EFFECTS ---
-	useDidMount(() => {
-		signOutFn();
+	useMountEffect(() => {
+		void signOutFn();
 	});
 
 	return null;

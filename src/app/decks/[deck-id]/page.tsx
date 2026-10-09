@@ -36,7 +36,7 @@ export default async function DeckPageWrapper({
 
 export async function generateMetadata({
 	params,
-}: DeckPageProps): ReturnType<typeof generateMetadataDeckPage> {
+}: DeckPageProps): Promise<ReturnType<typeof generateMetadataDeckPage>> {
 	const deckId = (await params)["deck-id"];
 	const deck = await api().decks.getDeckById(deckId);
 

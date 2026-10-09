@@ -6,29 +6,25 @@ import EnvVars from "~/features/env";
 async function proxy(request: NextRequest): Promise<NextResponse> {
 	let response = NextResponse.next({ request });
 
-	const supabase = createServerClient(
-		EnvVars.PUBLIC_SUPABASE_URL,
-		EnvVars.PUBLIC_SUPABASE_ANON_KEY,
-		{
-			cookies: {
-				getAll() {
-					const cookies = request.cookies.getAll();
-					return cookies;
-				},
-				setAll(cookiesToSet) {
-					cookiesToSet.forEach(({ name, value }) => {
-						request.cookies.set(name, value);
-					});
+	const supabase = createServerClient(EnvVars.PUBLIC_SUPABASE_URL, EnvVars.PUBLIC_SUPABASE_ANON_KEY, {
+		cookies: {
+			getAll() {
+				const cookies = request.cookies.getAll();
+				return cookies;
+			},
+			setAll(cookiesToSet) {
+				cookiesToSet.forEach(({ name, value }) => {
+					request.cookies.set(name, value);
+				});
 
-					response = NextResponse.next({ request });
+				response = NextResponse.next({ request });
 
-					cookiesToSet.forEach(({ name, value, options }) => {
-						response.cookies.set(name, value, options);
-					});
-				},
+				cookiesToSet.forEach(({ name, value, options }) => {
+					response.cookies.set(name, value, options);
+				});
 			},
 		},
-	);
+	});
 
 	/* Refresh the session so cookies stay fresh. Do not remove this call. */
 	await supabase.auth.getUser();

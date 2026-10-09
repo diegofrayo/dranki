@@ -2,7 +2,7 @@ import type { Text } from "~/api/types";
 import type { Metadata } from "~/features/router";
 import { composePageTitle } from "~/utils/misc";
 
-export async function generateMetadataTextPage(textDetails: Text | undefined): Promise<Metadata> {
+export function generateMetadataTextPage(textDetails: Text | undefined): Metadata {
 	if (!textDetails) {
 		return { title: composePageTitle("Text not found") };
 	}

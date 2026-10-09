@@ -22,7 +22,7 @@ import {
 	X,
 } from "lucide-react";
 
-import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
+import { keyMirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 export const Icons = {
 	ARROW_DOWN: AArrowDown,
@@ -50,4 +50,4 @@ export const Icons = {
 
 export type IconName = keyof typeof Icons;
 
-export const IconCatalog = mirror(Object.keys(Icons)) satisfies Record<IconName, IconName>;
+export const IconCatalog = keyMirror(Object.keys(Icons)) satisfies Record<IconName, IconName>;

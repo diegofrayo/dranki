@@ -31,32 +31,32 @@ export default function SoundsPage(): ReactTypes.JSXElement {
 
 	// --- HANDLERS ---
 	function handleClickClick(): void {
-		playClickSound();
+		void playClickSound();
 		setLastPlayed("click");
 	}
 
 	function handleSuccessClick(): void {
-		playSuccessSound();
+		void playSuccessSound();
 		setLastPlayed("success");
 	}
 
 	function handleErrorClick(): void {
-		playErrorSound();
+		void playErrorSound();
 		setLastPlayed("error");
 	}
 
 	function handleNotifyClick(): void {
-		playNotifySound();
+		void playNotifySound();
 		setLastPlayed("notify");
 	}
 
 	function handleToggleOnClick(): void {
-		playToggleOnSound();
+		void playToggleOnSound();
 		setLastPlayed("toggle(true)");
 	}
 
 	function handleToggleOffClick(): void {
-		playToggleOffSound();
+		void playToggleOffSound();
 		setLastPlayed("toggle(false)");
 	}
 

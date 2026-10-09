@@ -61,9 +61,9 @@ function DeckOverview(): ReactTypes.JSXElement {
 	// --- UTILS ---
 	function playToggleSound(checked: boolean): void {
 		if (checked) {
-			playToggleOnSound();
+			void playToggleOnSound();
 		} else {
-			playToggleOffSound();
+			void playToggleOffSound();
 		}
 	}
 

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { isServer } from "@diegofrayo-pkg/validator";
+import { isNonBrowser } from "@diegofrayo-pkg/validator";
 
 import RawEnvVars from "./env.next";
 
@@ -10,7 +10,7 @@ const sharedEnvVarsSchema = {
 	PUBLIC_WEBSITE_URL: z.string().nonempty(),
 };
 
-const envSchema = isServer()
+const envSchema = isNonBrowser()
 	? z.object({
 			...sharedEnvVarsSchema,
 			SUPABASE_SERVICE_ROLE_KEY: z.string().nonempty(),

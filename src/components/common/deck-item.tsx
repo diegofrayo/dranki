@@ -10,10 +10,7 @@ type DeckItemProps = {
 	variant?: "DEFAULT" | "FROM_LESSON";
 };
 
-export default function DeckItem({
-	deck,
-	variant = "DEFAULT",
-}: DeckItemProps): ReactTypes.JSXElement {
+export default function DeckItem({ deck, variant = "DEFAULT" }: DeckItemProps): ReactTypes.JSXElement {
 	// --- COMPUTED STATES ---
 	const isFromLessonVariant = variant === "FROM_LESSON";
 
