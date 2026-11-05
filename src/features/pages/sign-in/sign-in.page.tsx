@@ -131,7 +131,4 @@ function FormMessage({ children, type }: FormMessageProps): ReactTypes.JSXElemen
 // --- TYPES ---
 
 type SubmitState =
-	| { kind: "IDLE" }
-	| { kind: "SUBMITTING" }
-	| { kind: "SENT" }
-	| { kind: "ERROR"; message: string };
+	{ kind: "IDLE" } | { kind: "SUBMITTING" } | { kind: "SENT" } | { kind: "ERROR"; message: string };

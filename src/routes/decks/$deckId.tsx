@@ -12,7 +12,7 @@ import DeckPage from "~/features/pages/decks/pages/[deck-id]/[deck-id].page";
 type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;
 
 const getServerData = createServerFn()
-	.inputValidator((data: { deckId: string }) => data)
+	.validator((data: { deckId: string }) => data)
 	.handler((ctx) => {
 		return loader(ctx.data.deckId);
 	});

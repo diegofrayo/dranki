@@ -12,7 +12,7 @@ import TextPage from "~/features/pages/texts/pages/[text-id]/[text-id].page";
 type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;
 
 const getServerData = createServerFn()
-	.inputValidator((data: { textId: string }) => data)
+	.validator((data: { textId: string }) => data)
 	.handler(async (ctx) => {
 		return loader(ctx.data.textId);
 	});

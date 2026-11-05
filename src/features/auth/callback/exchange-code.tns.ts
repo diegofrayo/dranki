@@ -1,8 +1,7 @@
 import { createSupabaseServerClientWithResponse } from "../supabase/server.tns";
 
 export type ExchangeCodeResult =
-	| { ok: true; setCookieHeaders: string[] }
-	| { ok: false; error: string; setCookieHeaders: string[] };
+	{ ok: true; setCookieHeaders: string[] } | { ok: false; error: string; setCookieHeaders: string[] };
 
 export async function exchangeCodeForSession(code: string): Promise<ExchangeCodeResult> {
 	const { client, getSetCookieHeaders } = createSupabaseServerClientWithResponse();

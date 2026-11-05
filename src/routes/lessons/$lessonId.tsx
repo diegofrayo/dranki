@@ -10,7 +10,7 @@ import LessonPage from "~/features/pages/lessons/pages/[lesson-id]/[lesson-id].p
 type LoaderData = NonNullableObject<Awaited<ReturnType<typeof loader>>>;
 
 const getServerData = createServerFn()
-	.inputValidator((data: { lessonId: string }) => data)
+	.validator((data: { lessonId: string }) => data)
 	.handler((ctx) => {
 		return loader(ctx.data.lessonId);
 	});
